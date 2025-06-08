@@ -6,7 +6,7 @@ export default function Home() {
       {/* Header with Logo */}
       <header className="bg-white shadow p-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <img src="/logo-exitmytimeshares.png" alt="ExitMyTimeshares Logo" className="h-10" />
+          <img src="/pages/images/logo-exitmytimeshares.png" alt="ExitMyTimeshares Logo" className="h-10" />
           <nav className="space-x-4 text-sm">
             <a href="#kit" className="hover:underline">What's Inside</a>
             <a href="#faq" className="hover:underline">FAQ</a>
@@ -18,7 +18,7 @@ export default function Home() {
       {/* Hero Image with Overlay Text */}
       <section className="relative w-full h-[80vh]">
         <img
-          src="/hero-exit.jpg"
+          src="/pages/images/hero-exit.jpg"
           alt="Couple exiting timeshare"
           className="w-full h-full object-cover object-center"
         />
