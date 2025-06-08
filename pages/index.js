@@ -1,29 +1,63 @@
 // pages/index.js
 
+import Script from 'next/script';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
-      {/* Header with Logo */}
-      <header className="bg-white shadow px-4 py-3">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-          <img src="/images/logo-exitmytimeshares.png" alt="ExitMyTimeshares Logo" className="h-10" />
-          <nav className="flex flex-wrap justify-center gap-4 text-sm">
+      {/* Google Translate Script */}
+      <Script id="google-translate-init" strategy="afterInteractive">
+        {`
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'en',
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+              autoDisplay: false
+            }, 'google_translate_element');
+          }
+        `}
+      </Script>
+      <Script
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+        strategy="afterInteractive"
+      />
+
+      {/* Header with Logo and Language Dropdown */}
+      <header className="bg-white shadow px-4 py-3 relative z-10">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <img src="/images/logo-exitmytimeshares.png" alt="ExitMyTimeshares Logo" className="h-8" />
+          <nav className="space-x-4 text-sm">
             <a href="#kit" className="hover:underline">What's Inside</a>
-            <a href="#faq" className="hover:underline">FAQ</a>
             <a href="mailto:info@quaerens.co.uk" className="hover:underline">Contact</a>
           </nav>
+          <div id="google_translate_element" className="ml-4"></div>
         </div>
       </header>
 
+      {/* Hide Translate Toolbar */}
+      <style jsx global>{`
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-gadget-icon {
+          display: none !important;
+        }
+        body { top: 0px !important; }
+        .goog-te-gadget {
+          font-size: 0;
+        }
+        #google_translate_element select {
+          font-size: 14px;
+        }
+      `}</style>
+
       {/* Hero Image with Overlay Text */}
-      <section className="relative w-full h-[70vh] sm:h-[80vh]">
+      <section className="relative w-full h-[60vh] sm:h-[70vh]">
         <img
           src="/images/hero-exit.jpg"
           alt="Couple exiting timeshare"
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center px-4">
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold text-center">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold text-center max-w-3xl">
             Exit Your Timeshare — Keep 100% of Your Refund
           </h1>
         </div>
@@ -56,27 +90,6 @@ export default function Home() {
           Backed by consumer rights consultants at Quaerens.co.uk<br />
           Full refund if we can't provide the right documents for your resort.
         </p>
-      </section>
-
-      {/* FAQ Section */}
-      <section id="faq" className="bg-white py-12 px-4 border-t">
-        <div className="max-w-3xl mx-auto">
-          <h3 className="text-2xl font-bold mb-6 text-center">Frequently Asked Questions</h3>
-          <div className="space-y-6 text-sm sm:text-base">
-            <div>
-              <h4 className="font-semibold">Do I need a lawyer?</h4>
-              <p>No. You don’t need a lawyer to exit your timeshare. This kit includes everything legally required.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold">Is this legal in the US and Europe?</h4>
-              <p>Yes. We include separate letter templates for US resorts and EU-based contracts.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold">What if my resort ignores it?</h4>
-              <p>We show you how to escalate — and offer a full refund if we can’t provide suitable documentation.</p>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Footer */}
