@@ -1,9 +1,16 @@
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 text-gray-800">
+      {/* Header */}
       <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <img src="/images/logo-exitmytimeshares.png" alt="Logo" className="h-12 w-auto" />
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          <a href="/">
+            <img
+              src="/images/logo-exitmytimeshares.png"
+              alt="Logo"
+              className="h-10 md:h-8 w-auto"
+            />
+          </a>
           <div className="text-sm text-right">
             <select
               onChange={(e) => {
@@ -12,7 +19,7 @@ export default function Home() {
                 document.cookie = `googtrans=/en/${lang}; domain=${location.hostname}; path=/`;
                 location.reload();
               }}
-              className="border rounded px-2 py-1"
+              className="border border-gray-300 rounded px-3 py-2 text-gray-700 focus:outline-none"
             >
               <option value="en">🇬🇧 English</option>
               <option value="fr">🇫🇷 Français</option>
@@ -27,8 +34,13 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Hero Section */}
       <section className="w-full">
-        <img src="/images/hero-exit.jpg" className="w-full h-auto object-cover" alt="Timeshare Exit" />
+        <img
+          src="/images/hero-exit.jpg"
+          className="w-full h-auto object-cover"
+          alt="Timeshare Exit"
+        />
       </section>
     </main>
   );
