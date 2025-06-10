@@ -1,43 +1,939 @@
-<header className="bg-white shadow">
-  <div className="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
-    <a href="/">
-      <img
-        src="/images/logo-exitmytimeshares.png"
-        alt="Exit My Timeshares Logo"
-        className="h-8 w-auto sm:h-6"
-      />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Delay Compensation | Quaerens</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ✅ Add Alpine.js here -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      top: 0px !important;
+      position: static !important;
+    }
+  
+    html {
+      margin-top: 0 !important;
+    }
+  
+    .content-box {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #f9fafb;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+  
+    /* ✅ HIDE the Google Translate top banner */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-gadget-icon,
+    .goog-logo-link,
+    .goog-te-gadget,
+    body > .skiptranslate {
+      display: none !important;
+    }
+  
+    .goog-te-gadget {
+      font-size: 0 !important;
+    }
+  
+    form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+  
+    form input,
+    form select {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 0.5rem;
+    }
+  </style>  
+  
+<script>
+  function setLanguage(langPair) {
+    if (!langPair) return;
+    const lang = langPair.split('|')[1];
+    const newLang = '/en/' + lang;
+    document.cookie = 'googtrans=' + newLang + '; path=/';
+    document.cookie = 'googtrans=' + newLang + '; domain=' + window.location.hostname + '; path=/';
+    location.reload();
+  }
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Auto-detect language based on IP (only on first visit) -->
+<script>
+  if (!document.cookie.includes("googtrans")) {
+    fetch("https://ipapi.co/json/")
+      .then(response => response.json())
+      .then(data => {
+        const country = data.country_code;
+
+        const countryLangMap = {
+          FR: "fr",
+          ES: "es",
+          DE: "de",
+          IT: "it",
+          NL: "nl",
+          SE: "sv",
+          GR: "el",
+          DEFAULT: "en"
+        };
+
+        const lang = countryLangMap[country] || countryLangMap.DEFAULT;
+        const cookieValue = "/en/" + lang;
+
+        document.cookie = `googtrans=${cookieValue}; path=/`;
+        document.cookie = `googtrans=${cookieValue}; domain=${location.hostname}; path=/`;
+
+        location.reload();
+      })
+      .catch(error => {
+        console.error("IP geolocation failed:", error);
+      });
+  }
+</script>
+  </head>
+
+  <body class="bg-gray-50 text-gray-800">
+    <div id="google_translate_element" style="display: none;"></div>
+  
+    <!-- Header -->
+    <header class="bg-white shadow">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/">
+          <img src="images/quaerens-logo.png" alt="Quaerens Logo" class="h-20 w-auto">
+        </a>
+        <nav>
+
+          <div class="w-full bg-gray-100 text-right p-2">
+            <div x-data="{ open: false }" class="relative inline-block text-left">
+              <button @click="open = !open"
+                      class="inline-flex items-center justify-center rounded border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none">
+                🌐 Language
+                <svg class="ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8l5 5 5-5" />
+                </svg>
+              </button>
+          
+              <div x-show="open" @click.outside="open = false"
+                   class="absolute right-0 mt-2 w-48 rounded-md shadow bg-white text-sm text-gray-700 z-50">
+                <a href="#" onclick="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
+                <a href="#" onclick="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
+                <a href="#" onclick="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
+                <a href="#" onclick="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+                <a href="#" onclick="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+                <a href="#" onclick="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+                <a href="#" onclick="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+                <a href="#" onclick="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
+            const lang = match ? match[1] : "en";
+            const selector = document.getElementById("languageDropdown");
+            if (selector) selector.value = `en|${lang}`;
+          });
+        </script>
+        <!-- ✅ Place this OUTSIDE the <header> and NOT inside the <head> either -->
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
+            const lang = match ? match[1] : "en";
+            const selector = document.getElementById("languageDropdown");
+            if (selector) selector.value = `en|${lang}`;
+          });
+        </script>
+
+<!-- Google Translate hidden engine (bottom of page) -->
+<div id="google_translate_element2" style="display: none;"></div>
+
+<script type="text/javascript">
+  function doGTranslate(lang_pair) {
+    if (!lang_pair) return;
+    var lang = lang_pair.split('|')[1];
+    var select = document.querySelector('select.goog-te-combo');
+    if (select && select.options) {
+      select.value = lang;
+      select.dispatchEvent(new Event('change'));
+    }
+  }
+</script>
+
+<script type="text/javascript">
+  function googleTranslateElementInit2() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element2');
+  }
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+</body>
+</html>
+
+  </header>
+
+<!-- Hero Section -->
+<section class="relative w-full overflow-hidden">
+  <img src="images/hero-flight2.jpg" alt="Free Legal Help Banner"
+       class="w-full h-auto object-cover object-center" loading="eager" fetchpriority="high" />
+</section>
+
+<!-- Claim Calculator -->
+<section id="calculator" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+  
+      <!-- Left: Legal Info -->
+      <div class="bg-blue-50 rounded-xl p-6 shadow-md h-full" data-aos="fade-up">
+        <h2 class="text-xl font-bold mb-4 text-blue-800">Why You’re Entitled to Compensation</h2>
+        <p class="text-gray-700 mb-3">
+          Under <strong>EU Regulation 261/2004</strong>, you can claim up to <strong>€600</strong> if your flight was delayed,
+          cancelled, or overbooked — and the airline was at fault. This includes technical issues, crew shortages, and more.
+        </p>
+        <p class="text-gray-600">
+          If your flight arrived more than 3 hours late, and it wasn’t due to extraordinary circumstances (like extreme weather),
+          you may have a valid claim. Our experts handle the process — <strong>no win, no fee</strong>.
+        </p>
+        <hr class="my-4">
+        <h3 class="text-xl font-bold text-blue-800 mb-2">Why should you choose us?</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>We prepare and send your legal claim letter to the airline — at no cost.</li>
+          <li>No fees. No waiting lists. No hidden catches.</li>
+          <li>Save hours of your time — we’ve automated the process for you.</li>
+          <li>Just enter your flight details and relax.</li>
+          <li>Did I forget to mention that this service is FREE!</li>
+          <li>Support our work with an optional donation if you’re happy.</li>
+        </ul>
+      </div>
+  
+      <!-- Right: Calculator -->
+      <div class="bg-white rounded-xl shadow-md content-box h-full" data-aos="fade-up">
+  
+        <!-- Yellow Banner Header -->
+        <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
+          <h2 class="text-xl sm:text-2xl font-bold">✈️ Check Your Flight Delay Compensation</h2>
+          <p class="text-sm sm:text-base mt-1">Enter your flight details to see if you’re entitled under EU261.</p>
+        </div>
+  
+        <!-- Calculator Form -->
+        <div class="p-6">
+          <form id="compensation-form" class="space-y-4">
+            <div>
+              <label for="departure" class="block font-semibold">Departure Airport</label>
+              <input list="airports" id="departure" placeholder="e.g. Amsterdam AMS" required
+                     class="w-full border border-gray-300 p-2 rounded" />
+            </div>
+  
+            <div>
+              <label for="arrival" class="block font-semibold">Arrival Airport</label>
+              <input list="airports" id="arrival" placeholder="e.g. Malaga AGP" required
+                     class="w-full border border-gray-300 p-2 rounded" />
+            </div>
+  
+            <div>
+              <label for="delay" class="block font-semibold">Delay Duration</label>
+              <select id="delay" required class="w-full border border-gray-300 p-2 rounded">
+                <option value="">Select Delay Duration</option>
+                <option value="2">Less than 3 hours</option>
+                <option value="3">3 to 4 hours</option>
+                <option value="4">More than 4 hours</option>
+              </select>
+            </div>
+  
+            <!-- Main Check Button -->
+            <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+              Check Compensation
+            </button>
+          </form>
+  
+          <!-- Compensation Result -->
+          <div id="compensation-result"
+               class="mt-6 text-center text-lg font-semibold text-green-700 hidden"></div>
+  
+          <!-- CTA Button Below -->
+          <a href="claim-form.html" id="claim-button"
+             class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-4 rounded transition hidden">
+            File Your Claim Free →
+          </a>
+        </div>
+  
+        <datalist id="airports"></datalist>
+      </div>
+  
+    </div>
+  </section>  
+
+<!-- Hero Banner Section with Happy Travelers -->
+<section class="w-full relative">
+    <img src="images/happy-travelers-hero.jpg" 
+         alt="Happy travelers hero banner"
+         class="w-full h-auto object-cover object-center max-h-[500px] sm:max-h-[600px]" 
+         loading="eager" />
+  </section>
+  
+  <!-- News Testimonials Section -->
+  <div class="mt-10 bg-white border border-gray-200 rounded-xl p-6 shadow-md">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center text-center">
+  
+      <!-- News Item 1 -->
+      <div>
+        <img src="/images/logo-skynews.png" alt="Sky News" class="mx-auto h-10 mb-2">
+        <p class="text-sm text-gray-700">“Finally, a flight claim service that’s 100% free.”</p>
+      </div>
+  
+      <!-- News Item 2 -->
+      <div>
+        <img src="/images/logo-travelweekly.png" alt="Travel Weekly" class="mx-auto h-10 mb-2">
+        <p class="text-sm text-gray-700">“No lawyers. No fees. Just fast, fair help for delayed flyers.”</p>
+      </div>
+  
+      <!-- News Item 3 -->
+      <div>
+        <img src="/images/logo-euconsumerwatch.png" alt="EU Consumer Watch" class="mx-auto h-10 mb-2">
+        <p class="text-sm text-gray-700">“EC261 letters in minutes – sent to the airline for you.”</p>
+      </div>
+  
+    </div>
+  </div>  
+
+<!-- Legal Explanation with Background -->
+<section class="py-16 bg-cover bg-center bg-no-repeat" style="background-image: url('images/airport-background-night.jpg');">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+  
+      <!-- Box 1 -->
+      <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-red-300 transition-transform duration-300 hover:-translate-y-1">
+        <h3 class="text-lg font-bold text-red-700 mb-4 text-center">USE A LAWYER</h3>
+        <ul class="text-gray-800 text-sm space-y-3">
+          <li class="flex items-start gap-2"><span class="text-red-500">✖</span><span>Higher Fees (£50–£500 + hearing costs)</span></li>
+          <li class="flex items-start gap-2"><span class="text-red-500">✖</span><span>Risk of losing money</span></li>
+          <li class="flex items-start gap-2"><span class="text-red-500">✖</span><span>Time-consuming & complex</span></li>
+          <li class="flex items-start gap-2"><span class="text-red-500">✖</span><span>Uncertain outcome</span></li>
+        </ul>
+      </div>
+  
+      <!-- Box 2 (highlighted) -->
+      <div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-xl shadow-xl p-6 border-4 border-blue-600 transition-transform duration-300 hover:-translate-y-1">
+        <h3 class="text-lg font-bold text-blue-700 mb-4 text-center">USE OUR FREE SERVICE</h3>
+        <ul class="text-gray-800 text-sm space-y-3">
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>100% free, no catch</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Instant downloadable letter</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Email sent for you (optional)</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>No waiting list — instant access</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Thousands helped already</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Optional donation if satisfied</span></li>
+        </ul>
+      </div>
+  
+      <!-- Box 3 -->
+      <div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-green-300 transition-transform duration-300 hover:-translate-y-1">
+        <h3 class="text-lg font-bold text-blue-700 mb-4 text-center">LET QUAERENS HANDLE IT</h3>
+        <ul class="text-gray-800 text-sm space-y-3">
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>We handle the full process</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>No delays — we act immediately</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Letter sent + follow-up with airline</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Zero fees — no commission</span></li>
+          <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Donate if you’re happy — optional</span></li>
+        </ul>
+      </div>
+  
+    </div>
+  </section>  
+
+  <div class="text-center">
+    <a href="/claim-form.html"
+       class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 text-center">
+      Click here to start your free claim!
     </a>
-    <div className="text-sm">
-      <select
-        onChange={(e) => {
-          const lang = e.target.value;
-          document.cookie = `googtrans=/en/${lang}; path=/`;
-          document.cookie = `googtrans=/en/${lang}; domain=${location.hostname}; path=/`;
-          location.reload();
-        }}
-        className="border border-gray-300 px-2 py-1 rounded text-gray-700 bg-white focus:outline-none"
-      >
-        <option value="en">🇬🇧 English</option>
-        <option value="fr">🇫🇷 Français</option>
-        <option value="es">🇪🇸 Español</option>
-        <option value="de">🇩🇪 Deutsch</option>
-        <option value="it">🇮🇹 Italiano</option>
-        <option value="nl">🇳🇱 Nederlands</option>
-        <option value="sv">🇸🇪 Svenska</option>
-        <option value="el">🇬🇷 Ελληνικά</option>
-      </select>
+  </div>
+    
+      <section class="bg-white pt-6 px-4 sm:px-6 lg:px-8">
+
+<!-- BOX 1: LAWS AND REGULATIONS -->
+<div class="max-w-3xl mx-auto px-4">
+  <div class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6" data-aos="fade-up" data-aos-delay="200">
+    <h3 class="text-lg sm:text-xl font-bold text-blue-700 mb-4">LAWS AND REGULATIONS</h3>
+    <p class="text-gray-700 text-sm sm:text-base mb-4">
+      The amount of compensation you are entitled to depends on distance and delay time, fixed by the EU and the same for all airlines.
+    </p>
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-sm border border-gray-300 text-left text-gray-800">
+        <thead class="bg-gray-100 sticky top-0 z-10">
+          <tr>
+            <th class="px-3 py-2 border">Flight Distance</th>
+            <th class="px-3 py-2 border">Delay</th>
+            <th class="px-3 py-2 border">Compensation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="px-3 py-2 border">&lt; 1,500 km</td>
+            <td class="px-3 py-2 border">&gt; 3 Hours</td>
+            <td class="px-3 py-2 border">€250</td>
+          </tr>
+          <tr>
+            <td class="px-3 py-2 border">1,500 – 3,500 km</td>
+            <td class="px-3 py-2 border">&gt; 3 Hours</td>
+            <td class="px-3 py-2 border">€400</td>
+          </tr>
+          <tr>
+            <td class="px-3 py-2 border">&gt; 3,500 km</td>
+            <td class="px-3 py-2 border">3–4 Hours</td>
+            <td class="px-3 py-2 border">€300</td>
+          </tr>
+          <tr>
+            <td class="px-3 py-2 border">&gt; 3,500 km</td>
+            <td class="px-3 py-2 border">&gt; 4 Hours</td>
+            <td class="px-3 py-2 border">€600</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</header>
+</div>
 
-      {/* Hero Section */}
-      <section className="w-full">
-        <img
-          src="/images/hero-exit.jpg"
-          className="w-full h-auto object-cover"
-          alt="Timeshare Exit"
-        />
-      </section>
-    </main>
-  );
+<!-- BOX 2: YOUR RIGHTS UNDER EC 261 -->
+<div class="max-w-3xl mx-auto px-4">
+  <div x-data="{ open: true }" class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6" data-aos="fade-up" data-aos-delay="300">
+    <button
+      @click="open = !open"
+      class="w-full text-left text-lg sm:text-xl font-bold text-blue-700 flex items-center justify-between focus:outline-none"
+    >
+      <span>YOUR RIGHTS UNDER EC 261</span>
+      <svg xmlns="http://www.w3.org/2000/svg" :class="open ? 'rotate-180' : ''" class="h-5 w-5 text-blue-700 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z" clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    <div x-show="open" x-transition class="mt-4 space-y-2 text-gray-700 text-sm sm:text-base">
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>If your flight is delayed more than 3 hours, you may claim compensation of €250 to €600.</p>
+      </div>
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>Cancelled flights, denied boarding, and missed connections are also covered.</p>
+      </div>
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>The airline must be responsible (e.g., technical fault or crew issue).</p>
+      </div>
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>You can claim for flights up to 3 years ago depending on your country.</p>
+      </div>
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <button onclick="document.getElementById('faqModal').classList.remove('hidden')" class="text-blue-600 underline">
+          Full summary – Frequently Asked Questions (FAQ)
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+  
+  <!-- FAQ Modal -->
+  <div id="faqModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white max-w-3xl max-h-[90vh] overflow-y-auto p-6 rounded-xl shadow-lg relative">
+      <button onclick="document.getElementById('faqModal').classList.add('hidden')" class="absolute top-2 right-2 text-xl font-bold">&times;</button>
+      <h3 class="text-xl font-semibold mb-4">Flight Delay & Cancellation Compensation – FAQ</h3>
+      <div class="space-y-4 text-sm leading-relaxed">
+        <p><strong>What is EC Regulation 261/2004?</strong><br>
+        A European Union law that entitles airline passengers to compensation for long delays, cancellations, and denied boarding.</p>
+  
+        <p><strong>Who is eligible for compensation?</strong><br>
+        Passengers delayed 3+ hours, cancelled within 14 days, or denied boarding due to the airline’s fault.</p>
+  
+        <p><strong>How far back can I claim?</strong><br>
+        Up to 6 years in the UK, 3 years in most EU countries.</p>
+  
+        <p><strong>What are the compensation amounts?</strong><br>
+        - €250 for flights under 1,500 km<br>
+        - €400 for 1,500–3,500 km<br>
+        - €600 for over 3,500 km (4+ hours delay)</p>
+  
+        <p><strong>Can I claim for a short flight (e.g. 100 miles)?</strong><br>
+        Yes, if arrival delay is 3+ hours and it’s the airline’s fault, you may still claim €250.</p>
+  
+        <p><strong>What counts as 'extraordinary circumstances'?</strong><br>
+        Bad weather, strikes, air traffic control issues — but technical faults and crew issues usually qualify.</p>
+  
+        <p><strong>Do non-EU airlines count?</strong><br>
+        Yes, if departing from the EU/UK or arriving on an EU/UK airline.</p>
+  
+        <p><strong>Who pays the compensation?</strong><br>
+        The airline – not the travel agent or booking site.</p>
+  
+        <p><strong>What if I got a refund or voucher?</strong><br>
+        You can still claim compensation in addition to other remedies.</p>
+  
+        <p><strong>Will I be notified if the claim is accepted?</strong><br>
+        If you use Quaerens Ltd and provide a signed LoA, the airline will usually notify us directly.</p>
+  
+        <p><strong>How much does Quaerens charge?</strong><br>
+        25% of recovered compensation, including VAT – no-win, no-fee.</p>
+  
+        <p><strong>How long does it take?</strong><br>
+        2–4 weeks for a reply, up to 6–12 weeks if escalated.</p>
+      </div>
+    </div>
+  </div>
+  
+  </section>
+
+  <!-- Testimonials -->
+  <section class="relative py-16" style="background-image: url('images/airport-soft-bg.jpg'); background-size: cover; background-position: center;">
+  <div class="bg-white bg-opacity-90 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-10">What Our Clients Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gray-100 p-6 rounded shadow" data-aos="zoom-in">
+          <p class="italic">“Quaerens got me €400 for my cancelled flight from Madrid – super easy!”</p>
+          <p class="font-semibold mt-4">– Laura P.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded shadow" data-aos="zoom-in">
+          <p class="italic">“I didn’t even know I had a right to claim. Thank you for making it simple!”</p>
+          <p class="font-semibold mt-4">– Marc V.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded shadow" data-aos="zoom-in">
+          <p class="italic">“Very professional team. Highly recommended for any flight issues.”</p>
+          <p class="font-semibold mt-4">– Sofia R.</p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+<!-- Image Grid Section -->
+<section class="bg-gray-50 py-12">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4 text-center">
+    <div data-aos="zoom-in">
+      <img src="images/traveler1.jpg" class="rounded-xl shadow-md mb-3" alt="Happy Traveler" />
+      <p class="text-sm text-gray-600">Real clients getting real results</p>
+    </div>
+    <div data-aos="zoom-in" data-aos-delay="100">
+      <img src="images/traveler2.jpg" class="rounded-xl shadow-md mb-3" alt="Flight Compensation" />
+      <p class="text-sm text-gray-600">Fast claims, no fees</p>
+    </div>
+    <div data-aos="zoom-in" data-aos-delay="200">
+      <img src="images/traveler3.jpg" class="rounded-xl shadow-md mb-3" alt="Airport Lounge" />
+      <p class="text-sm text-gray-600">Relax — we’ll handle the paperwork</p>
+    </div>
+  </div>
+</section>
+
+<div class="text-center">
+    <a href="/claim-form.html"
+       class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 text-center">
+      Click here to start your free claim!
+    </a>
+  </div>
+
+<!-- Footer -->
+  <footer style="text-align: center; font-size: 0.85rem; color: #6b7280; padding: 2rem 1rem; max-width: 800px; margin: 0 auto;">
+  © 2025 Quaerens Ltd. All rights reserved.<br />
+  <a href="privacy.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a> |
+  <a href="terms.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Terms of Use</a> |
+  <a href="gdpr.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">GDPR</a> |
+  <a href="contact.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Contact Us</a>
+</footer>
+
+<script>
+    document.getElementById('compensation-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+  
+      const delay = parseInt(document.getElementById('delay').value);
+      const result = document.getElementById('compensation-result');
+      const claimButton = document.getElementById('claim-button');
+  
+      let compensation = 0;
+      let message = '';
+  
+      if (delay >= 4) {
+        compensation = 600;
+      } else if (delay >= 3) {
+        compensation = 400;
+      }
+  
+      if (compensation > 0) {
+        message = `✅ You may be entitled to <strong>€${compensation}</strong> in compensation.`;
+        claimButton.textContent = 'File Your Claim Free →';
+        claimButton.classList.remove('hidden');
+      } else {
+        message = `ℹ️ Unfortunately, delays under 3 hours don’t qualify under EU261 rules.`;
+        claimButton.classList.add('hidden');
+      }
+  
+      result.innerHTML = message;
+      result.classList.remove('hidden');
+    });
+  
+    // Airport datalist logic
+    const airportList = [
+      "Amsterdam Schiphol (AMS)", "Barcelona El Prat (BCN)", "Berlin Brandenburg (BER)", "Brussels Zaventem (BRU)",
+      "Copenhagen (CPH)", "Dublin (DUB)", "Edinburgh (EDI)", "Frankfurt (FRA)", "Geneva (GVA)", "Lisbon (LIS)",
+      "London Gatwick (LGW)", "London Heathrow (LHR)", "Madrid Barajas (MAD)", "Malaga (AGP)", "Manchester (MAN)",
+      "Milan Malpensa (MXP)", "Munich (MUC)", "Nice Côte d'Azur (NCE)", "Oslo Gardermoen (OSL)", "Paris Charles de Gaulle (CDG)",
+      "Paris Orly (ORY)", "Porto (OPO)", "Prague Vaclav Havel (PRG)", "Rome Fiumicino (FCO)", "Stockholm Arlanda (ARN)",
+      "Vienna (VIE)", "Warsaw Chopin (WAW)", "Zagreb (ZAG)", "Zurich (ZRH)", "Athens (ATH)", "Palma de Mallorca (PMI)",
+      "Ibiza (IBZ)", "Tenerife South (TFS)", "Gran Canaria (LPA)", "Rhodes (RHO)", "Corfu (CFU)", "Heraklion (HER)",
+      "Larnaca (LCA)", "Paphos (PFO)", "Split (SPU)", "Dubrovnik (DBV)", "Reykjavik (KEF)"
+    ];
+
+    const datalist = document.getElementById('airports');
+  airportList.forEach(name => {
+    const option = document.createElement('option');
+    option.value = name;
+    datalist.appendChild(option);
+  });
+</script>
+
+<button id="scrollTopBtn" class="hidden fixed bottom-6 right-6 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition">
+  ↑
+</button>
+<script>
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  window.addEventListener("scroll", () => {
+    scrollBtn.classList.toggle("hidden", window.scrollY < 300);
+  });
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+<script type="module" src="firebase-setup.js"></script>
+
+<script>
+  const db = window.firestore;
+  const storage = window.storage;
+  const {
+    collection,
+    addDoc,
+    serverTimestamp,
+    ref,
+    uploadBytes,
+    getDownloadURL
+  } = window.firebaseUtils;
+
+  document.getElementById("claim-letter-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    console.log("Form submitted"); // <--- for debugging
+    // your code to extract values + call generatePDF()
+  });
+
+<script>
+  const airlineEmails = {
+  "Ryanair": "claims@ryanair.com",
+  "easyJet": "customer.support@easyjet.com",
+  "Lufthansa": "customer.relations@lufthansa.com",
+  "Vueling": "atencion.clientes@vueling.com",
+  "British Airways": "customer.relations@ba.com",
+  "KLM": "mail@klm.nl",
+  "Transavia": "servicecentre@transavia.com",
+  "Air France": "mail.afklmplc@airfrance.fr",
+  "Iberia": "clasica@iberia.es",
+  "Jet2": "customer.service@jet2.com",
+  "Wizz Air": "claim@wizzair.com",
+  "TUI Airways": "aftertravel@tui.co.uk",
+  "Norwegian": "complaints@norwegian.com",
+  "Aer Lingus": "customerqueries@aerlingus.com",
+  "Brussels Airlines": "claim@brusselsairlines.com",
+  "Swiss International Air Lines": "contact@swiss.com",
+  "Eurowings": "customercare@eurowings.com",
+  "TAP Air Portugal": "customer@tap.pt",
+  "Finnair": "feedback@finnair.com",
+  "SAS Scandinavian Airlines": "customercare@sas.se",
+  "Aegean Airlines": "customercare@aegeanair.com",
+  "LOT Polish Airlines": "contact@lot.pl",
+  "Air Malta": "customer.relations@airmalta.com",
+  "Corendon Airlines": "info@corendon-airlines.com",
+  "SunExpress": "customer.service@sunexpress.com",
+  "Blue Air": "support@blueairweb.com",
+  "Volotea": "support@volotea.com",
+  "Lauda Europe": "assistance@laudamotion.com",
+  "Widerøe": "info@wideroe.no",
+  "Croatia Airlines": "contact@croatiaairlines.hr",
+  "Alitalia (ITA Airways)": "customer.relations@itaspa.com",
+  "Condor": "service@condor.com"
+};
+
+const airlineLogos = {
+  "Ryanair": "images/logos/ryanair.png",
+  "easyJet": "images/logos/easyjet.png",
+  "Lufthansa": "images/logos/lufthansa.png",
+  "Vueling": "images/logos/vueling.png",
+  "British Airways": "images/logos/britishairways.png",
+  "KLM": "images/logos/klm.png",
+  "Transavia": "images/logos/transavia.png",
+  "Air France": "images/logos/airfrance.png",
+  "Iberia": "images/logos/iberia.png",
+  "Jet2": "images/logos/jet2.png",
+  "Wizz Air": "images/logos/wizzair.png",
+  "TUI Airways": "images/logos/tuiairways.png",
+  "Norwegian": "images/logos/norwegian.png",
+  "Aer Lingus": "images/logos/aerlingus.png",
+  "Brussels Airlines": "images/logos/brusselsairlines.png",
+  "Swiss International Air Lines": "images/logos/swissinternationalairlines.png",
+  "Eurowings": "images/logos/eurowings.png",
+  "TAP Air Portugal": "images/logos/tapairportugal.png",
+  "Finnair": "images/logos/finnair.png",
+  "SAS Scandinavian Airlines": "images/logos/sasscandinavianairlines.png",
+  "Aegean Airlines": "images/logos/aegeanairlines.png",
+  "LOT Polish Airlines": "images/logos/lotpolishairlines.png",
+  "Air Malta": "images/logos/airmalta.png",
+  "Corendon Airlines": "images/logos/corendonairlines.png",
+  "SunExpress": "images/logos/sunexpress.png",
+  "Blue Air": "images/logos/blueair.png",
+  "Volotea": "images/logos/volotea.png",
+  "Lauda Europe": "images/logos/laudaeurope.png",
+  "Widerøe": "images/logos/wideroe.png",
+  "Croatia Airlines": "images/logos/croatiaairlines.png",
+  "Alitalia (ITA Airways)": "images/logos/italiaitaairways.png",
+  "Condor": "images/logos/condor.png"
+};
+
+document.getElementById("airline").addEventListener("input", function () {
+  const airlineName = this.value;
+  const logoPath = airlineLogos[airlineName];
+  const previewContainer = document.getElementById("airlineLogoPreview");
+  if (logoPath) {
+    previewContainer.innerHTML = `<img src="${logoPath}" alt="${airlineName} Logo" class="mx-auto h-12 md:h-16 mt-2">`;
+  } else {
+    previewContainer.innerHTML = "";
+  }
+});
+</script>
+
+<script>
+  // ✅ UPDATED SCRIPT WITH BOOKING REF + IBAN FIELDS INCLUDED IN CLAIM DATA AND PDF
+  document.getElementById("claim-letter-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const fullName = document.getElementById("fullName").value.trim();
+    const flightNumber = document.getElementById("flightNumber").value.trim();
+    const flightDate = document.getElementById("flightDate").value;
+    const bookingRef = document.getElementById("bookingRef").value.trim();
+    const iban = document.getElementById("iban").value.trim();
+    const depAirport = document.getElementById("depAirport").value.trim();
+    const arrAirport = document.getElementById("arrAirport").value.trim();
+    const airline = document.getElementById("airline").value;
+    const reason = document.getElementById("reason").value.trim();
+    const language = document.getElementById("language").value;
+    const email = document.getElementById("email").value.trim();
+    const handleOption = document.getElementById("handleOption").value;
+    const donation = document.getElementById("donation").value;
+    const distance = document.getElementById("distance").value;
+    const delayDuration = document.getElementById("delayDuration").value;
+    const compensation = calculateCompensation(distance, delayDuration);
+
+    if (!fullName || !flightNumber || !flightDate || !depAirport || !arrAirport || !email || !airline) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    const file = document.getElementById("fileUpload").files[0];
+    let fileURL = "";
+
+    if (file) {
+      const storageRef = ref(storage, `uploads/${Date.now()}-${file.name}`);
+      const uploadSnapshot = await uploadBytes(storageRef, file);
+      fileURL = await getDownloadURL(uploadSnapshot.ref);
+    }
+
+    const claimData = {
+      fullName,
+      flightNumber,
+      flightDate,
+      depAirport,
+      arrAirport,
+      airline,
+      reason,
+      distance,
+      delayDuration,
+      compensation,
+      language,
+      email,
+      handleOption,
+      donation,
+      bookingRef,
+      iban,
+      fileURL,
+      createdAt: serverTimestamp(),
+      airlineEmail: airlineEmails[airline] || ""
+    };
+
+    try {
+      await addDoc(collection(db, "flightClaimLetters"), claimData);
+
+      if (handleOption === "pdf") {
+        generatePDF(claimData);
+      } else if (handleOption === "email") {
+        await fetch("https://us-central1-quaerensclaims.cloudfunctions.net/sendClaimEmail", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(claimData)
+        });
+        alert("✅ Your letter has been emailed!");
+      } else if (handleOption === "quaerens") {
+        alert("✅ Your case has been submitted to Quaerens. We’ll contact you shortly.");
+      }
+
+      document.getElementById("claim-letter-result").classList.remove("hidden");
+    } catch (err) {
+      console.error("Error saving claim:", err);
+      alert("Something went wrong. Please try again.");
+    }
+  });
+</script>
+
+<script>
+const translations = {
+  en: {
+    intro: `Dear Sir/Madam,\n\nI am writing to formally request compensation under EC Regulation 261/2004 for the following disrupted flight:`,
+    closing: `According to EC Regulation 261/2004, I am entitled to this compensation based on the circumstances described above. Please process this claim within 14 days. I reserve the right to escalate to the relevant enforcement body or seek legal redress if not resolved in time.\n\nSincerely,\n\n`,
+    subject: "Compensation Request under EC Regulation 261/2004",
+    to: "To:",
+    detailsTitle: "Flight Details:",
+    paymentLabel: "Preferred Payment Method",
+    claimRef: "Claim Reference",
+    footer: "This document was generated at no cost by Quaerens.co.uk."
+  },
+  fr: {
+    intro: `Madame, Monsieur,\n\nJe vous écris pour demander une indemnisation selon le règlement CE 261/2004 pour le vol suivant :`,
+    closing: `Conformément au règlement CE 261/2004, j'ai droit à une indemnisation basée sur les circonstances décrites ci-dessus. Veuillez traiter cette réclamation dans les 14 jours. Je me réserve le droit de faire appel à l'organisme compétent ou de recourir à une procédure judiciaire si cela n'est pas résolu à temps.\n\nCordialement,\n\n`,
+    subject: "Demande d'indemnisation selon le règlement CE 261/2004",
+    to: "À :",
+    detailsTitle: "Détails du vol :",
+    paymentLabel: "Méthode de paiement préférée",
+    claimRef: "Référence du dossier",
+    footer: "Ce document a été généré gratuitement par Quaerens.co.uk."
+  },
+  // Add other languages here (de, es, nl)
+};
+
+function generatePDF(data) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const today = new Date().toLocaleDateString();
+  const claimRef = `Q-${new Date().toISOString().slice(0, 10).replace(/-/g, "")}-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+  const airlineContact = `${data.airline}\n${data.airlineEmail ? "Email: " + data.airlineEmail : ""}`;
+  const logoPath = airlineLogos[data.airline];
+
+  function insertHeader() {
+    if (logoPath) {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = logoPath;
+      img.onload = () => {
+        doc.addImage(img, "PNG", 150, 8, 40, 15);
+        insertContent();
+      };
+      img.onerror = insertContent;
+    } else {
+      insertContent();
+    }
+  }
+
+  function insertContent() {
+    let y = 20;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+
+    doc.setFont(undefined, "bold");
+    doc.text(today, 10, y);
+    y += 10;
+
+    doc.setFont(undefined, "normal");
+    doc.text(`Claim Reference: ${claimRef}`, 10, y);
+    y += 12;
+
+    doc.setFont(undefined, "bold");
+    doc.text("To:", 10, y);
+    y += 6;
+    doc.setFont(undefined, "normal");
+    doc.text(airlineContact, 10, y);
+    y += 14;
+
+    doc.setFont(undefined, "bold");
+    doc.text("Subject:", 10, y);
+    y += 6;
+    doc.setFont(undefined, "normal");
+    doc.text("Compensation Request under EC Regulation 261/2004", 10, y);
+    y += 10;
+
+    const intro = `Dear Sir/Madam,\n\nI am writing to formally request compensation under EC Regulation 261/2004 for the following disrupted flight:`;
+    const introLines = doc.splitTextToSize(intro, 180);
+    doc.text(introLines, 10, y);
+    y += introLines.length * 6 + 6;
+
+    doc.setFont(undefined, "bold");
+    doc.text("Flight Details:", 10, y);
+    y += 8;
+
+    doc.setFont(undefined, "normal");
+    const details = [
+      `Passenger Name: ${data.fullName}`,
+      `Email: ${data.email}`,
+      `Flight Number: ${data.flightNumber}`,
+      `Booking Reference: ${data.bookingRef}`,
+      `Flight Date: ${data.flightDate}`,
+      `Departure Airport: ${data.depAirport}`,
+      `Arrival Airport: ${data.arrAirport}`,
+      `Airline: ${data.airline}`,
+      `Reason for Delay: ${data.reason || "Not specified"}`,
+      `Flight Distance: ${data.distance}`,
+      `Delay Duration: ${data.delayDuration}`,
+      `Estimated Compensation: €${data.compensation}`,
+      `Preferred Payment Method: ${data.iban}`
+    ];
+    details.forEach(line => {
+      doc.text(line, 10, y);
+      y += 7;
+    });
+
+    y += 4;
+    const closing = `According to EC Regulation 261/2004, I am entitled to this compensation based on the circumstances described above. Please process this claim within 14 days. I reserve the right to escalate to the relevant enforcement body or seek legal redress if not resolved in time.\n\nSincerely,\n\n${data.fullName}`;
+    const closingLines = doc.splitTextToSize(closing, 180);
+    doc.text(closingLines, 10, y);
+    y += closingLines.length * 6;
+
+    doc.setFontSize(10);
+    doc.setTextColor(120);
+    doc.text("This document was generated at no cost by Quaerens.co.uk.", 10, 290);
+
+    doc.save(`EC261-Claim-${data.flightNumber}.pdf`);
+  }
+
+  insertHeader();
 }
+
+</script>
+
+
+  
+</body>
+</html>
