@@ -229,60 +229,106 @@
       <!-- Right: Calculator -->
       <div class="bg-white rounded-xl shadow-md content-box h-full" data-aos="fade-up">
   
-        <!-- Yellow Banner Header -->
-        <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
-          <h2 class="text-xl sm:text-2xl font-bold">✈️ Check Your Flight Delay Compensation</h2>
-          <p class="text-sm sm:text-base mt-1">Enter your flight details to see if you’re entitled under EU261.</p>
-        </div>
+<!-- Yellow Banner Header -->
+<div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
+    <h2 class="text-xl sm:text-2xl font-bold">🏖️ Check If Your Resort Is Eligible</h2>
+    <p class="text-sm sm:text-base mt-1">
+      Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit today.
+    </p>
+  </div>  
   
-        <!-- Calculator Form -->
-        <div class="p-6">
-          <form id="compensation-form" class="space-y-4">
-            <div>
-              <label for="departure" class="block font-semibold">Departure Airport</label>
-              <input list="airports" id="departure" placeholder="e.g. Amsterdam AMS" required
-                     class="w-full border border-gray-300 p-2 rounded" />
-            </div>
-  
-            <div>
-              <label for="arrival" class="block font-semibold">Arrival Airport</label>
-              <input list="airports" id="arrival" placeholder="e.g. Malaga AGP" required
-                     class="w-full border border-gray-300 p-2 rounded" />
-            </div>
-  
-            <div>
-              <label for="delay" class="block font-semibold">Delay Duration</label>
-              <select id="delay" required class="w-full border border-gray-300 p-2 rounded">
-                <option value="">Select Delay Duration</option>
-                <option value="2">Less than 3 hours</option>
-                <option value="3">3 to 4 hours</option>
-                <option value="4">More than 4 hours</option>
-              </select>
-            </div>
-  
-            <!-- Main Check Button -->
-            <button type="submit"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
-              Check Compensation
-            </button>
-          </form>
-  
-          <!-- Compensation Result -->
-          <div id="compensation-result"
-               class="mt-6 text-center text-lg font-semibold text-green-700 hidden"></div>
-  
-          <!-- CTA Button Below -->
-          <a href="claim-form.html" id="claim-button"
-             class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-4 rounded transition hidden">
-            File Your Claim Free →
-          </a>
-        </div>
-  
-        <datalist id="airports"></datalist>
-      </div>
-  
-    </div>
-  </section>  
+        <script>
+const supportedResorts = [
+  { name: "Anfi Del Mar", country: "Spain" },
+  { name: "Club La Costa (CLC)", country: "Spain" },
+  { name: "Los Amigos Beach Club", country: "Spain" },
+  { name: "Royal Oasis Club at Pueblo Quinta", country: "Spain" },
+  { name: "Sahara Sunset Club", country: "Spain" },
+  { name: "Santa Barbara Golf & Ocean Club", country: "Spain" },
+  { name: "Sunset Bay Club", country: "Spain" },
+  { name: "Sunset Harbour Club", country: "Spain" },
+  { name: "Sunset View Club", country: "Spain" },
+  { name: "Royal Tenerife Country Club", country: "Spain" },
+  { name: "Marriott Playa Andaluza", country: "Spain" },
+  { name: "Marriott Marbella Beach Resort", country: "Spain" },
+  { name: "Club Son Antem (Marriott)", country: "Spain" },
+  { name: "Club Cala Blanca (CLC)", country: "Spain" },
+  { name: "Club del Carmen (CLC)", country: "Spain" },
+  { name: "Jardines del Sol (CLC)", country: "Spain" },
+  { name: "Village d’Île‑de‑France (Marriott)", country: "France" },
+  { name: "Le Club Mougins (Diamond)", country: "France" },
+  { name: "Royal Regency Paris Vincennes (Diamond)", country: "France" },
+  { name: "Borgo alle Vigne (Hilton)", country: "Italy" },
+  { name: "Palazzo Catalani (Diamond)", country: "Italy" },
+  { name: "Vilar do Golf (Diamond)", country: "Portugal" },
+  { name: "Alpine Club (Diamond)", country: "Austria" },
+  { name: "Craigendarroch (Hilton)", country: "UK" },
+  { name: "Cromer Country Club (Diamond)", country: "UK" },
+  { name: "Pine Lake Resort (Diamond)", country: "UK" },
+  { name: "The Kenmore Club (Diamond)", country: "UK" },
+  { name: "Thurnham Hall (Diamond)", country: "UK" },
+  { name: "Woodford Bridge Country Club (Diamond)", country: "UK" },
+  { name: "Wychnor Park Country Club (Diamond)", country: "UK" },
+  { name: "Cibola Vista Resort & Spa (Bluegreen)", country: "USA", state: "Arizona" },
+  { name: "Bell Rock Inn (Diamond)", country: "USA", state: "Arizona" },
+  { name: "Kohls Ranch Lodge (Diamond)", country: "USA", state: "Arizona" },
+  { name: "Los Abrigados Resort & Spa (Diamond)", country: "USA", state: "Arizona" },
+  { name: "PVC at The Roundhouse (Diamond)", country: "USA", state: "Arizona" },
+  { name: "Streamside at Vail (Bluegreen)", country: "USA", state: "Colorado" },
+  { name: "The Historic Crags Lodge (Diamond)", country: "USA", state: "Colorado" },
+  { name: "Lake Cumberland Resort (Bluegreen)", country: "USA", state: "Kentucky" },
+  { name: "Scenic Hills RV Resort (Bluegreen)", country: "USA", state: "Kentucky" },
+  { name: "Paradise Point (Bluegreen)", country: "USA", state: "Missouri" },
+  { name: "Wilderness Club at Big Cedar (Bluegreen)", country: "USA", state: "Missouri" },
+  { name: "Villas de Santa Fe (Diamond)", country: "USA", state: "New Mexico" },
+  { name: "Beachwoods Resort (Diamond)", country: "USA", state: "North Carolina" },
+  { name: "Sunrise Ridge Resort (Diamond)", country: "USA", state: "Tennessee" },
+  { name: "Laurel Crest (Bluegreen)", country: "USA", state: "Tennessee" },
+  { name: "Mountain Loft (Bluegreen)", country: "USA", state: "Tennessee" },
+  { name: "Shenandoah Crossing (Bluegreen)", country: "USA", state: "Virginia" },
+  { name: "Patrick Henry Square (Bluegreen)", country: "USA", state: "Virginia" },
+  { name: "Parkside Williamsburg Resort (Bluegreen)", country: "USA", state: "Virginia" },
+  { name: "Elian Hotel & Spa (Bluegreen)", country: "USA", state: "Texas" },
+];
+
+const allowedStates = [
+  "Arizona", "Colorado", "Kentucky", "Missouri", "New Mexico",
+  "North Carolina", "Tennessee", "Virginia", "Texas"
+];
+
+          
+            document.getElementById("resort-check-form").addEventListener("submit", function (e) {
+              e.preventDefault();
+              const input = document.getElementById("resort").value.trim().toLowerCase();
+              const result = document.getElementById("resort-result");
+              const button = document.getElementById("kit-button");
+          
+              const match = supportedResorts.find(r => r.name.toLowerCase() === input);
+          
+              if (match) {
+                if (match.country === "USA" && match.state === "Florida") {
+                  result.textContent = "⚠️ Sorry, Florida resorts require legal representation. Please contact us for help.";
+                  result.className = "mt-6 text-center text-lg font-semibold text-red-600";
+                  button.classList.add("hidden");
+                } else if (match.country === "USA" && !allowedStates.includes(match.state)) {
+                  result.textContent = "❌ Unfortunately, the Do-It-Yourself kit cannot be used in this state due to legal restrictions.";
+                  result.className = "mt-6 text-center text-lg font-semibold text-red-600";
+                  button.classList.add("hidden");
+                } else {
+                  result.textContent = "✅ Great news — the Do-It-Yourself kit is supported for this resort!";
+                  result.className = "mt-6 text-center text-lg font-semibold text-green-700";
+                  button.classList.remove("hidden");
+                }
+              } else {
+                result.textContent = "❌ Resort not found or not currently supported. Please contact us.";
+                result.className = "mt-6 text-center text-lg font-semibold text-red-600";
+                button.classList.add("hidden");
+              }
+          
+              result.classList.remove("hidden");
+            });
+          </script>
+          
 
 <!-- Hero Banner Section with Happy Travelers -->
 <section class="w-full relative">
