@@ -226,43 +226,49 @@
     </ul>
   </div>
   
-<!-- Right: Resort Eligibility Checker -->
+<!-- Right: Column -->
 <div class="bg-white rounded-xl shadow-md content-box h-full" data-aos="fade-up">
-
-    <!-- Yellow Banner Header -->
-    <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
-      <h2 class="text-xl sm:text-2xl font-bold">🏖️ Check If Your Resort Is Eligible</h2>
-      <p class="text-sm sm:text-base mt-1">
-        Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
-      </p>
-    </div>
+    <!-- Your content here (replace only this inner part) -->
+  </div>
+  Then just replace the inner content, not the outer <div>. Here's the safe content-only version:
   
-    <!-- Eligibility Form -->
-    <div class="p-6">
-      <form id="resort-check-form" class="space-y-4">
-        <div>
-          <label for="resort" class="block font-semibold">Resort Name</label>
-          <input list="resorts" id="resort" name="resort" placeholder="e.g. Anfi Del Mar, CLC World, Silverpoint..." required
-                 class="w-full border border-gray-300 p-2 rounded" />
-        </div>
+  html
+  Copy
+  Edit
+  <!-- Yellow Banner Header -->
+  <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
+    <h2 class="text-xl sm:text-2xl font-bold">🏖️ Check If Your Resort Is Eligible</h2>
+    <p class="text-sm sm:text-base mt-1">
+      Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
+    </p>
+  </div>
   
-        <!-- Main Check Button -->
-        <button type="submit"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
-          Check Eligibility
-        </button>
-      </form>
+  <!-- Eligibility Form -->
+  <div class="p-6">
+    <form id="resort-check-form" class="space-y-4">
+      <div>
+        <label for="resort" class="block font-semibold">Resort Name</label>
+        <input list="resorts" id="resort" name="resort" placeholder="e.g. Anfi Del Mar, CLC World, Silverpoint..." required
+               class="w-full border border-gray-300 p-2 rounded" />
+      </div>
   
-      <!-- Result Message -->
-      <div id="resort-result"
-           class="mt-6 text-center text-lg font-semibold hidden"></div>
+      <!-- Main Check Button -->
+      <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+        Check Eligibility
+      </button>
+    </form>
   
-      <!-- CTA Button -->
-      <a href="download-kit.html" id="kit-button"
-         class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-4 rounded transition hidden">
-        Get the Do-It-Yourself Exit Kit →
-      </a>
-    </div>
+    <!-- Result Message -->
+    <div id="resort-result"
+         class="mt-6 text-center text-lg font-semibold hidden"></div>
+  
+    <!-- CTA Button -->
+    <a href="download-kit.html" id="kit-button"
+       class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-4 rounded transition hidden">
+      Get the Do-It-Yourself Exit Kit →
+    </a>
+  </div>
   
     <!-- Resort List -->
     <datalist id="resorts">
