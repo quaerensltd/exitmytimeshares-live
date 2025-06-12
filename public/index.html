@@ -226,110 +226,112 @@
     </ul>
   </div>
   
-      <!-- Right: Calculator -->
-      <div class="bg-white rounded-xl shadow-md content-box h-full" data-aos="fade-up">
+<!-- Right: Resort Eligibility Checker -->
+<div class="bg-white rounded-xl shadow-md content-box h-full" data-aos="fade-up">
+
+    <!-- Yellow Banner Header -->
+    <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
+      <h2 class="text-xl sm:text-2xl font-bold">🏖️ Check If Your Resort Is Eligible</h2>
+      <p class="text-sm sm:text-base mt-1">
+        Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
+      </p>
+    </div>
   
-<!-- Yellow Banner Header -->
-<div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
-    <h2 class="text-xl sm:text-2xl font-bold">🏖️ Check If Your Resort Is Eligible</h2>
-    <p class="text-sm sm:text-base mt-1">
-      Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit today.
-    </p>
-  </div>  
+    <!-- Eligibility Form -->
+    <div class="p-6">
+      <form id="resort-check-form" class="space-y-4">
+        <div>
+          <label for="resort" class="block font-semibold">Resort Name</label>
+          <input list="resorts" id="resort" name="resort" placeholder="e.g. Anfi Del Mar, CLC World, Silverpoint..." required
+                 class="w-full border border-gray-300 p-2 rounded" />
+        </div>
   
-        <script>
-const supportedResorts = [
-  { name: "Anfi Del Mar", country: "Spain" },
-  { name: "Club La Costa (CLC)", country: "Spain" },
-  { name: "Los Amigos Beach Club", country: "Spain" },
-  { name: "Royal Oasis Club at Pueblo Quinta", country: "Spain" },
-  { name: "Sahara Sunset Club", country: "Spain" },
-  { name: "Santa Barbara Golf & Ocean Club", country: "Spain" },
-  { name: "Sunset Bay Club", country: "Spain" },
-  { name: "Sunset Harbour Club", country: "Spain" },
-  { name: "Sunset View Club", country: "Spain" },
-  { name: "Royal Tenerife Country Club", country: "Spain" },
-  { name: "Marriott Playa Andaluza", country: "Spain" },
-  { name: "Marriott Marbella Beach Resort", country: "Spain" },
-  { name: "Club Son Antem (Marriott)", country: "Spain" },
-  { name: "Club Cala Blanca (CLC)", country: "Spain" },
-  { name: "Club del Carmen (CLC)", country: "Spain" },
-  { name: "Jardines del Sol (CLC)", country: "Spain" },
-  { name: "Village d’Île‑de‑France (Marriott)", country: "France" },
-  { name: "Le Club Mougins (Diamond)", country: "France" },
-  { name: "Royal Regency Paris Vincennes (Diamond)", country: "France" },
-  { name: "Borgo alle Vigne (Hilton)", country: "Italy" },
-  { name: "Palazzo Catalani (Diamond)", country: "Italy" },
-  { name: "Vilar do Golf (Diamond)", country: "Portugal" },
-  { name: "Alpine Club (Diamond)", country: "Austria" },
-  { name: "Craigendarroch (Hilton)", country: "UK" },
-  { name: "Cromer Country Club (Diamond)", country: "UK" },
-  { name: "Pine Lake Resort (Diamond)", country: "UK" },
-  { name: "The Kenmore Club (Diamond)", country: "UK" },
-  { name: "Thurnham Hall (Diamond)", country: "UK" },
-  { name: "Woodford Bridge Country Club (Diamond)", country: "UK" },
-  { name: "Wychnor Park Country Club (Diamond)", country: "UK" },
-  { name: "Cibola Vista Resort & Spa (Bluegreen)", country: "USA", state: "Arizona" },
-  { name: "Bell Rock Inn (Diamond)", country: "USA", state: "Arizona" },
-  { name: "Kohls Ranch Lodge (Diamond)", country: "USA", state: "Arizona" },
-  { name: "Los Abrigados Resort & Spa (Diamond)", country: "USA", state: "Arizona" },
-  { name: "PVC at The Roundhouse (Diamond)", country: "USA", state: "Arizona" },
-  { name: "Streamside at Vail (Bluegreen)", country: "USA", state: "Colorado" },
-  { name: "The Historic Crags Lodge (Diamond)", country: "USA", state: "Colorado" },
-  { name: "Lake Cumberland Resort (Bluegreen)", country: "USA", state: "Kentucky" },
-  { name: "Scenic Hills RV Resort (Bluegreen)", country: "USA", state: "Kentucky" },
-  { name: "Paradise Point (Bluegreen)", country: "USA", state: "Missouri" },
-  { name: "Wilderness Club at Big Cedar (Bluegreen)", country: "USA", state: "Missouri" },
-  { name: "Villas de Santa Fe (Diamond)", country: "USA", state: "New Mexico" },
-  { name: "Beachwoods Resort (Diamond)", country: "USA", state: "North Carolina" },
-  { name: "Sunrise Ridge Resort (Diamond)", country: "USA", state: "Tennessee" },
-  { name: "Laurel Crest (Bluegreen)", country: "USA", state: "Tennessee" },
-  { name: "Mountain Loft (Bluegreen)", country: "USA", state: "Tennessee" },
-  { name: "Shenandoah Crossing (Bluegreen)", country: "USA", state: "Virginia" },
-  { name: "Patrick Henry Square (Bluegreen)", country: "USA", state: "Virginia" },
-  { name: "Parkside Williamsburg Resort (Bluegreen)", country: "USA", state: "Virginia" },
-  { name: "Elian Hotel & Spa (Bluegreen)", country: "USA", state: "Texas" },
-];
-
-const allowedStates = [
-  "Arizona", "Colorado", "Kentucky", "Missouri", "New Mexico",
-  "North Carolina", "Tennessee", "Virginia", "Texas"
-];
-
-          
-            document.getElementById("resort-check-form").addEventListener("submit", function (e) {
-              e.preventDefault();
-              const input = document.getElementById("resort").value.trim().toLowerCase();
-              const result = document.getElementById("resort-result");
-              const button = document.getElementById("kit-button");
-          
-              const match = supportedResorts.find(r => r.name.toLowerCase() === input);
-          
-              if (match) {
-                if (match.country === "USA" && match.state === "Florida") {
-                  result.textContent = "⚠️ Sorry, Florida resorts require legal representation. Please contact us for help.";
-                  result.className = "mt-6 text-center text-lg font-semibold text-red-600";
-                  button.classList.add("hidden");
-                } else if (match.country === "USA" && !allowedStates.includes(match.state)) {
-                  result.textContent = "❌ Unfortunately, the Do-It-Yourself kit cannot be used in this state due to legal restrictions.";
-                  result.className = "mt-6 text-center text-lg font-semibold text-red-600";
-                  button.classList.add("hidden");
-                } else {
-                  result.textContent = "✅ Great news — the Do-It-Yourself kit is supported for this resort!";
-                  result.className = "mt-6 text-center text-lg font-semibold text-green-700";
-                  button.classList.remove("hidden");
-                }
-              } else {
-                result.textContent = "❌ Resort not found or not currently supported. Please contact us.";
-                result.className = "mt-6 text-center text-lg font-semibold text-red-600";
-                button.classList.add("hidden");
-              }
-          
-              result.classList.remove("hidden");
-            });
-          </script>
-          
-
+        <!-- Main Check Button -->
+        <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+          Check Eligibility
+        </button>
+      </form>
+  
+      <!-- Result Message -->
+      <div id="resort-result"
+           class="mt-6 text-center text-lg font-semibold hidden"></div>
+  
+      <!-- CTA Button -->
+      <a href="download-kit.html" id="kit-button"
+         class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-4 rounded transition hidden">
+        Get the Do-It-Yourself Exit Kit →
+      </a>
+    </div>
+  
+    <!-- Resort List -->
+    <datalist id="resorts">
+        <!-- Eligible (Spain) -->
+        <option value="Anfi Del Mar">
+        <option value="Club La Costa (CLC)">
+        <option value="Los Amigos Beach Club">
+        <option value="Royal Oasis Club at Pueblo Quinta">
+        <option value="Sahara Sunset Club">
+        <option value="Santa Barbara Golf & Ocean Club">
+        <option value="Sunset Bay Club">
+        <option value="Sunset Harbour Club">
+        <option value="Sunset View Club">
+        <option value="Royal Tenerife Country Club">
+        <option value="Marriott Playa Andaluza">
+        <option value="Marriott Marbella Beach Resort">
+        <option value="Club Son Antem (Marriott)">
+        <option value="Club Cala Blanca (CLC)">
+        <option value="Club del Carmen (CLC)">
+        <option value="Jardines del Sol (CLC)">
+      
+        <!-- Eligible (France, Italy, Portugal, Austria) -->
+        <option value="Village d’Île‑de‑France (Marriott)">
+        <option value="Le Club Mougins (Diamond)">
+        <option value="Royal Regency Paris Vincennes (Diamond)">
+        <option value="Borgo alle Vigne (Hilton)">
+        <option value="Palazzo Catalani (Diamond)">
+        <option value="Vilar do Golf (Diamond)">
+        <option value="Alpine Club (Diamond)">
+      
+        <!-- Eligible (UK) -->
+        <option value="Craigendarroch (Hilton)">
+        <option value="Cromer Country Club (Diamond)">
+        <option value="Pine Lake Resort (Diamond)">
+        <option value="The Kenmore Club (Diamond)">
+        <option value="Thurnham Hall (Diamond)">
+        <option value="Woodford Bridge Country Club (Diamond)">
+        <option value="Wychnor Park Country Club (Diamond)">
+      
+        <!-- ✅ Eligible (USA - allowed states) -->
+        <option value="Cibola Vista Resort & Spa (Bluegreen)">
+        <option value="Bell Rock Inn (Diamond)">
+        <option value="Kohls Ranch Lodge (Diamond)">
+        <option value="Los Abrigados Resort & Spa (Diamond)">
+        <option value="PVC at The Roundhouse (Diamond)">
+        <option value="Streamside at Vail (Bluegreen)">
+        <option value="The Historic Crags Lodge (Diamond)">
+        <option value="Lake Cumberland Resort (Bluegreen)">
+        <option value="Scenic Hills RV Resort (Bluegreen)">
+        <option value="Paradise Point (Bluegreen)">
+        <option value="Wilderness Club at Big Cedar (Bluegreen)">
+        <option value="Villas de Santa Fe (Diamond)">
+        <option value="Beachwoods Resort (Diamond)">
+        <option value="Sunrise Ridge Resort (Diamond)">
+        <option value="Laurel Crest (Bluegreen)">
+        <option value="Mountain Loft (Bluegreen)">
+        <option value="Shenandoah Crossing (Bluegreen)">
+        <option value="Patrick Henry Square (Bluegreen)">
+        <option value="Parkside Williamsburg Resort (Bluegreen)">
+        <option value="Elian Hotel & Spa (Bluegreen)">
+      
+        <!-- ❌ Not Eligible (USA - Florida examples) -->
+        <option value="Orange Lake Resort (Holiday Inn, Florida)">
+        <option value="Westgate Lakes Resort & Spa (Florida)">
+        <option value="Vacation Village at Parkway (Florida)">
+        <option value="Diamond Resorts Mystic Dunes (Florida)">
+      </datalist>      
+  </div>
+  
 <!-- Hero Banner Section with Happy Travelers -->
 <section class="w-full relative">
     <img src="images/hero-exit2.jpg" 
