@@ -376,30 +376,63 @@
 <section class="bg-white py-16">
     <div class="max-w-4xl mx-auto px-4">
       <h2 class="text-3xl font-extrabold text-center text-blue-800 mb-10">Frequently Asked Questions</h2>
-      <div class="space-y-6">
   
-        <!-- Existing Question -->
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded shadow">
-          <h3 class="font-bold text-lg text-blue-700 mb-2">What’s in your Do It Yourself Kit?</h3>
-          <p class="text-gray-700 text-sm">
-            You’ll receive legal letter templates tailored for resorts, step-by-step instructions, guidance on sending your cancellation, and backup support if your resort pushes back.
-          </p>
+      <div class="space-y-6" x-data="{ open: null }">
+  
+        <!-- Q1 -->
+        <div class="border rounded-lg shadow-sm p-4" @click="open = open === 1 ? null : 1">
+          <h3 class="font-semibold cursor-pointer">What’s in the Do It Yourself Kit?</h3>
+          <div x-show="open === 1" x-transition class="mt-2 text-gray-600">
+            You’ll receive professionally written cancellation letters, step-by-step instructions, and guidance on how to send it legally. It's ready to use right away.
+          </div>
         </div>
   
-        <!-- New Question 1 -->
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded shadow">
-          <h3 class="font-bold text-lg text-blue-700 mb-2">My resort does not appear in your list. Can you help us?</h3>
-          <p class="text-gray-700 text-sm">
-            Yes. Please send your resort details by email or WhatsApp and we’ll investigate your case free of charge to see if you’re eligible or if we can add your resort to our list.
-          </p>
+        <!-- Q2 -->
+        <div class="border rounded-lg shadow-sm p-4" @click="open = open === 2 ? null : 2">
+          <h3 class="font-semibold cursor-pointer">Is this legal and safe to use?</h3>
+          <div x-show="open === 2" x-transition class="mt-2 text-gray-600">
+            Yes — the materials are based on real case law and are prepared in consultation with licensed legal experts. Thousands have successfully exited with them.
+          </div>
         </div>
   
-        <!-- New Question 2 -->
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded shadow">
-          <h3 class="font-bold text-lg text-blue-700 mb-2">We own timeshare in the United States. Can you help us?</h3>
-          <p class="text-gray-700 text-sm">
-            In many cases, yes. US timeshare law varies by state, but if our DIY kit is not applicable to your resort, our legal team may still be able to assist through alternative options.
-          </p>
+        <!-- Q3 -->
+        <div class="border rounded-lg shadow-sm p-4" @click="open = open === 3 ? null : 3">
+          <h3 class="font-semibold cursor-pointer">Do I still need a lawyer or notary?</h3>
+          <div x-show="open === 3" x-transition class="mt-2 text-gray-600">
+            Not for most resorts. The DIY Kit is designed to let you exit without hiring anyone else — saving you thousands in legal fees.
+          </div>
+        </div>
+  
+        <!-- Q4 -->
+        <div class="border rounded-lg shadow-sm p-4" @click="open = open === 4 ? null : 4">
+          <h3 class="font-semibold cursor-pointer">What if my resort refuses to accept it?</h3>
+          <div x-show="open === 4" x-transition class="mt-2 text-gray-600">
+            Most resorts will respond officially. If they don't, our template includes a second notice and options for escalating your claim.
+          </div>
+        </div>
+  
+        <!-- Q5 -->
+        <div class="border rounded-lg shadow-sm p-4" @click="open = open === 5 ? null : 5">
+          <h3 class="font-semibold cursor-pointer">Can I use this if I have a loan?</h3>
+          <div x-show="open === 5" x-transition class="mt-2 text-gray-600">
+            Possibly. If your loan is settled or nearly paid, yes. If not, we may still be able to help via other routes — contact us for a free assessment.
+          </div>
+        </div>
+  
+        <!-- NEW: Q6 -->
+        <div class="border rounded-lg shadow-sm p-4" @click="open = open === 6 ? null : 6">
+          <h3 class="font-semibold cursor-pointer">My resort does not appear in your list — can you help us?</h3>
+          <div x-show="open === 6" x-transition class="mt-2 text-gray-600">
+            Yes — please email or WhatsApp us with your resort name. We’ll investigate your situation free of charge and let you know if we can help.
+          </div>
+        </div>
+  
+        <!-- NEW: Q7 -->
+        <div class="border rounded-lg shadow-sm p-4" @click="open = open === 7 ? null : 7">
+          <h3 class="font-semibold cursor-pointer">We own timeshare in the United States — can you help us?</h3>
+          <div x-show="open === 7" x-transition class="mt-2 text-gray-600">
+            Yes. While US laws vary by state, many US-based resorts accept our cancellation process. If not, our legal partners will explore alternative solutions.
+          </div>
         </div>
   
       </div>
