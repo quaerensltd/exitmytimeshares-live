@@ -222,33 +222,29 @@
       </div>
 
 <!-- Hero Banner Section -->
-<section class="w-full mb-8">
+<section class="w-full">
     <img src="images/hero-exit2.jpg"
          alt="Happy timeshare exits"
-         class="w-full h-auto max-h-[600px] object-cover object-center"
-         loading="eager" />
+         class="w-full h-auto object-cover object-center max-h-[600px]" />
   </section>
   
-  <!-- Spacer -->
-  <div class="w-full h-8 md:h-12"></div>
   
 <!-- Resort Eligibility Checker -->
-<section class="bg-white rounded-xl shadow-md max-w-3xl mx-auto p-6 mb-12" data-aos="fade-up">
-    <!-- Yellow Banner Header -->
-    <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
-      <h2 class="text-xl sm:text-2xl font-bold">Check If Your Resort Is Eligible</h2>
-      <p class="text-sm sm:text-base mt-1">
-        Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
-      </p>
-    </div>
+<section class="py-12 bg-white">
+    <div class="max-w-xl mx-auto bg-white rounded-xl shadow-md p-6" data-aos="fade-up">
   
-  <!-- Form -->
-  <form id="resort-check-form" class="space-y-4 mt-6">
-    <label for="resort" class="block font-semibold">Resort Name</label>
-    <input list="resorts" id="resort" name="resort" placeholder="e.g. Sunset Bay Club, CLC World..." required
-           class="w-full border border-gray-300 p-2 rounded" />
- 
-        <!-- Datalist -->
+      <!-- Header -->
+      <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500 mb-4">
+        <h2 class="text-2xl font-bold">Check If Your Resort Is Eligible</h2>
+        <p class="text-sm mt-1">Enter your resort name to see if you can use our Do-It-Yourself Exit Kit.</p>
+      </div>
+  
+      <!-- Form -->
+      <form id="resort-check-form" class="space-y-4">
+        <label for="resort" class="block font-semibold">Resort Name</label>
+        <input list="resorts" id="resort" name="resort"
+               placeholder="e.g. Sunset Bay Club, CLC World..." required
+               class="w-full border border-gray-300 p-2 rounded" />
         <datalist id="resorts">
             <option value="Anfi Del Mar">
             <option value="Club La Costa (CLC)">
@@ -308,34 +304,29 @@
     </button>
   </form>
   
-  <!-- Result + CTA -->
-  <div id="resort-result" class="mt-6 text-center text-lg font-semibold hidden"></div>
+    <!-- Result + CTA -->
+    <div id="resort-result" class="mt-6 text-center text-lg font-semibold hidden"></div>
+    <a href="/download-kit.html" id="kit-button"
+       class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition hidden">
+      Get the Do-It-Yourself Exit Kit →
+    </a>
   
-  <a href="/download-kit.html" id="kit-button"
-     class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-4 rounded transition hidden">
-    Get the Do-It-Yourself Exit Kit →
-  </a>
-  
-  <!-- Note -->
   <p class="mt-6 text-sm text-gray-700 text-center">
     <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
     💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
   </p>
   
-  <!-- Backup CTA -->
-  <div class="mt-6 text-center">
-    <a href="/download-kit.html"
-       class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
-      Buy your Do-It-Yourself Kit today for only €169
-    </a>
-  </div>
+    <!-- Backup CTA -->
+    <div class="mt-6 text-center">
+        <a href="/download-kit.html"
+           class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+          Buy your Do-It-Yourself Kit today for only €169
+        </a>
+      </div>
+  
     </div>
   </section>
-  
-  <!-- Spacer -->
-  <div class="w-full h-12"></div>
-  
-  <!-- HOW IT WORKS SECTION -->
+
   <section id="how-it-works" class="py-16 bg-gradient-to-b from-blue-50 to-white">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-extrabold text-center text-blue-800 mb-12">How It Works</h2>
