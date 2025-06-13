@@ -226,53 +226,54 @@
         </ul>
       </div>
   
-      <!-- Right: Resort Eligibility Checker -->
-      <div class="bg-white rounded-xl shadow-md content-box h-full" data-aos="fade-up">
+<!-- Resort Eligibility Checker Section -->
+<section class="w-full bg-white py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <!-- Header -->
+      <div class="bg-yellow-300 text-blue-900 px-4 py-4 rounded-t-xl text-center border-b-2 border-yellow-500">
+        <h2 class="text-2xl font-bold">Check If Your Resort Is Eligible</h2>
+        <p class="text-base mt-1">
+          Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
+        </p>
+      </div>
   
-        <!-- Yellow Banner Header -->
-        <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
-          <h2 class="text-xl sm:text-2xl font-bold">Check If Your Resort Is Eligible</h2>
-          <p class="text-sm sm:text-base mt-1">
-            Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
-          </p>
-        </div>
+    <!-- Form -->
+    <div class="bg-white shadow-md rounded-b-xl p-6">
+        <form id="resort-check-form" class="space-y-4">
+          <label for="resort" class="block font-semibold">Resort Name</label>
+          <input list="resorts" id="resort" name="resort"
+                 placeholder="e.g. Sunset Bay Club, Anfi Del Mar..."
+                 class="w-full border border-gray-300 p-3 rounded text-base" required />
   
-        <!-- Form -->
-        <div class="p-6">
-            <form id="resort-check-form" class="space-y-4">
-              <label for="resort" class="block font-semibold">Resort Name</label>
-              <input list="resorts" id="resort" name="resort"
-                     placeholder="e.g. Anfi Del Mar, CLC World..." required
-                     class="w-full border border-gray-300 p-2 rounded" />
-              <button type="submit"
-                      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
-                Check Eligibility
-              </button>
-            </form>
+          <button type="submit"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition">
+            Check Eligibility
+          </button>
+        </form>
           
-            <div id="resort-result" class="mt-6 text-center text-lg font-semibold hidden"></div>
+        <div id="resort-result" class="mt-6 text-center text-lg font-semibold hidden"></div>
           
-            <!-- Primary CTA (shown when resort is eligible) -->
-            <a href="/download-kit.html" id="kit-button"
-               class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500
-                      text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 hidden">
-              Get the Do-It-Yourself Exit Kit →
-            </a>
+      <!-- CTA Button -->
+      <a href="/download-kit.html" id="kit-button"
+         class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 hidden">
+        Get the Do-It-Yourself Exit Kit →
+      </a>
           
-            <!-- Added messaging & fallback CTA -->
-            <p class="mt-6 text-sm text-gray-700 text-center">
-              <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
-              💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
-            </p>
+      <!-- Tip + Fallback Message -->
+      <p class="mt-6 text-sm text-gray-700 text-center">
+        <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
+        💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
+      </p>
           
-            <div class="mt-6 text-center">
-              <a href="/download-kit.html"
-                 class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900
-                        font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
-                Buy your Do-It-Yourself Kit today for only €169
-              </a>
-            </div>
-          </div>          
+      <!-- Bottom CTA -->
+      <div class="mt-6 text-center">
+        <a href="/download-kit.html"
+           class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+          Buy your Do-It-Yourself Kit today for only €169
+        </a>
+      </div>
+    </div>
+  </div>      
   
         <!-- Resort List -->
         <datalist id="resorts">
@@ -330,43 +331,46 @@
       </div>
     </div>
 
+<!-- Spacer to separate sections -->
+<div class="w-full h-10"></div>
+
 <!-- How It Works Section -->
-<section id="how-it-works" class="py-16 bg-gradient-to-b from-blue-50 to-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-extrabold text-center text-blue-800 mb-12">How It Works</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-  
-        <!-- Step 1 -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-300 hover:shadow-xl transition-all duration-300">
-          <div class="text-5xl font-extrabold text-blue-700 mb-4">1</div>
-          <h3 class="font-bold text-lg mb-2 text-gray-800">Check Resort Policy</h3>
-          <p class="text-sm text-gray-600">Some resorts offer free exits if your loan is paid and fees are current. Always check first.</p>
-        </div>
-  
-        <!-- Step 2 -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-yellow-400 hover:shadow-xl transition-all duration-300">
-          <div class="text-5xl font-extrabold text-yellow-500 mb-4">2</div>
-          <h3 class="font-bold text-lg mb-2 text-gray-800">Buy the DIY Kit</h3>
-          <p class="text-sm text-gray-600">Instant access for just €169 — includes legal letters and step-by-step guidance.</p>
-        </div>
-  
-        <!-- Step 3 -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-green-400 hover:shadow-xl transition-all duration-300">
-          <div class="text-5xl font-extrabold text-green-500 mb-4">3</div>
-          <h3 class="font-bold text-lg mb-2 text-gray-800">Send Your Letter</h3>
-          <p class="text-sm text-gray-600">Use our pre-written legal template to cancel your timeshare with confidence.</p>
-        </div>
-  
-        <!-- Step 4 -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-400 hover:shadow-xl transition-all duration-300">
-          <div class="text-5xl font-extrabold text-purple-500 mb-4">4</div>
-          <h3 class="font-bold text-lg mb-2 text-gray-800">Exit Complete</h3>
-          <p class="text-sm text-gray-600">Most clients receive written confirmation within a few weeks — stress-free and final.</p>
-        </div>
-  
+<section id="how-it-works" class="py-16 bg-gradient-to-b from-blue-50 to-white w-full">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold text-center text-blue-800 mb-12">How It Works</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+
+      <!-- Step 1 -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-300 hover:shadow-xl transition-all duration-300">
+        <div class="text-5xl font-extrabold text-blue-700 mb-4">1</div>
+        <h3 class="font-bold text-lg mb-2 text-gray-800">Check Resort Policy</h3>
+        <p class="text-base text-gray-600">Some resorts offer free exits if your loan is paid and fees are current. Always check first.</p>
       </div>
+
+      <!-- Step 2 -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-yellow-400 hover:shadow-xl transition-all duration-300">
+        <div class="text-5xl font-extrabold text-yellow-500 mb-4">2</div>
+        <h3 class="font-bold text-lg mb-2 text-gray-800">Buy the DIY Kit</h3>
+        <p class="text-base text-gray-600">Instant access for just €169 — includes legal letters and step-by-step guidance.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-green-400 hover:shadow-xl transition-all duration-300">
+        <div class="text-5xl font-extrabold text-green-500 mb-4">3</div>
+        <h3 class="font-bold text-lg mb-2 text-gray-800">Send Your Letter</h3>
+        <p class="text-base text-gray-600">Use our pre-written legal template to cancel your timeshare with confidence.</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-400 hover:shadow-xl transition-all duration-300">
+        <div class="text-5xl font-extrabold text-purple-500 mb-4">4</div>
+        <h3 class="font-bold text-lg mb-2 text-gray-800">Exit Complete</h3>
+        <p class="text-base text-gray-600">Most clients receive written confirmation within a few weeks — stress-free and final.</p>
+      </div>
+
     </div>
-  </section>  
+  </div>
+</section>
 
       <!-- Hero Banner Section with Happy Travelers -->
       <section class="w-full mt-8">
@@ -676,46 +680,81 @@
   <a href="contact.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Contact Us</a>
 </footer>
 
+<!-- Add JavaScript logic just once at the bottom of your page -->
 <script>
-  const eligibleResorts = [
-    "Anfi Del Mar", "Club La Costa (CLC)", "Los Amigos Beach Club", "Royal Oasis Club at Pueblo Quinta",
-    "Sahara Sunset Club", "Santa Barbara Golf & Ocean Club", "Sunset Bay Club", "Sunset Harbour Club",
-    "Sunset View Club", "Royal Tenerife Country Club", "Marriott Playa Andaluza", "Marriott Marbella Beach Resort",
-    "Club Son Antem (Marriott)", "Club Cala Blanca (CLC)", "Club del Carmen (CLC)", "Jardines del Sol (CLC)",
-    "Village d’Île‑de‑France (Marriott)", "Le Club Mougins (Diamond)", "Royal Regency Paris Vincennes (Diamond)",
-    "Borgo alle Vigne (Hilton)", "Palazzo Catalani (Diamond)", "Vilar do Golf (Diamond)", "Alpine Club (Diamond)",
-    "Craigendarroch (Hilton)", "Cromer Country Club (Diamond)", "Pine Lake Resort (Diamond)",
-    "The Kenmore Club (Diamond)", "Thurnham Hall (Diamond)", "Woodford Bridge Country Club (Diamond)",
-    "Wychnor Park Country Club (Diamond)", "Cibola Vista Resort & Spa (Bluegreen)", "Bell Rock Inn (Diamond)",
-    "Kohls Ranch Lodge (Diamond)", "Los Abrigados Resort & Spa (Diamond)", "PVC at The Roundhouse (Diamond)",
-    "Streamside at Vail (Bluegreen)", "The Historic Crags Lodge (Diamond)", "Lake Cumberland Resort (Bluegreen)",
-    "Scenic Hills RV Resort (Bluegreen)", "Paradise Point (Bluegreen)", "Wilderness Club at Big Cedar (Bluegreen)",
-    "Villas de Santa Fe (Diamond)", "Beachwoods Resort (Diamond)", "Sunrise Ridge Resort (Diamond)",
-    "Laurel Crest (Bluegreen)", "Mountain Loft (Bluegreen)", "Shenandoah Crossing (Bluegreen)",
-    "Patrick Henry Square (Bluegreen)", "Parkside Williamsburg Resort (Bluegreen)", "Elian Hotel & Spa (Bluegreen)"
-  ];
-
-  document.getElementById("resort-check-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const resortInput = document.getElementById("resort").value.trim();
-    const resultBox = document.getElementById("resort-result");
-    const kitButton = document.getElementById("kit-button");
-
-    if (resortInput === "") return;
-
-    if (eligibleResorts.includes(resortInput)) {
-      resultBox.textContent = "✅ Yes, you can use our Do-It-Yourself Exit Kit for this resort.";
-      resultBox.classList.remove("hidden", "text-red-600");
-      resultBox.classList.add("text-green-700");
-      kitButton.classList.remove("hidden");
-    } else {
-      resultBox.textContent = "❌ Unfortunately, this resort is not eligible for our Do-It-Yourself Exit Kit.";
-      resultBox.classList.remove("hidden", "text-green-700");
-      resultBox.classList.add("text-red-600");
-      kitButton.classList.add("hidden");
-    }
-  });
+    const eligibleResorts = [
+      "Anfi Del Mar",
+      "Club La Costa (CLC)",
+      "Los Amigos Beach Club",
+      "Royal Oasis Club at Pueblo Quinta",
+      "Sahara Sunset Club",
+      "Santa Barbara Golf & Ocean Club",
+      "Sunset Bay Club",
+      "Sunset Harbour Club",
+      "Sunset View Club",
+      "Royal Tenerife Country Club",
+      "Marriott Playa Andaluza",
+      "Marriott Marbella Beach Resort",
+      "Club Son Antem (Marriott)",
+      "Club Cala Blanca (CLC)",
+      "Club del Carmen (CLC)",
+      "Jardines del Sol (CLC)",
+      "Village d’Île‑de‑France (Marriott)",
+      "Le Club Mougins (Diamond)",
+      "Royal Regency Paris Vincennes (Diamond)",
+      "Borgo alle Vigne (Hilton)",
+      "Palazzo Catalani (Diamond)",
+      "Vilar do Golf (Diamond)",
+      "Alpine Club (Diamond)",
+      "Craigendarroch (Hilton)",
+      "Cromer Country Club (Diamond)",
+      "Pine Lake Resort (Diamond)",
+      "The Kenmore Club (Diamond)",
+      "Thurnham Hall (Diamond)",
+      "Woodford Bridge Country Club (Diamond)",
+      "Wychnor Park Country Club (Diamond)",
+      "Cibola Vista Resort & Spa (Bluegreen)",
+      "Bell Rock Inn (Diamond)",
+      "Kohls Ranch Lodge (Diamond)",
+      "Los Abrigados Resort & Spa (Diamond)",
+      "PVC at The Roundhouse (Diamond)",
+      "Streamside at Vail (Bluegreen)",
+      "The Historic Crags Lodge (Diamond)",
+      "Lake Cumberland Resort (Bluegreen)",
+      "Scenic Hills RV Resort (Bluegreen)",
+      "Paradise Point (Bluegreen)",
+      "Wilderness Club at Big Cedar (Bluegreen)",
+      "Villas de Santa Fe (Diamond)",
+      "Beachwoods Resort (Diamond)",
+      "Sunrise Ridge Resort (Diamond)",
+      "Laurel Crest (Bluegreen)",
+      "Mountain Loft (Bluegreen)",
+      "Shenandoah Crossing (Bluegreen)",
+      "Patrick Henry Square (Bluegreen)",
+      "Parkside Williamsburg Resort (Bluegreen)",
+      "Elian Hotel & Spa (Bluegreen)"
+    ];
+  
+    document.getElementById("resort-check-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const input = document.getElementById("resort").value.trim().toLowerCase();
+      const resultEl = document.getElementById("resort-result");
+      const button = document.getElementById("kit-button");
+  
+      const match = eligibleResorts.find(r => r.toLowerCase() === input);
+      
+      if (match) {
+        resultEl.textContent = `✅ Good news! ${match} is eligible for our DIY Exit Kit.`;
+        resultEl.classList.remove("hidden");
+        resultEl.classList.add("text-green-600");
+        button.classList.remove("hidden");
+      } else {
+        resultEl.textContent = `❌ Sorry, we couldn’t confirm your resort. Please contact us to check manually.`;
+        resultEl.classList.remove("hidden");
+        resultEl.classList.add("text-red-600");
+        button.classList.add("hidden");
+      }
+    });
 </script>
   
 </body>
