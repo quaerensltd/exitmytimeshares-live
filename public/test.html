@@ -196,11 +196,6 @@
 
   </header>
 
-<!-- Hero Section -->
-<section class="relative w-full overflow-hidden">
-  <img src="images/hero-exit.jpg" alt="Exit your timeshare roday!"
-       class="w-full h-auto object-cover object-center" loading="eager" fetchpriority="high" />
-</section>
 
 <!-- Claim Calculator -->
 <section id="calculator" class="py-16 bg-white">
@@ -226,20 +221,30 @@
         </ul>
       </div>
 
-<!-- Right: Resort Eligibility Checker -->
-<section class="w-full px-4 max-w-6xl mx-auto mt-12" data-aos="fade-up">
-    <div class="bg-white rounded-xl shadow-md content-box h-full">
-
-    <!-- Yellow Banner Header -->
-    <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500">
-        <h2 class="text-xl sm:text-2xl font-bold">Check If Your Resort Is Eligible</h2>
-        <p class="text-sm sm:text-base mt-1">
-          Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
-        </p>
-      </div>
+<!-- HERO SECTION -->
+<section class="w-full">
+    <img src="images/hero-exit2.jpg"
+         alt="Happy timeshare exits"
+         class="w-full h-auto object-cover object-center max-h-[600px]" loading="eager" />
+  </section>
   
-    <!-- Form -->
-    <div class="p-6">
+  <!-- Spacer -->
+  <div class="w-full h-8 md:h-12"></div>
+  
+  <!-- ELIGIBILITY CHECKER -->
+  <section class="w-full">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="bg-white rounded-xl shadow-md content-box p-6" data-aos="fade-up">
+  
+        <!-- Yellow Header -->
+        <div class="bg-yellow-300 text-blue-900 px-4 py-3 rounded-t-xl text-center border-b-2 border-yellow-500 mb-4">
+          <h2 class="text-xl sm:text-2xl font-bold">Check If Your Resort Is Eligible</h2>
+          <p class="text-sm sm:text-base mt-1">
+            Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
+          </p>
+        </div>
+  
+        <!-- Resort Form -->
         <form id="resort-check-form" class="space-y-4">
           <label for="resort" class="block font-semibold">Resort Name</label>
           <input list="resorts" id="resort" name="resort"
@@ -251,99 +256,92 @@
           </button>
         </form>
   
-      <div id="resort-result" class="mt-6 text-center text-lg font-semibold hidden"></div>
+        <div id="resort-result" class="mt-6 text-center text-lg font-semibold hidden"></div>
   
-      <!-- Primary CTA (shown when resort is eligible) -->
-      <a href="/download-kit.html" id="kit-button"
-         class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500
-                text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 hidden">
-        Get the Do-It-Yourself Exit Kit →
-      </a>
-  
-      <!-- Added messaging & fallback CTA -->
-      <p class="mt-6 text-sm text-gray-700 text-center">
-        <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
-        💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
-      </p>
-
-      <div class="mt-6 text-center">
-        <a href="/download-kit.html"
-           class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900
-                  font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
-          Buy your Do-It-Yourself Kit today for only €169
+        <!-- Primary CTA -->
+        <a href="/download-kit.html" id="kit-button"
+           class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500
+                  text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 hidden">
+          Get the Do-It-Yourself Exit Kit →
         </a>
+  
+        <!-- Fallback text + CTA -->
+        <p class="mt-6 text-sm text-gray-700 text-center">
+          <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
+          💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
+        </p>
+  
+        <div class="mt-6 text-center">
+          <a href="/download-kit.html"
+             class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900
+                    font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+            Buy your Do-It-Yourself Kit today for only €169
+          </a>
+        </div>
+  
+        <!-- Datalist -->
+        <datalist id="resorts">
+          <option value="Anfi Del Mar">
+          <option value="Club La Costa (CLC)">
+          <option value="Los Amigos Beach Club">
+          <option value="Royal Oasis Club at Pueblo Quinta">
+          <option value="Sahara Sunset Club">
+          <option value="Santa Barbara Golf & Ocean Club">
+          <option value="Sunset Bay Club">
+          <option value="Sunset Harbour Club">
+          <option value="Sunset View Club">
+          <option value="Royal Tenerife Country Club">
+          <option value="Marriott Playa Andaluza">
+          <option value="Marriott Marbella Beach Resort">
+          <option value="Club Son Antem (Marriott)">
+          <option value="Club Cala Blanca (CLC)">
+          <option value="Club del Carmen (CLC)">
+          <option value="Jardines del Sol (CLC)">
+          <option value="Village d’Île‑de‑France (Marriott)">
+          <option value="Le Club Mougins (Diamond)">
+          <option value="Royal Regency Paris Vincennes (Diamond)">
+          <option value="Borgo alle Vigne (Hilton)">
+          <option value="Palazzo Catalani (Diamond)">
+          <option value="Vilar do Golf (Diamond)">
+          <option value="Alpine Club (Diamond)">
+          <option value="Craigendarroch (Hilton)">
+          <option value="Cromer Country Club (Diamond)">
+          <option value="Pine Lake Resort (Diamond)">
+          <option value="The Kenmore Club (Diamond)">
+          <option value="Thurnham Hall (Diamond)">
+          <option value="Woodford Bridge Country Club (Diamond)">
+          <option value="Wychnor Park Country Club (Diamond)">
+          <option value="Cibola Vista Resort & Spa (Bluegreen)">
+          <option value="Bell Rock Inn (Diamond)">
+          <option value="Kohls Ranch Lodge (Diamond)">
+          <option value="Los Abrigados Resort & Spa (Diamond)">
+          <option value="PVC at The Roundhouse (Diamond)">
+          <option value="Streamside at Vail (Bluegreen)">
+          <option value="The Historic Crags Lodge (Diamond)">
+          <option value="Lake Cumberland Resort (Bluegreen)">
+          <option value="Scenic Hills RV Resort (Bluegreen)">
+          <option value="Paradise Point (Bluegreen)">
+          <option value="Wilderness Club at Big Cedar (Bluegreen)">
+          <option value="Villas de Santa Fe (Diamond)">
+          <option value="Beachwoods Resort (Diamond)">
+          <option value="Sunrise Ridge Resort (Diamond)">
+          <option value="Laurel Crest (Bluegreen)">
+          <option value="Mountain Loft (Bluegreen)">
+          <option value="Shenandoah Crossing (Bluegreen)">
+          <option value="Patrick Henry Square (Bluegreen)">
+          <option value="Parkside Williamsburg Resort (Bluegreen)">
+          <option value="Elian Hotel & Spa (Bluegreen)">
+        </datalist>
+  
       </div>
     </div>
-
-<!-- SMART MATCH SCRIPT -->
-<datalist id="resorts">
-    <option value="Anfi Del Mar">
-    <option value="Club La Costa (CLC)">
-    <option value="Los Amigos Beach Club">
-    <option value="Royal Oasis Club at Pueblo Quinta">
-    <option value="Sahara Sunset Club">
-    <option value="Santa Barbara Golf & Ocean Club">
-    <option value="Sunset Bay Club">
-    <option value="Sunset Harbour Club">
-    <option value="Sunset View Club">
-    <option value="Royal Tenerife Country Club">
-    <option value="Marriott Playa Andaluza">
-    <option value="Marriott Marbella Beach Resort">
-    <option value="Club Son Antem (Marriott)">
-    <option value="Club Cala Blanca (CLC)">
-    <option value="Club del Carmen (CLC)">
-    <option value="Jardines del Sol (CLC)">
-    <option value="Village d’Île‑de‑France (Marriott)">
-    <option value="Le Club Mougins (Diamond)">
-    <option value="Royal Regency Paris Vincennes (Diamond)">
-    <option value="Borgo alle Vigne (Hilton)">
-    <option value="Palazzo Catalani (Diamond)">
-    <option value="Vilar do Golf (Diamond)">
-    <option value="Alpine Club (Diamond)">
-    <option value="Craigendarroch (Hilton)">
-    <option value="Cromer Country Club (Diamond)">
-    <option value="Pine Lake Resort (Diamond)">
-    <option value="The Kenmore Club (Diamond)">
-    <option value="Thurnham Hall (Diamond)">
-    <option value="Woodford Bridge Country Club (Diamond)">
-    <option value="Wychnor Park Country Club (Diamond)">
-    <option value="Cibola Vista Resort & Spa (Bluegreen)">
-    <option value="Bell Rock Inn (Diamond)">
-    <option value="Kohls Ranch Lodge (Diamond)">
-    <option value="Los Abrigados Resort & Spa (Diamond)">
-    <option value="PVC at The Roundhouse (Diamond)">
-    <option value="Streamside at Vail (Bluegreen)">
-    <option value="The Historic Crags Lodge (Diamond)">
-    <option value="Lake Cumberland Resort (Bluegreen)">
-    <option value="Scenic Hills RV Resort (Bluegreen)">
-    <option value="Paradise Point (Bluegreen)">
-    <option value="Wilderness Club at Big Cedar (Bluegreen)">
-    <option value="Villas de Santa Fe (Diamond)">
-    <option value="Beachwoods Resort (Diamond)">
-    <option value="Sunrise Ridge Resort (Diamond)">
-    <option value="Laurel Crest (Bluegreen)">
-    <option value="Mountain Loft (Bluegreen)">
-    <option value="Shenandoah Crossing (Bluegreen)">
-    <option value="Patrick Henry Square (Bluegreen)">
-    <option value="Parkside Williamsburg Resort (Bluegreen)">
-    <option value="Elian Hotel & Spa (Bluegreen)">
-  </datalist>
-</div>
-</section>
-
-<!-- Hero Banner Section -->
-<section class="w-full mt-8">
-    <img src="images/hero-exit2.jpg"
-         alt="Happy timeshare exits"
-         class="w-full h-auto object-cover object-center max-h-[600px]"
-         loading="eager" />
   </section>
-
-<!-- Spacer to ensure proper layout flow -->
-<div class="clear-both w-full h-6 md:h-10"></div>
-
-<!-- How It Works Section -->
-<section id="how-it-works" class="py-16 bg-gradient-to-b from-blue-50 to-white w-full clear-both">
+  
+  <!-- Spacer -->
+  <div class="w-full h-12"></div>
+  
+  <!-- HOW IT WORKS SECTION -->
+  <section id="how-it-works" class="py-16 bg-gradient-to-b from-blue-50 to-white">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl font-extrabold text-center text-blue-800 mb-12">How It Works</h2>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
@@ -378,7 +376,7 @@
   
       </div>
     </div>
-  </section>
+  </section>  
   
     <!-- News Testimonials Section -->
     <div class="w-full max-w-7xl mx-auto px-4 py-8">
