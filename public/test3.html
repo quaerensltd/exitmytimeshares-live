@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- …your existing meta, title, fonts, Tailwind… -->
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="images/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,8 +9,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- ✅ Add Alpine.js here -->
+  <!-- 1) Alpine.js (deferred) -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- 2) Put your [x-cloak] rule at the top of your styles -->
+  <style>
+    [x-cloak] { display: none !important; }
+      </style>
+    
+      <!-- ❷ helper to set Google Translate cookie + reload -->
+      <script>
+        function setLanguage(langPair) {
+          if (!langPair) return;
+          const lang = langPair.split('|')[1];
+          const cookieValue = '/en/' + lang;
+          document.cookie = 'googtrans=' + cookieValue + ';domain=' + location.hostname + ';path=/';
+          location.reload();
+        }
+      </script>
+    </head>
 
   <style>
     body {
@@ -58,80 +76,90 @@
       border-radius: 6px;
       margin-top: 0.5rem;
     }
-
-        /* Hide Alpine elements until ready */
-        [x-cloak] { display: none !important; }
-        
   </style>  
-  
-  <!-- 1) Auto-detect on first visit -->
-  <script>
-    if (!document.cookie.includes("googtrans")) {
-      fetch("https://ipapi.co/json/")
-        .then(r => r.json())
-        .then(data => {
-          const map = { FR:"fr", ES:"es", DE:"de", IT:"it",
-                        NL:"nl", SE:"sv", GR:"el" };
-          const lang = map[data.country_code] || "en";
-          const v = "/en/" + lang;
-          document.cookie = `googtrans=${v};path=/;`;
-          document.cookie = `googtrans=${v};domain=${location.hostname};path=/;`;
-          location.reload();
-        })
-        .catch(()=>{/* ignore errors */});
-    }
-  </script>
 
-  <!-- 2) Hidden translate engine (needed by Google) -->
-  <script>
-    function googleTranslateElementInit2() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,es,fr,de,nl,it,sv,el',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element2');
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   </head>
 
   <body class="bg-gray-50 text-gray-800">
-      <!-- required by Google Translate -->
-  <div id="google_translate_element2" style="display:none"></div>
-
-    <!-- 0) Tiny helper to set the cookie and reload -->
-    <script>
-      function setLang(lang) {
-        const v = '/en/' + lang;
-        document.cookie = 'googtrans=' + v + ';domain=' + location.hostname + ';path=/;';
-        location.reload();
-      }
-    </script>
+    <div id="google_translate_element" style="display: none;"></div>
   
-    <!-- 1) Our new header with Alpine dropdown -->
-    <header class="bg-white shadow p-4 flex justify-between items-center">
-      <a href="/"><img src="images/quaerens-logo.png" alt="Quaerens Logo" class="h-12"></a>
-      <div x-data="{ open: false }" class="relative">
-        <button @click="open = !open"
-                class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
-          🌐 Language
-        </button>
-        <div x-show="open" x-cloak @click.outside="open = false"
-        class="absolute right-0 mt-2 bg-white border rounded shadow-sm">
-          <a href="#" @click.prevent="setLang('en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
-          <a href="#" @click.prevent="setLang('es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
-          <a href="#" @click.prevent="setLang('fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
-          <a href="#" @click.prevent="setLang('de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
-          <a href="#" @click.prevent="setLang('it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
-          <a href="#" @click.prevent="setLang('nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
-          <a href="#" @click.prevent="setLang('sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
-          <a href="#" @click.prevent="setLang('el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
+    <header class="bg-white shadow p-4 flex justify-between items-center" x-data="{ open: false }">
+        <a href="/"><img src="images/quaerens-logo.png" alt="Logo" class="h-12"></a>
+        <div class="relative">
+          <button @click="open = !open" class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
+            🌐 Language
+          </button>
+          <div 
+            x-show="open" 
+            x-cloak 
+            @click.outside="open = false" 
+            class="absolute right-0 mt-2 w-40 bg-white border rounded shadow z-50"
+          >
+            <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
+            <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
+            <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
+            <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+            <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+            <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+            <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+            <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>      
+    
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
+            const lang = match ? match[1] : "en";
+            const selector = document.getElementById("languageDropdown");
+            if (selector) selector.value = `en|${lang}`;
+          });
+        </script>
+        <!-- ✅ Place this OUTSIDE the <header> and NOT inside the <head> either -->
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
+            const lang = match ? match[1] : "en";
+            const selector = document.getElementById("languageDropdown");
+            if (selector) selector.value = `en|${lang}`;
+          });
+        </script>
 
+<!-- Google Translate hidden engine (bottom of page) -->
+<div id="google_translate_element2" style="display: none;"></div>
+
+<script type="text/javascript">
+  function doGTranslate(lang_pair) {
+    if (!lang_pair) return;
+    var lang = lang_pair.split('|')[1];
+    var select = document.querySelector('select.goog-te-combo');
+    if (select && select.options) {
+      select.value = lang;
+      select.dispatchEvent(new Event('change'));
+    }
+  }
+</script>
+
+<script type="text/javascript">
+  function googleTranslateElementInit2() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element2');
+  }
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+</body>
+</html>
+
+  </header>
 
 <!-- Hero Section -->
 <section class="relative w-full overflow-hidden">
