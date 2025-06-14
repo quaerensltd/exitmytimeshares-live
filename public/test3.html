@@ -161,20 +161,17 @@
   <!-- jsPDF (if you still need it) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <!-- reset back to English BEFORE we load the widget -->
+  <!--–– GOOGLE TRANSLATE – SINGLE BLOCK ––-->
+
+  <!-- 1) Reset to English before the widget loads -->
   <script>
-    // reset back to English before we load the widget
-    document.cookie = [
-      'googtrans=/en/en',
-      'path=/',
-      'domain=.exitmytimeshares.com'
-    ].join(';');
+    document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
   </script>
 
-<!-- the “invisible” Translate container -->
+  <!-- 2) Invisible placeholder for the engine -->
   <div id="google_translate_element" style="display:none;"></div>
 
-  <!-- C) exactly one init function -->
+  <!-- 3) Init + helper in one -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -184,11 +181,32 @@
         autoDisplay: false
       }, 'google_translate_element');
     }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>  
 
-</body>
-</html>
+    function setLanguage(langPair) {
+      if (!langPair) return;
+      const [from, to] = langPair.split('|');
+      // update cookie so engine picks up new target
+      document.cookie = `googtrans=/${from}/${to};domain=.exitmytimeshares.com;path=/`;
+      // flip the hidden <select>
+      const combo = document.querySelector('select.goog-te-combo');
+      if (combo) {
+        combo.value = to;
+        combo.dispatchEvent(new Event('change'));
+      }
+    }
+  </script>
+
+  <!-- 4) Load Google’s Translate engine once -->
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- 5) Hide their banner/logo but keep the <select> usable -->
+  <style>
+    .goog-te-banner-frame.skiptranslate,
+    body > .skiptranslate,
+    .goog-logo-link,
+    .goog-te-gadget-icon { display: none !important; }
+    .goog-te-gadget { visibility: hidden !important; }
+  </style>
 
   </header>
 
