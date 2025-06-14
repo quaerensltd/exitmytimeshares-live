@@ -17,34 +17,33 @@
 
   <!-- 4) Google Translate setter (no reload, flips the combo) -->
   <script>
-  function setLanguage(langPair) {
-    if (!langPair) return;
-    const [from, to] = langPair.split('|');
-    document.cookie = [
-      `googtrans=/${from}/${to}`, 
-      'path=/',
-      'domain=.' + location.hostname.replace(/^www\./, '')
-    ].join(';');
-    const combo = document.querySelector('select.goog-te-combo');
-    if (!combo) return;
-    combo.value = to;
-    combo.dispatchEvent(new Event('change'));
-  }
-</script>
-
-  <!-- 5) Global CSS overrides -->
+    function setLanguage(langPair) {
+      if (!langPair) return;
+      const [from, to] = langPair.split('|');
+      // force cookie
+      document.cookie = [
+        `googtrans=/${from}/${to}`,
+        'path=/',
+        // NO leading dot if you're not on subdomains— just use location.hostname
+        'domain=' + location.hostname
+      ].join(';');
+      // flip the hidden <select>
+      const combo = document.querySelector('select.goog-te-combo');
+      if (!combo) return;
+      combo.value = to;
+      combo.dispatchEvent(new Event('change'));
+    }
+  </script>
+  
+  <!-- 5) Hide Google’s floating banner & combo -->
   <style>
-    body { font-family: 'Inter', sans-serif; margin:0!important; }
     .goog-te-banner-frame.skiptranslate,
     body > .skiptranslate,
     .goog-logo-link,
-    .goog-te-gadget-icon {
-      display: none!important;
-    }
-    .goog-te-gadget { visibility: hidden!important; }
+    .goog-te-gadget-icon { display: none !important; }
+    .goog-te-gadget { visibility: hidden !important; }
   </style>
   </head>
-  
 
   <body class="bg-gray-50 text-gray-800">
     <!-- hidden container for the (invisible) Google Translate engine -->
@@ -155,19 +154,19 @@
   <!-- jsPDF (if you still need it) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <!-- 1) Reset Google Translate cookie back to English -->
+  <!-- reset back to English BEFORE we load the widget -->
   <script>
     document.cookie = [
       'googtrans=/en/en',
       'path=/',
-      'domain=' + location.hostname.replace(/^www\./, '')
+      'domain=' + location.hostname
     ].join(';');
   </script>
 
-  <!-- 2) Hidden translate container -->
+  <!-- invisible placeholder -->
   <div id="google_translate_element" style="display:none;"></div>
 
-  <!-- 3) Init function (must match the cb below) -->
+  <!-- our one init function -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -179,8 +178,9 @@
     }
   </script>
 
-  <!-- 4) Load Google’s widget and call our init -->
+  <!-- load Google Translate exactly once -->
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
 
