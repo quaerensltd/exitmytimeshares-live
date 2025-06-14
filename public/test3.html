@@ -15,12 +15,16 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>[x-cloak] { display: none !important; }</style>
 
-<!-- 4) Google Translate setter (no reload, flips the combo) -->
-<script>
+  <!-- 4) Google Translate setter (no reload, flips the combo) -->
+  <script>
     function setLanguage(langPair) {
       if (!langPair) return;
       const [from, to] = langPair.split('|');
-      document.cookie = `googtrans=/${from}/${to};path=/;domain=${location.hostname}`;
+      document.cookie = [
+  `googtrans=/${from}/${to}`,
+  'path=/',
+  'domain=.' + location.hostname.replace(/^www\./, '')
+].join(';');
       const combo = document.querySelector('select.goog-te-combo');
       if (!combo) return;
       combo.value = to;
@@ -28,13 +32,26 @@
     }
   </script>
 
-    <!-- 5) Global CSS overrides -->
-    <style>
-      body { font-family:'Inter',sans-serif; margin:0!important; }
-      .goog-te-banner-frame.skiptranslate,
-      body > .skiptranslate { display:none!important; }
-    </style>
-  </head>
+  <!-- 5) Global CSS overrides -->
+  <style>
+    body { font-family: 'Inter', sans-serif; margin: 0 !important; }
+
+    /* Hide the top “Translate” banner and inline gadget icon */
+    .goog-te-banner-frame.skiptranslate,
+    body > .skiptranslate,
+    .goog-logo-link,
+    .goog-te-gadget-icon {
+      display: none !important;
+    }
+
+    /* Keep the actual widget select invisible but present for JS */
+    .goog-te-gadget {
+      visibility: hidden !important;
+    }
+  </style>
+</head>
+
+
 
   <body class="bg-gray-50 text-gray-800">
     <!-- hidden container for the (invisible) Google Translate engine -->
@@ -154,23 +171,23 @@
     ].join(';');
   </script>
 
-  <!-- 2) Hidden container for the (invisible) Translate widget -->
-  <div id="google_translate_element" style="display:none"></div>
+<!-- container -->
+<div id="google_translate_element"></div>
 
-  <!-- 3) Init function for Google Translate -->
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
-  </script>
+<!-- init function -->
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
 
-  <!-- 4) Load the Google Translate engine, callback to our init -->
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- load engine -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
 
