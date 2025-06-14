@@ -17,32 +17,32 @@
 
   <!-- 4) Google Translate setter (no reload, flips the combo) -->
   <script>
-    function setLanguage(langPair) {
-      if (!langPair) return;
-      const [from, to] = langPair.split('|');
-      // force cookie
-      document.cookie = [
-        `googtrans=/${from}/${to}`,
-        'path=/',
-        // NO leading dot if you're not on subdomains— just use location.hostname
-        'domain=' + location.hostname
-      ].join(';');
-      // flip the hidden <select>
-      const combo = document.querySelector('select.goog-te-combo');
-      if (!combo) return;
-      combo.value = to;
-      combo.dispatchEvent(new Event('change'));
-    }
-  </script>
-  
-  <!-- 5) Hide Google’s floating banner & combo -->
-  <style>
-    .goog-te-banner-frame.skiptranslate,
-    body > .skiptranslate,
-    .goog-logo-link,
-    .goog-te-gadget-icon { display: none !important; }
-    .goog-te-gadget { visibility: hidden !important; }
-  </style>
+<script>
+  function setLanguage(langPair) {
+    if (!langPair) return;
+    const [from, to] = langPair.split('|');
+    // 1a) force cookie BEFORE widget loads
+    document.cookie = [
+      `googtrans=/${from}/${to}`,
+      'path=/',
+      'domain=' + location.hostname    // NO leading dot
+    ].join(';');
+    // 1b) flip the hidden select
+    const combo = document.querySelector('select.goog-te-combo');
+    if (!combo) return;
+    combo.value = to;
+    combo.dispatchEvent(new Event('change'));
+  }
+</script>
+
+<!-- 2) hide Google’s banner & logo -->
+<style>
+  .goog-te-banner-frame.skiptranslate,
+  body > .skiptranslate,
+  .goog-logo-link,
+  .goog-te-gadget-icon { display: none !important; }
+  .goog-te-gadget { visibility: hidden !important; }
+</style>
   </head>
 
   <body class="bg-gray-50 text-gray-800">
@@ -163,10 +163,10 @@
     ].join(';');
   </script>
 
-  <!-- invisible placeholder -->
+  <!-- B) exactly one invisible placeholder -->
   <div id="google_translate_element" style="display:none;"></div>
 
-  <!-- our one init function -->
+  <!-- C) exactly one init function -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
