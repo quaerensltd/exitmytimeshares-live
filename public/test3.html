@@ -65,17 +65,70 @@
                 class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
           🌐 Language
         </button>
-        <div x-show="open" @click.outside="open = false" x-cloak
-             class="absolute right-0 mt-2 w-40 bg-white border rounded shadow z-50">
-          <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
-          <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
-          <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
-          <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
-          <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
-          <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
-          <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
-          <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
+        <div
+          x-show="open"
+          @click.outside="open = false"
+          x-cloak
+          class="absolute right-0 mt-2 w-40 bg-white border rounded shadow z-50"
+        >
+          <a
+            href="#"
+            @click.prevent="setLanguage('en|en'); open = false"
+            class="block px-4 py-2 hover:bg-gray-100"
+          >
+            🇬🇧 English
+          </a>
+          <a
+            href="#"
+            @click.prevent="setLanguage('en|fr'); open = false"
+            class="block px-4 py-2 hover:bg-gray-100"
+          >
+            🇫🇷 Français
+          </a>
+          <a
+            href="#"
+            @click.prevent="setLanguage('en|es'); open = false"
+            class="block px-4 py-2 hover:bg-gray-100"
+          >
+            🇪🇸 Español
+          </a>
+          <a
+            href="#"
+            @click.prevent="setLanguage('en|de'); open = false"
+            class="block px-4 py-2 hover:bg-gray-100"
+          >
+            🇩🇪 Deutsch
+          </a>
+          <a
+            href="#"
+            @click.prevent="setLanguage('en|it'); open = false"
+            class="block px-4 py-2 hover:bg-gray-100"
+          >
+            🇮🇹 Italiano
+          </a>
+          <a
+            href="#"
+            @click.prevent="setLanguage('en|nl'); open = false"
+            class="block px-4 py-2 hover:bg-gray-100"
+          >
+            🇳🇱 Nederlands
+          </a>
+          <a
+            href="#"
+            @click.prevent="setLanguage('en|sv'); open = false"
+            class="block px-4 py-2 hover:bg-gray-100"
+          >
+            🇸🇪 Svenska
+          </a>
+          <a
+            href="#"
+            @click.prevent="setLanguage('en|el'); open = false"
+            class="block px-4 py-2 hover:bg-gray-100"
+          >
+            🇬🇷 Ελληνικά
+          </a>
         </div>
+        
       </div>
     </header>
 
@@ -161,16 +214,16 @@
   <!-- jsPDF (if you still need it) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <!--–– GOOGLE TRANSLATE – SINGLE BLOCK ––-->
+<!--–– GOOGLE TRANSLATE – SINGLE BLOCK ––-->
 
-  <!-- 1) Reset to English before the widget loads -->
-  <script>
+<!-- 1) Reset to English before the widget loads -->
+<script>
     document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
   </script>
-
+  
   <!-- 2) Invisible placeholder for the engine -->
   <div id="google_translate_element" style="display:none;"></div>
-
+  
   <!-- 3) Init + helper in one -->
   <script>
     function googleTranslateElementInit() {
@@ -181,32 +234,38 @@
         autoDisplay: false
       }, 'google_translate_element');
     }
+  
+    <script>
+  function setLanguage(langPair) {
+    if (!langPair) return;
+    const [from, to] = langPair.split('|');
 
-    function setLanguage(langPair) {
-      if (!langPair) return;
-      const [from, to] = langPair.split('|');
-      // update cookie so engine picks up new target
-      document.cookie = `googtrans=/${from}/${to};domain=.exitmytimeshares.com;path=/`;
-      // flip the hidden <select>
-      const combo = document.querySelector('select.goog-te-combo');
-      if (combo) {
-        combo.value = to;
-        combo.dispatchEvent(new Event('change'));
-      }
+    // Persist the choice
+    document.cookie = `googtrans=/${from}/${to};domain=.exitmytimeshares.com;path=/`;
+
+    // Flip the (invisible) select for instant UI feedback
+    const combo = document.querySelector('select.goog-te-combo');
+    if (combo) {
+      combo.value = to;
+      combo.dispatchEvent(new Event('change'));
     }
-  </script>
 
-  <!-- 4) Load Google’s Translate engine once -->
+    // Reload so the Translate engine sees the new cookie
+    location.reload();
+  }
+</script>
+  
+  <!-- 4) Load Google’s engine exactly once -->
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <!-- 5) Hide their banner/logo but keep the <select> usable -->
+  
+  <!-- 5) Hide their UI chrome but keep the <select> for JS -->
   <style>
     .goog-te-banner-frame.skiptranslate,
     body > .skiptranslate,
     .goog-logo-link,
     .goog-te-gadget-icon { display: none !important; }
     .goog-te-gadget { visibility: hidden !important; }
-  </style>
+  </style>  
 
   </header>
 
