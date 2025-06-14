@@ -722,5 +722,31 @@
     });
 </script>
   
+<!-- helper that flips the hidden Google “select.goog-te-combo” -->
+<script>
+    function doGTranslate(lang_pair) {
+      if (!lang_pair) return;
+      const lang = lang_pair.split('|')[1];
+      const select = document.querySelector('select.goog-te-combo');
+      if (!select) return;
+      select.value = lang;
+      select.dispatchEvent(new Event('change'));
+    }
+  </script>
+  
+  <!-- init Google Translate (hidden) -->
+  <div id="google_translate_element2" style="display:none"></div>
+  <script>
+    function googleTranslateElementInit2(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element2');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+  
 </body>
 </html>
