@@ -111,23 +111,34 @@
   <body class="bg-gray-50 text-gray-800">
     <div id="google_translate_element2" style="display: none;"></div>
   
-    <!-- Header & Dropdown (unchanged) -->
+    <!-- Header & Dropdown -->
     <header class="bg-white shadow">
       <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/"><img src="images/quaerens-logo.png" alt="Quaerens Logo" class="h-20 w-auto"></a>
+        <a href="/">
+          <img src="images/quaerens-logo.png" alt="Quaerens Logo" class="h-20 w-auto">
+        </a>
         <nav>
           <div class="w-full bg-gray-100 text-right p-2">
             <div x-data="{ open: false }" class="relative inline-block text-left">
-              <button @click="open = !open" class="inline-flex ...">🌐 Language 
-                <svg ...></svg>
+              <button @click="open = !open"
+                class="inline-flex items-center justify-center rounded border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none">
+                🌐 Language
+                <svg class="ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8l5 5 5-5" />
+                </svg>
               </button>
   
-              <div x-show="open" @click.outside="open = false" 
-                   class="absolute right-0 mt-2 w-48 rounded-md shadow bg-white text-sm text-gray-700 z-50">
-                <a href="#" onclick="event.preventDefault(); setLanguage('en')" class="...">🇬🇧 English</a>
-                <a href="#" onclick="event.preventDefault(); setLanguage('fr')" class="...">🇫🇷 Français</a>
-                <a href="#" onclick="event.preventDefault(); setLanguage('es')" class="...">🇪🇸 Español</a>
-                <!-- Add more languages -->
+              <div x-show="open" @click.outside="open = false"
+                class="absolute right-0 mt-2 w-48 rounded-md shadow bg-white text-sm text-gray-700 z-50">
+                <a href="#" @click.prevent="setLanguage('en'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
+                <a href="#" @click.prevent="setLanguage('fr'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
+                <a href="#" @click.prevent="setLanguage('es'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
+                <a href="#" @click.prevent="setLanguage('de'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+                <a href="#" @click.prevent="setLanguage('it'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+                <a href="#" @click.prevent="setLanguage('nl'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+                <a href="#" @click.prevent="setLanguage('sv'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+                <a href="#" @click.prevent="setLanguage('el'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
               </div>
             </div>
           </div>
@@ -135,37 +146,29 @@
       </div>
     </header>
   
-    <!-- Google Translate + Debug Script -->
+    <!-- Google Translate Script -->
     <script>
       function setLanguage(lang) {
-        console.log("[Translate] Requested language:", lang);
+        const cookieVal = `/en/${lang}`;
+        document.cookie = `googtrans=${cookieVal}; path=/;`;
+        document.cookie = `googtrans=${cookieVal}; domain=${location.hostname}; path=/;`;
   
-        const cookiePair = `/en/${lang}`;
-        document.cookie = `googtrans=${cookiePair}; path=/;`;
-        document.cookie = `googtrans=${cookiePair}; domain=${location.hostname}; path=/;`;
-        console.log("[Translate] Cookies set:", document.cookie);
-  
-        const tryChange = () => {
+        const interval = setInterval(() => {
           const select = document.querySelector("select.goog-te-combo");
           if (select) {
-            console.log("[Translate] Found select.goog-te-combo");
             select.value = lang;
             select.dispatchEvent(new Event("change"));
-            console.log("[Translate] Dispatched change event");
             clearInterval(interval);
-          } else {
-            console.log("[Translate] Waiting for select...");
           }
-        };
-  
-        const interval = setInterval(tryChange, 400);
+        }, 300);
       }
   
-      document.addEventListener("DOMContentLoaded", () => {
-        const observer = new MutationObserver(() => {
-          const frame = document.querySelector("iframe.goog-te-banner-frame");
-          if (frame) frame.style.display = "none";
-          document.body.style.top = "0px";
+      // Hide the Google Translate banner
+      document.addEventListener("DOMContentLoaded", function () {
+        const observer = new MutationObserver(function () {
+          const gtFrame = document.querySelector('iframe.goog-te-banner-frame');
+          if (gtFrame) gtFrame.style.display = 'none';
+          document.body.style.top = '0px';
         });
         observer.observe(document.body, { childList: true, subtree: true });
       });
@@ -177,7 +180,6 @@
           layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
           autoDisplay: false
         }, 'google_translate_element2');
-        console.log("[Translate] Init completed");
       }
     </script>
   
