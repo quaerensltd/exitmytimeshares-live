@@ -17,18 +17,26 @@
 
 <!-- 4) Google Translate setter -->
 <script>
-    function setLanguage(langPair) {
-      if (!langPair) return;
-      const lang = langPair.split('|')[1];
-      // cookie for exact host (e.g. www.exitmytimeshares.com)
-      document.cookie = 'googtrans=/en/' + lang + '; path=/';
-      // cookie for apex domain (any subdomain)
-      const apex = location.hostname.replace(/^www\./, '');
-      document.cookie = 'googtrans=/en/' + lang + '; domain=.' + apex + '; path=/';
-      // reload so the translator picks up the new cookie
+  function setLanguage(langPair) {
+    if (!langPair) return;
+    const lang = langPair.split('|')[1];
+
+    // 1) set the cookie for the exact host
+    document.cookie = `googtrans=/en/${lang};path=/`;
+    // 2) also set it for the apex domain (so subdomains pick it up)
+    const apex = location.hostname.replace(/^www\./, '');
+    document.cookie = `googtrans=/en/${lang};domain=.${apex};path=/`;
+
+    // 3) if Google’s helper is already loaded, flip the hidden select
+    if (typeof doGTranslate === 'function') {
+      doGTranslate(`en|${lang}`);
+    } 
+    // otherwise fall back to reload
+    else {
       location.reload();
     }
-  </script>
+  }
+</script>
 
     <!-- 5) Global CSS overrides -->
     <style>
