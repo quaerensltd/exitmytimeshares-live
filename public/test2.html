@@ -109,7 +109,7 @@
   </head>
 
   <body class="bg-gray-50 text-gray-800">
-    <div id="google_translate_element" style="display: none;"></div>
+    <div id="google_translate_element2" style="display: none;"></div>
   
     <!-- Header -->
     <header class="bg-white shadow">
@@ -118,19 +118,19 @@
           <img src="images/quaerens-logo.png" alt="Quaerens Logo" class="h-20 w-auto">
         </a>
         <nav>
-
           <div class="w-full bg-gray-100 text-right p-2">
             <div x-data="{ open: false }" class="relative inline-block text-left">
               <button @click="open = !open"
-                      class="inline-flex items-center justify-center rounded border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none">
+                class="inline-flex items-center justify-center rounded border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none">
                 🌐 Language
-                <svg class="ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+                <svg class="ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"
+                  stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8l5 5 5-5" />
                 </svg>
               </button>
-          
+  
               <div x-show="open" @click.outside="open = false"
-                   class="absolute right-0 mt-2 w-48 rounded-md shadow bg-white text-sm text-gray-700 z-50">
+                class="absolute right-0 mt-2 w-48 rounded-md shadow bg-white text-sm text-gray-700 z-50">
                 <a href="#" onclick="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
                 <a href="#" onclick="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
                 <a href="#" onclick="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
@@ -145,56 +145,47 @@
         </nav>
       </div>
     </header>
-    
-        <script>
-          document.addEventListener("DOMContentLoaded", function () {
-            const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
-            const lang = match ? match[1] : "en";
-            const selector = document.getElementById("languageDropdown");
-            if (selector) selector.value = `en|${lang}`;
-          });
-        </script>
-        <!-- ✅ Place this OUTSIDE the <header> and NOT inside the <head> either -->
-        <script>
-          document.addEventListener("DOMContentLoaded", function () {
-            const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
-            const lang = match ? match[1] : "en";
-            const selector = document.getElementById("languageDropdown");
-            if (selector) selector.value = `en|${lang}`;
-          });
-        </script>
-
-<!-- Google Translate hidden engine (bottom of page) -->
-<div id="google_translate_element2" style="display: none;"></div>
-
-<script type="text/javascript">
-  function doGTranslate(lang_pair) {
-    if (!lang_pair) return;
-    var lang = lang_pair.split('|')[1];
-    var select = document.querySelector('select.goog-te-combo');
-    if (select && select.options) {
-      select.value = lang;
-      select.dispatchEvent(new Event('change'));
-    }
-  }
-</script>
-
-<script type="text/javascript">
-  function googleTranslateElementInit2() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-      autoDisplay: false
-    }, 'google_translate_element2');
-  }
-</script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
-</body>
-</html>
-
-  </header>
+  
+    <!-- Google Translate Function -->
+    <script>
+      function setLanguage(langPair) {
+        const lang = langPair.split('|')[1];
+        document.cookie = `googtrans=/en/${lang}; path=/`;
+        document.cookie = `googtrans=/en/${lang}; domain=${location.hostname}; path=/`;
+  
+        const select = document.querySelector("select.goog-te-combo");
+        if (select) {
+          select.value = lang;
+          select.dispatchEvent(new Event("change"));
+        }
+      }
+  
+      // Hide the Google banner & reset body offset
+      document.addEventListener("DOMContentLoaded", function () {
+        const observer = new MutationObserver(function () {
+          const gtFrame = document.querySelector('iframe.goog-te-banner-frame');
+          if (gtFrame) gtFrame.style.display = 'none';
+          document.body.style.top = '0px';
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+    </script>
+  
+    <!-- Google Translate Init -->
+    <script type="text/javascript">
+      function googleTranslateElementInit2() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element2');
+      }
+    </script>
+  
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+  </body>
+  </html>  
 
 <!-- Hero Section -->
 <section class="relative w-full overflow-hidden">
