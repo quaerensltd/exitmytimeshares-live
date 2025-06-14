@@ -24,21 +24,15 @@
     ].join(';');
   </script>
 
-  <!-- 4) Google Translate setter (no reload, flips the combo) -->
-  <script>
+<!-- 4) Google Translate setter: set cookie + reload -->
+<script>
     function setLanguage(langPair) {
       if (!langPair) return;
       const [from, to] = langPair.split('|');
-
-      // 1) Set the googtrans cookie on your domain
-      document.cookie = [
-        `googtrans=/${from}/${to}`,
-        'path=/',
-        'domain=.exitmytimeshares.com'   /* ← make sure this matches your domain */
-      ].join(';');
-
-      // 2) Reload the page so Google’s widget re-initializes in the right language
-      window.location.reload();
+      // Persist the translation choice
+      document.cookie = `googtrans=/${from}/${to};path=/;domain=.exitmytimeshares.com`;
+      // Reload so the Google widget sees the new cookie
+      location.reload();
     }
   </script>
 
