@@ -15,33 +15,43 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>[x-cloak] { display: none !important; }</style>
 
-  <!-- 4) Google Translate setter (no reload, flips the combo) -->
-  <script>
+<!-- 4) Google Translate setter (no reload, flips the combo) -->
 <script>
-  function setLanguage(langPair) {
-    if (!langPair) return;
-    const [from, to] = langPair.split('|');
-    // 1a) force cookie BEFORE widget loads
-    document.cookie = [
-      `googtrans=/${from}/${to}`,
-      'path=/',
-      'domain=' + location.hostname    // NO leading dot
-    ].join(';');
-    // 1b) flip the hidden select
-    const combo = document.querySelector('select.goog-te-combo');
-    if (!combo) return;
-    combo.value = to;
-    combo.dispatchEvent(new Event('change'));
-  }
-</script>
+    function setLanguage(langPair) {
+      if (!langPair) return;
+      const [from, to] = langPair.split('|');
+      // 1) Reset the cookie (with leading dot)
+      const domain = location.hostname.replace(/^www\./, '');
+      document.cookie = [
+        `googtrans=/${from}/${to}`,
+        'path=/',
+        `domain=.${domain}`
+      ].join(';');
+      // 2) Re-init widget if already loaded
+      if (typeof googleTranslateElementInit === 'function') {
+        googleTranslateElementInit();
+      }
+      // 3) Flip the hidden select
+      const combo = document.querySelector('select.goog-te-combo');
+      if (!combo) return;
+      combo.value = to;
+      combo.dispatchEvent(new Event('change'));
+    }
+  </script> 
 
-<!-- 2) hide Google’s banner & logo -->
+<!-- 5) Global CSS overrides -->
 <style>
+  /* Hide Google’s banner & inline icons */
   .goog-te-banner-frame.skiptranslate,
   body > .skiptranslate,
   .goog-logo-link,
-  .goog-te-gadget-icon { display: none !important; }
-  .goog-te-gadget { visibility: hidden !important; }
+  .goog-te-gadget-icon {
+    display: none !important;
+  }
+  /* Keep the real <select> present but invisible */
+  .goog-te-gadget {
+    visibility: hidden !important;
+  }
 </style>
   </head>
 
