@@ -142,41 +142,22 @@
     }
   </script>
 
-  <!-- jsPDF, if you still need it -->
+  <!-- jsPDF (if you still need it) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <!-- force the cookie back to English -->
+  <!-- 1) Reset Google-Translate cookie to English on every load -->
   <script>
-    // Force back to English if a previous session left us in German (or any other)
     document.cookie = [
       'googtrans=/en/en',
       'path=/',
       'domain=' + location.hostname.replace(/^www\./, '')
     ].join(';');
-    // If the widget’s init is already parsed, re-call it
-    if (typeof googleTranslateElementInit === 'function') {
-      googleTranslateElementInit();
-    }
   </script>
 
-  <!-- hidden container for Google Translate -->
+  <!-- 2) Hidden container for the (invisible) Translate widget -->
   <div id="google_translate_element" style="display:none"></div>
 
-  <!-- force back to English on every load -->
-  <script>
-    // Force back to English if a previous session left us in another language
-    document.cookie = [
-      'googtrans=/en/en',
-      'path=/',
-      'domain=' + location.hostname.replace(/^www\./, '')
-    ].join(';');
-    // If the widget’s init is already parsed, re-call it
-    if (typeof googleTranslateElementInit === 'function') {
-      googleTranslateElementInit();
-    }
-  </script>
-
-  <!-- init Google Translate -->
+  <!-- 3) Init function for Google Translate -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -187,6 +168,8 @@
       }, 'google_translate_element');
     }
   </script>
+
+  <!-- 4) Load the Google Translate engine, callback to our init -->
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
