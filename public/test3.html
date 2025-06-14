@@ -1,33 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- …your existing meta, title, fonts, Tailwind… -->
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="images/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exitmytimeshares.com | Quaerens</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <head>
+    <!-- 1) Meta, title, favicon -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Exitmytimeshares.com | Quaerens</title>
+    <link rel="icon" href="images/favicon.png" />
+
+  <!-- 2) Fonts & Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- 1) Alpine.js (deferred) -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- 3) Alpine.js + x-cloak helper -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>[x-cloak] { display: none !important; }</style>
 
-  <!-- 2) Put your [x-cloak] rule at the top of your styles -->
-  <style>
-    [x-cloak] { display: none !important; }
+  <!-- 4) Google Translate setter -->
+  <script>
+    function setLanguage(langPair) {
+      if (!langPair) return;
+      const lang = langPair.split('|')[1];
+      document.cookie = 'googtrans=/en/' + lang + ';domain=' + location.hostname + ';path=/';
+      location.reload();
+    }
+  </script>
+
+    <!-- 5) Global CSS overrides -->
+    <style>
+        body { font-family:'Inter',sans-serif; margin:0!important; }
+        .goog-te-banner-frame.skiptranslate, body>.skiptranslate { display:none!important; }
       </style>
-    
-      <!-- ❷ helper to set Google Translate cookie + reload -->
-      <script>
-        function setLanguage(langPair) {
-          if (!langPair) return;
-          const lang = langPair.split('|')[1];
-          const cookieValue = '/en/' + lang;
-          document.cookie = 'googtrans=' + cookieValue + ';domain=' + location.hostname + ';path=/';
-          location.reload();
-        }
-      </script>
-    </head>
+  </head>
+
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Google Translate hidden container -->
+    <div id="google_translate_element" style="display:none"></div>
+
+    <!-- HEADER -->
+    <header x-data="{ open: false }" class="bg-white shadow p-4 flex justify-between items-center">
+      <a href="/"><img src="images/quaerens-logo.png" class="h-12" alt="Logo"></a>
+      <div class="relative">
+        <button @click="open = !open" class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
+          🌐 Language
+        </button>
+        <div x-show="open" @click.outside="open = false" x-cloak
+             class="absolute right-0 mt-2 w-40 bg-white border rounded shadow z-50">
+          <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
+          <!-- …other languages… -->
+        </div>
+      </div>
+    </header>
 
   <style>
     body {
@@ -78,27 +100,20 @@
     }
   </style>  
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-  </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <body class="bg-gray-50 text-gray-800">
     <div id="google_translate_element" style="display: none;"></div>
   
-    <header class="bg-white shadow p-4 flex justify-between items-center" x-data="{ open: false }">
-        <a href="/"><img src="images/quaerens-logo.png" alt="Logo" class="h-12"></a>
+    <header x-data="{ open: false }" class="bg-white shadow p-4 flex justify-between items-center">
+        <a href="/"><img src="images/quaerens-logo.png" class="h-12" alt="Logo"></a>
         <div class="relative">
-          <button @click="open = !open" class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
+          <button @click="open = !open"
+                  class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
             🌐 Language
-          </button>
-          <div 
-            x-show="open" 
-            x-cloak 
-            @click.outside="open = false" 
-            class="absolute right-0 mt-2 w-40 bg-white border rounded shadow z-50"
-          >
+        </button>
+        <div x-show="open" @click.outside="open = false" x-cloak
+             class="absolute right-0 mt-2 w-40 bg-white border rounded shadow z-50">
             <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
             <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
             <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
@@ -153,10 +168,10 @@
       autoDisplay: false
     }, 'google_translate_element2');
   }
+  
 </script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
-</body>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+  </body>
 </html>
 
   </header>
