@@ -133,6 +133,10 @@
                 <a href="#" @click.prevent="setLanguage('es'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
                 <a href="#" @click.prevent="setLanguage('fr'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
                 <a href="#" @click.prevent="setLanguage('de'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+                <a href="#" @click.prevent="setLanguage('de'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+                <a href="#" @click.prevent="setLanguage('de'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+                <a href="#" @click.prevent="setLanguage('de'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+                <a href="#" @click.prevent="setLanguage('de'); open = false" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
               </div>
             </div>
           </div>
@@ -140,6 +144,23 @@
       </div>
     </header>
   
+    <script>
+        function setLanguage(lang) {
+          const cookieVal = `/en/${lang}`;
+          document.cookie = `googtrans=${cookieVal}; path=/;`;
+          document.cookie = `googtrans=${cookieVal}; domain=${location.hostname}; path=/;`;
+  
+          const interval = setInterval(() => {
+            const select = document.querySelector("select.goog-te-combo");
+            if (select) {
+              select.value = lang;
+              select.dispatchEvent(new Event("change"));
+              clearInterval(interval);
+            }
+          }, 300);
+        }
+      </script>
+
     <!-- Google Translate Setup -->
     <script>
       function setLanguage(lang) {
