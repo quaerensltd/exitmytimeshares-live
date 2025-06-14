@@ -29,17 +29,16 @@
     function setLanguage(langPair) {
       if (!langPair) return;
       const [from, to] = langPair.split('|');
-      // force cookie for the correct domain _before_ the widget flips
+
+      // 1) Set the googtrans cookie on your domain
       document.cookie = [
         `googtrans=/${from}/${to}`,
         'path=/',
-        'domain=.exitmytimeshares.com'   /* ← same domain here */
+        'domain=.exitmytimeshares.com'   /* ← make sure this matches your domain */
       ].join(';');
-      // flip the (invisible) <select> to the chosen language
-      const combo = document.querySelector('select.goog-te-combo');
-      if (!combo) return;
-      combo.value = to;
-      combo.dispatchEvent(new Event('change'));
+
+      // 2) Reload the page so Google’s widget re-initializes in the right language
+      window.location.reload();
     }
   </script>
 
