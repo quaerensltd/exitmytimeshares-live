@@ -15,15 +15,14 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>[x-cloak] { display: none !important; }</style>
 
-  <!-- 1) Reset back to English on every load, before the widget loads -->
-<!-- 1) Reset to English before anything else -->
+<!-- force the translator cookie back to English on every load -->
 <script>
-    document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
+    document.cookie = 'googtrans=/en/en;domain=' + location.hostname + ';path=/';
   </script>
   
-  <!-- then only once… -->
-  <div id="google_translate_element" style="display:none"></div>
-  <script>
+<!-- invisible placeholder that Google Translate hooks into -->
+<div id="google_translate_element" style="display:none;"></div>
+<script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
@@ -33,15 +32,15 @@
       }, 'google_translate_element');
     }
     function setLanguage(langPair) {
-      const [from, to] = langPair.split('|');
-      document.cookie = `googtrans=/${from}/${to};domain=.exitmytimeshares.com;path=/`;
-      // flip the hidden select for instant effect
-      const sel = document.querySelector('select.goog-te-combo');
-      if (sel) {
-        sel.value = to;
-        sel.dispatchEvent(new Event('change'));
-      }
+    const [from,to] = langPair.split('|');
+    document.cookie = `googtrans=/${from}/${to};domain=${location.hostname};path=/`;
+    const sel = document.querySelector('select.goog-te-combo');
+    if (sel) {
+      sel.value = to;
+      sel.dispatchEvent(new Event('change'));
     }
+  }
+</script>
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>  
 
