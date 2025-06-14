@@ -7,46 +7,55 @@
     <title>Exitmytimeshares.com | Quaerens</title>
     <link rel="icon" href="images/favicon.png" />
 
-  <!-- 2) Fonts & Tailwind -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 2) Fonts & Tailwind -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- 3) Alpine.js + x-cloak helper -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <style>[x-cloak] { display: none !important; }</style>
+    <!-- 3) Alpine.js + x-cloak helper -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>[x-cloak] { display: none !important; }</style>
 
-  <!-- 4) Google Translate setter -->
-  <script>
-    function setLanguage(langPair) {
-      if (!langPair) return;
-      const lang = langPair.split('|')[1];
-      document.cookie = 'googtrans=/en/' + lang + ';domain=' + location.hostname + ';path=/';
-      location.reload();
-    }
-  </script>
+    <!-- 4) Google Translate setter -->
+    <script>
+      function setLanguage(langPair) {
+        if (!langPair) return;
+        const lang = langPair.split('|')[1];
+        document.cookie = 'googtrans=/en/' + lang + ';domain=' + location.hostname + ';path=/';
+        location.reload();
+      }
+    </script>
 
     <!-- 5) Global CSS overrides -->
     <style>
-        body { font-family:'Inter',sans-serif; margin:0!important; }
-        .goog-te-banner-frame.skiptranslate, body>.skiptranslate { display:none!important; }
-      </style>
+      body { font-family:'Inter',sans-serif; margin:0!important; }
+      .goog-te-banner-frame.skiptranslate,
+      body > .skiptranslate { display:none!important; }
+    </style>
   </head>
 
   <body class="bg-gray-50 text-gray-800">
-    <!-- Google Translate hidden container -->
+    <!-- hidden container for the (invisible) Google Translate engine -->
     <div id="google_translate_element" style="display:none"></div>
 
     <!-- HEADER -->
-    <header x-data="{ open: false }" class="bg-white shadow p-4 flex justify-between items-center">
+    <header x-data="{ open: false }"
+            class="bg-white shadow p-4 flex justify-between items-center">
       <a href="/"><img src="images/quaerens-logo.png" class="h-12" alt="Logo"></a>
       <div class="relative">
-        <button @click="open = !open" class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
+        <button @click="open = !open"
+                class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
           🌐 Language
         </button>
         <div x-show="open" @click.outside="open = false" x-cloak
              class="absolute right-0 mt-2 w-40 bg-white border rounded shadow z-50">
           <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
-          <!-- …other languages… -->
+          <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
+          <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
+          <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+          <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+          <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+          <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+          <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
         </div>
       </div>
     </header>
@@ -99,32 +108,6 @@
       margin-top: 0.5rem;
     }
   </style>  
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-  <body class="bg-gray-50 text-gray-800">
-    <div id="google_translate_element" style="display: none;"></div>
-  
-    <header x-data="{ open: false }" class="bg-white shadow p-4 flex justify-between items-center">
-        <a href="/"><img src="images/quaerens-logo.png" class="h-12" alt="Logo"></a>
-        <div class="relative">
-          <button @click="open = !open"
-                  class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
-            🌐 Language
-        </button>
-        <div x-show="open" @click.outside="open = false" x-cloak
-             class="absolute right-0 mt-2 w-40 bg-white border rounded shadow z-50">
-            <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
-            <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
-            <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
-            <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
-            <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
-            <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
-            <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
-            <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
-          </div>
-        </div>
-      </header>      
     
         <script>
           document.addEventListener("DOMContentLoaded", function () {
@@ -145,8 +128,6 @@
         </script>
 
 <!-- Google Translate hidden engine (bottom of page) -->
-<div id="google_translate_element2" style="display: none;"></div>
-
 <script type="text/javascript">
   function doGTranslate(lang_pair) {
     if (!lang_pair) return;
@@ -157,21 +138,25 @@
       select.dispatchEvent(new Event('change'));
     }
   }
-</script>
+  <!-- jsPDF library (only need this once) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<script type="text/javascript">
-  function googleTranslateElementInit2() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-      autoDisplay: false
-    }, 'google_translate_element2');
-  }
+  <!-- hidden container for Google Translate engine -->
+  <div id="google_translate_element2" style="display:none"></div>
 
-</script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
-  </body>
+  <!-- init Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit2() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element2');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+</body>
 </html>
 
   </header>
