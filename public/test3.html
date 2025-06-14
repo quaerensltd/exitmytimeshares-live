@@ -15,18 +15,27 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>[x-cloak] { display: none !important; }</style>
 
-<!-- 4) Google Translate setter (no reload, flips the combo) -->
-<script>
+  <!-- 1) Reset back to English on every load, before the widget loads -->
+  <script>
+    document.cookie = [
+      'googtrans=/en/en',
+      'path=/',
+      'domain=.exitmytimeshares.com'   /* ← your domain, with leading dot */
+    ].join(';');
+  </script>
+
+  <!-- 4) Google Translate setter (no reload, flips the combo) -->
+  <script>
     function setLanguage(langPair) {
       if (!langPair) return;
       const [from, to] = langPair.split('|');
-      // force cookie for the correct domain _before_ the widget loads
+      // force cookie for the correct domain _before_ the widget flips
       document.cookie = [
         `googtrans=/${from}/${to}`,
         'path=/',
-        'domain=.exitmytimeshares.com'   /* <-- leading dot */
+        'domain=.exitmytimeshares.com'   /* ← same domain here */
       ].join(';');
-      // flip the (invisible) <select>
+      // flip the (invisible) <select> to the chosen language
       const combo = document.querySelector('select.goog-te-combo');
       if (!combo) return;
       combo.value = to;
@@ -34,17 +43,21 @@
     }
   </script>
 
-<!-- 5) Global CSS overrides -->
-<style>
+  <!-- 5) Global CSS overrides -->
+  <style>
     /* hide the Google top bar and logo */
     .goog-te-banner-frame.skiptranslate,
     body > .skiptranslate,
     .goog-logo-link,
-    .goog-te-gadget-icon { display: none !important; }
+    .goog-te-gadget-icon {
+      display: none !important;
+    }
     /* keep the real <select> around but invisible */
-    .goog-te-gadget { visibility: hidden !important; }
+    .goog-te-gadget {
+      visibility: hidden !important;
+    }
   </style>
-  </head>
+</head>
 
   <body class="bg-gray-50 text-gray-800">
     <!-- hidden container for the (invisible) Google Translate engine -->
