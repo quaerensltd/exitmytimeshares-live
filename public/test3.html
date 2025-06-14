@@ -142,11 +142,39 @@
     }
   </script>
 
-  <!-- jsPDF library (only need this once) -->
+  <!-- jsPDF, if you still need it -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <!-- hidden container for Google Translate engine -->
+  <!-- force the cookie back to English -->
+  <script>
+    // Force back to English if a previous session left us in German (or any other)
+    document.cookie = [
+      'googtrans=/en/en',
+      'path=/',
+      'domain=' + location.hostname.replace(/^www\./, '')
+    ].join(';');
+    // If the widget’s init is already parsed, re-call it
+    if (typeof googleTranslateElementInit === 'function') {
+      googleTranslateElementInit();
+    }
+  </script>
+
+  <!-- hidden container for Google Translate -->
   <div id="google_translate_element" style="display:none"></div>
+
+  <!-- force back to English on every load -->
+  <script>
+    // Force back to English if a previous session left us in another language
+    document.cookie = [
+      'googtrans=/en/en',
+      'path=/',
+      'domain=' + location.hostname.replace(/^www\./, '')
+    ].join(';');
+    // If the widget’s init is already parsed, re-call it
+    if (typeof googleTranslateElementInit === 'function') {
+      googleTranslateElementInit();
+    }
+  </script>
 
   <!-- init Google Translate -->
   <script>
