@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Test Google Translate</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Translate Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <style>
@@ -19,8 +19,10 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-  <!-- Google Translate element (must be visible during setup) -->
-  <div id="google_translate_element2" class="text-center py-4"></div>
+  <!-- Google Translate Element (must be visible to inject) -->
+  <div id="google_translate_element2" class="text-center py-4 border border-blue-500 text-sm">
+    🔁 Google Translate will load here...
+  </div>
 
   <!-- Language Dropdown -->
   <div class="text-center my-4" x-data="{ open: false }">
@@ -44,7 +46,7 @@
     ⏳ Waiting for Google Translate...
   </div>
 
-  <!-- setLanguage logic -->
+  <!-- Language switch logic -->
   <script>
     function setLanguage(lang) {
       const cookieVal = `/en/${lang}`;
@@ -61,8 +63,22 @@
       }, 300);
     }
   </script>
-  
-  <!-- Load Translate Widget -->
+
+  <!-- Monitor status -->
+  <script>
+    const statusBox = document.getElementById("translate-status");
+    const monitor = setInterval(() => {
+      const select = document.querySelector("select.goog-te-combo");
+      if (select) {
+        statusBox.textContent = "✅ Google Translate ready";
+        clearInterval(monitor);
+      } else {
+        statusBox.textContent = "⏳ Waiting for Google Translate...";
+      }
+    }, 500);
+  </script>
+
+  <!-- Google Translate Loader -->
   <script>
     window.googleTranslateElementInit2 = function () {
       new google.translate.TranslateElement({
@@ -72,11 +88,12 @@
         autoDisplay: false
       }, 'google_translate_element2');
     };
-  
+
     const script = document.createElement('script');
     script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2';
     document.body.appendChild(script);
   </script>
-  
+
 </body>
 </html>
+
