@@ -58,6 +58,10 @@
       border-radius: 6px;
       margin-top: 0.5rem;
     }
+
+        /* Hide Alpine elements until ready */
+        [x-cloak] { display: none !important; }
+        
   </style>  
   
   <!-- 1) Auto-detect on first visit -->
@@ -79,7 +83,6 @@
   </script>
 
   <!-- 2) Hidden translate engine (needed by Google) -->
-  <div id="google_translate_element2" style="display:none"></div>
   <script>
     function googleTranslateElementInit2() {
       new google.translate.TranslateElement({
@@ -95,6 +98,8 @@
   </head>
 
   <body class="bg-gray-50 text-gray-800">
+      <!-- required by Google Translate -->
+  <div id="google_translate_element2" style="display:none"></div>
 
     <!-- 0) Tiny helper to set the cookie and reload -->
     <script>
@@ -113,8 +118,8 @@
                 class="px-3 py-2 border rounded bg-white hover:bg-gray-100">
           🌐 Language
         </button>
-        <div x-show="open" @click.outside="open = false"
-             class="absolute right-0 mt-2 bg-white border rounded shadow-sm">
+        <div x-show="open" x-cloak @click.outside="open = false"
+        class="absolute right-0 mt-2 bg-white border rounded shadow-sm">
           <a href="#" @click.prevent="setLang('en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
           <a href="#" @click.prevent="setLang('es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
           <a href="#" @click.prevent="setLang('fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
