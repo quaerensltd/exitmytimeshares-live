@@ -15,28 +15,21 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>[x-cloak] { display: none !important; }</style>
 
-<!-- 4) Google Translate setter -->
+<!-- 4) Google Translate setter (no reload, directly flips the combo) -->
 <script>
-  function setLanguage(langPair) {
-    if (!langPair) return;
-    const lang = langPair.split('|')[1];
-
-    // 1) set the cookie for the exact host
-    document.cookie = `googtrans=/en/${lang};path=/`;
-    // 2) also set it for the apex domain (so subdomains pick it up)
-    const apex = location.hostname.replace(/^www\./, '');
-    document.cookie = `googtrans=/en/${lang};domain=.${apex};path=/`;
-
-    // 3) if Google’s helper is already loaded, flip the hidden select
-    if (typeof doGTranslate === 'function') {
-      doGTranslate(`en|${lang}`);
-    } 
-    // otherwise fall back to reload
-    else {
-      location.reload();
+    function setLanguage(langPair) {
+      if (!langPair) return;
+      const [from, to] = langPair.split('|');
+      // update the cookie so the widget remembers
+      document.cookie = `googtrans=/${from}/${to};path=/;domain=${location.hostname}`;
+      // find the hidden <select class="goog-te-combo">
+      const combo = document.querySelector('select.goog-te-combo');
+      if (!combo) return;
+      // change its value and fire the change event
+      combo.value = to;
+      combo.dispatchEvent(new Event('change'));
     }
-  }
-</script>
+  </script>
 
     <!-- 5) Global CSS overrides -->
     <style>
