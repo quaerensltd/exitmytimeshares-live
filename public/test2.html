@@ -59,25 +59,22 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      top: 0px !important;
       position: static !important;
--     padding-bottom: 5rem; /* ← added to ensure footer is reachable behind sticky bar */
-+     padding-bottom: 6rem; /* ← increased so content scrolls fully above the 3rem footer + spacing */
+      padding-bottom: 8rem; /* ← ensure the footer is always reachable */
     }
     html { margin-top: 0 !important; }
-    .content-box {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem;
-      background: #f9fafb;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    }
+
     /* Lift WhatsApp chat prompt above the footer */
     .fixed.bottom-4.right-4 {
-    bottom: 6rem !important;
-    z-index: 60 !important;
+      bottom: 8rem !important;
+      z-index: 70 !important;
     }
+
+    /* Make sticky footer sit on top */
+    .sticky-footer {
+      z-index: 65; 
+    }
+
     /* HIDE the Google Translate top banner */
     .goog-te-banner-frame.skiptranslate,
     .goog-te-gadget-icon,
@@ -945,7 +942,7 @@
   </div>
 
   <!-- Sticky Footer CTA -->
-  <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-3 flex justify-center gap-4 z-50">
+  <div class="sticky-footer fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-3 flex justify-center gap-4">
     <a href="/download-kit.html"
        class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg shadow">
       Buy the Do It Yourself Kit £169 | €189 | $209
