@@ -61,6 +61,8 @@
       font-family: 'Inter', sans-serif;
       top: 0px !important;
       position: static !important;
+-     padding-bottom: 5rem; /* ← added to ensure footer is reachable behind sticky bar */
++     padding-bottom: 6rem; /* ← increased so content scrolls fully above the 3rem footer + spacing */
     }
     html { margin-top: 0 !important; }
     .content-box {
@@ -70,6 +72,11 @@
       background: #f9fafb;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+    /* Lift WhatsApp chat prompt above the footer */
+    .fixed.bottom-4.right-4 {
+    bottom: 6rem !important;
+    z-index: 60 !important;
     }
     /* HIDE the Google Translate top banner */
     .goog-te-banner-frame.skiptranslate,
