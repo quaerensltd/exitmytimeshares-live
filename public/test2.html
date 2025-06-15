@@ -439,13 +439,13 @@
 <!-- Continue with next section… -->
 
 <!-- FAQ: answer common concerns in plain English -->
-<section id="faq" class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-4 border border-gray-200 rounded-xl p-6 shadow-lg">
+<section id="faq" class="py-12 bg-blue-50">
+    <div class="max-w-4xl mx-auto px-4 border border-gray-200 rounded-xl p-6 shadow-lg bg-blue-100">
       <h3 class="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h3>
   
       <div class="space-y-6">
         <!-- Q1 -->
-        <div class="border border-gray-200 rounded-lg p-6">
+        <div class="border border-gray-200 rounded-lg p-6 bg-white">
           <div class="flex items-start gap-4">
             <div class="text-3xl">❓</div>
             <div>
@@ -458,7 +458,7 @@
         </div>
   
         <!-- Q2 -->
-        <div class="border border-gray-200 rounded-lg p-6">
+        <div class="border border-gray-200 rounded-lg p-6 bg-white">
           <div class="flex items-start gap-4">
             <div class="text-3xl">💰</div>
             <div>
@@ -471,7 +471,7 @@
         </div>
   
         <!-- Q3 -->
-        <div class="border border-gray-200 rounded-lg p-6">
+        <div class="border border-gray-200 rounded-lg p-6 bg-white">
           <div class="flex items-start gap-4">
             <div class="text-3xl">⏱️</div>
             <div>
@@ -484,7 +484,7 @@
         </div>
   
         <!-- Q4 -->
-        <div class="border border-gray-200 rounded-lg p-6">
+        <div class="border border-gray-200 rounded-lg p-6 bg-white">
           <div class="flex items-start gap-4">
             <div class="text-3xl">💳</div>
             <div>
@@ -674,28 +674,36 @@
 <div class="max-w-3xl mx-auto px-4">
     <div x-data="{ open: true }"
          class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6"
-         data-aos="fade-up" data-aos-delay="300">
+         data-aos="fade-up"
+         data-aos-delay="300">
   
-      <!-- Kit preview image -->
-      <img src="/images/kit-preview.jpg"
-           alt="Preview of the Do-It-Yourself Kit"
-           class="w-full h-auto rounded-md mb-4 max-h-60 object-cover" />
+      <!-- flex container: column on mobile, row from md up -->
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mb-4">
+        <!-- Kit preview image -->
+        <img src="/images/kit-preview.jpg"
+             alt="Preview of the Do-It-Yourself Kit"
+             class="w-[150px] h-[150px] object-contain rounded-md flex-shrink-0" />
   
-      <button
-        @click="open = !open"
-        class="w-full text-left text-lg sm:text-xl font-bold text-blue-700 flex items-center justify-between focus:outline-none">
-        <span>WHAT’S IN THE DO-IT-YOURSELF KIT?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" :class="open ? 'rotate-180' : ''"
-             class="h-5 w-5 text-blue-700 transition-transform duration-300"
-             viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd"
-                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
-                clip-rule="evenodd" />
-        </svg>
-      </button>
+        <!-- heading + toggle -->
+        <button @click="open = !open"
+                class="flex-1 text-left font-bold text-blue-700
+                       text-xl sm:text-2xl md:text-3xl
+                       flex items-center justify-between focus:outline-none">
+          <span>WHAT’S IN THE DO-IT-YOURSELF KIT?</span>
+          <svg xmlns="http://www.w3.org/2000/svg"
+               :class="open ? 'rotate-180' : ''"
+               class="h-6 w-6 text-blue-700 transition-transform duration-300"
+               viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
+                  clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
   
+      <!-- collapsible content -->
       <div x-show="open" x-transition
-           class="mt-4 space-y-3 text-gray-700 text-sm sm:text-base">
+           class="mt-2 space-y-3 text-gray-700 text-sm sm:text-base">
         <div class="flex items-start gap-2">
           <span class="text-green-600 mt-1">✔</span>
           <p>Pre-drafted legal letters to cancel your timeshare — used by real lawyers.</p>
