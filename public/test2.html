@@ -359,6 +359,48 @@
 </section>
 
 </section>   <!-- ← end of How It Works -->
+
+<!-- FAQ: answer common concerns in plain English -->
+<section id="faq" class="py-8 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h3 class="text-2xl font-bold mb-4 text-center">Frequently Asked Questions</h3>
+      <div x-data="{ open: null }" class="space-y-4">
+        <div>
+          <button
+            @click="open === 1 ? open = null : open = 1"
+            class="w-full text-left font-semibold py-2">
+            What if my resort refuses to cancel?
+            <span class="float-right" x-text="open === 1 ? '−' : '+'"></span>
+          </button>
+          <div x-show="open === 1" x-collapse class="pl-4 text-gray-600">
+            Our templates include follow-up letters and escalation advice—if needed, you can upgrade to full-service support.
+          </div>
+        </div>
+        <div>
+          <button
+            @click="open === 2 ? open = null : open = 2"
+            class="w-full text-left font-semibold py-2">
+            Can I get a refund if it fails?
+            <span class="float-right" x-text="open === 2 ? '−' : '+'"></span>
+          </button>
+          <div x-show="open === 2" x-collapse class="pl-4 text-gray-600">
+            Yes—if our kit doesn’t help you exit, you’re covered by our no-questions-asked refund guarantee.
+          </div>
+        </div>
+        <div>
+          <button
+            @click="open === 3 ? open = null : open = 3"
+            class="w-full text-left font-semibold py-2">
+            How long does it take?
+            <span class="float-right" x-text="open === 3 ? '−' : '+'"></span>
+          </button>
+          <div x-show="open === 3" x-collapse class="pl-4 text-gray-600">
+            Most clients finish the process in 3–6 weeks from the day you send your letter—no back-and-forth required.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
    
 <!-- Quick Highlights -->
 <section class="py-12 bg-blue-50">
@@ -509,11 +551,18 @@
        class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
       Buy your Do-It-Yourself Kit today for only €169
     </a>
-  
+
     <a href="/full-service.html"
        class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
       Let ExitMyTimeshares.com do all the work
     </a>
+  </div>
+
+  <!-- Mini success story for social proof -->
+  <div class="max-w-4xl mx-auto px-4 mt-6 text-center">
+    <p class="italic text-gray-700">
+      “I saved over €3 000 and exited my timeshare in just 3 weeks using this kit!” – Mary S., Spain
+    </p>
   </div>
     
       <section class="bg-white pt-6 px-4 sm:px-6 lg:px-8">
