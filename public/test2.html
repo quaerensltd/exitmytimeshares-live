@@ -14,12 +14,9 @@
   <!-- 2) Language setter + IP auto-detect -->
   <script>
     function setLanguage(langPair) {
-      if (!langPair) return;
-      const [, to] = langPair.split('|');
-      const v = `/en/${to}`;
-      document.cookie = `googtrans=${v};domain=.exitmytimeshares.com;path=/`;
-      location.reload();
+      /* … your setLanguage code … */
     }
+    /* ↓ Comment out everything from here... */
     (function(){
       if (!document.cookie.includes('googtrans=')) {
         fetch('https://ipapi.co/json/')
@@ -360,6 +357,58 @@
     </div>
   </div>
 </section>
+
+</section>   <!-- ← end of How It Works -->
+   
+<!-- Quick Highlights -->
+<section class="py-12 bg-blue-50">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-8 text-center">
+      <div>
+        <div class="text-5xl mb-2">⚖️</div>
+        <h4 class="font-semibold mb-1">Legal-Grade Templates</h4>
+        <p class="text-gray-600">Lawyer-vetted letters—just fill in & send.</p>
+      </div>
+      <div>
+        <div class="text-5xl mb-2">💸</div>
+        <h4 class="font-semibold mb-1">Save Thousands</h4>
+        <p class="text-gray-600">One-time €169 kit vs. €2,000+ in legal fees.</p>
+      </div>
+      <div>
+        <div class="text-5xl mb-2">⏱️</div>
+        <h4 class="font-semibold mb-1">Fast & Easy</h4>
+        <p class="text-gray-600">Exit in a few weeks—no back-and-forth.</p>
+      </div>
+      <div>
+        <div class="text-5xl mb-2">📋</div>
+        <h4 class="font-semibold mb-1">Step-by-Step Guide</h4>
+        <p class="text-gray-600">Plain-English instructions for every stage.</p>
+      </div>
+      <div>
+        <div class="text-5xl mb-2">🤝</div>
+        <h4 class="font-semibold mb-1">Senior-Friendly Support</h4>
+        <p class="text-gray-600">Hands-on help for those less tech-savvy.</p>
+      </div>
+    </div>
+  </section>  
+
+      <!-- Secure Checkout -->
+      <h3 class="text-2xl font-bold text-gray-800">Secure Checkout</h3>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        We use trusted payment partners—pay with Visa or Mastercard and get full protection on your card.
+      </p>
+      <div class="flex justify-center items-center gap-6 mt-4">
+        <img src="/images/badge-visa.png" alt="Visa accepted" class="h-10"/>
+        <img src="/images/badge-mastercard.png" alt="Mastercard accepted" class="h-10"/>
+        <img src="/images/badge-secure.png" alt="Secure checkout" class="h-10"/>
+      </div>
+  
+      <!-- Helpful Tips & Warnings -->
+      <h3 class="text-2xl font-bold text-gray-800 mt-12">Helpful Tips & Warnings</h3>
+      <ul class="text-gray-600 list-disc list-inside max-w-2xl mx-auto space-y-2">
+        <li><strong>From ARDA:</strong> You don’t need to pay expensive exit firms—our kit gives you everything to do it yourself.</li>
+        <li><strong>Your Rights in Europe:</strong> Under EU law, you can cancel unfair or unclear contracts, even after the initial period.</li>
+        <li><strong>Stay Safe:</strong> Always get any cancellation promise in writing and never send money to people you haven’t checked.</li>
+      </ul>  
 
       <!-- Hero Banner Section with Happy Travelers -->
       <section class="w-full mt-8">
