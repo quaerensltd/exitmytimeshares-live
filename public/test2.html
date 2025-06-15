@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit ($229|£169|€199)</title>
 
-  <!-- Hide Google Translate Bar + Branding -->
   <style>
     .goog-te-banner-frame.skiptranslate, 
     .goog-te-gadget-icon, 
@@ -24,38 +22,8 @@
     }
   </style>
 
-  <!-- SEO Meta Tags -->
-  <meta name="description"
-        content="Stuck in a timeshare? Our lawyer-vetted, Do-It-Yourself Exit Kit ($229|£169|€199) gives you step-by-step templates to cancel your contract—no lawyers required. 3–6 week turnaround, money-back guarantee." />
-  <meta name="keywords"
-        content="timeshare exit, cancel timeshare, DIY timeshare, timeshare cancellation kit, timeshare cancellation letters, club la costa, hilton resorts, diamond resorts, dri, anfi, wyndham, marriott, diamond" />
-
-  <!-- Structured Data for Google (Product & Offer) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Do-It-Yourself Timeshare Exit Kit",
-    "image": "https://www.exitmytimeshares.com/images/kit-preview.jpg",
-    "description": "Lawyer-vetted cancellation letters & guide for €169, 3–6 week process, money-back guarantee.",
-    "brand": {
-      "@type": "Organization",
-      "name": "Quaerens Ltd"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://www.exitmytimeshares.com/download-kit.html",
-      "priceCurrency": "EUR",
-      "price": "169.00",
-      "availability": "https://schema.org/InStock"
-    }
-  }
-  </script>
-</head>
-<body>
-  <!-- Hidden Google Translate widget -->
-  <div id="google_translate_element" style="display: none;"></div>
-
+  <!-- Google Translate -->
+  <div id="google_translate_element" style="display:none;"></div>
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -67,9 +35,77 @@
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-  <!-- Your main body content goes here -->
-  <h1>Test Page</h1>
-  <p>This is a simplified test to confirm structure is working after fixes.</p>
+</head>
+<body>
+  <main class="max-w-4xl mx-auto p-4">
+    <!-- CTA -->
+    <div class="text-center mb-6">
+      <a href="/download-kit.html" class="block w-full text-center bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold text-lg py-4 px-6 rounded-xl shadow-md transition duration-300">
+        ✅ Get the Do-It-Yourself Exit Kit – Only $229 / £169 / €199
+      </a>
+      <p class="mt-2 text-sm text-gray-600">Instant access after purchase • Includes templates & guide</p>
+    </div>
 
+    <!-- Resort Checker -->
+    <div class="bg-yellow-50 p-6 rounded-xl shadow">
+      <h2 class="text-2xl font-bold text-blue-900 text-center mb-2">Check If Your Resort Is Eligible</h2>
+      <p class="text-center mb-4">Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.</p>
+      <form id="resort-check-form" class="space-y-4">
+        <label for="resort" class="block font-semibold">Resort Name</label>
+        <input list="resorts" id="resort" name="resort" placeholder="e.g. Sunset Bay Club, Anfi Del Mar..." class="w-full border border-gray-300 p-3 rounded text-base" required />
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition">Check Eligibility</button>
+      </form>
+      <div id="resort-result" class="mt-4 text-center text-lg font-semibold hidden"></div>
+      <p class="mt-4 text-sm text-gray-700 text-center"><strong>Not listed?</strong> Contact us — we may still be able to help!</p>
+    </div>
+
+    <datalist id="resorts">
+      <option value="Anfi Del Mar">
+      <option value="Sunset Bay Club">
+      <option value="Club La Costa (CLC)">
+      <option value="Marriott Marbella Beach Resort">
+      <option value="Santa Barbara Golf & Ocean Club">
+    </datalist>
+  </main>
+
+  <!-- Resort checker logic -->
+  <script>
+    const eligibleResorts = [
+      "Anfi Del Mar",
+      "Club La Costa (CLC)",
+      "Los Amigos Beach Club",
+      "Royal Oasis Club at Pueblo Quinta",
+      "Sahara Sunset Club",
+      "Santa Barbara Golf & Ocean Club",
+      "Sunset Bay Club",
+      "Sunset Harbour Club",
+      "Sunset View Club",
+      "Royal Tenerife Country Club",
+      "Marriott Playa Andaluza",
+      "Marriott Marbella Beach Resort",
+      "Club Son Antem (Marriott)",
+      "Club Cala Blanca (CLC)",
+      "Club del Carmen (CLC)",
+      "Jardines del Sol (CLC)"
+    ];
+
+    document.getElementById("resort-check-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const input = document.getElementById("resort").value.trim().toLowerCase();
+      const resultEl = document.getElementById("resort-result");
+      const match = eligibleResorts.find(r => r.toLowerCase().includes(input));
+
+      if (match) {
+        resultEl.innerHTML = `✅ Good news! "<strong>${match}</strong>" is eligible for our DIY Exit Kit.<br>
+          <a href="/download-kit.html" class="mt-4 inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">👉 Buy the Exit Kit Now</a>`;
+        resultEl.classList.remove("hidden");
+        resultEl.classList.add("text-green-600");
+      } else {
+        resultEl.textContent = `❌ Sorry, we couldn’t confirm your resort. Please contact us to check manually.`;
+        resultEl.classList.remove("hidden");
+        resultEl.classList.add("text-red-600");
+      }
+    });
+  </script>
 </body>
 </html>
