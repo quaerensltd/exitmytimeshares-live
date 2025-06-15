@@ -6,70 +6,900 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit ($229|£169|€199)</title>
 
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+        content="Stuck in a timeshare? Our lawyer-vetted, Do-It-Yourself Exit Kit ($229|£169|€199) gives you step-by-step templates to cancel your contract—no lawyers required. 3–6 week turnaround, money-back guarantee." />
+  <meta name="keywords"
+        content="timeshare exit, cancel timeshare, DIY timeshare, timeshare cancellation kit, timeshare cancellation letters, club la costa, hilton resorts, dimaond resorts, dri, anfi, wyndham, marriot, diamond  " />
+
+  <!-- Structured Data for Google (Product & Offer) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Do-It-Yourself Timeshare Exit Kit",
+    "image": "https://www.exitmytimeshares.com/images/kit-preview.jpg",
+    "description": "Lawyer-vetted cancellation letters & guide for €169, 3–6 week process, money-back guarantee.",
+    "brand": {
+      "@type": "Organization",
+      "name": "Quaerens Ltd"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.exitmytimeshares.com/download-kit.html",
+      "priceCurrency": "EUR",
+      "price": "169.00",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+</head>
+
+  <!-- 1) Reset to English BEFORE anything else -->
+  <script>
+    document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
+  </script>
+
+  <!-- 2) Language setter + IP auto-detect -->
+  <script>
+    function setLanguage(langPair) {
+      /* … your setLanguage code … */
+    }
+    /* ↓ Comment out everything from here... */
+    (function(){
+      if (!document.cookie.includes('googtrans=')) {
+        fetch('https://ipapi.co/json/')
+          .then(r=>r.json())
+          .then(d=>{
+            const m={FR:'fr',ES:'es',DE:'de',IT:'it',NL:'nl',SE:'sv',GR:'el'};
+            const lg=m[d.country_code]||'en';
+            document.cookie=`googtrans=/en/${lg};domain=.exitmytimeshares.com;path=/`;
+            location.reload();
+          })
+          .catch(console.error);
+      }
+    })();
+  </script>
+    <p class="text-xs text-gray-500 text-center mt-2">
+        We only use your country to set language—no personal data is stored.
+      </p>
+
+  <!-- 3) Hide Google’s banner & logo but keep the combo -->
   <style>
-    .goog-te-banner-frame.skiptranslate, 
-    .goog-te-gadget-icon, 
-    .goog-te-balloon-frame, 
-    .goog-logo-link, 
-    .goog-te-gadget-simple,
-    #goog-gt-tt, 
-    .goog-te-menu-value, 
-    .goog-te-menu-frame.skiptranslate {
+    .goog-te-banner-frame.skiptranslate,
+    body > .skiptranslate,
+    .goog-logo-link,
+    .goog-te-gadget-icon {
       display: none !important;
     }
-    body {
-      top: 0 !important;
+    .goog-te-gadget {
+      visibility: hidden !important;
     }
   </style>
 
-  <!-- Google Translate -->
-  <div id="google_translate_element" style="display:none;"></div>
-  <script type="text/javascript">
+  <!-- Your existing fonts & Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- Your page CSS overrides -->
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      position: static !important;
+      padding-bottom: 8rem; /* ← ensure the footer is always reachable */
+    }
+    html { margin-top: 0 !important; }
+
+    /* Lift WhatsApp chat prompt above the footer */
+    .fixed.bottom-4.right-4 {
+      bottom: 8rem !important;
+      z-index: 70 !important;
+    }
+
+    /* Make sticky footer sit on top */
+    .sticky-footer {
+      z-index: 65; 
+    }
+
+    /* HIDE the Google Translate top banner */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-gadget-icon,
+    .goog-logo-link,
+    .goog-te-gadget,
+    body > .skiptranslate {
+      display: none !important;
+    }
+    .goog-te-gadget { font-size: 0 !important; }
+    form label { display: block; margin-top: 1rem; font-weight: 600; }
+    form input,
+    form select {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+  
+<!-- 2) Language setter + IP auto-detect -->
+<script>
+    // Manual dropdown → set cookie & reload
+    function setLanguage(langPair) {
+      if (!langPair) return;
+      const [, to] = langPair.split('|');
+      const cookieValue = `/en/${to}`;
+      document.cookie = `googtrans=${cookieValue};domain=.exitmytimeshares.com;path=/`;
+      // reload so Google sees the new cookie
+      location.reload();
+    }
+  
+    // On first visit, auto-detect via IP and set cookie
+    (function(){
+      if (!document.cookie.includes("googtrans=")) {
+        fetch("https://ipapi.co/json/")
+          .then(res => res.json())
+          .then(data => {
+            const map = { FR: "fr", ES: "es", DE: "de", IT: "it", NL: "nl", SE: "sv", GR: "el" };
+            const lang = map[data.country_code] || "en";
+            const cookieValue = `/en/${lang}`;
+            document.cookie = `googtrans=${cookieValue};domain=.exitmytimeshares.com;path=/`;
+            location.reload();
+          })
+          .catch(err => console.error("IP geolocation failed:", err));
+      }
+    })();
+  </script>
+
+  <!-- jsPDF (if needed elsewhere) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- 4) Google Translate engine init (in the head) -->
+  <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,es,de,nl,fr,it,pt,sv,da,no,fi,el',
+        includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
         autoDisplay: false
       }, 'google_translate_element');
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 </head>
-<body>
-  <main class="max-w-4xl mx-auto p-4">
-    <!-- CTA -->
-    <div class="text-center mb-6">
-      <a href="/download-kit.html" class="block w-full text-center bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold text-lg py-4 px-6 rounded-xl shadow-md transition duration-300">
-        ✅ Get the Do-It-Yourself Exit Kit – Only $229 / £169 / €199
-      </a>
-      <p class="mt-2 text-sm text-gray-600">Instant access after purchase • Includes templates & guide</p>
+
+<body class="bg-gray-50 text-gray-800">
+    <!-- 5) Invisible Google translate engine target -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- 6) Header + Language dropdown -->
+    <header class="bg-white shadow">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/"><img src="images/quaerens-logo.png" alt="Logo" class="h-20"></a>
+        <div x-data="{ open: false }" class="relative">
+          <button @click="open = !open"
+                  class="inline-flex items-center px-4 py-2 border rounded bg-white hover:bg-gray-100">
+            🌐 Language
+            <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 8l5 5 5-5" />
+            </svg>
+          </button>
+          <div x-show="open" @click.outside="open = false"
+               class="absolute right-0 mt-2 w-48 bg-white rounded shadow z-50">
+            <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
+            <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
+            <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
+            <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+            <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+            <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+            <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+            <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <!-- 3) Google Translate API init -->
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </body>
+  </html>  
+
+<!-- Hero Section -->
+<section class="relative w-full overflow-hidden">
+  <img src="images/hero-exit.jpg" alt="Exit your timeshare roday!"
+       class="w-full h-auto object-cover object-center" loading="eager" fetchpriority="high" />
+</section>
+
+    <!-- News Testimonials Section -->
+    <div class="w-full max-w-7xl mx-auto px-4 py-8">
+        <div class="bg-white border rounded-xl p-6 shadow-md">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+            <!-- News Item 1 -->
+            <div>
+              <img src="/images/logo-arda.png" alt="ARDA" class="mx-auto h-10 mb-2">
+              <p class="text-sm text-gray-700">“There’s no need to deal with exit companies, because there are safe ways to exit a timeshare.”</p>
+            </div>
+            <!-- News Item 2 -->
+            <div>
+              <img src="/images/logo-foxnews.png" alt="Fox News" class="mx-auto h-10 mb-2">
+              <p class="text-sm text-gray-700">“Timeshares do not appreciate in value… selling may mean losing money.”</p>
+            </div>
+            <!-- News Item 3 -->
+            <div>
+              <img src="/images/quaerens-logo.png" alt="EU Consumer Watch" class="mx-auto h-10 mb-2">
+              <p class="text-sm text-gray-700">“Timeshare Exit Made Simple — Do It Yourself Kit, No Lawyers, No Surprises!”</p>
+            </div> 
+          </div>
+        </div>
+      </div>
+
+<!-- Claim Calculator -->
+<section id="calculator" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+  
+      <!-- Left: ExitMyTimeshares Do-It-Yourself Kit Promo -->
+      <div class="bg-blue-50 rounded-xl p-6 shadow-md h-full" data-aos="fade-up">
+        <h2 class="text-xl font-bold mb-4 text-blue-800">Escape Your Timeshare — Without the Legal Fees</h2>
+        <p class="text-gray-700 mb-3">
+          Stuck in a timeshare you no longer want? Our <strong>Do-It-Yourself Exit Kit</strong> gives you everything you need to take back control — without paying thousands to lawyers or risky exit companies.
+        </p>
+        <p class="text-gray-600">
+          Created by legal experts, this kit includes the same professional letters and guidance we use for real claims — ready for you to download and use today.
+        </p>
+        <hr class="my-4">
+        <h3 class="text-xl font-bold text-blue-800 mb-2">What’s Inside the Kit?</h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>Ready-to-use legal letters to cancel your timeshare.</li>
+          <li>Step-by-step instructions in your own language.</li>
+          <li>Covers contracts from United States, Spain, Portugal, and across the EU.</li>
+          <li>No pressure: you can upgrade later for expert help if needed.</li>
+          <li>One-time purchase. No hidden fees. Instant access.</li>
+        </ul>
+      </div>
+  
+    <!-- Right: Resort Eligibility Checker -->
+    <div class="bg-white rounded-xl p-6 shadow-md h-full" data-aos="fade-up">
+        <div class="bg-yellow-300 text-blue-900 px-4 py-4 rounded-t-xl text-center border-b-2 border-yellow-500">
+          <h2 class="text-2xl font-bold">Check If Your Resort Is Eligible</h2>
+          <p class="text-base mt-1">
+            Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
+          </p>
+        </div>
+        <form id="resort-check-form" class="mt-6 space-y-4">
+          <label for="resort" class="block font-semibold">Resort Name</label>
+          <input list="resorts" id="resort" name="resort"
+                 placeholder="e.g. Sunset Bay Club, Anfi Del Mar..."
+                 class="w-full border border-gray-300 p-3 rounded text-base" required />
+          <button type="submit"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition">
+            Check Eligibility
+          </button>
+        </form>
+        <div id="resort-result" class="mt-4 text-center text-lg font-semibold hidden"></div>
+        <a href="/download-kit.html" id="kit-button"
+           class="mt-6 block w-full text-center bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 hidden">
+          Get the Do-It-Yourself Exit Kit →
+        </a>
+          
+      <!-- Tip + Fallback Message -->
+      <p class="mt-6 text-sm text-gray-700 text-center">
+        <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
+        💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
+      </p>
+          
+      <!-- Bottom CTA -->
+      <div class="mt-6 text-center">
+        <a href="/download-kit.html"
+           class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+          Buy your Do-It-Yourself Kit today for only $229 | £169 | €199
+        </a>
+      </div>
+    </div>
+  </div>      
+  
+        <!-- Resort List -->
+        <datalist id="resorts">
+          <option value="Anfi Del Mar">
+          <option value="Club La Costa (CLC)">
+          <option value="Los Amigos Beach Club">
+          <option value="Royal Oasis Club at Pueblo Quinta">
+          <option value="Sahara Sunset Club">
+          <option value="Santa Barbara Golf & Ocean Club">
+          <option value="Sunset Bay Club">
+          <option value="Sunset Harbour Club">
+          <option value="Sunset View Club">
+          <option value="Royal Tenerife Country Club">
+          <option value="Marriott Playa Andaluza">
+          <option value="Marriott Marbella Beach Resort">
+          <option value="Club Son Antem (Marriott)">
+          <option value="Club Cala Blanca (CLC)">
+          <option value="Club del Carmen (CLC)">
+          <option value="Jardines del Sol (CLC)">
+          <option value="Village d’Île‑de‑France (Marriott)">
+          <option value="Le Club Mougins (Diamond)">
+          <option value="Royal Regency Paris Vincennes (Diamond)">
+          <option value="Borgo alle Vigne (Hilton)">
+          <option value="Palazzo Catalani (Diamond)">
+          <option value="Vilar do Golf (Diamond)">
+          <option value="Alpine Club (Diamond)">
+          <option value="Craigendarroch (Hilton)">
+          <option value="Cromer Country Club (Diamond)">
+          <option value="Pine Lake Resort (Diamond)">
+          <option value="The Kenmore Club (Diamond)">
+          <option value="Thurnham Hall (Diamond)">
+          <option value="Woodford Bridge Country Club (Diamond)">
+          <option value="Wychnor Park Country Club (Diamond)">
+          <option value="Cibola Vista Resort & Spa (Bluegreen)">
+          <option value="Bell Rock Inn (Diamond)">
+          <option value="Kohls Ranch Lodge (Diamond)">
+          <option value="Los Abrigados Resort & Spa (Diamond)">
+          <option value="PVC at The Roundhouse (Diamond)">
+          <option value="Streamside at Vail (Bluegreen)">
+          <option value="The Historic Crags Lodge (Diamond)">
+          <option value="Lake Cumberland Resort (Bluegreen)">
+          <option value="Scenic Hills RV Resort (Bluegreen)">
+          <option value="Paradise Point (Bluegreen)">
+          <option value="Wilderness Club at Big Cedar (Bluegreen)">
+          <option value="Villas de Santa Fe (Diamond)">
+          <option value="Beachwoods Resort (Diamond)">
+          <option value="Sunrise Ridge Resort (Diamond)">
+          <option value="Laurel Crest (Bluegreen)">
+          <option value="Mountain Loft (Bluegreen)">
+          <option value="Shenandoah Crossing (Bluegreen)">
+          <option value="Patrick Henry Square (Bluegreen)">
+          <option value="Parkside Williamsburg Resort (Bluegreen)">
+          <option value="Elian Hotel & Spa (Bluegreen)">
+        </datalist>
+      </div>
     </div>
 
-    <!-- Resort Checker -->
-    <div class="bg-yellow-50 p-6 rounded-xl shadow">
-      <h2 class="text-2xl font-bold text-blue-900 text-center mb-2">Check If Your Resort Is Eligible</h2>
-      <p class="text-center mb-4">Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.</p>
-      <form id="resort-check-form" class="space-y-4">
-        <label for="resort" class="block font-semibold">Resort Name</label>
-        <input list="resorts" id="resort" name="resort" placeholder="e.g. Sunset Bay Club, Anfi Del Mar..." class="w-full border border-gray-300 p-3 rounded text-base" required />
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition">Check Eligibility</button>
-      </form>
-      <div id="resort-result" class="mt-4 text-center text-lg font-semibold hidden"></div>
-      <p class="mt-4 text-sm text-gray-700 text-center"><strong>Not listed?</strong> Contact us — we may still be able to help!</p>
+<!-- Spacer to separate sections -->
+<div class="w-full h-10"></div>
+
+<!-- How It Works Section -->
+<section id="how-it-works" class="py-16 bg-gradient-to-b from-blue-50 to-white w-full">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold text-center text-blue-800 mb-12">How It Works</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+
+      <!-- Step 1 -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-300 hover:shadow-xl transition-all duration-300">
+        <div class="text-5xl font-extrabold text-blue-700 mb-4">1</div>
+        <h3 class="font-bold text-lg mb-2 text-gray-800">Check Resort Policy</h3>
+        <p class="text-base text-gray-600">Few resorts offer free exits if your loan is paid and fees are current. Always check first.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-yellow-400 hover:shadow-xl transition-all duration-300">
+        <div class="text-5xl font-extrabold text-yellow-500 mb-4">2</div>
+        <h3 class="font-bold text-lg mb-2 text-gray-800">Buy the DIY Kit</h3>
+        <p class="text-base text-gray-600">Instant access for just $229 | £169 | €199 This includes legal letters and step-by-step guidance.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-green-400 hover:shadow-xl transition-all duration-300">
+        <div class="text-5xl font-extrabold text-green-500 mb-4">3</div>
+        <h3 class="font-bold text-lg mb-2 text-gray-800">Send Your Letter</h3>
+        <p class="text-base text-gray-600">Use our pre written legal template to cancel your timeshare with confidence.</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-purple-400 hover:shadow-xl transition-all duration-300">
+        <div class="text-5xl font-extrabold text-purple-500 mb-4">4</div>
+        <h3 class="font-bold text-lg mb-2 text-gray-800">Exit Complete</h3>
+        <p class="text-base text-gray-600">Most clients receive written confirmation within a few weeks, stress-free and final.</p>
+      </div>
+
     </div>
+  </div>
+</section>
 
-    <datalist id="resorts">
-      <option value="Anfi Del Mar">
-      <option value="Sunset Bay Club">
-      <option value="Club La Costa (CLC)">
-      <option value="Marriott Marbella Beach Resort">
-      <option value="Santa Barbara Golf & Ocean Club">
-    </datalist>
-  </main>
+</section>   <!-- ← end of How It Works -->
 
-  <!-- Resort checker logic -->
-  <script>
+</section>
+<!-- Quick Highlights above -->
+
+<!-- ========== Credibility & Security ========== -->
+<section class="py-12 bg-white">
+  <div class="max-w-6xl mx-auto px-4 text-center space-y-6">
+    <!-- Trusted By Logos -->
+    <div class="flex flex-wrap justify-center items-center gap-8">
+      <img src="/images/logo-arda.png" alt="ARDA" class="h-12" />
+      <img src="/images/logo-eu-consumer-watch.png" alt="EU Consumer Watch" class="h-12" />
+      <img src="/images/logo-foxnews.png" alt="Fox News" class="h-12" />
+    </div>
+    <!-- Payment Security -->
+    <div class="flex justify-center items-center gap-4">
+      <span class="text-xl">🔒</span>
+      <p class="text-gray-700 max-w-xl">
+        Pay securely by Visa or Mastercard—your purchase is protected by your card provider’s fraud guarantee.
+      </p>
+    </div>
+    <!-- Industry Reminder -->
+    <p class="text-gray-600 italic max-w-2xl mx-auto">
+      “There’s no need for expensive exit companies—experts estimate 70% of timeshare owners can cancel on their own with the right letter.”<br/>
+      — Association of Resort Development Agents (ARDA)
+    </p>
+  </div>
+</section>
+<!-- Continue with next section… -->
+
+<!-- FAQ: answer common concerns in plain English -->
+<section id="faq" class="py-12 bg-blue-50">
+    <div class="max-w-4xl mx-auto px-4 border border-gray-200 rounded-xl p-6 shadow-lg bg-blue-100">
+      <h3 class="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h3>
+  
+      <div class="space-y-6">
+        <!-- Q1 -->
+        <div class="border border-gray-200 rounded-lg p-6 bg-white">
+          <div class="flex items-start gap-4">
+            <div class="text-3xl">❓</div>
+            <div>
+              <p class="font-semibold text-gray-800 mb-2">What if my resort refuses to cancel?</p>
+              <p class="text-gray-600">
+                Our kit includes follow-up letters and escalation tips. If you still need help, you can upgrade to our full-service option with no win, no fee.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Q2 -->
+        <div class="border border-gray-200 rounded-lg p-6 bg-white">
+          <div class="flex items-start gap-4">
+            <div class="text-3xl">💰</div>
+            <div>
+              <p class="font-semibold text-gray-800 mb-2">Can I get a refund if it fails?</p>
+              <p class="text-gray-600">
+                Absolutely—our no-questions-asked refund guarantee means you get every cent back if you don’t exit your timeshare.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Q3 -->
+        <div class="border border-gray-200 rounded-lg p-6 bg-white">
+          <div class="flex items-start gap-4">
+            <div class="text-3xl">⏱️</div>
+            <div>
+              <p class="font-semibold text-gray-800 mb-2">How long does it take?</p>
+              <p class="text-gray-600">
+                Most clients complete the entire process in <strong>3–6 weeks</strong> from the day you send your letter—no lengthy back-and-forth.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Q4 -->
+        <div class="border border-gray-200 rounded-lg p-6 bg-white">
+          <div class="flex items-start gap-4">
+            <div class="text-3xl">💳</div>
+            <div>
+              <p class="font-semibold text-gray-800 mb-2">Is my payment safe?</p>
+              <p class="text-gray-600">
+                Yes—checkout is processed via Visa or Mastercard with 3D Secure, so your purchase is fully protected by your card issuer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+
+</section>
+
+<!-- ▶ Real Success Stories -->
+<section class="py-12 bg-gray-50">
+  <div class="max-w-4xl mx-auto space-y-6">
+    <h3 class="text-2xl font-bold text-center">What Our Customers Say</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <blockquote class="bg-white p-6 rounded-lg shadow">
+        “I exited my timeshare in just 4 weeks using their kit—no lawyers required.”
+        <footer class="mt-4 font-semibold">— Maria L. (Spain)</footer>
+      </blockquote>
+      <blockquote class="bg-white p-6 rounded-lg shadow">
+        “Saved over 2,500 compared to hiring a solicitor. Highly recommend!”
+        <footer class="mt-4 font-semibold">— John B. (UK)</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+   
+<!-- Quick Highlights -->
+<section class="py-12 bg-blue-50">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-8 text-center">
+      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+        <div class="text-5xl mb-2">⚖️</div>
+        <h4 class="font-semibold mb-1">Legal-Grade Templates</h4>
+        <p class="text-gray-600">Lawyer-vetted letters—just fill in and send.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+        <div class="text-5xl mb-2">💸</div>
+        <h4 class="font-semibold mb-1">Save Thousands</h4>
+        <p class="text-gray-600">One-time kit vs. €2,000+ in legal fees.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+        <div class="text-5xl mb-2">⏱️</div>
+        <h4 class="font-semibold mb-1">Fast & Easy</h4>
+        <p class="text-gray-600">Exit in a few weeks—no back-and-forth.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+        <div class="text-5xl mb-2">📋</div>
+        <h4 class="font-semibold mb-1">Step-by-Step Guide</h4>
+        <p class="text-gray-600">Plain-English instructions for every stage.</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+        <div class="text-5xl mb-2">🤝</div>
+        <h4 class="font-semibold mb-1">Senior-Friendly Support</h4>
+        <p class="text-gray-600">Hands-on help for those less tech-savvy.</p>
+      </div>
+    </div>
+  </section>  
+
+  <!-- Credibility & Protection Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto space-y-12">
+  
+      <!-- Secure Checkout -->
+      <div class="bg-white p-6 rounded-2xl shadow-md text-center">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Secure Checkout</h3>
+        <p class="text-gray-600 mb-6">Pay with Visa or Mastercard and enjoy full purchase protection on your card.</p>
+        <div class="flex justify-center items-center gap-8">
+          <img src="/images/badge-visa.png" alt="Visa accepted" class="h-10"/>
+          <img src="/images/badge-mastercard.png" alt="Mastercard accepted" class="h-10"/>
+          <img src="/images/badge-secure.png" alt="Secure checkout" class="h-10"/>
+        </div>
+      </div>
+  
+      <!-- Helpful Tips & Warnings -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
+          <div class="text-4xl mb-2">📢</div>
+          <h4 class="font-semibold text-lg mb-2">ARDA Advice</h4>
+          <p class="text-gray-600">You don’t need to pay expensive exit firms—our kit gives you everything you need to do it yourself.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
+          <div class="text-4xl mb-2">📜</div>
+          <h4 class="font-semibold text-lg mb-2">Your Rights in Europe</h4>
+          <p class="text-gray-600">Under EU law, you can cancel unfair or unclear contracts—even after the initial cooling-off period.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
+          <div class="text-4xl mb-2">🛡️</div>
+          <h4 class="font-semibold text-lg mb-2">Stay Safe</h4>
+          <p class="text-gray-600">Always get cancellation promises in writing and never send money to unverified companies.</p>
+        </div>
+      </div>
+  
+    </div>
+  </section>  
+
+      <!-- Hero Banner Section with Happy Travelers -->
+      <section class="w-full mt-8">
+        <img src="images/hero-exit2.jpg"
+             alt="Happy timeshare exits"
+             class="w-full h-auto object-cover object-center max-h-[600px]"
+             loading="eager" />
+      </section>
+    </section>  
+
+<!-- Legal Explanation with Background -->
+<section class="py-16 bg-cover bg-center bg-no-repeat" style="background-image: url('images/airport-background-night.jpg');">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+  
+<!-- Box 1: Why Not Use a Lawyer -->
+<div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-red-300 transition-transform duration-300 hover:-translate-y-1">
+    <h3 class="text-lg font-bold text-red-700 mb-4 text-center">USING A LAWYER</h3>
+    <ul class="text-gray-800 text-sm space-y-3">
+      <li class="flex items-start gap-2"><span class="text-red-500">✖</span><span>Legal fees often exceed 2,000 or more</span></li>
+      <li class="flex items-start gap-2"><span class="text-red-500">✖</span><span>Complex legal process with no guaranteed result</span></li>
+      <li class="flex items-start gap-2"><span class="text-red-500">✖</span><span>Delays of 6–18 months are common</span></li>
+      <li class="flex items-start gap-2"><span class="text-red-500">✖</span><span>Many firms offer no refund if they fail</span></li>
+    </ul>
+  </div>  
+  
+<!-- Box 2: Buy Our Do-It-Yourself Kit (Recommended) -->
+<div class="bg-white bg-opacity-95 backdrop-blur-sm rounded-xl shadow-xl p-6 border-4 border-blue-600 transition-transform duration-300 hover:-translate-y-1">
+    <h3 class="text-lg font-bold text-blue-700 mb-4 text-center">BUY OUR DO-IT-YOURSELF KIT</h3>
+    <ul class="text-gray-800 text-sm space-y-3">
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Legally approved cancellation letters</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Step-by-step instructions in plain English</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Instant digital download — no delays</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Works for eligible resorts in the US, Spain & EU</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Optional expert help if needed</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Used successfully by thousands of owners</span></li>
+    </ul>
+  </div>
+  
+<!-- Box 3: We Request Full-Service Help -->
+<div class="bg-white bg-opacity-90 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-green-300 transition-transform duration-300 hover:-translate-y-1">
+    <h3 class="text-lg font-bold text-blue-700 mb-4 text-center">WE REQUEST FULL-SERVICE HELP</h3>
+    <ul class="text-gray-800 text-sm space-y-3">
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>We request cancellation on your behalf</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>No need to draft letters — we do it all</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>We deal directly with the resort</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Updates provided every step of the way</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>No win, no fee — only pay if successful</span></li>
+      <li class="flex items-start gap-2"><span class="text-green-600">✔</span><span>Ideal for complex or high-value cases</span></li>
+    </ul>
+  </div>  
+  
+    </div>
+  </section>  
+
+  <!-- Mini success story for social proof -->
+  <div class="max-w-4xl mx-auto px-4 mt-6">
+    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg shadow-sm">
+      <p class="italic text-gray-800">
+        “An exit company tried to charge me over 3,000 in fees, so I bought the Do-It-Yourself Kit instead, saved myself so much money, and exitmytimeshares.com made it so easy. It was all done in just 3 weeks!”
+      </p>
+      <p class="mt-2 font-semibold text-gray-700">— Mary S., United Kingdom</p>
+    </div>
+  </div>
+    
+      <section class="bg-white pt-6 px-4 sm:px-6 lg:px-8">
+
+      <!-- BOX 1: KNOW YOUR RIGHTS -->
+      <div class="max-w-3xl mx-auto px-4">
+        <div class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6" data-aos="fade-up" data-aos-delay="200">
+            <!-- Add this heading -->
+            <h3 class="text-xl font-bold text-blue-700 mb-4">Know Your Rights!</h3>
+            <!-- Intro paragraph (keep this) -->
+            <p class="text-gray-700 text-sm sm:text-base mb-4">
+              Many timeshare owners have the legal right to cancel their contract — especially in the EU and parts of the US. Even if the cooling-off period has passed, you may still be able to exit based on unfair terms, lack of transparency, or misrepresentation.
+            </p>
+            <!-- Simplified bullet points with links -->
+            <ul class="list-disc list-inside text-gray-800 space-y-3 mb-4">
+              <li><strong>EU Timeshare Directive:</strong> Right to cancel within 14 days of purchase.</li>
+              <li><strong>Spanish Law:</strong> Contracts signed without clear info may be void.</li>
+              <li><strong>US & UK:</strong> Many resorts accept voluntary surrenders—no lawyer needed.</li>
+            </ul>
+            <p class="text-gray-600 italic">Our templates include exact clauses you need—no guesswork.</p>
+        </div>
+      </div>
+
+<!-- BOX 2: WHAT’S IN THE DO-IT-YOURSELF KIT -->
+<div class="max-w-3xl mx-auto px-4">
+    <div x-data="{ open: true }"
+         class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6"
+         data-aos="fade-up"
+         data-aos-delay="300">
+  
+      <!-- flex container: column on mobile, row from md up -->
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mb-4">
+        <!-- Kit preview image -->
+        <img src="/images/kit-preview.jpg"
+             alt="Preview of the Do-It-Yourself Kit"
+             class="w-[150px] h-[150px] object-contain rounded-md flex-shrink-0" />
+  
+        <!-- heading + toggle -->
+        <button @click="open = !open"
+                class="flex-1 text-left font-bold text-blue-700
+                       text-xl sm:text-2xl md:text-3xl
+                       flex items-center justify-between focus:outline-none">
+          <span>WHAT’S IN THE DO-IT-YOURSELF KIT?</span>
+          <svg xmlns="http://www.w3.org/2000/svg"
+               :class="open ? 'rotate-180' : ''"
+               class="h-6 w-6 text-blue-700 transition-transform duration-300"
+               viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
+                  clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+  
+      <!-- collapsible content -->
+      <div x-show="open" x-transition
+           class="mt-2 space-y-3 text-gray-700 text-sm sm:text-base">
+        <div class="flex items-start gap-2">
+          <span class="text-green-600 mt-1">✔</span>
+          <p>Pre-drafted legal letters to cancel your timeshare, used by real lawyers.</p>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-green-600 mt-1">✔</span>
+          <p>Step-by-step instructions in your own language, easy to follow, even for beginners.</p>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-green-600 mt-1">✔</span>
+          <p>Covers contracts in the EU, UK, USA, and beyond, including Spain, Portugal, and Florida.</p>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-green-600 mt-1">✔</span>
+          <p>Templates for both voluntary exit requests and legal revocation notices.</p>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-green-600 mt-1">✔</span>
+          <p>Optional bonus: sample reply letters if your resort tries to resist your exit.</p>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-green-600 mt-1">✔</span>
+          <p>No subscription. No hidden fees. One-time purchase, instant download.</p>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+<!-- TRUST ELEMENTS SECTION -->
+<section class="bg-white py-12">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+  
+      <!-- Verified Badge -->
+      <div class="flex flex-col items-center" data-aos="fade-up">
+        <img src="/images/verified-quaerens-badge.png" alt="Verified by Quaerens Ltd" class="w-[150px] h-auto mb-4">
+        <p class="text-sm text-gray-600">✅ Verified by Quaerens Ltd</p>
+      </div>
+  
+      <!-- Refund Guarantee -->
+      <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+        <img src="/images/shield-refund.png" alt="Refund Guarantee" class="w-[100px] h-auto mb-4">
+        <p class="text-sm text-gray-600">🛡️ Full refund if the kit is not effective, no questions asked!</p>
+      </div>
+  
+      <!-- Email Contact -->
+      <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+        <a href="mailto:info@quaerens.co.uk">
+          <img src="/images/contact-email-badge.png" alt="Email Support" class="w-[140px] h-auto mb-2">
+        </a>
+        <p class="text-sm text-gray-600">Email us any time</p>
+      </div>
+  
+      <!-- WhatsApp Contact -->
+      <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+        <a href="https://wa.me/447578600296" target="_blank">
+          <img src="/images/contact-whatsapp-badge.png" alt="WhatsApp Support" class="w-[140px] h-auto mb-2">
+        </a>
+        <p class="text-sm text-gray-600">Chat with us on WhatsApp</p>
+      </div>
+  
+    </div>
+  </section>  
+
+<!-- Testimonials -->
+<section class="relative py-20 bg-gradient-to-br from-yellow-50 via-white to-blue-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-extrabold text-center text-blue-900 mb-12 tracking-tight">What Our Clients Say</h2>
+  
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+  
+        <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:-translate-y-1 hover:shadow-lg transition duration-300" data-aos="fade-up">
+          <p class="italic text-gray-700">“I exited my timeshare in just 3 weeks using their kit. Amazing.”</p>
+          <p class="font-semibold mt-4 text-blue-800 flex items-center gap-2">
+            <img src="https://flagcdn.com/w40/gb.png" class="w-5 h-5 rounded-full" alt="UK Flag"> James B. (UK)
+          </p>
+        </div>
+  
+        <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:-translate-y-1 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="100">
+          <p class="italic text-gray-700">“No pressure, no lawyers. Just downloaded the documents and sent them.”</p>
+          <p class="font-semibold mt-4 text-blue-800 flex items-center gap-2">
+            <img src="https://flagcdn.com/w40/de.png" class="w-5 h-5 rounded-full" alt="Germany Flag"> Anna K. (Germany)
+          </p>
+        </div>
+  
+        <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:-translate-y-1 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <p class="italic text-gray-700">“Saved over €3,000 by doing it myself instead of hiring a firm.”</p>
+          <p class="font-semibold mt-4 text-blue-800 flex items-center gap-2">
+            <img src="https://flagcdn.com/w40/nl.png" class="w-5 h-5 rounded-full" alt="Netherlands Flag"> Willem J. (Netherlands)
+          </p>
+        </div>
+  
+        <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:-translate-y-1 hover:shadow-lg transition duration-300" data-aos="fade-up">
+          <p class="italic text-gray-700">“Clear steps, legally written letters — and they worked first try.”</p>
+          <p class="font-semibold mt-4 text-blue-800 flex items-center gap-2">
+            <img src="https://flagcdn.com/w40/fr.png" class="w-5 h-5 rounded-full" alt="France Flag"> Sophie M. (France)
+          </p>
+        </div>
+  
+        <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:-translate-y-1 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="100">
+          <p class="italic text-gray-700">“I was skeptical, but this is legit. No hidden fees, just good help.”</p>
+          <p class="font-semibold mt-4 text-blue-800 flex items-center gap-2">
+            <img src="https://flagcdn.com/w40/us.png" class="w-5 h-5 rounded-full" alt="USA Flag"> David T. (USA)
+          </p>
+        </div>
+  
+        <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:-translate-y-1 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <p class="italic text-gray-700">“Tried 3 companies before. This kit is what finally worked.”</p>
+          <p class="font-semibold mt-4 text-blue-800 flex items-center gap-2">
+            <img src="https://flagcdn.com/w40/gr.png" class="w-5 h-5 rounded-full" alt="Greece Flag"> Eleni S. (Greece)
+          </p>
+        </div>
+  
+        <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:-translate-y-1 hover:shadow-lg transition duration-300" data-aos="fade-up">
+          <p class="italic text-gray-700">“So simple I could do it myself. No need to talk to anyone.”</p>
+          <p class="font-semibold mt-4 text-blue-800 flex items-center gap-2">
+            <img src="https://flagcdn.com/w40/us.png" class="w-5 h-5 rounded-full" alt="USA Flag"> Mike R. (USA)
+          </p>
+        </div>
+  
+        <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:-translate-y-1 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="100">
+          <p class="italic text-gray-700">“Highly recommend this to anyone stuck in a timeshare mess.”</p>
+          <p class="font-semibold mt-4 text-blue-800 flex items-center gap-2">
+            <img src="https://flagcdn.com/w40/es.png" class="w-5 h-5 rounded-full" alt="Spain Flag"> Fatima D. (Spain)
+          </p>
+        </div>
+  
+        <div class="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:-translate-y-1 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <p class="italic text-gray-700">“Took me 30 minutes total. I emailed the letter, got confirmation a week later.”</p>
+          <p class="font-semibold mt-4 text-blue-800 flex items-center gap-2">
+            <img src="https://flagcdn.com/w40/gb.png" class="w-5 h-5 rounded-full" alt="UK Flag"> Thomas V. (UK)
+          </p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  
+
+<!-- Image Grid Section -->
+<section class="bg-gray-50 py-12">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4 text-center">
+  
+      <!-- Image 1: Cancelled Contract -->
+      <div data-aos="zoom-in">
+        <img src="images/cancelled-contract.jpg" class="rounded-xl shadow-md mb-3" alt="Cancelled Timeshare Contract" />
+        <p class="text-sm text-gray-600">Official contract termination — no more annual fees</p>
+      </div>
+  
+      <!-- Image 2: Only $229 | £169 | €199 -->
+      <div data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/only-169-euro.jpg" class="rounded-xl shadow-md mb-3" alt="Affordable Exit Kit" />
+        <p class="text-sm text-gray-600">Buy your Do-It-Yourself Exit Kit today — just €169</p>
+      </div>
+  
+      <!-- Image 3: Relief / Happy Client -->
+      <div data-aos="zoom-in" data-aos-delay="200">
+        <img src="images/relief-happy.jpg" class="rounded-xl shadow-md mb-3" alt="Relieved Client" />
+        <p class="text-sm text-gray-600">Feel the relief of finally being free from your timeshare</p>
+      </div>
+  
+    </div>
+  </section>
+  
+  <div class="text-center space-y-4">
+    <a href="/download-kit.html"
+       class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+      Buy your Do-It-Yourself Kit today for only $229 | £169 | €199
+    </a>
+    <!-- ☆ Payment Security Badge -->
+    <p class="mt-2 text-sm text-gray-600 flex items-center justify-center space-x-2">
+      <img src="/images/visa-mastercard-badge.png" alt="Visa & Mastercard" class="h-5" />
+      <span>Paid via Visa/Mastercard — 3D Secure protected</span>
+    </p>
+  
+    <a href="/full-service.html"
+       class="relative inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+      Let ExitMyTimeshares.com do all the work
+      <!-- Guarantee Ribbon -->
+      <span class="absolute -top-2 -right-4 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded transform rotate-12">
+        100% Refund Guarantee
+      </span>
+    </a>
+  </div>
+
+<!-- Footer -->
+  <footer style="text-align: center; font-size: 0.85rem; color: #6b7280; padding: 2rem 1rem; max-width: 800px; margin: 0 auto;">
+  © 2025 Quaerens Ltd. All rights reserved.<br />
+  <a href="privacy.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a> |
+  <a href="terms.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Terms of Use</a> |
+  <a href="gdpr.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">GDPR</a> |
+  <a href="contact.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Contact Us</a>
+</footer>
+
+<!-- Add JavaScript logic just once at the bottom of your page -->
+<script>
     const eligibleResorts = [
       "Anfi Del Mar",
       "Club La Costa (CLC)",
@@ -86,26 +916,85 @@
       "Club Son Antem (Marriott)",
       "Club Cala Blanca (CLC)",
       "Club del Carmen (CLC)",
-      "Jardines del Sol (CLC)"
+      "Jardines del Sol (CLC)",
+      "Village d’Île‑de‑France (Marriott)",
+      "Le Club Mougins (Diamond)",
+      "Royal Regency Paris Vincennes (Diamond)",
+      "Borgo alle Vigne (Hilton)",
+      "Palazzo Catalani (Diamond)",
+      "Vilar do Golf (Diamond)",
+      "Alpine Club (Diamond)",
+      "Craigendarroch (Hilton)",
+      "Cromer Country Club (Diamond)",
+      "Pine Lake Resort (Diamond)",
+      "The Kenmore Club (Diamond)",
+      "Thurnham Hall (Diamond)",
+      "Woodford Bridge Country Club (Diamond)",
+      "Wychnor Park Country Club (Diamond)",
+      "Cibola Vista Resort & Spa (Bluegreen)",
+      "Bell Rock Inn (Diamond)",
+      "Kohls Ranch Lodge (Diamond)",
+      "Los Abrigados Resort & Spa (Diamond)",
+      "PVC at The Roundhouse (Diamond)",
+      "Streamside at Vail (Bluegreen)",
+      "The Historic Crags Lodge (Diamond)",
+      "Lake Cumberland Resort (Bluegreen)",
+      "Scenic Hills RV Resort (Bluegreen)",
+      "Paradise Point (Bluegreen)",
+      "Wilderness Club at Big Cedar (Bluegreen)",
+      "Villas de Santa Fe (Diamond)",
+      "Beachwoods Resort (Diamond)",
+      "Sunrise Ridge Resort (Diamond)",
+      "Laurel Crest (Bluegreen)",
+      "Mountain Loft (Bluegreen)",
+      "Shenandoah Crossing (Bluegreen)",
+      "Patrick Henry Square (Bluegreen)",
+      "Parkside Williamsburg Resort (Bluegreen)",
+      "Elian Hotel & Spa (Bluegreen)"
     ];
-
+  
     document.getElementById("resort-check-form").addEventListener("submit", function(e) {
       e.preventDefault();
       const input = document.getElementById("resort").value.trim().toLowerCase();
       const resultEl = document.getElementById("resort-result");
-      const match = eligibleResorts.find(r => r.toLowerCase().includes(input));
-
+      const button = document.getElementById("kit-button");
+  
+      const match = eligibleResorts.find(r => r.toLowerCase() === input);
+      
       if (match) {
-        resultEl.innerHTML = `✅ Good news! "<strong>${match}</strong>" is eligible for our DIY Exit Kit.<br>
-          <a href="/download-kit.html" class="mt-4 inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">👉 Buy the Exit Kit Now</a>`;
+        resultEl.textContent = `✅ Good news! ${match} is eligible for our DIY Exit Kit.`;
         resultEl.classList.remove("hidden");
         resultEl.classList.add("text-green-600");
+        button.classList.remove("hidden");
       } else {
         resultEl.textContent = `❌ Sorry, we couldn’t confirm your resort. Please contact us to check manually.`;
         resultEl.classList.remove("hidden");
         resultEl.classList.add("text-red-600");
+        button.classList.add("hidden");
       }
     });
-  </script>
+</script>
+  
+</script>
+
+  <!-- Help Chat Prompt -->
+  <div class="fixed bottom-4 right-4 bg-blue-600 text-white rounded-full p-4 shadow-lg flex items-center space-x-2">
+    <img src="/images/whatsapp-business.jpg" alt="WhatsApp" class="h-6" />
+    <a href="https://wa.me/447578600296" class="font-semibold">Chat with us</a>
+  </div>
+
+  <!-- Sticky Footer CTA -->
+  <div class="sticky-footer fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-3 flex justify-center gap-4">
+    <a href="/download-kit.html"
+       class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg shadow">
+      Buy the Do It Yourself Kit £169 | €189 | $209
+    </a>
+    <a href="/full-service.html"
+       class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg shadow">
+      Choose the "Full-Service" Option
+    </a>
+  </div>
+
 </body>
 </html>
+
