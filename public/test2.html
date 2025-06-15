@@ -203,20 +203,57 @@
       </div>
     </header>
   
-    <!-- 3) Google Translate API init -->
-    <script>
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        }, 'google_translate_element');
+<!-- Google Translate Loader + Language Switcher -->
+<div id="google_translate_element" style="display: none;"></div>
+
+<!-- Language Switcher Flags -->
+<div class="flex justify-center gap-3 items-center mt-4 mb-6">
+  <img src="/flags/en.png" alt="English" class="w-6 h-4 cursor-pointer border rounded" onclick="translateLanguage('en')" />
+  <img src="/flags/es.png" alt="Español" class="w-6 h-4 cursor-pointer border rounded" onclick="translateLanguage('es')" />
+  <img src="/flags/de.png" alt="Deutsch" class="w-6 h-4 cursor-pointer border rounded" onclick="translateLanguage('de')" />
+  <img src="/flags/nl.png" alt="Nederlands" class="w-6 h-4 cursor-pointer border rounded" onclick="translateLanguage('nl')" />
+  <img src="/flags/fr.png" alt="Français" class="w-6 h-4 cursor-pointer border rounded" onclick="translateLanguage('fr')" />
+  <img src="/flags/it.png" alt="Italiano" class="w-6 h-4 cursor-pointer border rounded" onclick="translateLanguage('it')" />
+</div>
+
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+  function translateLanguage(langCode) {
+    const frame = document.querySelector('iframe.goog-te-menu-frame');
+    if (!frame) return;
+
+    const innerDoc = frame.contentDocument || frame.contentWindow.document;
+    const options = innerDoc.querySelectorAll('.goog-te-menu2-item span.text');
+
+    options.forEach(option => {
+      const text = option.textContent.toLowerCase();
+      if (
+        (langCode === 'es' && text.includes('spanish')) ||
+        (langCode === 'de' && text.includes('german')) ||
+        (langCode === 'nl' && text.includes('dutch')) ||
+        (langCode === 'fr' && text.includes('french')) ||
+        (langCode === 'it' && text.includes('italian')) ||
+        (langCode === 'sv' && text.includes('swedish')) ||
+        (langCode === 'el' && text.includes('greek')) ||
+        (langCode === 'en' && text.includes('english'))
+      ) {
+        option.click();
       }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  </body>
-  </html>  
+    });
+  }
+</script>
+</body>
 
 <!-- Hero Section -->
 <section class="relative w-full overflow-hidden">
@@ -991,6 +1028,51 @@
       Choose the "Full-Service" Option
     </a>
   </div>
+
+  <script>
+    function translateLanguage(langCode) {
+      const frame = document.querySelector('iframe.goog-te-menu-frame');
+      if (!frame) return;
+  
+      const innerDoc = frame.contentDocument || frame.contentWindow.document;
+      const options = innerDoc.querySelectorAll('.goog-te-menu2-item span.text');
+  
+      options.forEach(option => {
+        const text = option.textContent.toLowerCase();
+        if (
+          (langCode === 'es' && text.includes('spanish')) ||
+          (langCode === 'de' && text.includes('german')) ||
+          (langCode === 'nl' && text.includes('dutch')) ||
+          (langCode === 'fr' && text.includes('french')) ||
+          (langCode === 'it' && text.includes('italian')) ||
+          (langCode === 'pt' && text.includes('portuguese')) ||
+          (langCode === 'sv' && text.includes('swedish')) ||
+          (langCode === 'da' && text.includes('danish')) ||
+          (langCode === 'no' && text.includes('norwegian')) ||
+          (langCode === 'fi' && text.includes('finnish')) ||
+          (langCode === 'el' && text.includes('greek')) ||
+          (langCode === 'en' && text.includes('english'))
+        ) {
+          option.click();
+        }
+      });
+    }
+  </script>  
+
+  <!-- Hidden Google Translate widget -->
+<div id="google_translate_element" style="display: none;"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,es,de,nl,fr,it,pt,sv,da,no,fi,el',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
