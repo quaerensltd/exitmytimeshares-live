@@ -284,7 +284,7 @@
   
     <!-- Resort Eligibility Checker Wrapper -->
     <div class="mt-8 border border-yellow-200 rounded-lg p-4 shadow-sm bg-yellow-50">
-      <h3 class="text-lg font-semibold text-blue-900 mb-3 text-center">Want to Double Check?</h3>
+      <h3 class="text-lg font-semibold text-blue-900 mb-3 text-center">Is my resort eligable? Want to double Check?</h3>
       <form id="resort-check-form" class="space-y-4">
         <label for="resort" class="block font-semibold">Resort Name</label>
         <input list="resorts" id="resort" name="resort"
@@ -947,27 +947,30 @@
       e.preventDefault();
       const input = document.getElementById("resort").value.trim().toLowerCase();
       const resultEl = document.getElementById("resort-result");
-      const button = document.getElementById("kit-button");
   
-      const match = eligibleResorts.find(r => r.toLowerCase() === input);
-      
+      // Clear previous styles
+      resultEl.classList.remove("text-green-600", "text-red-600");
+  
+      // Allow partial matches
+      const match = eligibleResorts.find(r => r.toLowerCase().includes(input));
+  
       if (match) {
-  resultEl.innerHTML = `
-    ✅ Good news! "<strong>${match}</strong>" is eligible for our DIY Exit Kit.<br>
-    <a href="/download-kit.html"
-       class="mt-4 inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
-      👉 Buy the Exit Kit Now
-    </a>
-  `;
-  resultEl.classList.remove("hidden");
-  resultEl.classList.add("text-green-600");
-} else {
-  resultEl.textContent = `❌ Sorry, we couldn’t confirm your resort. Please contact us to check manually.`;
-  resultEl.classList.remove("hidden");
-  resultEl.classList.add("text-red-600");
-}
+        resultEl.innerHTML = `
+          ✅ Good news! "<strong>${match}</strong>" is eligible for our DIY Exit Kit.<br>
+          <a href="/download-kit.html"
+             class="mt-4 inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+            👉 Buy the Exit Kit Now
+          </a>
+        `;
+        resultEl.classList.remove("hidden");
+        resultEl.classList.add("text-green-600");
+      } else {
+        resultEl.textContent = `❌ Sorry, we couldn’t confirm your resort. Please contact us to check manually.`;
+        resultEl.classList.remove("hidden");
+        resultEl.classList.add("text-red-600");
+      }
     });
-</script>
+  </script>  
   
 </script>
 
