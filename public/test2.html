@@ -264,7 +264,7 @@
         <h3 class="text-xl font-bold text-blue-800 mb-2">What’s Inside the Kit?</h3>
         <ul class="list-disc list-inside text-gray-700 space-y-2">
           <li>Ready-to-use legal letters to cancel your timeshare.</li>
-          <li>Step-by-step instructions in plain English.</li>
+          <li>Step-by-step instructions in your own language.</li>
           <li>Covers contracts from United States, Spain, Portugal, and across the EU.</li>
           <li>No pressure: you can upgrade later for expert help if needed.</li>
           <li>One-time purchase. No hidden fees. Instant access.</li>
@@ -440,9 +440,9 @@
 
         <!-- FAQ: answer common concerns in plain English -->
         <section id="faq" class="py-12 bg-white">
-            <div class="max-w-4xl mx-auto px-4">
+            <div class="max-w-4xl mx-auto px-4 border border-gray-300 rounded-xl p-6">
               <h3 class="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h3>
-    
+
               <div class="space-y-6">
                 <!-- Q1 -->
                 <div class="border border-gray-200 rounded-lg p-6">
@@ -456,6 +456,10 @@
                     </div>
                   </div>
                 </div>
+                <!-- ...rest of your questions... -->
+              </div>
+            </div>
+        </section>
     
                 <!-- Q2 -->
                 <div class="border border-gray-200 rounded-lg p-6">
@@ -524,7 +528,7 @@
       <div>
         <div class="text-5xl mb-2">⚖️</div>
         <h4 class="font-semibold mb-1">Legal-Grade Templates</h4>
-        <p class="text-gray-600">Lawyer-vetted letters—just fill in and send.</p>
+        <p class="text-gray-600">Lawyer-vetted letters, just fill in and send.</p>
       </div>
       <div>
         <div class="text-5xl mb-2">💸</div>
@@ -534,7 +538,7 @@
       <div>
         <div class="text-5xl mb-2">⏱️</div>
         <h4 class="font-semibold mb-1">Fast & Easy</h4>
-        <p class="text-gray-600">Exit in a few weeks—no back-and-forth.</p>
+        <p class="text-gray-600">Exit in a few weeks, no back-and-forth.</p>
       </div>
       <div>
         <div class="text-5xl mb-2">📋</div>
@@ -654,34 +658,48 @@
       <!-- BOX 1: KNOW YOUR RIGHTS -->
       <div class="max-w-3xl mx-auto px-4">
         <div class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6" data-aos="fade-up" data-aos-delay="200">
+            <!-- Add this heading -->
+            <h3 class="text-xl font-bold text-blue-700 mb-4">Know Your Rights!</h3>
             <!-- Intro paragraph (keep this) -->
             <p class="text-gray-700 text-sm sm:text-base mb-4">
               Many timeshare owners have the legal right to cancel their contract — especially in the EU and parts of the US. Even if the cooling-off period has passed, you may still be able to exit based on unfair terms, lack of transparency, or misrepresentation.
             </p>
             <!-- Simplified bullet points with links -->
             <ul class="list-disc list-inside text-gray-800 space-y-3 mb-4">
-              <li><strong>EU Timeshare Directive:</strong> Right to cancel within 14 days of purchase.</a></li>
-              <li><strong>Spanish Law:</strong> Contracts signed without clear info may be void.</a></li>
-              <li><strong>US & UK:</strong> Many resorts accept voluntary surrenders—no lawyer needed.</a></li>
+              <li><strong>EU Timeshare Directive:</strong> Right to cancel within 14 days of purchase.</li>
+              <li><strong>Spanish Law:</strong> Contracts signed without clear info may be void.</li>
+              <li><strong>US & UK:</strong> Many resorts accept voluntary surrenders—no lawyer needed.</li>
             </ul>
             <p class="text-gray-600 italic">Our templates include exact clauses you need—no guesswork.</p>
         </div>
-    </div>
+      </div>
 
 <!-- BOX 2: WHAT’S IN THE DO-IT-YOURSELF KIT -->
 <div class="max-w-3xl mx-auto px-4">
-    <div x-data="{ open: true }" class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6" data-aos="fade-up" data-aos-delay="300">
+    <div x-data="{ open: true }"
+         class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6"
+         data-aos="fade-up" data-aos-delay="300">
+  
+      <!-- Kit preview image -->
+      <img src="/images/kit-preview.jpg"
+           alt="Preview of the Do-It-Yourself Kit"
+           class="w-full h-auto rounded-md mb-4 max-h-60 object-cover" />
+  
       <button
         @click="open = !open"
-        class="w-full text-left text-lg sm:text-xl font-bold text-blue-700 flex items-center justify-between focus:outline-none"
-      >
+        class="w-full text-left text-lg sm:text-xl font-bold text-blue-700 flex items-center justify-between focus:outline-none">
         <span>WHAT’S IN THE DO-IT-YOURSELF KIT?</span>
-        <svg xmlns="http://www.w3.org/2000/svg" :class="open ? 'rotate-180' : ''" class="h-5 w-5 text-blue-700 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z" clip-rule="evenodd" />
+        <svg xmlns="http://www.w3.org/2000/svg" :class="open ? 'rotate-180' : ''"
+             class="h-5 w-5 text-blue-700 transition-transform duration-300"
+             viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
+                clip-rule="evenodd" />
         </svg>
       </button>
   
-      <div x-show="open" x-transition class="mt-4 space-y-3 text-gray-700 text-sm sm:text-base">
+      <div x-show="open" x-transition
+           class="mt-4 space-y-3 text-gray-700 text-sm sm:text-base">
         <div class="flex items-start gap-2">
           <span class="text-green-600 mt-1">✔</span>
           <p>Pre-drafted legal letters to cancel your timeshare — used by real lawyers.</p>
@@ -969,7 +987,7 @@
     </a>
     <a href="/full-service.html"
        class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg shadow">
-      Full-Service Option
+      Choose the "Full-Service" Option
     </a>
   </div>
 
