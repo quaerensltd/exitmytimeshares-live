@@ -271,7 +271,7 @@
         </ul>
       </div>
   
-<!-- Right: DIY Exit Kit CTA & Resort Eligibility Checker -->
+ <!-- Right: DIY Exit Kit CTA & Resort Eligibility Checker -->
 <div class="bg-white rounded-xl p-6 shadow-md h-full" data-aos="fade-up">
     <!-- Main CTA First -->
     <div class="text-center mb-6">
@@ -282,31 +282,27 @@
       <p class="mt-2 text-sm text-gray-600">Instant access after purchase • Includes templates & guide</p>
     </div>
   
-    <!-- Resort Eligibility Checker -->
-    <div class="bg-yellow-300 text-blue-900 px-4 py-4 rounded-t-xl text-center border-b-2 border-yellow-500">
-      <h2 class="text-2xl font-bold">Check If Your Resort Is Eligible</h2>
-      <p class="text-base mt-1">
-        Enter your resort name to see if the Do-It-Yourself Kit works for you.
+    <!-- Resort Eligibility Checker Wrapper -->
+    <div class="mt-8 border border-yellow-200 rounded-lg p-4 shadow-sm bg-yellow-50">
+      <h3 class="text-lg font-semibold text-blue-900 mb-3 text-center">Want to Double Check?</h3>
+      <form id="resort-check-form" class="space-y-4">
+        <label for="resort" class="block font-semibold">Resort Name</label>
+        <input list="resorts" id="resort" name="resort"
+               placeholder="e.g. Sunset Bay Club, Anfi Del Mar..."
+               class="w-full border border-gray-300 p-3 rounded text-base" required />
+        <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition">
+          Is My Resort Eligible?
+        </button>
+      </form>
+      <div id="resort-result" class="mt-4 text-center text-lg font-semibold hidden"></div>
+  
+      <p class="mt-4 text-sm text-gray-700 text-center">
+        <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
+        💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
       </p>
     </div>
-    <form id="resort-check-form" class="mt-6 space-y-4">
-      <label for="resort" class="block font-semibold">Resort Name</label>
-      <input list="resorts" id="resort" name="resort"
-             placeholder="e.g. Sunset Bay Club, Anfi Del Mar..."
-             class="w-full border border-gray-300 p-3 rounded text-base" required />
-      <button type="submit"
-              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition">
-        Check Eligibility
-      </button>
-    </form>
-    <div id="resort-result" class="mt-4 text-center text-lg font-semibold hidden"></div>
-  
-    <!-- Tip + Contact -->
-    <p class="mt-6 text-sm text-gray-700 text-center">
-      <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
-      💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
-    </p>
-  </div>      
+  </div>  
   
         <!-- Resort List -->
         <datalist id="resorts">
@@ -866,16 +862,13 @@
   </section>
   
   <div class="text-center space-y-4">
-    <a href="/download-kit.html"
-       class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
-      Buy your Do-It-Yourself Kit today for only $229 | £169 | €199
-    </a>
     <!-- ☆ Payment Security Badge -->
     <p class="mt-2 text-sm text-gray-600 flex items-center justify-center space-x-2">
       <img src="/images/visa-mastercard-badge.png" alt="Visa & Mastercard" class="h-5" />
       <span>Paid via Visa/Mastercard — 3D Secure protected</span>
     </p>
   
+    <!-- Full-Service Option CTA -->
     <a href="/full-service.html"
        class="relative inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
       Let ExitMyTimeshares.com do all the work
@@ -959,16 +952,20 @@
       const match = eligibleResorts.find(r => r.toLowerCase() === input);
       
       if (match) {
-        resultEl.textContent = `✅ Good news! ${match} is eligible for our DIY Exit Kit.`;
-        resultEl.classList.remove("hidden");
-        resultEl.classList.add("text-green-600");
-        button.classList.remove("hidden");
-      } else {
-        resultEl.textContent = `❌ Sorry, we couldn’t confirm your resort. Please contact us to check manually.`;
-        resultEl.classList.remove("hidden");
-        resultEl.classList.add("text-red-600");
-        button.classList.add("hidden");
-      }
+  resultEl.innerHTML = `
+    ✅ Good news! "<strong>${match}</strong>" is eligible for our DIY Exit Kit.<br>
+    <a href="/download-kit.html"
+       class="mt-4 inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+      👉 Buy the Exit Kit Now
+    </a>
+  `;
+  resultEl.classList.remove("hidden");
+  resultEl.classList.add("text-green-600");
+} else {
+  resultEl.textContent = `❌ Sorry, we couldn’t confirm your resort. Please contact us to check manually.`;
+  resultEl.classList.remove("hidden");
+  resultEl.classList.add("text-red-600");
+}
     });
 </script>
   
