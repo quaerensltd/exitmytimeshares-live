@@ -242,38 +242,33 @@
         </ul>
       </div>
   
-<!-- Resort Eligibility Checker Section -->
-<section class="w-full bg-white py-12">
-    <div class="max-w-4xl mx-auto px-4">
-      <!-- Header -->
-      <div class="bg-yellow-300 text-blue-900 px-4 py-4 rounded-t-xl text-center border-b-2 border-yellow-500">
-        <h2 class="text-2xl font-bold">Check If Your Resort Is Eligible</h2>
-        <p class="text-base mt-1">
-          Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
-        </p>
-      </div>
-  
-    <!-- Form -->
-    <div class="bg-white shadow-md rounded-b-xl p-6">
-        <form id="resort-check-form" class="space-y-4">
+    <!-- Right: Resort Eligibility Checker -->
+    <div class="bg-white rounded-xl p-6 shadow-md h-full" data-aos="fade-up">
+        <div class="bg-yellow-300 text-blue-900 px-4 py-4 rounded-t-xl text-center border-b-2 border-yellow-500">
+          <h2 class="text-2xl font-bold">Check If Your Resort Is Eligible</h2>
+          <p class="text-base mt-1">
+            Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
+          </p>
+        </div>
+        <form id="resort-check-form" class="mt-6 space-y-4">
           <label for="resort" class="block font-semibold">Resort Name</label>
           <input list="resorts" id="resort" name="resort"
                  placeholder="e.g. Sunset Bay Club, Anfi Del Mar..."
                  class="w-full border border-gray-300 p-3 rounded text-base" required />
-  
           <button type="submit"
                   class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition">
             Check Eligibility
           </button>
         </form>
-          
-        <div id="resort-result" class="mt-6 text-center text-lg font-semibold hidden"></div>
-          
-      <!-- CTA Button -->
-      <a href="/download-kit.html" id="kit-button"
-         class="block w-full text-center mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 hidden">
-        Get the Do-It-Yourself Exit Kit →
-      </a>
+        <div id="resort-result" class="mt-4 text-center text-lg font-semibold hidden"></div>
+        <a href="/download-kit.html" id="kit-button"
+           class="mt-6 block w-full text-center bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 hidden">
+          Get the Do-It-Yourself Exit Kit →
+        </a>
+      </div>
+  
+    </div>
+  </section>
           
       <!-- Tip + Fallback Message -->
       <p class="mt-6 text-sm text-gray-700 text-center">
