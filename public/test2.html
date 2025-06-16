@@ -253,19 +253,22 @@
   
       <!-- 1. Kit Promo -->
       <div class="bg-blue-50 rounded-xl p-6 shadow-md" data-aos="fade-up">
-        <h2 class="text-2xl font-bold mb-4 text-blue-800">Escape Your Timeshare — Without the Legal Fees</h2>
+        <h2 class="text-2xl font-bold mb-4 text-blue-800">Exit Your Timeshare — Without the Legal Fees</h2>
         <p class="text-gray-700 mb-3">
-          Stuck in a timeshare you no longer want? Our <strong>Do-It-Yourself Exit Kit</strong> gives you everything you need to take back control — without paying thousands to lawyers or risky exit companies.
+          Stuck in a timeshare you no longer want? Our <strong>Do-It-Yourself Exit Kit</strong> gives you everything you need to take back control and exit out of your timeshare contract <strong>without</strong> paying thousands to lawyers or risky or expensive exit companies.
         </p>
         <p class="text-gray-600">
-          Created by legal experts, this kit includes the same professional letters and guidance we use for real claims — ready for you to download and use today.
+          Created by legal experts, this kit includes the same professional letters and guidance we use for claims and exits — ready for you to download and use today.
         </p>
+        <p class="text-gray-600">
+            By purchasing your kit today, you can begin your exit from your timeshare immediately!
+          </p>
       </div>
   
       <!-- 2. Resort Eligibility Checker -->
       <div class="bg-white rounded-xl p-6 shadow-md" data-aos="fade-up">
         <div class="bg-yellow-300 text-blue-900 px-4 py-4 rounded-t-xl text-center border-b-2 border-yellow-500">
-          <h2 class="text-2xl font-bold">Check If Your Resort Is Eligible</h2>
+          <h2 class="text-2xl font-bold">Check here if your resort is eligible</h2>
           <p class="text-base mt-1">
             Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
           </p>
@@ -302,16 +305,66 @@
       </div>
   
       <!-- 3. What's Inside the Kit -->
-      <div class="bg-blue-50 rounded-xl p-6 shadow-md" data-aos="fade-up">
-        <h3 class="text-xl font-bold text-blue-800 mb-4">What’s Inside the Kit?</h3>
-        <ul class="list-disc list-inside text-gray-700 space-y-2">
-          <li>Ready-to-use legal letters to cancel your timeshare.</li>
-          <li>Step-by-step instructions in your own language.</li>
-          <li>Covers contracts from United States, Spain, Portugal, and across the EU.</li>
-          <li>No pressure: you can upgrade later for expert help if needed.</li>
-          <li>One-time purchase. No hidden fees. Instant access.</li>
-        </ul>
-      </div>
+      <div class="max-w-3xl mx-auto px-4">
+        <div x-data="{ open: true }"
+             class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6"
+             data-aos="fade-up"
+             data-aos-delay="300">
+      
+          <!-- flex container: column on mobile, row from md up -->
+          <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mb-4">
+            <!-- Kit preview image -->
+            <img src="/images/kit-preview.jpg"
+                 alt="Preview of the Do-It-Yourself Kit"
+                 class="w-[150px] h-[150px] object-contain rounded-md flex-shrink-0" />
+      
+            <!-- heading + toggle -->
+            <button @click="open = !open"
+                    class="flex-1 text-left font-bold text-blue-700
+                           text-xl sm:text-2xl md:text-3xl
+                           flex items-center justify-between focus:outline-none">
+              <span>WHAT’S IN THE DO-IT-YOURSELF KIT?</span>
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   :class="open ? 'rotate-180' : ''"
+                   class="h-6 w-6 text-blue-700 transition-transform duration-300"
+                   viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
+                      clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+      
+          <!-- collapsible content -->
+          <div x-show="open" x-transition
+               class="mt-2 space-y-3 text-gray-700 text-sm sm:text-base">
+            <div class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">✔</span>
+              <p>Pre-drafted legal letters to cancel your timeshare, used by real lawyers.</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">✔</span>
+              <p>Step-by-step instructions in your own language, easy to follow, even for beginners.</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">✔</span>
+              <p>Covers contracts in the EU, UK, USA, and beyond, including Spain, Portugal, and Florida.</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">✔</span>
+              <p>Templates for both voluntary exit requests and legal revocation notices.</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">✔</span>
+              <p>Optional bonus: sample reply letters if your resort tries to resist your exit.</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-green-600 mt-1">✔</span>
+              <p>No subscription. No hidden fees. One-time purchase, instant download.</p>
+            </div>
+          </div>
+        </div>
+      </div> 
   
       <!-- Resort List -->
       <datalist id="resorts">
