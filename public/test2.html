@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="images/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit ($229|£169|€199)</title>
+  <title>ExitMyTimeshares | Do It Yourself Timeshare Exit Kit ($229|£169|€199)</title>
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <meta name="description" content="Stuck in a timeshare? Our lawyer-vetted, Do-It-Yourself Exit Kit gives you step-by-step templates to cancel your contract. Instant download, no lawyers required." />
 
   <!-- SEO Meta Tags -->
   <meta name="description"
@@ -12,57 +13,99 @@
   <meta name="keywords"
         content="timeshare exit, cancel timeshare, DIY timeshare, timeshare cancellation kit, timeshare cancellation letters, club la costa, hilton resorts, dimaond resorts, dri, anfi, wyndham, marriot, diamond  " />
 
-  <!-- Structured Data for Google (Product & Offer) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Do-It-Yourself Timeshare Exit Kit",
-    "image": "https://www.exitmytimeshares.com/images/kit-preview.jpg",
-    "description": "Lawyer-vetted cancellation letters & guide for €169, 3–6 week process, money-back guarantee.",
-    "brand": {
-      "@type": "Organization",
-      "name": "Quaerens Ltd"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://www.exitmytimeshares.com/download-kit.html",
-      "priceCurrency": "EUR",
-      "price": "169.00",
-      "availability": "https://schema.org/InStock"
+  <!-- Tailwind & Alpine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- Google Translate Hider -->
+  <style>
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-gadget-icon,
+    .goog-logo-link,
+    .goog-te-gadget,
+    body > .skiptranslate {
+      display: none !important;
     }
-  }
-  </script>
+    .goog-te-gadget {
+      font-size: 0 !important;
+    }
+    body {
+      top: 0px !important;
+    }
+  </style>
 </head>
+<body class="bg-white text-gray-900">
+  <header class="flex justify-between items-center px-6 py-4 shadow-md">
+    <img src="/images/exit-logo.png" alt="ExitMyTimeshares Logo" class="h-12">
+    <!-- Language Dropdown -->
+    <div x-data="{ open: false }" class="relative">
+      <button @click="open = !open" class="px-4 py-2 border rounded bg-white text-sm font-medium">🌐 Language</button>
+      <div x-show="open" @click.outside="open = false" class="absolute right-0 mt-2 w-48 bg-white shadow rounded z-50 text-sm">
+        <a href="#" onclick="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
+        <a href="#" onclick="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
+        <a href="#" onclick="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
+        <a href="#" onclick="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+        <a href="#" onclick="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+        <a href="#" onclick="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+        <a href="#" onclick="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+        <a href="#" onclick="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
+      </div>
+    </div>
+  </header>
 
-  <!-- 1) Reset to English BEFORE anything else -->
-  <script>
-    document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
+  <main class="p-6 text-center">
+    <h1 class="text-3xl font-bold mb-4">✅ Get the Do-It-Yourself Exit Kit – Only $229 / £169 / €199</h1>
+    <p class="mb-6">Instant access after purchase • Includes templates & step-by-step guide</p>
+
+    <form id="eligibility-form" class="max-w-md mx-auto">
+      <label for="resort" class="block mb-2 font-semibold">Check If Your Resort Is Eligible</label>
+      <input id="resort" name="resort" type="text" placeholder="e.g. Sunset Bay Club, Anfi Del Mar..." class="w-full border px-4 py-2 rounded mb-4">
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Check Eligibility</button>
+    </form>
+  </main>
+
+  <footer class="text-center text-sm text-gray-500 py-6">
+    &copy; 2025 ExitMyTimeshares.com – A project by Quaerens Ltd
+  </footer>
+
+  <!-- Google Translate Core -->
+  <div id="google_translate_element" style="display: none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
   </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-  <!-- 2) Language setter + IP auto-detect -->
+  <!-- Set Language Function -->
   <script>
     function setLanguage(langPair) {
-      /* … your setLanguage code … */
+      if (!langPair) return;
+      const lang = langPair.split('|')[1];
+      const newLang = '/en/' + lang;
+      document.cookie = 'googtrans=' + newLang + '; path=/';
+      document.cookie = 'googtrans=' + newLang + '; domain=' + window.location.hostname + '; path=/';
+      location.reload();
     }
-    /* ↓ Comment out everything from here... */
-    (function(){
-      if (!document.cookie.includes('googtrans=')) {
-        fetch('https://ipapi.co/json/')
-          .then(r=>r.json())
-          .then(d=>{
-            const m={FR:'fr',ES:'es',DE:'de',IT:'it',NL:'nl',SE:'sv',GR:'el'};
-            const lg=m[d.country_code]||'en';
-            document.cookie=`googtrans=/en/${lg};domain=.exitmytimeshares.com;path=/`;
-            location.reload();
-          })
-          .catch(console.error);
-      }
-    })();
+
+    if (!document.cookie.includes('googtrans')) {
+      fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+          const m = { FR: 'fr', ES: 'es', DE: 'de', IT: 'it', NL: 'nl', SE: 'sv', GR: 'el' };
+          const lang = m[data.country_code] || 'en';
+          const cookieVal = '/en/' + lang;
+          document.cookie = 'googtrans=' + cookieVal + '; path=/';
+          document.cookie = 'googtrans=' + cookieVal + '; domain=' + window.location.hostname + '; path=/';
+          location.reload();
+        })
+        .catch(console.error);
+    }
   </script>
-    <p class="text-xs text-gray-500 text-center mt-2">
-        We only use your country to set language—no personal data is stored.
-      </p>
 
   <!-- 3) Hide Google’s banner & logo but keep the combo -->
   <style>
