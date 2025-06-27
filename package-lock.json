@@ -1,0 +1,17 @@
+{
+  "name": "exitmytimeshares-live",
+  "version": "1.0.0",
+  "description": "ExitMyTimeshares.com – DIY timeshare exit kit site",
+  "scripts": {
+    "build:css": "postcss src/styles.css -o public/styles.css --env production",
+    "watch:css": "postcss src/styles.css -o public/styles.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.11"
+  }
+}
