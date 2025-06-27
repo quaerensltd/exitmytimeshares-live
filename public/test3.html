@@ -26,7 +26,7 @@
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://www.exitmytimeshares.com/download-kit.html",
+      "url": "https://www.exitmytimeshares.com/checkout.html",
       "priceCurrency": "EUR",
       "price": "169.00",
       "availability": "https://schema.org/InStock"
@@ -60,9 +60,6 @@
       }
     })();
   </script>
-    <p class="text-xs text-gray-500 text-center mt-2">
-        We only use your country to set language—no personal data is stored.
-      </p>
 
   <!-- 3) Hide Google’s banner & logo but keep the combo -->
   <style>
@@ -125,51 +122,6 @@
   </style>
 </head>
   
-<!-- 2) Language setter + IP auto-detect -->
-<script>
-    // Manual dropdown → set cookie & reload
-    function setLanguage(langPair) {
-      if (!langPair) return;
-      const [, to] = langPair.split('|');
-      const cookieValue = `/en/${to}`;
-      document.cookie = `googtrans=${cookieValue};domain=.exitmytimeshares.com;path=/`;
-      // reload so Google sees the new cookie
-      location.reload();
-    }
-  
-    // On first visit, auto-detect via IP and set cookie
-    (function(){
-      if (!document.cookie.includes("googtrans=")) {
-        fetch("https://ipapi.co/json/")
-          .then(res => res.json())
-          .then(data => {
-            const map = { FR: "fr", ES: "es", DE: "de", IT: "it", NL: "nl", SE: "sv", GR: "el" };
-            const lang = map[data.country_code] || "en";
-            const cookieValue = `/en/${lang}`;
-            document.cookie = `googtrans=${cookieValue};domain=.exitmytimeshares.com;path=/`;
-            location.reload();
-          })
-          .catch(err => console.error("IP geolocation failed:", err));
-      }
-    })();
-  </script>
-
-  <!-- jsPDF (if needed elsewhere) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-  <!-- 4) Google Translate engine init (in the head) -->
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</head>
 
 <body class="bg-gray-50 text-gray-800">
     <!-- 5) Invisible Google translate engine target -->
@@ -249,32 +201,26 @@
 
 <!-- Claim Calculator -->
 <section id="calculator" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+    <div class="max-w-3xl mx-auto px-4 space-y-12">
   
-      <!-- Left: ExitMyTimeshares Do-It-Yourself Kit Promo -->
-      <div class="bg-blue-50 rounded-xl p-6 shadow-md h-full" data-aos="fade-up">
-        <h2 class="text-xl font-bold mb-4 text-blue-800">Escape Your Timeshare — Without the Legal Fees</h2>
+      <!-- 1. Kit Promo -->
+      <div class="bg-blue-50 rounded-xl p-6 shadow-md" data-aos="fade-up">
+        <h2 class="text-2xl font-bold mb-4 text-blue-800">Exit Your Timeshare — Without the Legal Fees</h2>
         <p class="text-gray-700 mb-3">
-          Stuck in a timeshare you no longer want? Our <strong>Do-It-Yourself Exit Kit</strong> gives you everything you need to take back control — without paying thousands to lawyers or risky exit companies.
+          Stuck in a timeshare you no longer want? Our <strong>Do-It-Yourself Exit Kit</strong> gives you everything you need to take back control and exit out of your timeshare contract <strong>without</strong> paying thousands to lawyers or risky or expensive exit companies.
         </p>
         <p class="text-gray-600">
-          Created by legal experts, this kit includes the same professional letters and guidance we use for real claims — ready for you to download and use today.
+          Created by legal experts, this kit includes the same professional letters and guidance we use for claims and exits — ready for you to download and use today.
         </p>
-        <hr class="my-4">
-        <h3 class="text-xl font-bold text-blue-800 mb-2">What’s Inside the Kit?</h3>
-        <ul class="list-disc list-inside text-gray-700 space-y-2">
-          <li>Ready-to-use legal letters to cancel your timeshare.</li>
-          <li>Step-by-step instructions in your own language.</li>
-          <li>Covers contracts from United States, Spain, Portugal, and across the EU.</li>
-          <li>No pressure: you can upgrade later for expert help if needed.</li>
-          <li>One-time purchase. No hidden fees. Instant access.</li>
-        </ul>
+        <p class="text-gray-600">
+            By purchasing your kit today, you can begin your exit from your timeshare immediately!
+          </p>
       </div>
   
-    <!-- Right: Resort Eligibility Checker -->
-    <div class="bg-white rounded-xl p-6 shadow-md h-full" data-aos="fade-up">
+      <!-- 2. Resort Eligibility Checker -->
+      <div class="bg-white rounded-xl p-6 shadow-md" data-aos="fade-up">
         <div class="bg-yellow-300 text-blue-900 px-4 py-4 rounded-t-xl text-center border-b-2 border-yellow-500">
-          <h2 class="text-2xl font-bold">Check If Your Resort Is Eligible</h2>
+          <h2 class="text-2xl font-bold">Check here if your resort is eligible</h2>
           <p class="text-base mt-1">
             Enter your resort name to see if you can use our Do-It-Yourself Timeshare Exit Kit.
           </p>
@@ -294,78 +240,136 @@
            class="mt-6 block w-full text-center bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 hidden">
           Get the Do-It-Yourself Exit Kit →
         </a>
-          
-      <!-- Tip + Fallback Message -->
-      <p class="mt-6 text-sm text-gray-700 text-center">
-        <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
-        💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
-      </p>
-          
-      <!-- Bottom CTA -->
-      <div class="mt-6 text-center">
-        <a href="/download-kit.html"
-           class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
-          Buy your Do-It-Yourself Kit today for only $229 | £169 | €199
-        </a>
-      </div>
-    </div>
-  </div>      
   
-        <!-- Resort List -->
-        <datalist id="resorts">
-          <option value="Anfi Del Mar">
-          <option value="Club La Costa (CLC)">
-          <option value="Los Amigos Beach Club">
-          <option value="Royal Oasis Club at Pueblo Quinta">
-          <option value="Sahara Sunset Club">
-          <option value="Santa Barbara Golf & Ocean Club">
-          <option value="Sunset Bay Club">
-          <option value="Sunset Harbour Club">
-          <option value="Sunset View Club">
-          <option value="Royal Tenerife Country Club">
-          <option value="Marriott Playa Andaluza">
-          <option value="Marriott Marbella Beach Resort">
-          <option value="Club Son Antem (Marriott)">
-          <option value="Club Cala Blanca (CLC)">
-          <option value="Club del Carmen (CLC)">
-          <option value="Jardines del Sol (CLC)">
-          <option value="Village d’Île‑de‑France (Marriott)">
-          <option value="Le Club Mougins (Diamond)">
-          <option value="Royal Regency Paris Vincennes (Diamond)">
-          <option value="Borgo alle Vigne (Hilton)">
-          <option value="Palazzo Catalani (Diamond)">
-          <option value="Vilar do Golf (Diamond)">
-          <option value="Alpine Club (Diamond)">
-          <option value="Craigendarroch (Hilton)">
-          <option value="Cromer Country Club (Diamond)">
-          <option value="Pine Lake Resort (Diamond)">
-          <option value="The Kenmore Club (Diamond)">
-          <option value="Thurnham Hall (Diamond)">
-          <option value="Woodford Bridge Country Club (Diamond)">
-          <option value="Wychnor Park Country Club (Diamond)">
-          <option value="Cibola Vista Resort & Spa (Bluegreen)">
-          <option value="Bell Rock Inn (Diamond)">
-          <option value="Kohls Ranch Lodge (Diamond)">
-          <option value="Los Abrigados Resort & Spa (Diamond)">
-          <option value="PVC at The Roundhouse (Diamond)">
-          <option value="Streamside at Vail (Bluegreen)">
-          <option value="The Historic Crags Lodge (Diamond)">
-          <option value="Lake Cumberland Resort (Bluegreen)">
-          <option value="Scenic Hills RV Resort (Bluegreen)">
-          <option value="Paradise Point (Bluegreen)">
-          <option value="Wilderness Club at Big Cedar (Bluegreen)">
-          <option value="Villas de Santa Fe (Diamond)">
-          <option value="Beachwoods Resort (Diamond)">
-          <option value="Sunrise Ridge Resort (Diamond)">
-          <option value="Laurel Crest (Bluegreen)">
-          <option value="Mountain Loft (Bluegreen)">
-          <option value="Shenandoah Crossing (Bluegreen)">
-          <option value="Patrick Henry Square (Bluegreen)">
-          <option value="Parkside Williamsburg Resort (Bluegreen)">
-          <option value="Elian Hotel & Spa (Bluegreen)">
-        </datalist>
+        <!-- Tip + Fallback -->
+        <p class="mt-6 text-sm text-gray-700 text-center">
+          <strong>Not listed?</strong> Contact us — we may still be able to help!<br>
+          💡 <em>Tip:</em> Many resorts allow free exit if no loan is outstanding — check with them directly.
+        </p>
+  
+        <!-- Bottom CTA -->
+        <div class="mt-6 text-center">
+          <a href="/checkout.html"
+             class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+            Buy your Do-It-Yourself Kit today for only $229 | £169 | €199
+          </a>
+        </div>
+      </div>
+  
+<!-- 3. What's Inside the Kit (updated to match Resort Checker width) -->
+<div class="bg-white rounded-xl shadow-md p-6 border border-gray-200 mt-8 w-full" data-aos="fade-up" data-aos-delay="300" x-data="{ open: true }">
+
+    <!-- flex container: column on mobile, row from md up -->
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mb-4">
+      <!-- Kit preview image -->
+      <img src="/images/kit-preview.jpg"
+           alt="Preview of the Do-It-Yourself Kit"
+           class="w-[150px] h-[150px] object-contain rounded-md flex-shrink-0" />
+  
+      <!-- heading + toggle -->
+      <button @click="open = !open"
+              class="flex-1 text-left font-bold text-blue-700
+                     text-xl sm:text-2xl md:text-3xl
+                     flex items-center justify-between focus:outline-none">
+        <span>WHAT’S INSIDE OF YOUR DO-IT-YOURSELF KIT?</span>
+        <svg xmlns="http://www.w3.org/2000/svg"
+             :class="open ? 'rotate-180' : ''"
+             class="h-6 w-6 text-blue-700 transition-transform duration-300"
+             viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
+                clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+  
+    <!-- collapsible content -->
+    <div x-show="open" x-transition
+         class="mt-2 space-y-3 text-gray-700 text-sm sm:text-base">
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>Pre-drafted legal letters to cancel your timeshare, used by real lawyers.</p>
+      </div>
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>Step-by-step instructions in your own language, easy to follow, even for beginners.</p>
+      </div>
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>Covers contracts in the EU, UK, USA, and beyond, including Spain, Portugal, and Florida.</p>
+      </div>
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>Templates for both voluntary exit requests and legal revocation notices.</p>
+      </div>
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>Optional bonus: sample reply letters if your resort tries to resist your exit.</p>
+      </div>
+      <div class="flex items-start gap-2">
+        <span class="text-green-600 mt-1">✔</span>
+        <p>No subscription. No hidden fees. One-time purchase, instant download.</p>
       </div>
     </div>
+  </div>  
+  
+      <!-- Resort List -->
+      <datalist id="resorts">
+        <option value="Anfi Del Mar">
+        <option value="Club La Costa (CLC)">
+        <option value="Los Amigos Beach Club">
+        <option value="Royal Oasis Club at Pueblo Quinta">
+        <option value="Sahara Sunset Club">
+        <option value="Santa Barbara Golf & Ocean Club">
+        <option value="Sunset Bay Club">
+        <option value="Sunset Harbour Club">
+        <option value="Sunset View Club">
+        <option value="Royal Tenerife Country Club">
+        <option value="Marriott Playa Andaluza">
+        <option value="Marriott Marbella Beach Resort">
+        <option value="Club Son Antem (Marriott)">
+        <option value="Club Cala Blanca (CLC)">
+        <option value="Club del Carmen (CLC)">
+        <option value="Jardines del Sol (CLC)">
+        <option value="Village d’Île‑de‑France (Marriott)">
+        <option value="Le Club Mougins (Diamond)">
+        <option value="Royal Regency Paris Vincennes (Diamond)">
+        <option value="Borgo alle Vigne (Hilton)">
+        <option value="Palazzo Catalani (Diamond)">
+        <option value="Vilar do Golf (Diamond)">
+        <option value="Alpine Club (Diamond)">
+        <option value="Craigendarroch (Hilton)">
+        <option value="Cromer Country Club (Diamond)">
+        <option value="Pine Lake Resort (Diamond)">
+        <option value="The Kenmore Club (Diamond)">
+        <option value="Thurnham Hall (Diamond)">
+        <option value="Woodford Bridge Country Club (Diamond)">
+        <option value="Wychnor Park Country Club (Diamond)">
+        <option value="Cibola Vista Resort & Spa (Bluegreen)">
+        <option value="Bell Rock Inn (Diamond)">
+        <option value="Kohls Ranch Lodge (Diamond)">
+        <option value="Los Abrigados Resort & Spa (Diamond)">
+        <option value="PVC at The Roundhouse (Diamond)">
+        <option value="Streamside at Vail (Bluegreen)">
+        <option value="The Historic Crags Lodge (Diamond)">
+        <option value="Lake Cumberland Resort (Bluegreen)">
+        <option value="Scenic Hills RV Resort (Bluegreen)">
+        <option value="Paradise Point (Bluegreen)">
+        <option value="Wilderness Club at Big Cedar (Bluegreen)">
+        <option value="Villas de Santa Fe (Diamond)">
+        <option value="Beachwoods Resort (Diamond)">
+        <option value="Sunrise Ridge Resort (Diamond)">
+        <option value="Laurel Crest (Bluegreen)">
+        <option value="Mountain Loft (Bluegreen)">
+        <option value="Shenandoah Crossing (Bluegreen)">
+        <option value="Patrick Henry Square (Bluegreen)">
+        <option value="Parkside Williamsburg Resort (Bluegreen)">
+        <option value="Elian Hotel & Spa (Bluegreen)">
+      </datalist>
+  
+    </div>
+  </section>
+  
 
 <!-- Spacer to separate sections -->
 <div class="w-full h-10"></div>
@@ -524,7 +528,7 @@
       <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
         <div class="text-5xl mb-2">⚖️</div>
         <h4 class="font-semibold mb-1">Legal-Grade Templates</h4>
-        <p class="text-gray-600">Lawyer-vetted letters—just fill in and send.</p>
+        <p class="text-gray-600">Lawyer-vetted letters, just fill in and send.</p>
       </div>
       <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
         <div class="text-5xl mb-2">💸</div>
@@ -534,7 +538,7 @@
       <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
         <div class="text-5xl mb-2">⏱️</div>
         <h4 class="font-semibold mb-1">Fast & Easy</h4>
-        <p class="text-gray-600">Exit in a few weeks—no back-and-forth.</p>
+        <p class="text-gray-600">Exit in a few weeks, no back-and-forth.</p>
       </div>
       <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
         <div class="text-5xl mb-2">📋</div>
@@ -669,68 +673,6 @@
             <p class="text-gray-600 italic">Our templates include exact clauses you need—no guesswork.</p>
         </div>
       </div>
-
-<!-- BOX 2: WHAT’S IN THE DO-IT-YOURSELF KIT -->
-<div class="max-w-3xl mx-auto px-4">
-    <div x-data="{ open: true }"
-         class="w-full bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-200 mt-6"
-         data-aos="fade-up"
-         data-aos-delay="300">
-  
-      <!-- flex container: column on mobile, row from md up -->
-      <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mb-4">
-        <!-- Kit preview image -->
-        <img src="/images/kit-preview.jpg"
-             alt="Preview of the Do-It-Yourself Kit"
-             class="w-[150px] h-[150px] object-contain rounded-md flex-shrink-0" />
-  
-        <!-- heading + toggle -->
-        <button @click="open = !open"
-                class="flex-1 text-left font-bold text-blue-700
-                       text-xl sm:text-2xl md:text-3xl
-                       flex items-center justify-between focus:outline-none">
-          <span>WHAT’S IN THE DO-IT-YOURSELF KIT?</span>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               :class="open ? 'rotate-180' : ''"
-               class="h-6 w-6 text-blue-700 transition-transform duration-300"
-               viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"
-                  clip-rule="evenodd" />
-          </svg>
-        </button>
-      </div>
-  
-      <!-- collapsible content -->
-      <div x-show="open" x-transition
-           class="mt-2 space-y-3 text-gray-700 text-sm sm:text-base">
-        <div class="flex items-start gap-2">
-          <span class="text-green-600 mt-1">✔</span>
-          <p>Pre-drafted legal letters to cancel your timeshare, used by real lawyers.</p>
-        </div>
-        <div class="flex items-start gap-2">
-          <span class="text-green-600 mt-1">✔</span>
-          <p>Step-by-step instructions in your own language, easy to follow, even for beginners.</p>
-        </div>
-        <div class="flex items-start gap-2">
-          <span class="text-green-600 mt-1">✔</span>
-          <p>Covers contracts in the EU, UK, USA, and beyond, including Spain, Portugal, and Florida.</p>
-        </div>
-        <div class="flex items-start gap-2">
-          <span class="text-green-600 mt-1">✔</span>
-          <p>Templates for both voluntary exit requests and legal revocation notices.</p>
-        </div>
-        <div class="flex items-start gap-2">
-          <span class="text-green-600 mt-1">✔</span>
-          <p>Optional bonus: sample reply letters if your resort tries to resist your exit.</p>
-        </div>
-        <div class="flex items-start gap-2">
-          <span class="text-green-600 mt-1">✔</span>
-          <p>No subscription. No hidden fees. One-time purchase, instant download.</p>
-        </div>
-      </div>
-    </div>
-  </div>  
 
 <!-- TRUST ELEMENTS SECTION -->
 <section class="bg-white py-12">
@@ -869,7 +811,7 @@
   </section>
   
   <div class="text-center space-y-4">
-    <a href="/download-kit.html"
+    <a href="/checkout.html"
        class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
       Buy your Do-It-Yourself Kit today for only $229 | £169 | €199
     </a>
@@ -985,15 +927,91 @@
 
   <!-- Sticky Footer CTA -->
   <div class="sticky-footer fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-3 flex justify-center gap-4">
-    <a href="/download-kit.html"
+    <a href="/checkout.html"
        class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg shadow">
       Buy the Do It Yourself Kit £169 | €189 | $209
     </a>
-    <a href="/full-service.html"
+    <a href="/checkout.html"
        class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg shadow">
       Choose the "Full-Service" Option
     </a>
   </div>
+<div x-data="{ open: false }" class="relative inline-block text-left mt-2">
+  <button @click="open = !open"
+    class="inline-flex items-center justify-center rounded border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none">
+    🌐 Language
+    <svg class="ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8l5 5 5-5" />
+    </svg>
+  </button>
+
+  <div x-show="open" @click.outside="open = false"
+    class="absolute right-0 mt-2 w-48 rounded-md shadow bg-white text-sm text-gray-700 z-50">
+    <a href="#" onclick="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
+    <a href="#" onclick="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
+    <a href="#" onclick="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
+    <a href="#" onclick="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+    <a href="#" onclick="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+    <a href="#" onclick="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+    <a href="#" onclick="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+    <a href="#" onclick="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
+  </div>
+</div>
+<!-- ✅ Google Translate element hidden -->
+<div id="google_translate_element" style="display: none;"></div>
+
+<!-- ✅ Google Translate script -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,es,fr,de,nl,it,sv,el',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- ✅ Manual language setter -->
+<script>
+  function setLanguage(langPair) {
+    if (!langPair) return;
+    const lang = langPair.split('|')[1];
+    const newLang = '/en/' + lang;
+    document.cookie = 'googtrans=' + newLang + '; path=/';
+    document.cookie = 'googtrans=' + newLang + '; domain=' + window.location.hostname + '; path=/';
+    location.reload();
+  }
+</script>
+
+<!-- ✅ Auto-detect language on first visit -->
+<script>
+  if (!document.cookie.includes("googtrans")) {
+    fetch("https://ipapi.co/json/")
+      .then(response => response.json())
+      .then(data => {
+        const country = data.country_code;
+        const countryLangMap = {
+          FR: "fr",
+          ES: "es",
+          DE: "de",
+          IT: "it",
+          NL: "nl",
+          SE: "sv",
+          GR: "el",
+          DEFAULT: "en"
+        };
+        const lang = countryLangMap[country] || countryLangMap.DEFAULT;
+        const cookieValue = "/en/" + lang;
+        document.cookie = `googtrans=${cookieValue}; path=/`;
+        document.cookie = `googtrans=${cookieValue}; domain=${location.hostname}; path=/`;
+        location.reload();
+      })
+      .catch(error => {
+        console.error("IP geolocation failed:", error);
+      });
+  }
+</script>
 
 </body>
 </html>
