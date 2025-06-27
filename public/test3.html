@@ -96,23 +96,24 @@
     }
   </style>
 
-  <!-- ✅ Google Translate Setup -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
+<!-- ✅ Google Translate Init -->
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
   
 
 <body class="bg-gray-50 text-gray-800">
-    <!-- 5) Invisible Google translate engine target -->
-    <div id="google_translate_element" style="display:none;"></div>
+  <div id="google_translate_element" style="display: none;"></div>
 
     <!-- 6) Header + Language dropdown -->
     <header class="bg-white shadow">
