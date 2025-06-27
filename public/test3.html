@@ -33,35 +33,13 @@
     }
   }
   </script>
-</head>
 
-  <!-- 1) Reset to English BEFORE anything else -->
+  <!-- Reset to English BEFORE anything else -->
   <script>
     document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
   </script>
 
-  <!-- 2) Language setter + IP auto-detect -->
-  <script>
-    function setLanguage(langPair) {
-      /* … your setLanguage code … */
-    }
-    /* ↓ Comment out everything from here... */
-    (function(){
-      if (!document.cookie.includes('googtrans=')) {
-        fetch('https://ipapi.co/json/')
-          .then(r=>r.json())
-          .then(d=>{
-            const m={FR:'fr',ES:'es',DE:'de',IT:'it',NL:'nl',SE:'sv',GR:'el'};
-            const lg=m[d.country_code]||'en';
-            document.cookie=`googtrans=/en/${lg};domain=.exitmytimeshares.com;path=/`;
-            location.reload();
-          })
-          .catch(console.error);
-      }
-    })();
-  </script>
-
-  <!-- 3) Hide Google’s banner & logo but keep the combo -->
+  <!-- Hide Google’s banner & logo but keep the combo -->
   <style>
     .goog-te-banner-frame.skiptranslate,
     body > .skiptranslate,
@@ -74,34 +52,30 @@
     }
   </style>
 
-  <!-- Your existing fonts & Tailwind -->
+  <!-- Fonts & Tailwind -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Alpine.js -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-  <!-- Your page CSS overrides -->
+  <!-- Page CSS Overrides -->
   <style>
     body {
       font-family: 'Inter', sans-serif;
       position: static !important;
-      padding-bottom: 8rem; /* ← ensure the footer is always reachable */
+      padding-bottom: 8rem;
     }
     html { margin-top: 0 !important; }
 
-    /* Lift WhatsApp chat prompt above the footer */
     .fixed.bottom-4.right-4 {
       bottom: 8rem !important;
       z-index: 70 !important;
     }
-
-    /* Make sticky footer sit on top */
     .sticky-footer {
       z-index: 65; 
     }
 
-    /* HIDE the Google Translate top banner */
     .goog-te-banner-frame.skiptranslate,
     .goog-te-gadget-icon,
     .goog-logo-link,
@@ -110,6 +84,7 @@
       display: none !important;
     }
     .goog-te-gadget { font-size: 0 !important; }
+
     form label { display: block; margin-top: 1rem; font-weight: 600; }
     form input,
     form select {
@@ -120,6 +95,18 @@
       margin-top: 0.5rem;
     }
   </style>
+
+  <!-- ✅ Google Translate Setup -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
   
 
@@ -900,7 +887,7 @@
       const input = document.getElementById("resort").value.trim().toLowerCase();
       const resultEl = document.getElementById("resort-result");
       const button = document.getElementById("kit-button");
-  
+
       const match = eligibleResorts.find(r => r.toLowerCase() === input);
       
       if (match) {
@@ -916,26 +903,26 @@
       }
     });
 </script>
-  
-</script>
 
-  <!-- Help Chat Prompt -->
-  <div class="fixed bottom-4 right-4 bg-blue-600 text-white rounded-full p-4 shadow-lg flex items-center space-x-2">
-    <img src="/images/whatsapp-business.jpg" alt="WhatsApp" class="h-6" />
-    <a href="https://wa.me/447578600296" class="font-semibold">Chat with us</a>
-  </div>
+<!-- Help Chat Prompt -->
+<div class="fixed bottom-4 right-4 bg-blue-600 text-white rounded-full p-4 shadow-lg flex items-center space-x-2">
+  <img src="/images/whatsapp-business.jpg" alt="WhatsApp" class="h-6" />
+  <a href="https://wa.me/447578600296" class="font-semibold">Chat with us</a>
+</div>
 
-  <!-- Sticky Footer CTA -->
-  <div class="sticky-footer fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-3 flex justify-center gap-4">
-    <a href="/checkout.html"
-       class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg shadow">
-      Buy the Do It Yourself Kit £169 | €189 | $209
-    </a>
-    <a href="/checkout.html"
-       class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg shadow">
-      Choose the "Full-Service" Option
-    </a>
-  </div>
+<!-- Sticky Footer CTA -->
+<div class="sticky-footer fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-3 flex justify-center gap-4">
+  <a href="/checkout.html"
+     class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg shadow">
+    Buy the Do It Yourself Kit £169 | €189 | $209
+  </a>
+  <a href="/checkout.html"
+     class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg shadow">
+    Choose the "Full-Service" Option
+  </a>
+</div>
+
+<!-- Language Dropdown -->
 <div x-data="{ open: false }" class="relative inline-block text-left mt-2">
   <button @click="open = !open"
     class="inline-flex items-center justify-center rounded border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none">
@@ -957,10 +944,11 @@
     <a href="#" onclick="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
   </div>
 </div>
-<!-- ✅ Google Translate element hidden -->
+
+<!-- Hidden Translate Target -->
 <div id="google_translate_element" style="display: none;"></div>
 
-<!-- ✅ Google Translate script -->
+<!-- Google Translate Engine Init -->
 <script type="text/javascript">
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
@@ -972,25 +960,24 @@
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<!-- ✅ Manual language setter -->
+<!-- Manual Language Setter -->
 <script>
   function setLanguage(langPair) {
     if (!langPair) return;
     const lang = langPair.split('|')[1];
-    const newLang = '/en/' + lang;
-    document.cookie = 'googtrans=' + newLang + '; path=/';
-    document.cookie = 'googtrans=' + newLang + '; domain=' + window.location.hostname + '; path=/';
+    const cookieValue = '/en/' + lang;
+    document.cookie = 'googtrans=' + cookieValue + '; path=/';
+    document.cookie = 'googtrans=' + cookieValue + '; domain=' + location.hostname + '; path=/';
     location.reload();
   }
 </script>
 
-<!-- ✅ Auto-detect language on first visit -->
+<!-- Auto Detect Language (First Visit Only) -->
 <script>
   if (!document.cookie.includes("googtrans")) {
     fetch("https://ipapi.co/json/")
       .then(response => response.json())
       .then(data => {
-        const country = data.country_code;
         const countryLangMap = {
           FR: "fr",
           ES: "es",
@@ -998,21 +985,17 @@
           IT: "it",
           NL: "nl",
           SE: "sv",
-          GR: "el",
-          DEFAULT: "en"
+          GR: "el"
         };
-        const lang = countryLangMap[country] || countryLangMap.DEFAULT;
+        const lang = countryLangMap[data.country_code] || "en";
         const cookieValue = "/en/" + lang;
         document.cookie = `googtrans=${cookieValue}; path=/`;
         document.cookie = `googtrans=${cookieValue}; domain=${location.hostname}; path=/`;
         location.reload();
       })
-      .catch(error => {
-        console.error("IP geolocation failed:", error);
-      });
+      .catch(err => console.error("IP location failed", err));
   }
 </script>
 
 </body>
 </html>
-
