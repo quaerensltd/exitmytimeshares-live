@@ -114,6 +114,19 @@
     }
   </style>
 
+  <style>
+    /* Cookie Banner Styles – place this in <head> */
+    #cookie-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10000;           /* sits above everything */
+      background: #ffffff;      /* white background */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+  </style>
+
 <style>
   /* lift the WhatsApp chat prompt above the footer */
   .fixed.bottom-4.right-4 {
@@ -160,40 +173,54 @@
   <!-- Invisible Translate target -->
   <div id="google_translate_element" style="display:none;"></div>
 
-<!-- Cookie consent banner -->
-<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t shadow p-4 flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
-  <p class="text-gray-800 text-sm flex-1">
-    We use cookies to improve your experience and analyse site traffic. Not required, but you can accept to help us.
-  </p>
-  <div class="flex gap-2">
-    <button id="cookie-decline" class="px-4 py-2 bg-gray-200 text-gray-700 rounded">Decline</button>
-    <button id="cookie-accept" class="px-4 py-2 bg-blue-600 text-white rounded">Accept</button>
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-banner" style="display:none; position:fixed; top:0; left:0; right:0; z-index:10000; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.15);">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center">
+      <p class="text-sm text-gray-700 mb-2 sm:mb-0">
+        We use cookies to improve your experience. This isn’t required—feel free to decline.
+      </p>
+      <div class="space-x-2">
+        <button id="cookie-decline" class="underline text-gray-600 hover:text-gray-800">
+          Decline
+        </button>
+        <button id="cookie-accept" class="font-semibold text-blue-600 hover:text-blue-800">
+          Accept
+        </button>
+      </div>
+    </div>
   </div>
-</div>
 
-<script>
-  // Simple cookie banner logic
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.cookie.includes('cookie_consent')) {
-      document.getElementById('cookie-banner').style.display = 'none';
-    }
-    document.getElementById('cookie-accept').onclick = () => {
-      document.cookie = 'cookie_consent=granted;path=/;max-age=' + 60*60*24*365;
-      document.getElementById('cookie-banner').style.display = 'none';
-      // ⇩ Tell Google to begin analytics & ad collection
-      if (window.gtag) {
-        gtag('consent','update', {
-          'ad_storage':        'granted',
-          'analytics_storage': 'granted'
-        });
+  <script>
+    // Simple cookie banner logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const banner = document.getElementById('cookie-banner');
+      const acceptBtn = document.getElementById('cookie-accept');
+      const declineBtn = document.getElementById('cookie-decline');
+  
+      // Show banner if no prior choice
+      if (!document.cookie.includes('cookie_consent')) {
+        banner.style.display = 'flex';
       }
-    };
-    document.getElementById('cookie-decline').onclick = () => {
-      document.cookie = 'cookie_consent=denied;path=/;max-age=' + 60*60*24*365;
-      document.getElementById('cookie-banner').style.display = 'none';
-    };
-  });
-</script>
+  
+      acceptBtn.onclick = () => {
+        document.cookie = 'cookie_consent=granted;path=/;max-age=' + 60*60*24*365;
+        banner.style.display = 'none';
+        // Unlock Google Analytics & Ads
+        if (window.gtag) {
+          gtag('consent', 'update', {
+            'ad_storage':        'granted',
+            'analytics_storage': 'granted'
+          });
+        }
+      };
+  
+      declineBtn.onclick = () => {
+        document.cookie = 'cookie_consent=denied;path=/;max-age=' + 60*60*24*365;
+        banner.style.display = 'none';
+        // We leave default “denied” in place, so no need to call gtag here
+      };
+    });
+  </script>  
 
   <!-- Header + Language dropdown + Page Title -->
   <header class="bg-white shadow">
