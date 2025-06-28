@@ -47,6 +47,15 @@
     }
   </style>
 
+<style>
+  /* lift the WhatsApp chat prompt above the footer */
+  .fixed.bottom-4.right-4 {
+    bottom: 8rem !important;  /* same as production */
+    right: 1rem !important;   /* tweak if you need more horizontal breathing room */
+    z-index: 70 !important;   /* ensure it floats above everything else */
+  }
+</style>
+
   <!-- 1) Google Translate engine init -->
   <script>
     function googleTranslateElementInit() {
