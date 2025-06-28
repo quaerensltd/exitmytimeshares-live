@@ -28,26 +28,34 @@
     defer
   ></script>
 
-  <style>
-    /* 1) Hide the floating banner iframe */
-    .goog-te-banner-frame,
-    .goog-te-banner-frame.skiptranslate {
-      display: none!important;
-    }
-  
-    /* 2) Hide the “powered by” link/icon */
-    .goog-logo-link,
-    .goog-te-gadget-icon {
-      display: none!important;
-    }
-  
-    /* 3) Strip any injected top-margin/padding */
-    html, body {
-      margin: 0!important;
-      padding: 0!important;
-      top: 0!important;
-    }
-  </style>
+<!-- hide only the GT banner iframe + branding and collapse its injected top spacing -->
+<style>
+  /* banner iframe (top bar) */
+  .goog-te-banner-frame,
+  .goog-te-banner-frame.skiptranslate { 
+    display: none !important; 
+  }
+
+  /* “powered by” logo and icon */
+  .goog-logo-link,
+  .goog-te-gadget-icon { 
+    display: none !important; 
+  }
+
+  /* translate dropdown widget (you still need the hidden target DIV for the script to work) */
+  .goog-te-gadget { 
+    font-size: 0 !important; 
+  }
+
+  /* kill any margin or top offset that GT injected */
+  html {
+    margin-top: 0 !important;
+    top: 0 !important;
+  }
+  body {
+    padding-top: 0 !important;
+  }
+</style>
 
   <!-- 1) Google Translate engine init -->
   <script>
