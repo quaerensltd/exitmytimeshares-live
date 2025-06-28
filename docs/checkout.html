@@ -25,18 +25,35 @@
         border-radius: 8px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       }
+      /* Logo + title row */
+      .form-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      .form-header img {
+        height: 50px;
+        margin-right: 1rem;
+      }
       .form-header h1 {
         font-size: 1.75rem;
-        margin-bottom: 0.5rem;
+        margin: 0;
         font-weight: 700;
         color: #1e40af;
+      }
+      .form-header p {
+        font-size: 1rem;
+        color: #4b5563;
+        margin: 0.5rem 0 0 0;
       }
       label {
         display: block;
         margin: 1rem 0 0.5rem;
         font-weight: 600;
       }
-      input, select, textarea {
+      input,
+      select,
+      textarea {
         width: 100%;
         padding: 0.75rem;
         border: 1px solid #d1d5db;
@@ -94,7 +111,8 @@
       .goog-te-balloon-frame {
         display: none !important;
       }
-      html, body {
+      html,
+      body {
         margin: 0 !important;
         padding: 0 !important;
         top: 0 !important;
@@ -102,37 +120,40 @@
     </style>
   </head>
   <body>
-    <!-- your logo header -->
-    <header style="text-align:center; margin:1rem 0;">
-      <a href="/"><img src="images/quaerens-logo.png" alt="Quaerens Logo" style="height:60px;"></a>
-    </header>
-
     <!-- Invisible Translate target -->
     <div id="google_translate_element" style="display: none;"></div>
     <script>
       function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,es,fr,de,nl,it',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,es,fr,de,nl,it',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+          },
+          'google_translate_element'
+        );
       }
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script>
       function setLanguage(lang) {
-        document.cookie = "googtrans=/en/" + lang + ";path=/";
+        document.cookie = 'googtrans=/en/' + lang + ';path=/';
         location.reload();
       }
     </script>
 
     <div class="form-wrapper">
       <div class="form-header">
-        <h1>Access Your DIY Exit Kit</h1>
-        <p>
-          Fill in your details so we can prepare your personalised timeshare
-          cancellation kit. You’ll then be directed to secure payment.
-        </p>
+        <!-- Logo in top-left of the box -->
+        <img src="images/quaerens-logo.png" alt="Quaerens Logo" />
+        <div>
+          <h1>Access Your DIY Exit Kit</h1>
+          <p>
+            Fill in your details so we can prepare your personalised
+            timeshare cancellation kit. You’ll then be directed to secure
+            payment.
+          </p>
+        </div>
       </div>
 
       <form id="claimForm">
@@ -174,7 +195,7 @@
           <option>Club Cala Blanca (CLC)</option>
           <option>Club del Carmen (CLC)</option>
           <option>Jardines del Sol (CLC)</option>
-          <option>Village d’Île‐de‐France (Marriott)</option>
+          <option>Village d’Île-de-France (Marriott)</option>
           <option>Le Club Mougins (Diamond)</option>
           <option>Royal Regency Paris Vincennes (Diamond)</option>
           <option>Borgo alle Vigne (Hilton)</option>
@@ -208,30 +229,6 @@
           <option>Patrick Henry Square (Bluegreen)</option>
           <option>Parkside Williamsburg Resort (Bluegreen)</option>
           <option>Elian Hotel & Spa (Bluegreen)</option>
-          <option>Hollywood Mirage</option>
-          <option>Beverly Hills Club</option>
-          <option>Beverly Hills Heights</option>
-          <option>Palm Beach Club</option>
-          <option>Bell Rock Inn (AZ)</option>
-          <option>Desert Isle of Palm Springs (CA)</option>
-          <option>Palm Canyon Resort (CA)</option>
-          <option>Rivera Beach & Shores Resort (CA)</option>
-          <option>Rivera Oaks Resort & Racquet Club (CA)</option>
-          <option>The Historic Crags Lodge (CO)</option>
-          <option>Alhambra Villas (FL)</option>
-          <option>Barefoot’n Resort (FL)</option>
-          <option>Bryan's Spanish Cove (FL)</option>
-          <option>Charter Club Resort of Naples Bay (FL)</option>
-          <option>Cypress Pointe Resort (FL)</option>
-          <option>Grand Beach Resort (FL)</option>
-          <option>Liki Tiki Village (FL)</option>
-          <option>Beachwoods Resort (NC)</option>
-          <option>Sunrise Ridge Resort (TN)</option>
-          <option>Beach Quarters Resort (VA)</option>
-          <option>Boardwalk Resort & Villas (VA)</option>
-          <option>Greensprings Vacation Resort (VA)</option>
-          <option>Turtle Cay Resort (VA)</option>
-          <option>Historic Powhatan Resort (VA)</option>
           <option>Other Resort (please specify below)</option>
         </select>
 
@@ -255,18 +252,21 @@
 
     <!-- Firebase + form submission logic -->
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { initializeApp } from
+        "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
       import {
         getStorage,
         ref,
         uploadBytes,
         getDownloadURL
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+      } from
+        "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
       import {
         getFirestore,
         collection,
         addDoc
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+      } from
+        "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyCOo_Sa242sUuGyZD8jO8kk12V1aBX7wMA",
