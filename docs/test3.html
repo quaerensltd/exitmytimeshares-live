@@ -28,24 +28,31 @@
     defer
   ></script>
 
-  <!-- Hide any Google Translate banner or extra spacing it injects -->
   <style>
-    /* 1) Remove the top banner iframe */
+    /* Hide the banner iframe and any skiptranslate wrapper */
     .goog-te-banner-frame,
-    .goog-te-banner-frame.skiptranslate {
+    .goog-te-banner-frame.skiptranslate,
+    body > .skiptranslate {
       display: none !important;
     }
-    /* 2) Remove the “powered by” widget */
+  
+    /* Hide Google branding/icon */
     .goog-logo-link,
-    .goog-te-gadget-icon {
+    .goog-te-gadget-icon,
+    .goog-te-gadget {
       display: none !important;
+      font-size: 0 !important;
     }
-    /* 3) Collapse any injected margin/padding */
-    html, body {
+  
+    /* Kill any injected “html { top: … }” or margin */
+    html {
       margin-top: 0 !important;
+      top: 0 !important;
+    }
+    body {
       padding-top: 0 !important;
     }
-  </style>
+  </style>  
 
   <!-- 1) Google Translate engine init -->
   <script>
