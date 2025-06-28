@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Full-Service Request | ExitMyTimeshares.com</title>
+  <link href="styles.css" rel="stylesheet" />
+  <!-- (include your Tailwind, AOS, Alpine, translate-hide CSS here) -->
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header with your logo top-left -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center">
+      <a href="/" class="mr-4">
+        <img src="images/quaerens-logo.png" alt="Quaerens Ltd Logo" class="h-12 w-auto">
+      </a>
+      <h1 class="text-xl font-bold">Your Resort Isn't on Our DIY List? We’ve Got You Covered.</h1>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow mt-6">
+    <!-- Intro copy block -->
+    <div class="prose mb-6">
+      <p>If your resort isn’t listed in our DIY Exit Kit, don’t worry — we offer full-service solutions too.</p>
+      <p>Thanks to our global network of trusted partners, we help clients exit timeshare contracts at resorts worldwide.</p>
+      <p>Just fill in the short form below, and one of our team members will get back to you with the best option for your situation.</p>
+      <p>Our full-service solutions are on a NO WIN NO FEE BASIS.</p>
+    </div>
+
+    <!-- Full-service form -->
+    <form id="fullServiceForm" class="space-y-4">
+      <label for="title" class="block font-semibold">Title</label>
+      <select id="title" required class="w-full border rounded p-2">
+        <option value="">Select…</option>
+        <option>Mr</option><option>Mrs</option><option>Miss</option><option>Ms</option><option>Other</option>
+      </select>
+
+      <label for="name" class="block font-semibold">Full Name</label>
+      <input type="text" id="name" required class="w-full border rounded p-2" />
+
+      <label for="email" class="block font-semibold">Email Address</label>
+      <input type="email" id="email" required class="w-full border rounded p-2" />
+
+      <label for="phone" class="block font-semibold">Phone Number</label>
+      <input type="tel" id="phone" required class="w-full border rounded p-2" />
+
+      <label for="resortName" class="block font-semibold">Resort Name</label>
+      <input
+        type="text"
+        id="resortName"
+        name="resortName"
+        placeholder="Enter your resort name…"
+        required
+        class="w-full border rounded p-2"
+      />      
+
+      <label for="details" class="block font-semibold">Additional Information</label>
+      <textarea id="details" rows="4" required class="w-full border rounded p-2"></textarea>
+
+      <label class="block font-semibold">Attach Contract Copy</label>
+      <div id="uploadArea" class="upload-area">Drag & Drop or Click to Upload</div>
+      <input type="file" id="fileUpload" hidden />
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700">
+        Submit Request
+      </button>
+
+      <div id="message" class="mt-4 text-center font-semibold text-green-600 opacity-0 transition-opacity"></div>
+    </form>
+  </main>
+
+  <!-- Firebase & Firestore init -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "...",
+      authDomain: "...",
+      projectId: "...",
+      storageBucket: "...",
+      messagingSenderId: "...",
+      appId: "..."
+    };
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("fullServiceForm");
+    const messageEl = document.getElementById("message");
+    const uploadArea = document.getElementById("uploadArea");
+    const fileInput = document.getElementById("fileUpload");
+    let uploadedFile = null;
+
+    // file drag & drop
+    uploadArea.addEventListener("click", () => fileInput.click());
+    uploadArea.addEventListener("dragover", e => { e.preventDefault(); uploadArea.classList.add("dragover"); });
+    uploadArea.addEventListener("dragleave", () => uploadArea.classList.remove("dragover"));
+    uploadArea.addEventListener("drop", e => {
+      e.preventDefault();
+      uploadArea.classList.remove("dragover");
+      fileInput.files = e.dataTransfer.files;
+      uploadedFile = fileInput.files[0];
+      uploadArea.textContent = uploadedFile.name;
+    });
+    fileInput.addEventListener("change", () => {
+      uploadedFile = fileInput.files[0];
+      uploadArea.textContent = uploadedFile.name;
+    });
+
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      messageEl.style.opacity = 0;
+      messageEl.textContent = "Submitting…";
+
+      const data = {
+        title:   form.title.value,
+        name:    form.name.value,
+        email:   form.email.value,
+        phone:   form.phone.value,
+        resort:  form.type.value,
+        details: form.details.value,
+        fileUrl: ""
+      };
+
+      try {
+        if (uploadedFile) {
+          const storageRef = ref(storage, `fullService/${Date.now()}_${uploadedFile.name}`);
+          const snap = await uploadBytes(storageRef, uploadedFile);
+          data.fileUrl = await getDownloadURL(snap.ref);
+        }
+
+        await addDoc(collection(db, "fullServiceRequests"), {
+          ...data,
+          createdAt: new Date()
+        });
+
+        await fetch(
+          "https://us-central1-quaerensclaims.cloudfunctions.net/sendFullServiceEmail",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              to: data.email,
+              subject: "Your Full-Service Timeshare Exit Request",
+              html: `
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Phone:</strong> ${data.phone}</p>
+                <p><strong>Resort:</strong> ${data.resort}</p>
+                <p><strong>Details:</strong> ${data.details}</p>
+                ${data.fileUrl ? `<p><a href="${data.fileUrl}">View attachment</a></p>` : ""}
+              `
+            })
+          }
+        );
+
+        messageEl.textContent = "✅ Thanks! We’ve received your request. We’ll be in touch soon.";
+        messageEl.style.opacity = 1;
+        form.reset();
+        uploadArea.textContent = "Drag & Drop or Click to Upload";
+        uploadedFile = null;
+
+      } catch (err) {
+        console.error(err);
+        messageEl.textContent = "⚠️ Something went wrong. Please try again.";
+        messageEl.style.opacity = 1;
+      }
+    });
+  </script>
+
+</body>
+</html>
