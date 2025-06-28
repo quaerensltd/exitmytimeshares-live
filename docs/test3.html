@@ -2,33 +2,78 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="images/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Primary Meta Tags -->
   <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit</title>
-  <meta name="description" content="Stuck in a timeshare? Our DIY Exit Kit gives step-by-step templates…" />
+  <meta name="description" content="Stuck in a timeshare? Our DIY Exit Kit gives step-by-step templates to cancel your contract—no lawyers required." />
   <meta name="keywords" content="timeshare exit, DIY timeshare, cancel timeshare, timeshare kit" />
+  <link rel="canonical" href="https://www.exitmytimeshares.com/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.exitmytimeshares.com/" />
+  <meta property="og:title" content="ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit" />
+  <meta property="og:description" content="Stuck in a timeshare? Our DIY Exit Kit gives step-by-step templates to cancel your contract—no lawyers required." />
+  <meta property="og:image" content="https://www.exitmytimeshares.com/images/kit-preview.jpg" />
+  <meta property="og:site_name" content="ExitMyTimeshares.com" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@YourTwitterHandle" />
+  <meta name="twitter:title" content="ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit" />
+  <meta name="twitter:description" content="Stuck in a timeshare? Our DIY Exit Kit gives step-by-step templates to cancel your contract—no lawyers required." />
+  <meta name="twitter:image" content="https://www.exitmytimeshares.com/images/kit-preview.jpg" />
+
+  <!-- Hreflang alternates -->
+  <link rel="alternate" hreflang="en" href="https://www.exitmytimeshares.com/" />
+  <link rel="alternate" hreflang="fr" href="https://www.exitmytimeshares.com/fr/" />
+  <link rel="alternate" hreflang="es" href="https://www.exitmytimeshares.com/es/" />
+  <link rel="alternate" hreflang="de" href="https://www.exitmytimeshares.com/de/" />
+  <link rel="alternate" hreflang="it" href="https://www.exitmytimeshares.com/it/" />
+  <link rel="alternate" hreflang="nl" href="https://www.exitmytimeshares.com/nl/" />
+  <link rel="alternate" hreflang="sv" href="https://www.exitmytimeshares.com/sv/" />
+  <link rel="alternate" hreflang="el" href="https://www.exitmytimeshares.com/el/" />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://www.exitmytimeshares.com/sitemap.xml" />
+
+  <!-- Structured Data (Product) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Do-It-Yourself Timeshare Exit Kit",
+    "image": "https://www.exitmytimeshares.com/images/kit-preview.jpg",
+    "description": "Lawyer-vetted cancellation letters & guide for €169, 3–6 week process, money-back guarantee.",
+    "brand": {
+      "@type": "Organization",
+      "name": "Quaerens Ltd"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.exitmytimeshares.com/checkout.html",
+      "priceCurrency": "EUR",
+      "price": "169.00",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
 
   <!-- 1) Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 
-  <!-- 2) Tailwind CSS -->
+  <!-- 2) Tailwind CSS + your CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- 3) AOS (Animate On Scroll) -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/aos@next/dist/aos.css"
-  />
+  <!-- 3) AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-  <!-- 4) Alpine.js (for dropdowns) -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    defer
-  ></script>
+  <!-- 4) Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-  <!-- completely hide every Google-Translate UI element AND remove any extra top spacing -->
+  <!-- Hide any Google Translate UI & injected spacing -->
   <style>
     .skiptranslate,
     .goog-te-banner-frame,
@@ -45,18 +90,16 @@
       padding: 0 !important;
       top: 0 !important;
     }
+
+    /* lift the WhatsApp chat prompt above the footer */
+    .fixed.bottom-4.right-4 {
+      bottom: 8rem !important;
+      right: 1rem !important;
+      z-index: 70 !important;
+    }
   </style>
 
-<style>
-  /* lift the WhatsApp chat prompt above the footer */
-  .fixed.bottom-4.right-4 {
-    bottom: 8rem !important;  /* same as production */
-    right: 1rem !important;   /* tweak if you need more horizontal breathing room */
-    z-index: 70 !important;   /* ensure it floats above everything else */
-  }
-</style>
-
-  <!-- 1) Google Translate engine init -->
+  <!-- Google Translate engine init -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -69,7 +112,7 @@
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-  <!-- 2) Manual language setter -->
+  <!-- Manual language setter -->
   <script>
     function setLanguage(langPair) {
       if (!langPair) return;
@@ -81,75 +124,13 @@
     }
   </script>
 
-  <!-- 3) Default to English on first visit -->
+  <!-- Default to English on first visit -->
   <script>
     if (!document.cookie.includes('googtrans')) {
       document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
     }
   </script>
 </head>
-
-<body class="bg-gray-50 text-gray-800">
-  <!-- Invisible Translate target -->
-  <div id="google_translate_element" style="display:none;"></div>
-
-  <!-- Header + Language dropdown -->
-  <header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/"><img src="images/quaerens-logo.png" alt="Logo" class="h-20"></a>
-      <div x-data="{ open: false }" class="relative">
-        <button
-          @click="open = !open"
-          class="inline-flex items-center px-4 py-2 border rounded bg-white hover:bg-gray-100"
-        >
-          🌐 Language
-          <svg
-            class="ml-2 h-4 w-4"
-            fill="none"
-            viewBox="0 0 20 20"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 8l5 5 5-5"
-            />
-          </svg>
-        </button>
-        <div
-          x-show="open"
-          @click.outside="open = false"
-          class="absolute right-0 mt-2 w-48 bg-white rounded shadow z-50"
-        >
-          <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">
-            🇬🇧 English
-          </a>
-          <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">
-            🇫🇷 Français
-          </a>
-          <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">
-            🇪🇸 Español
-          </a>
-          <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">
-            🇩🇪 Deutsch
-          </a>
-          <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">
-            🇮🇹 Italiano
-          </a>
-          <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">
-            🇳🇱 Nederlands
-          </a>
-          <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">
-            🇸🇪 Svenska
-          </a>
-          <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">
-            🇬🇷 Ελληνικά
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
 
 </body>
 </html>
