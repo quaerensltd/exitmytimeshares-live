@@ -8,14 +8,14 @@
   <meta name="description" content="Need help exiting your timeshare? Fill out our full-service request—no win, no fee." />
   <meta name="keywords" content="timeshare exit, full service timeshare, timeshare cancellation service" />
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- AOS -->
+  <!-- AOS (Animate On Scroll) -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <!-- Alpine.js -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-  <!-- Hide any Google translate artifacts -->
+  <!-- Hide Google Translate artifacts -->
   <style>
     .goog-te-banner-frame,
     .goog-te-banner-frame.skiptranslate,
@@ -24,22 +24,22 @@
     .goog-te-gadget-icon,
     .goog-te-gadget,
     #goog-gt-tt,
-    .goog-te-balloon-frame { display: none !important; }
+    .goog-te-balloon-frame { display: none!important; }
     html, body { margin:0!important; padding:0!important; top:0!important; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-  <!-- Invisible Google Translate target -->
+  <!-- Google Translate hook (hidden) -->
   <div id="google_translate_element" style="display:none;"></div>
   <script>
-    function googleTranslateElementInit(){
+    function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage:'en',
         includedLanguages:'en,fr,es,de,nl,it,sv,el',
-        layout:google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay:false
-      },'google_translate_element');
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -51,7 +51,7 @@
     }
   </script>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="bg-white shadow">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0">
       <div class="flex items-center space-x-4">
@@ -61,13 +61,12 @@
       <h1 class="mt-2 sm:mt-0 text-lg sm:text-xl font-bold text-gray-900">
         Your Resort Isn’t on Our DIY List? We’ve Got You Covered.
       </h1>
-      <!-- Language dropdown (optional) -->
-      <div x-data="{ open:false }" class="ml-auto relative">
+      <div x-data="{ open: false }" class="ml-auto relative">
         <button @click="open = !open"
                 class="inline-flex items-center px-3 py-1 border rounded bg-white hover:bg-gray-100">
           🌐
         </button>
-        <div x-show="open" @click.outside="open=false"
+        <div x-show="open" @click.outside="open = false"
              class="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg z-50">
           <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
           <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
@@ -82,8 +81,8 @@
     </div>
   </header>
 
-  <!-- Intro + form container -->
-  <main class="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-md mt-6" data-aos="fade-up">
+  <!-- MAIN FORM -->
+  <main class="max-w-3xl mx-auto mt-6 p-6 bg-white rounded-xl shadow-md" data-aos="fade-up">
     <div class="prose prose-blue mb-6">
       <p>If your resort isn’t listed in our DIY Exit Kit, don’t worry — we offer full-service solutions too.</p>
       <p>Thanks to our global network of trusted partners, we help clients exit timeshare contracts at resorts worldwide.</p>
@@ -117,14 +116,13 @@
 
       <div>
         <label for="resortName" class="block font-semibold">Resort Name</label>
-        <input type="text" id="resortName" name="resortName" placeholder="Enter your resort name…"
-               required class="mt-1 block w-full border-gray-300 rounded p-2" />
+        <input type="text" id="resortName" name="resortName" placeholder="Enter your resort name…" required
+               class="mt-1 block w-full border-gray-300 rounded p-2" />
       </div>
 
       <div>
         <label for="details" class="block font-semibold">Additional Information</label>
-        <textarea id="details" rows="4" required
-                  class="mt-1 block w-full border-gray-300 rounded p-2"></textarea>
+        <textarea id="details" rows="4" required class="mt-1 block w-full border-gray-300 rounded p-2"></textarea>
       </div>
 
       <div>
@@ -141,19 +139,17 @@
         Submit Request
       </button>
 
-      <div id="message"
-           class="mt-4 text-center font-semibold text-green-600 opacity-0 transition-opacity">
-      </div>
+      <div id="message" class="mt-4 text-center font-semibold text-green-600 opacity-0 transition-opacity"></div>
     </form>
   </main>
 
-  <!-- Firebase & Firestore (same as checkout.html) -->
+  <!-- FIREBASE & FORM LOGIC -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    const firebaseConfig = { /* your config */ };
+    const firebaseConfig = { /* YOUR FIREBASE CONFIG HERE */ };
     const app = initializeApp(firebaseConfig);
     const storage = getStorage(app);
     const db = getFirestore(app);
@@ -164,13 +160,12 @@
     const fileInput = document.getElementById("fileUpload");
     let uploadedFile = null;
 
-    uploadArea.addEventListener("click", ()=> fileInput.click());
-    uploadArea.addEventListener("dragover", e => {
-      e.preventDefault(); uploadArea.classList.add("border-blue-400");
-    });
-    uploadArea.addEventListener("dragleave", ()=> uploadArea.classList.remove("border-blue-400"));
+    uploadArea.addEventListener("click", () => fileInput.click());
+    uploadArea.addEventListener("dragover", e => { e.preventDefault(); uploadArea.classList.add("border-blue-400"); });
+    uploadArea.addEventListener("dragleave", () => uploadArea.classList.remove("border-blue-400"));
     uploadArea.addEventListener("drop", e => {
-      e.preventDefault(); uploadArea.classList.remove("border-blue-400");
+      e.preventDefault();
+      uploadArea.classList.remove("border-blue-400");
       fileInput.files = e.dataTransfer.files;
       uploadedFile = fileInput.files[0];
       uploadArea.textContent = uploadedFile.name;
@@ -201,20 +196,24 @@
           const snap = await uploadBytes(storageRef, uploadedFile);
           data.fileUrl = await getDownloadURL(snap.ref);
         }
-        await addDoc(collection(db, "fullServiceRequests"), { ...data, createdAt:new Date() });
+
+        await addDoc(collection(db, "fullServiceRequests"), {
+          ...data,
+          createdAt: new Date()
+        });
+
         await fetch("https://us-central1-quaerensclaims.cloudfunctions.net/sendFullServiceEmail", {
-          method:"POST", headers:{"Content-Type":"application/json"},
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            to:data.email,
-            subject:"Your Full-Service Timeshare Exit Request",
-            html:`
+            to: data.email,
+            subject: "Your Full-Service Timeshare Exit Request",
+            html: `
               <p><strong>Name:</strong> ${data.name}</p>
               <p><strong>Phone:</strong> ${data.phone}</p>
               <p><strong>Resort:</strong> ${data.resort}</p>
               <p><strong>Details:</strong> ${data.details}</p>
-              ${data.fileUrl?`<p><a href="${data.fileUrl}">View attachment</a></p>`
-
-              :""}
+              ${data.fileUrl ? `<p><a href="${data.fileUrl}">View attachment</a></p>` : ""}
             `
           })
         });
@@ -225,7 +224,7 @@
         uploadArea.textContent = "Drag & Drop or Click to Upload";
         uploadedFile = null;
 
-      } catch(err) {
+      } catch (err) {
         console.error(err);
         messageEl.textContent = "⚠️ Something went wrong. Please try again.";
         messageEl.style.opacity = 1;
@@ -235,6 +234,6 @@
 
   <!-- AOS init -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script> AOS.init({ duration:500, once:true }); </script>
+  <script> AOS.init({ duration: 500, once: true }); </script>
 </body>
 </html>
