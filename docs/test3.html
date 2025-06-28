@@ -1,62 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="images/favicon.png" />
-
-  <!-- Responsive viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- SEO -->
   <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit</title>
   <meta name="description" content="Stuck in a timeshare? Our DIY Exit Kit gives step-by-step templates…" />
   <meta name="keywords" content="timeshare exit, DIY timeshare, cancel timeshare, timeshare kit" />
 
   <!-- 1) Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 
   <!-- 2) Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css" />
 
   <!-- 3) AOS (Animate On Scroll) -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/aos@next/dist/aos.css"
-  />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <!-- 4) Alpine.js (for dropdowns) -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    defer
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-  <!-- Hide Google’s top-banner -->
+  <!-- Hide any Google Translate banner or extra spacing it injects -->
   <style>
-    /* Hide the Google Translate frame completely */
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-banner-frame {
-      display: none !important;
-    }
-  
-    /* Also hide the small “powered by” widget */
-    .goog-logo-link,
-    .goog-te-gadget-icon {
-      display: none !important;
-    }
-  
-    /* Kill any extra top margin/padding injected by the translate scripts */
-    html, body {
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
+    /* completely hide the top banner iframe */
+    .goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate { display: none!important; }
+    /* hide the little powered-by widget */
+    .goog-logo-link, .goog-te-gadget-icon { display: none!important; }
+    /* collapse any injected margin */
+    html, body { margin-top: 0!important; padding-top: 0!important; }
   </style>
-
-  <!-- Invisible translate target -->
-  <div id="google_translate_element" style="display:none;"></div>
 
   <!-- 1) Google Translate engine init -->
   <script>
@@ -76,27 +48,25 @@
     function setLanguage(langPair) {
       if (!langPair) return;
       const to = langPair.split('|')[1];
-      const cookieVal = '/en/' + to;
-      document.cookie = 'googtrans=' + cookieVal + ';path=/';
-      document.cookie = 'googtrans=' + cookieVal + ';domain=.exitmytimeshares.com;path=/';
+      const cv = '/en/' + to;
+      document.cookie = 'googtrans=' + cv + ';path=/';
+      document.cookie = 'googtrans=' + cv + ';domain=.exitmytimeshares.com;path=/';
       location.reload();
     }
   </script>
 
   <!-- 3) Default to English on first visit -->
   <script>
-    if (!document.cookie.includes("googtrans")) {
+    if (!document.cookie.includes('googtrans')) {
       document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
-      // no reload needed
     }
   </script>
 </head>
-
 <body class="bg-gray-50 text-gray-800">
-  <!-- Invisible translate target -->
+  <!-- Invisible translate target (only once!) -->
   <div id="google_translate_element" style="display:none;"></div>
 
-  <!-- Header with language dropdown -->
+  <!-- Your header+language dropdown… -->
   <header class="bg-white shadow">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <a href="/"><img src="images/quaerens-logo.png" alt="Logo" class="h-20"></a>
