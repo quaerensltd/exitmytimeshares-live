@@ -28,22 +28,24 @@
     defer
   ></script>
 
-  <!-- completely hide every Google-Translate UI element AND remove any extra top spacing -->
   <style>
-    .skiptranslate,
+    /* 1) Hide the floating banner iframe */
     .goog-te-banner-frame,
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-gadget,
-    .goog-te-gadget-icon,
-    .goog-logo-link,
-    #goog-gt-tt,
-    .goog-te-balloon-frame {
-      display: none !important;
+    .goog-te-banner-frame.skiptranslate {
+      display: none!important;
     }
+  
+    /* 2) Hide the “powered by” link/icon */
+    .goog-logo-link,
+    .goog-te-gadget-icon {
+      display: none!important;
+    }
+  
+    /* 3) Strip any injected top-margin/padding */
     html, body {
-      margin: 0 !important;
-      padding: 0 !important;
-      top: 0 !important;
+      margin: 0!important;
+      padding: 0!important;
+      top: 0!important;
     }
   </style>
 
