@@ -276,10 +276,10 @@
         </select>
         
 
-        <label for="details">Any additional information</label>
+        <label for="details">Any additional information: Contract number, year of purchase, product: weeks, points, fractional etc.</label>
         <textarea id="details" rows="5" required></textarea>
 
-        <label for="fileUpload">Attach a file (PDF, image, etc.)</label>
+        <label for="fileUpload">Attach files, copy of the contract describing your ownership (PDF, image, etc.)</label>
         <div class="upload-area" id="uploadArea">Drag & Drop or Click to Upload</div>
         <input type="file" id="fileUpload" hidden />
 
@@ -388,7 +388,7 @@ import { getFirestore, collection, addDoc } from "https://www.gstatic.com/fireba
     });
 
     if (response.ok) {
-        window.location.href = "https://checkout.exitmytimeshares.com"; // Gumroad page
+        window.location.href = "https://checkout.revolut.com/pay/9d812636-8d6e-4db0-8da6-8d664d2d2299"; // Revolut page
       message.classList.add("show");
       form.reset();
       uploadArea.textContent = "Drag & Drop or Click to Upload";
