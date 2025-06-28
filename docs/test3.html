@@ -1,118 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="images/favicon.png" />
-  <link
-    rel="stylesheet"
-    href="styles.css"
-  />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit ($229|£169|€199)</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description"
-        content="Stuck in a timeshare? Our lawyer-vetted, Do-It-Yourself Exit Kit ($229|£169|€199) gives you step-by-step templates to cancel your contract—no lawyers required. 3–6 week turnaround, money-back guarantee." />
-  <meta name="keywords"
-        content="timeshare exit, cancel timeshare, DIY timeshare, timeshare cancellation kit, timeshare cancellation letters, club la costa, hilton resorts, dimaond resorts, dri, anfi, wyndham, marriot, diamond  " />
-
-  <!-- Structured Data for Google (Product & Offer) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Do-It-Yourself Timeshare Exit Kit",
-    "image": "https://www.exitmytimeshares.com/images/kit-preview.jpg",
-    "description": "Lawyer-vetted cancellation letters & guide for €169, 3–6 week process, money-back guarantee.",
-    "brand": {
-      "@type": "Organization",
-      "name": "Quaerens Ltd"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://www.exitmytimeshares.com/checkout.html",
-      "priceCurrency": "EUR",
-      "price": "169.00",
-      "availability": "https://schema.org/InStock"
-    }
-  }
-  </script>
-
-  <!-- Reset to English BEFORE anything else -->
-  <script>
-    document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
-  </script>
-
-  <!-- Hide Google’s banner & logo but keep the combo -->
-  <style>
-    .goog-te-banner-frame.skiptranslate,
-    body > .skiptranslate,
-    .goog-logo-link,
-    .goog-te-gadget-icon {
-      display: none !important;
-    }
-    .goog-te-gadget {
-      visibility: hidden !important;
-    }
-  </style>
-
-  <!-- Fonts & Tailwind -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- Alpine.js -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
-  <!-- Page CSS Overrides -->
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      position: static !important;
-      padding-bottom: 8rem;
-    }
-    html { margin-top: 0 !important; }
-
-    .fixed.bottom-4.right-4 {
-      bottom: 8rem !important;
-      z-index: 70 !important;
-    }
-    .sticky-footer {
-      z-index: 65; 
-    }
-
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-gadget-icon,
-    .goog-logo-link,
-    .goog-te-gadget,
-    body > .skiptranslate {
-      display: none !important;
-    }
-    .goog-te-gadget { font-size: 0 !important; }
-
-    form label { display: block; margin-top: 1rem; font-weight: 600; }
-    form input,
-    form select {
-      width: 100%;
-      padding: 0.6rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-top: 0.5rem;
-    }
-  </style>
-
-<!-- ✅ Google Translate Init -->
-<script>
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-      autoDisplay: false
-    }, 'google_translate_element');
-  }
-</script>
-
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</head>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="images/favicon.png" />
+  
+    <!-- 1) Force English cookie fallback -->
+    <script>
+      document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
+    </script>
+  
+    <!-- 2) Auto-detect & set language via IP -->
+    <script>
+      (function(){
+        if (!document.cookie.includes('googtrans=')) {
+          fetch('https://ipapi.co/json/')
+            .then(r => r.json())
+            .then(d => {
+              const map = { FR:'fr', ES:'es', DE:'de', IT:'it', NL:'nl', SE:'sv', GR:'el' };
+              const lang = map[d.country_code] || 'en';
+              document.cookie = `googtrans=/en/${lang};domain=.exitmytimeshares.com;path=/`;
+              location.reload();
+            })
+            .catch(console.error);
+        }
+      })();
+    </script>
+  
+    <!-- 3) Google Translate engine, hidden -->
+    <style>
+      .goog-te-banner-frame.skiptranslate,
+      body > .skiptranslate,
+      .goog-logo-link,
+      .goog-te-gadget-icon { display: none !important; }
+      .goog-te-gadget { visibility: hidden !important; }
+    </style>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
+    <!-- 4) SEO & viewport -->
+    <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Stuck in a timeshare? Our DIY Exit Kit gives step-by-step templates…" />
+    <meta name="keywords" content="timeshare exit, DIY timeshare, cancel timeshare, timeshare kit" />
+  
+    <!-- 5) Fonts & Tailwind (local build) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  
+    <!-- 6) Alpine.js (deferred) -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>  
   
 
 <body class="bg-gray-50 text-gray-800">
@@ -157,7 +105,7 @@
         }, 'google_translate_element');
       }
     </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   </body>
   </html>  
 
