@@ -60,21 +60,14 @@
       }
     </script>
   
-    <!-- 4) Auto-detect on first visit -->
-    <script>
-      if (!document.cookie.includes("googtrans")) {
-        fetch("https://ipapi.co/json/")
-          .then(r => r.json())
-          .then(d => {
-            const m = { FR:"fr", ES:"es", DE:"de", IT:"it", NL:"nl", SE:"sv", GR:"el" };
-            const lang = m[d.country_code] || "en";
-            const cv = "/en/" + lang;
-            document.cookie = `googtrans=${cv}; domain=.exitmytimeshares.com; path=/`;
-            location.reload();
-          })
-          .catch(console.error);
-      }
-    </script>
+<!-- 4) Default to English on first visit -->
+<script>
+  if (!document.cookie.includes("googtrans")) {
+    document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
+    // no reload needed—page is already in English
+  }
+</script>
+
   </head>
 
 <body class="bg-gray-50 text-gray-800">
