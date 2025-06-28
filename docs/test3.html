@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="images/favicon.png" />
@@ -26,95 +28,91 @@
     href="https://unpkg.com/aos@next/dist/aos.css"
   />
 
-  <!-- 4) Alpine.js (for your dropdowns) -->
+  <!-- 4) Alpine.js (for dropdowns) -->
   <script
     src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     defer
   ></script>
 
-    <!-- 1) Invisible Translate target -->
-    <div id="google_translate_element" style="display:none;"></div>
+  <!-- Hide Google’s top-banner -->
+  <style>
+    .goog-te-banner-frame.skiptranslate,
+    body > .skiptranslate { display: none !important; }
+    html { top: 0 !important; }
+  </style>
 
-    <!-- 2) Google Translate engine init -->
-    <script>
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        }, 'google_translate_element');
-      }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  
-    <!-- 3) Manual language setter -->
-    <script>
-      function setLanguage(langPair) {
-        if (!langPair) return;
-        const to = langPair.split('|')[1];
-        const cookieVal = '/en/' + to;
-        document.cookie = 'googtrans=' + cookieVal + ';path=/';
-        document.cookie = 'googtrans=' + cookieVal + ';domain=.exitmytimeshares.com;path=/';
-        location.reload();
-      }
-    </script>
-  
-<!-- 4) Default to English on first visit -->
-<script>
-  if (!document.cookie.includes("googtrans")) {
-    document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
-    // no reload needed—page is already in English
-  }
-</script>
+  <!-- Invisible translate target -->
+  <div id="google_translate_element" style="display:none;"></div>
 
-  </head>
+  <!-- 1) Google Translate engine init -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,es,de,nl,it,sv,el',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- 2) Manual language setter -->
+  <script>
+    function setLanguage(langPair) {
+      if (!langPair) return;
+      const to = langPair.split('|')[1];
+      const cookieVal = '/en/' + to;
+      document.cookie = 'googtrans=' + cookieVal + ';path=/';
+      document.cookie = 'googtrans=' + cookieVal + ';domain=.exitmytimeshares.com;path=/';
+      location.reload();
+    }
+  </script>
+
+  <!-- 3) Default to English on first visit -->
+  <script>
+    if (!document.cookie.includes("googtrans")) {
+      document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
+      // no reload needed
+    }
+  </script>
+</head>
 
 <body class="bg-gray-50 text-gray-800">
-  <div id="google_translate_element" style="display: none;"></div>
+  <!-- Invisible translate target -->
+  <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 6) Header + Language dropdown -->
-    <header class="bg-white shadow">
-      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/"><img src="images/quaerens-logo.png" alt="Logo" class="h-20"></a>
-        <div x-data="{ open: false }" class="relative">
-          <button @click="open = !open"
-                  class="inline-flex items-center px-4 py-2 border rounded bg-white hover:bg-gray-100">
-            🌐 Language
-            <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 20 20" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5 8l5 5 5-5" />
-            </svg>
-          </button>
-          <div x-show="open" @click.outside="open = false"
-               class="absolute right-0 mt-2 w-48 bg-white rounded shadow z-50">
-            <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
-            <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
-            <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
-            <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
-            <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
-            <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
-            <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
-            <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
-          </div>
+  <!-- Header with language dropdown -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/"><img src="images/quaerens-logo.png" alt="Logo" class="h-20"></a>
+      <div x-data="{ open: false }" class="relative">
+        <button @click="open = !open"
+                class="inline-flex items-center px-4 py-2 border rounded bg-white hover:bg-gray-100">
+          🌐 Language
+          <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5 8l5 5 5-5" />
+          </svg>
+        </button>
+        <div x-show="open" @click.outside="open = false"
+             class="absolute right-0 mt-2 w-48 bg-white rounded shadow z-50">
+          <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
+          <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
+          <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
+          <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+          <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+          <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+          <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+          <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
         </div>
       </div>
-    </header>
-  
-    <!-- 3) Google Translate API init -->
-    <script>
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        }, 'google_translate_element');
-      }
-    </script>
+    </div>
+  </header>
 
-  </body>
-  </html>  
+</body>
+</html>
+
 
 <!-- Hero Section -->
 <section class="relative w-full overflow-hidden">
