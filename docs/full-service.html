@@ -1,239 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="images/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Full-Service Request | ExitMyTimeshares.com</title>
-  <meta name="description" content="Need help exiting your timeshare? Fill out our full-service request—no win, no fee." />
-  <meta name="keywords" content="timeshare exit, full service timeshare, timeshare cancellation service" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Use Our Full Service | ExitMyTimeshares.com – Quaerens Ltd</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Base page styles */
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #f3f4f6;
+        padding: 1rem;
+        margin: 0;
+        color: #1f2937;
+      }
+      .form-wrapper {
+        max-width: 700px;
+        margin: 1.5rem auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      /* Logo + title row */
+      .form-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      .form-header img {
+        height: 50px;
+        margin-right: 1rem;
+      }
+      .form-header h1 {
+        font-size: 1.75rem;
+        margin: 0;
+        font-weight: 700;
+        color: #1e40af;
+      }
+      .form-header p {
+        font-size: 1rem;
+        color: #4b5563;
+        margin: 0.5rem 0 0 0;
+      }
+      label {
+        display: block;
+        margin: 1rem 0 0.5rem;
+        font-weight: 600;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+      button {
+        margin-top: 1.5rem;
+        width: 100%;
+        background: #2563eb;
+        color: white;
+        padding: 0.75rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #1d4ed8;
+      }
+      .upload-area {
+        border: 2px dashed #9ca3af;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 6px;
+        margin-top: 1rem;
+        background: #f9fafb;
+        cursor: pointer;
+      }
+      .upload-area.dragover {
+        background: #e0f2fe;
+        border-color: #3b82f6;
+      }
+      .message {
+        margin-top: 1rem;
+        text-align: center;
+        font-weight: 500;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.4s ease;
+      }
+      .message.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- AOS (Animate On Scroll) -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <!-- Alpine.js -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+      /* Hide Google Translate bar & injected spacing */
+      .skiptranslate,
+      .goog-te-banner-frame,
+      .goog-te-banner-frame.skiptranslate,
+      .goog-te-gadget,
+      .goog-te-gadget-icon,
+      .goog-logo-link,
+      #goog-gt-tt,
+      .goog-te-balloon-frame {
+        display: none !important;
+      }
+      html,
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        top: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Invisible Translate target -->
+    <div id="google_translate_element" style="display: none;"></div>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,es,fr,de,nl,it',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+          },
+          'google_translate_element'
+        );
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+      function setLanguage(lang) {
+        document.cookie = 'googtrans=/en/' + lang + ';path=/';
+        location.reload();
+      }
+    </script>
 
-  <!-- Hide Google Translate artifacts -->
-  <style>
-    .goog-te-banner-frame,
-    .goog-te-banner-frame.skiptranslate,
-    body > .skiptranslate,
-    .goog-logo-link,
-    .goog-te-gadget-icon,
-    .goog-te-gadget,
-    #goog-gt-tt,
-    .goog-te-balloon-frame { display: none!important; }
-    html, body { margin:0!important; padding:0!important; top:0!important; }
-  </style>
-</head>
-<body class="bg-gray-50 text-gray-800">
-
-  <!-- Google Translate hook (hidden) -->
-  <div id="google_translate_element" style="display:none;"></div>
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage:'en',
-        includedLanguages:'en,fr,es,de,nl,it,sv,el',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <script>
-    function setLanguage(langPair) {
-      const to = langPair.split('|')[1];
-      document.cookie = 'googtrans=/en/'+to+';domain=.exitmytimeshares.com;path=/';
-      location.reload();
-    }
-  </script>
-
-  <!-- HEADER -->
-  <header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0">
-      <div class="flex items-center space-x-4">
-        <img src="images/quaerens-logo.png" alt="Quaerens Ltd Logo" class="h-12 w-auto">
-        <img src="images/logo-freeflightclaim.png" alt="Free Flight Claim Logo" class="h-12 w-auto">
-      </div>
-      <h1 class="mt-2 sm:mt-0 text-lg sm:text-xl font-bold text-gray-900">
-        Your Resort Isn’t on Our DIY List? We’ve Got You Covered.
-      </h1>
-      <div x-data="{ open: false }" class="ml-auto relative">
-        <button @click="open = !open"
-                class="inline-flex items-center px-3 py-1 border rounded bg-white hover:bg-gray-100">
-          🌐
-        </button>
-        <div x-show="open" @click.outside="open = false"
-             class="absolute right-0 mt-2 w-40 bg-white rounded shadow-lg z-50">
-          <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
-          <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
-          <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
-          <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
-          <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
-          <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
-          <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
-          <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
+    <div class="form-wrapper">
+      <div class="form-header">
+        <!-- Logo in top-left of the box -->
+        <img src="images/quaerens-logo.png" alt="Quaerens Logo" />
+        <div>
+          <h1>Your Resort Isn’t on Our DIY List? We’ve Got You Covered</h1>
+          <p>
+            If your resort isn’t listed in our DIY Exit Kit, don’t worry — we offer full-service solutions too.
+            Thanks to our global network of trusted partners, we help clients exit timeshare contracts at resorts worldwide.
+            Just fill in the short form below, and one of our team members will get back to you with the best option for your situation.
+            All our services are on a No Win No Fee basis!
+          </p>
         </div>
       </div>
-    </div>
-  </header>
 
-  <!-- MAIN FORM -->
-  <main class="max-w-3xl mx-auto mt-6 p-6 bg-white rounded-xl shadow-md" data-aos="fade-up">
-    <div class="prose prose-blue mb-6">
-      <p>If your resort isn’t listed in our DIY Exit Kit, don’t worry — we offer full-service solutions too.</p>
-      <p>Thanks to our global network of trusted partners, we help clients exit timeshare contracts at resorts worldwide.</p>
-      <p>Just fill in the short form below, and one of our team members will get back to you with the best option for your situation.</p>
-      <p><strong>No win, no fee basis.</strong></p>
-    </div>
-
-    <form id="fullServiceForm" class="space-y-4">
-      <div>
-        <label for="title" class="block font-semibold">Title</label>
-        <select id="title" required class="mt-1 block w-full border-gray-300 rounded p-2">
-          <option value="">Select…</option>
-          <option>Mr</option><option>Mrs</option><option>Miss</option><option>Ms</option><option>Other</option>
+      <form id="claimForm">
+        <label for="title">Title</label>
+        <select id="title" required>
+          <option value="">Select...</option>
+          <option>Mr</option>
+          <option>Mrs</option>
+          <option>Miss</option>
+          <option>Ms</option>
+          <option>Other</option>
         </select>
-      </div>
 
-      <div>
-        <label for="name" class="block font-semibold">Full Name</label>
-        <input type="text" id="name" required class="mt-1 block w-full border-gray-300 rounded p-2" />
-      </div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required />
 
-      <div>
-        <label for="email" class="block font-semibold">Email Address</label>
-        <input type="email" id="email" required class="mt-1 block w-full border-gray-300 rounded p-2" />
-      </div>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required />
 
-      <div>
-        <label for="phone" class="block font-semibold">Phone Number</label>
-        <input type="tel" id="phone" required class="mt-1 block w-full border-gray-300 rounded p-2" />
-      </div>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required />
 
-      <div>
-        <label for="resortName" class="block font-semibold">Resort Name</label>
-        <input type="text" id="resortName" name="resortName" placeholder="Enter your resort name…" required
-               class="mt-1 block w-full border-gray-300 rounded p-2" />
-      </div>
+        <label for="resortName">Resort Name</label>
+        <input type="text" id="resortName" name="resortName" placeholder="Enter your resort name..." required />
 
-      <div>
-        <label for="details" class="block font-semibold">Additional Information</label>
-        <textarea id="details" rows="4" required class="mt-1 block w-full border-gray-300 rounded p-2"></textarea>
-      </div>
+        <label for="details">
+          Any additional info: contract #, purchase year, weeks/points/fractional, etc.
+        </label>
+        <textarea id="details" rows="5" required></textarea>
 
-      <div>
-        <label class="block font-semibold">Attach Contract Copy</label>
-        <div id="uploadArea"
-             class="mt-1 flex items-center justify-center border-2 border-dashed border-gray-300 rounded p-6 text-gray-500 cursor-pointer hover:border-blue-400">
-          Drag &amp; Drop or Click to Upload
+        <label for="fileUpload">
+          Attach your contract copy (PDF, image, etc.)
+        </label>
+        <div class="upload-area" id="uploadArea">
+          Drag & Drop or Click to Upload
         </div>
         <input type="file" id="fileUpload" hidden />
-      </div>
 
-      <button type="submit"
-              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">
-        Submit Request
-      </button>
+        <button type="submit">Submit Your Information</button>
+        <div class="message" id="message"></div>
+      </form>
+    </div>
 
-      <div id="message" class="mt-4 text-center font-semibold text-green-600 opacity-0 transition-opacity"></div>
-    </form>
-  </main>
+    <!-- Firebase + form submission logic -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getStorage, ref, uploadBytes, getDownloadURL
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+      import {
+        getFirestore, collection, addDoc
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  <!-- FIREBASE & FORM LOGIC -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-    const firebaseConfig = { /* YOUR FIREBASE CONFIG HERE */ };
-    const app = initializeApp(firebaseConfig);
-    const storage = getStorage(app);
-    const db = getFirestore(app);
-
-    const form = document.getElementById("fullServiceForm");
-    const messageEl = document.getElementById("message");
-    const uploadArea = document.getElementById("uploadArea");
-    const fileInput = document.getElementById("fileUpload");
-    let uploadedFile = null;
-
-    uploadArea.addEventListener("click", () => fileInput.click());
-    uploadArea.addEventListener("dragover", e => { e.preventDefault(); uploadArea.classList.add("border-blue-400"); });
-    uploadArea.addEventListener("dragleave", () => uploadArea.classList.remove("border-blue-400"));
-    uploadArea.addEventListener("drop", e => {
-      e.preventDefault();
-      uploadArea.classList.remove("border-blue-400");
-      fileInput.files = e.dataTransfer.files;
-      uploadedFile = fileInput.files[0];
-      uploadArea.textContent = uploadedFile.name;
-    });
-    fileInput.addEventListener("change", () => {
-      uploadedFile = fileInput.files[0];
-      uploadArea.textContent = uploadedFile.name;
-    });
-
-    form.addEventListener("submit", async e => {
-      e.preventDefault();
-      messageEl.style.opacity = 0;
-      messageEl.textContent = "Submitting…";
-
-      const data = {
-        title: form.title.value,
-        name: form.name.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        resort: form.resortName.value,
-        details: form.details.value,
-        fileUrl: ""
+      const firebaseConfig = {
+        apiKey: "AIzaSyCOo_Sa242sUuGyZD8jO8kk12V1aBX7wMA",
+        authDomain: "quaerensclaims.firebaseapp.com",
+        projectId: "quaerensclaims",
+        storageBucket: "quaerensclaims.appspot.com",
+        messagingSenderId: "57715464932",
+        appId: "1:57715464932:web:a69a4949f36c2ad214eaf1"
       };
+      const app = initializeApp(firebaseConfig);
+      const storage = getStorage(app);
+      const db = getFirestore(app);
 
-      try {
-        if (uploadedFile) {
-          const storageRef = ref(storage, `fullService/${Date.now()}_${uploadedFile.name}`);
-          const snap = await uploadBytes(storageRef, uploadedFile);
-          data.fileUrl = await getDownloadURL(snap.ref);
+      const form = document.getElementById("claimForm");
+      const message = document.getElementById("message");
+      const uploadArea = document.getElementById("uploadArea");
+      const fileInput = document.getElementById("fileUpload");
+      let uploadedFile = null;
+
+      uploadArea.addEventListener("click", () => fileInput.click());
+      uploadArea.addEventListener("dragover", e => {
+        e.preventDefault();
+        uploadArea.classList.add("dragover");
+      });
+      uploadArea.addEventListener("dragleave", () => {
+        uploadArea.classList.remove("dragover");
+      });
+      uploadArea.addEventListener("drop", e => {
+        e.preventDefault();
+        uploadArea.classList.remove("dragover");
+        fileInput.files = e.dataTransfer.files;
+        uploadedFile = fileInput.files[0];
+        uploadArea.textContent = uploadedFile.name;
+      });
+      fileInput.addEventListener("change", () => {
+        uploadedFile = fileInput.files[0];
+        uploadArea.textContent = uploadedFile.name;
+      });
+
+      form.addEventListener("submit", async e => {
+        e.preventDefault();
+        message.textContent = "Submitting…";
+        message.classList.remove("show");
+
+        const data = {
+          title: document.getElementById("title").value,
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          resort: document.getElementById("resortName").value,
+          details: document.getElementById("details").value,
+          fileUrl: ""
+        };
+
+        try {
+          if (uploadedFile) {
+            const storageRef = ref(
+              storage,
+              `fullService/${Date.now()}_${uploadedFile.name}`
+            );
+            const snap = await uploadBytes(storageRef, uploadedFile);
+            data.fileUrl = await getDownloadURL(snap.ref);
+          }
+
+          // store in Firestore
+          await addDoc(collection(db, "fullServiceRequests"), {
+            ...data,
+            createdAt: new Date()
+          });
+
+          // show thank-you message instead of redirect
+          message.textContent = "✅ Thank you! Your request has been submitted.";
+          message.classList.add("show");
+
+          form.reset();
+          uploadArea.textContent = "Drag & Drop or Click to Upload";
+          uploadedFile = null;
+
+          // if you ever want to redirect to payment, uncomment:
+          // window.location.href = 'https://checkout.revolut.com/pay/…';
+
+        } catch (err) {
+          console.error(err);
+          message.textContent = "⚠️ Something went wrong. Please try again later.";
+          message.classList.add("show");
         }
-
-        await addDoc(collection(db, "fullServiceRequests"), {
-          ...data,
-          createdAt: new Date()
-        });
-
-        await fetch("https://us-central1-quaerensclaims.cloudfunctions.net/sendFullServiceEmail", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            to: data.email,
-            subject: "Your Full-Service Timeshare Exit Request",
-            html: `
-              <p><strong>Name:</strong> ${data.name}</p>
-              <p><strong>Phone:</strong> ${data.phone}</p>
-              <p><strong>Resort:</strong> ${data.resort}</p>
-              <p><strong>Details:</strong> ${data.details}</p>
-              ${data.fileUrl ? `<p><a href="${data.fileUrl}">View attachment</a></p>` : ""}
-            `
-          })
-        });
-
-        messageEl.textContent = "✅ Thanks! We’ve received your request. We’ll be in touch soon.";
-        messageEl.style.opacity = 1;
-        form.reset();
-        uploadArea.textContent = "Drag & Drop or Click to Upload";
-        uploadedFile = null;
-
-      } catch (err) {
-        console.error(err);
-        messageEl.textContent = "⚠️ Something went wrong. Please try again.";
-        messageEl.style.opacity = 1;
-      }
-    });
-  </script>
-
-  <!-- AOS init -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script> AOS.init({ duration: 500, once: true }); </script>
-</body>
+      });
+    </script>
+  </body>
 </html>
