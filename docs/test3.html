@@ -36,9 +36,23 @@
 
   <!-- Hide Google’s top-banner -->
   <style>
+    /* Hide the Google Translate frame completely */
     .goog-te-banner-frame.skiptranslate,
-    body > .skiptranslate { display: none !important; }
-    html { top: 0 !important; }
+    .goog-te-banner-frame {
+      display: none !important;
+    }
+  
+    /* Also hide the small “powered by” widget */
+    .goog-logo-link,
+    .goog-te-gadget-icon {
+      display: none !important;
+    }
+  
+    /* Kill any extra top margin/padding injected by the translate scripts */
+    html, body {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
   </style>
 
   <!-- Invisible translate target -->
