@@ -1,77 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="images/favicon.png" />
-  
-    <!-- 1) Force English cookie fallback -->
-    <script>
-      document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
-    </script>
-  
-    <!-- 2) Auto-detect & set language via IP -->
-    <script>
-      (function(){
-        if (!document.cookie.includes('googtrans=')) {
-          fetch('https://ipapi.co/json/')
-            .then(r => r.json())
-            .then(d => {
-              const map = { FR:'fr', ES:'es', DE:'de', IT:'it', NL:'nl', SE:'sv', GR:'el' };
-              const lang = map[d.country_code] || 'en';
-              document.cookie = `googtrans=/en/${lang};domain=.exitmytimeshares.com;path=/`;
-              location.reload();
-            })
-            .catch(console.error);
-        }
-      })();
-    </script>
-  
-    <!-- 3) Google Translate engine, hidden -->
-    <style>
-      .goog-te-banner-frame.skiptranslate,
-      body > .skiptranslate,
-      .goog-logo-link,
-      .goog-te-gadget-icon { display: none !important; }
-      .goog-te-gadget { visibility: hidden !important; }
-    </style>
-    <script>
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        }, 'google_translate_element');
-      }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  
-    <!-- 4) SEO & viewport -->
-    <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Stuck in a timeshare? Our DIY Exit Kit gives step-by-step templates…" />
-    <meta name="keywords" content="timeshare exit, DIY timeshare, cancel timeshare, timeshare kit" />
-  
-    <!-- 5) Fonts & Tailwind (local build) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="images/favicon.png" />
 
-    <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-    rel="stylesheet">
-+ <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Responsive viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO -->
+  <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit</title>
+  <meta name="description" content="Stuck in a timeshare? Our DIY Exit Kit gives step-by-step templates…" />
+  <meta name="keywords" content="timeshare exit, DIY timeshare, cancel timeshare, timeshare kit" />
+
+  <!-- 1) Google Fonts -->
   <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
     rel="stylesheet"
-    href="styles.css"
   />
 
-  
-    <!-- 6) Alpine.js (deferred) -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  </head>  
-  
+  <!-- 2) Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- 3) AOS (Animate On Scroll) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@next/dist/aos.css"
+  />
+
+  <!-- 4) Alpine.js (for your dropdowns) -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    defer
+  ></script>
+</head>
 
 <body class="bg-gray-50 text-gray-800">
   <div id="google_translate_element" style="display: none;"></div>
@@ -958,6 +918,12 @@
       .catch(err => console.error("IP location failed", err));
   }
 </script>
+
+  <!-- AOS JS & init -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 500, once: true });
+  </script>
 
 </body>
 </html>
