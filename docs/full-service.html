@@ -323,10 +323,17 @@
           }
 
           // store in Firestore
-          await addDoc(collection(db, "fullServiceRequests"), {
-            ...data,
-            createdAt: new Date()
-          });
+          await addDoc(collection(db, "claims"), {
+  name: data.name,
+  email: data.email,
+  phone: data.phone,
+  type: "Full Service Exit",
+  details: `Resort: ${data.resort}\n\n${data.details}`,
+  fileUrl: data.fileUrl,
+  status: "pending",
+  createdAt: new Date()
+});
+
 
           // show thank-you message instead of redirect
           message.textContent = "✅ Thank you! Your request has been submitted.";
