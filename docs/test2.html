@@ -1,160 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="images/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ExitMyTimeshares.com | Do It Yourself Timeshare Exit Kit ($229|£169|€199)</title>
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="images/favicon.png" />
+  <link rel="canonical" href="https://www.exitmytimeshares.com/"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <!-- SEO Meta Tags -->
+<!-- Google tag (with Consent Mode defaults) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRT3XKF4KS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // 1) Default all storage to “denied”
+  gtag('consent', 'default', {
+    'ad_storage':        'denied',
+    'analytics_storage': 'denied'
+  });
+
+  // 2) Initialize gtag (will respect the above defaults)
+  gtag('js', new Date());
+  gtag('config', 'G-GRT3XKF4KS');
+</script>
+
+  <title>DIY Timeshare Exit Kit — Cancel Your Timeshare in 3–6 Weeks</title>
   <meta name="description"
-        content="Stuck in a timeshare? Our lawyer-vetted, Do-It-Yourself Exit Kit ($229|£169|€199) gives you step-by-step templates to cancel your contract—no lawyers required. 3–6 week turnaround, money-back guarantee." />
-  <meta name="keywords"
-        content="timeshare exit, cancel timeshare, DIY timeshare, timeshare cancellation kit, timeshare cancellation letters, club la costa, hilton resorts, dimaond resorts, dri, anfi, wyndham, marriot, diamond  " />
+        content="Cancel your timeshare yourself — lawyer-vetted letters, step-by-step guidance for EU, UK & US. 3–6 week turnaround, money-back guarantee."/>
+  <meta name="robots" content="index,follow"/>
 
-  <!-- Structured Data for Google (Product & Offer) -->
+  <!-- Open Graph -->
+  <meta property="og:type"        content="product"/>
+  <meta property="og:url"         content="https://www.exitmytimeshares.com/"/>
+  <meta property="og:title"       content="DIY Timeshare Exit Kit — Cancel Your Timeshare in 3–6 Weeks"/>
+  <meta property="og:description" content="Everything you need to cancel your timeshare yourself — templates, instructions, money-back guarantee."/>
+  <meta property="og:image"       content="https://www.exitmytimeshares.com/images/kit-preview.jpg"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="DIY Timeshare Exit Kit — Cancel Your Timeshare in 3–6 Weeks"/>
+  <meta name="twitter:description" content="Lawyer-vetted letters & guide to cancel your timeshare — 3–6 week process, money-back guarantee."/>
+  <meta name="twitter:image"       content="https://www.exitmytimeshares.com/images/kit-preview.jpg"/>
+
+  <!-- Alternate languages -->
+  <link rel="alternate" hreflang="en" href="https://www.exitmytimeshares.com/"/>
+  <link rel="alternate" hreflang="fr" href="https://www.exitmytimeshares.com/fr/"/>
+  <link rel="alternate" hreflang="es" href="https://www.exitmytimeshares.com/es/"/>
+  <link rel="alternate" hreflang="de" href="https://www.exitmytimeshares.com/de/"/>
+
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://www.exitmytimeshares.com/sitemap.xml"/>
+
+  <!-- JSON-LD Product schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Do-It-Yourself Timeshare Exit Kit",
-    "image": "https://www.exitmytimeshares.com/images/kit-preview.jpg",
-    "description": "Lawyer-vetted cancellation letters & guide for €169, 3–6 week process, money-back guarantee.",
-    "brand": {
-      "@type": "Organization",
-      "name": "Quaerens Ltd"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://www.exitmytimeshares.com/checkout.html",
-      "priceCurrency": "EUR",
-      "price": "169.00",
-      "availability": "https://schema.org/InStock"
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Do-It-Yourself Timeshare Exit Kit",
+    "image":"https://www.exitmytimeshares.com/images/kit-preview.jpg",
+    "description":"Lawyer-vetted cancellation letters & guide for €169, 3–6 week process, money-back guarantee.",
+    "brand":{"@type":"Organization","name":"Quaerens Ltd"},
+    "offers":{
+      "@type":"Offer",
+      "url":"https://www.exitmytimeshares.com/checkout.html",
+      "priceCurrency":"EUR",
+      "price":"169.00",
+      "availability":"https://schema.org/InStock"
     }
   }
   </script>
-</head>
 
-  <!-- 1) Reset to English BEFORE anything else -->
-  <script>
-    document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
-  </script>
+  <!-- 1) Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
 
-  <!-- 2) Language setter + IP auto-detect -->
-  <script>
-    function setLanguage(langPair) {
-      /* … your setLanguage code … */
-    }
-    /* ↓ Comment out everything from here... */
-    (function(){
-      if (!document.cookie.includes('googtrans=')) {
-        fetch('https://ipapi.co/json/')
-          .then(r=>r.json())
-          .then(d=>{
-            const m={FR:'fr',ES:'es',DE:'de',IT:'it',NL:'nl',SE:'sv',GR:'el'};
-            const lg=m[d.country_code]||'en';
-            document.cookie=`googtrans=/en/${lg};domain=.exitmytimeshares.com;path=/`;
-            location.reload();
-          })
-          .catch(console.error);
-      }
-    })();
-  </script>
-
-  <!-- 3) Hide Google’s banner & logo but keep the combo -->
-  <style>
-    .goog-te-banner-frame.skiptranslate,
-    body > .skiptranslate,
-    .goog-logo-link,
-    .goog-te-gadget-icon {
-      display: none !important;
-    }
-    .goog-te-gadget {
-      visibility: hidden !important;
-    }
-  </style>
-
-  <!-- Your existing fonts & Tailwind -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- 2) Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
 
-  <!-- Alpine.js -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- 3) AOS (Animate On Scroll) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@next/dist/aos.css"
+  />
 
-  <!-- Your page CSS overrides -->
+  <!-- 4) Alpine.js (for dropdowns) -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    defer
+  ></script>
+
+  <!-- completely hide every Google-Translate UI element AND remove any extra top spacing -->
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      position: static !important;
-      padding-bottom: 8rem; /* ← ensure the footer is always reachable */
-    }
-    html { margin-top: 0 !important; }
-
-    /* Lift WhatsApp chat prompt above the footer */
-    .fixed.bottom-4.right-4 {
-      bottom: 8rem !important;
-      z-index: 70 !important;
-    }
-
-    /* Make sticky footer sit on top */
-    .sticky-footer {
-      z-index: 65; 
-    }
-
-    /* HIDE the Google Translate top banner */
+    .skiptranslate,
+    .goog-te-banner-frame,
     .goog-te-banner-frame.skiptranslate,
+    .goog-te-gadget,
     .goog-te-gadget-icon,
     .goog-logo-link,
-    .goog-te-gadget,
-    body > .skiptranslate {
+    #goog-gt-tt,
+    .goog-te-balloon-frame {
       display: none !important;
     }
-    .goog-te-gadget { font-size: 0 !important; }
-    form label { display: block; margin-top: 1rem; font-weight: 600; }
-    form input,
-    form select {
-      width: 100%;
-      padding: 0.6rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-top: 0.5rem;
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      top: 0 !important;
     }
   </style>
-</head>
-  
-<!-- 2) Language setter + IP auto-detect -->
-<script>
-    // Manual dropdown → set cookie & reload
-    function setLanguage(langPair) {
-      if (!langPair) return;
-      const [, to] = langPair.split('|');
-      const cookieValue = `/en/${to}`;
-      document.cookie = `googtrans=${cookieValue};domain=.exitmytimeshares.com;path=/`;
-      // reload so Google sees the new cookie
-      location.reload();
-    }
-  
-    // On first visit, auto-detect via IP and set cookie
-    (function(){
-      if (!document.cookie.includes("googtrans=")) {
-        fetch("https://ipapi.co/json/")
-          .then(res => res.json())
-          .then(data => {
-            const map = { FR: "fr", ES: "es", DE: "de", IT: "it", NL: "nl", SE: "sv", GR: "el" };
-            const lang = map[data.country_code] || "en";
-            const cookieValue = `/en/${lang}`;
-            document.cookie = `googtrans=${cookieValue};domain=.exitmytimeshares.com;path=/`;
-            location.reload();
-          })
-          .catch(err => console.error("IP geolocation failed:", err));
-      }
-    })();
-  </script>
 
-  <!-- jsPDF (if needed elsewhere) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  /* lift the WhatsApp chat prompt above the footer */
+  .fixed.bottom-4.right-4 {
+    bottom: 8rem !important;  /* same as production */
+    right: 1rem !important;   /* tweak if you need more horizontal breathing room */
+    z-index: 70 !important;   /* ensure it floats above everything else */
+  }
+</style>
 
-  <!-- 4) Google Translate engine init (in the head) -->
+  <!-- 1) Google Translate engine init -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -166,54 +129,104 @@
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- 2) Manual language setter -->
+  <script>
+    function setLanguage(langPair) {
+      if (!langPair) return;
+      const to = langPair.split('|')[1];
+      const cv = '/en/' + to;
+      document.cookie = 'googtrans=' + cv + ';path=/';
+      document.cookie = 'googtrans=' + cv + ';domain=.exitmytimeshares.com;path=/';
+      location.reload();
+    }
+  </script>
+
+  <!-- 3) Default to English on first visit -->
+  <script>
+    if (!document.cookie.includes('googtrans')) {
+      document.cookie = 'googtrans=/en/en;domain=.exitmytimeshares.com;path=/';
+    }
+  </script>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
-    <!-- 5) Invisible Google translate engine target -->
-    <div id="google_translate_element" style="display:none;"></div>
+  <!-- Invisible Translate target -->
+  <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 6) Header + Language dropdown -->
-    <header class="bg-white shadow">
-      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/"><img src="images/quaerens-logo.png" alt="Logo" class="h-20"></a>
-        <div x-data="{ open: false }" class="relative">
-          <button @click="open = !open"
-                  class="inline-flex items-center px-4 py-2 border rounded bg-white hover:bg-gray-100">
-            🌐 Language
-            <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 20 20" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5 8l5 5 5-5" />
-            </svg>
-          </button>
-          <div x-show="open" @click.outside="open = false"
-               class="absolute right-0 mt-2 w-48 bg-white rounded shadow z-50">
-            <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
-            <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
-            <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
-            <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
-            <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
-            <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
-            <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
-            <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>
-          </div>
+  <!-- Header + Language dropdown + Page Title -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+      
+      <!-- Logo -->
+      <a href="/"><img src="images/quaerens-logo.png" alt="Logo" class="h-20"></a>
+      
+      <!-- Page Title (H1) -->
+      <h1 class="mt-4 md:mt-0 text-3xl font-extrabold text-gray-900">
+        Timeshare Exit Kit | Cancel Your Timeshare Yourself in 3–6 Weeks
+      </h1>
+
+      <!-- Language Dropdown -->
+      <div x-data="{ open: false }" class="relative mt-4 md:mt-0">
+        <button
+          @click="open = !open"
+          class="inline-flex items-center px-4 py-2 border rounded bg-white hover:bg-gray-100"
+        >
+          🌐 Language
+          <svg
+            class="ml-2 h-4 w-4"
+            fill="none"
+            viewBox="0 0 20 20"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 8l5 5 5-5"
+            />
+          </svg>
+        </button>
+        <div
+          x-show="open"
+          @click.outside="open = false"
+          class="absolute right-0 mt-2 w-48 bg-white rounded shadow z-50"
+        >
+          <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">
+            🇬🇧 English
+          </a>
+          <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">
+            🇫🇷 Français
+          </a>
+          <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">
+            🇪🇸 Español
+          </a>
+          <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">
+            🇩🇪 Deutsch
+          </a>
+          <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">
+            🇮🇹 Italiano
+          </a>
+          <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">
+            🇳🇱 Nederlands
+          </a>
+          <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">
+            🇸🇪 Svenska
+          </a>
+          <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">
+            🇬🇷 Ελληνικά
+          </a>
         </div>
       </div>
-    </header>
-  
-    <!-- 3) Google Translate API init -->
-    <script>
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,fr,es,de,nl,it,sv,el',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        }, 'google_translate_element');
-      }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  </body>
-  </html>  
+
+    </div>
+  </header>
+
+
+</body>
+</html>
+
+
 
 <!-- Hero Section -->
 <section class="relative w-full overflow-hidden">
@@ -227,17 +240,17 @@
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
             <!-- News Item 1 -->
             <div>
-              <img src="/images/logo-arda.png" alt="ARDA" class="mx-auto h-10 mb-2">
+              <img src="images/logo-arda.png" alt="ARDA" class="mx-auto h-10 mb-2">
               <p class="text-sm text-gray-700">“There’s no need to deal with exit companies, because there are safe ways to exit a timeshare.”</p>
             </div>
             <!-- News Item 2 -->
             <div>
-              <img src="/images/logo-foxnews.png" alt="Fox News" class="mx-auto h-10 mb-2">
+              <img src="images/logo-foxnews.png" alt="Fox News" class="mx-auto h-10 mb-2">
               <p class="text-sm text-gray-700">“Timeshares do not appreciate in value… selling may mean losing money.”</p>
             </div>
             <!-- News Item 3 -->
             <div>
-              <img src="/images/quaerens-logo.png" alt="EU Consumer Watch" class="mx-auto h-10 mb-2">
+              <img src="images/quaerens-logo.png" alt="EU Consumer Watch" class="mx-auto h-10 mb-2">
               <p class="text-sm text-gray-700">“Timeshare Exit Made Simple — Do It Yourself Kit, No Lawyers, No Surprises!”</p>
             </div> 
           </div>
@@ -250,7 +263,7 @@
   
       <!-- 1. Kit Promo -->
       <div class="bg-blue-50 rounded-xl p-6 shadow-md" data-aos="fade-up">
-        <h2 class="text-2xl font-bold mb-4 text-blue-800">Exit Your Timeshare — Without the Legal Fees</h2>
+        <h2 class="text-2xl font-bold mb-4 text-blue-800">Exit Your Timeshare Without the Legal Fees</h2>
         <p class="text-gray-700 mb-3">
           Stuck in a timeshare you no longer want? Our <strong>Do-It-Yourself Exit Kit</strong> gives you everything you need to take back control and exit out of your timeshare contract <strong>without</strong> paying thousands to lawyers or risky or expensive exit companies.
         </p>
@@ -307,7 +320,7 @@
     <!-- flex container: column on mobile, row from md up -->
     <div class="flex flex-col md:flex-row items-center md:items-start gap-4 mb-4">
       <!-- Kit preview image -->
-      <img src="/images/kit-preview.jpg"
+      <img src="images/kit-preview.jpg"
            alt="Preview of the Do-It-Yourself Kit"
            class="w-[150px] h-[150px] object-contain rounded-md flex-shrink-0" />
   
@@ -467,9 +480,9 @@
   <div class="max-w-6xl mx-auto px-4 text-center space-y-6">
     <!-- Trusted By Logos -->
     <div class="flex flex-wrap justify-center items-center gap-8">
-      <img src="/images/logo-arda.png" alt="ARDA" class="h-12" />
-      <img src="/images/logo-eu-consumer-watch.png" alt="EU Consumer Watch" class="h-12" />
-      <img src="/images/logo-foxnews.png" alt="Fox News" class="h-12" />
+      <img src="images/logo-arda.png" alt="ARDA" class="h-12" />
+      <img src="images/logo-eu-consumer-watch.png" alt="EU Consumer Watch" class="h-12" />
+      <img src="images/logo-foxnews.png" alt="Fox News" class="h-12" />
     </div>
     <!-- Payment Security -->
     <div class="flex justify-center items-center gap-4">
@@ -578,7 +591,7 @@
       <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
         <div class="text-5xl mb-2">💸</div>
         <h4 class="font-semibold mb-1">Save Thousands</h4>
-        <p class="text-gray-600">One-time kit vs. €2,000+ in legal fees.</p>
+        <p class="text-gray-600">One-time kit vs. 2,000+ in legal fees.</p>
       </div>
       <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
         <div class="text-5xl mb-2">⏱️</div>
@@ -607,9 +620,9 @@
         <h3 class="text-2xl font-bold text-gray-800 mb-4">Secure Checkout</h3>
         <p class="text-gray-600 mb-6">Pay with Visa or Mastercard and enjoy full purchase protection on your card.</p>
         <div class="flex justify-center items-center gap-8">
-          <img src="/images/badge-visa.png" alt="Visa accepted" class="h-10"/>
-          <img src="/images/badge-mastercard.png" alt="Mastercard accepted" class="h-10"/>
-          <img src="/images/badge-secure.png" alt="Secure checkout" class="h-10"/>
+          <img src="images/badge-visa.png" alt="Visa accepted" class="h-10"/>
+          <img src="images/badge-mastercard.png" alt="Mastercard accepted" class="h-10"/>
+          <img src="images/badge-secure.png" alt="Secure checkout" class="h-10"/>
         </div>
       </div>
   
@@ -725,20 +738,20 @@
   
       <!-- Verified Badge -->
       <div class="flex flex-col items-center" data-aos="fade-up">
-        <img src="/images/verified-quaerens-badge.png" alt="Verified by Quaerens Ltd" class="w-[150px] h-auto mb-4">
+        <img src="images/verified-quaerens-badge.png" alt="Verified by Quaerens Ltd" class="w-[150px] h-auto mb-4">
         <p class="text-sm text-gray-600">✅ Verified by Quaerens Ltd</p>
       </div>
   
       <!-- Refund Guarantee -->
       <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-        <img src="/images/shield-refund.png" alt="Refund Guarantee" class="w-[100px] h-auto mb-4">
+        <img src="images/shield-refund.png" alt="Refund Guarantee" class="w-[100px] h-auto mb-4">
         <p class="text-sm text-gray-600">🛡️ Full refund if the kit is not effective, no questions asked!</p>
       </div>
   
       <!-- Email Contact -->
       <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
         <a href="mailto:info@quaerens.co.uk">
-          <img src="/images/contact-email-badge.png" alt="Email Support" class="w-[140px] h-auto mb-2">
+          <img src="images/contact-email-badge.png" alt="Email Support" class="w-[140px] h-auto mb-2">
         </a>
         <p class="text-sm text-gray-600">Email us any time</p>
       </div>
@@ -746,7 +759,7 @@
       <!-- WhatsApp Contact -->
       <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
         <a href="https://wa.me/447578600296" target="_blank">
-          <img src="/images/contact-whatsapp-badge.png" alt="WhatsApp Support" class="w-[140px] h-auto mb-2">
+          <img src="images/contact-whatsapp-badge.png" alt="WhatsApp Support" class="w-[140px] h-auto mb-2">
         </a>
         <p class="text-sm text-gray-600">Chat with us on WhatsApp</p>
       </div>
@@ -843,7 +856,7 @@
       <!-- Image 2: Only $229 | £169 | €199 -->
       <div data-aos="zoom-in" data-aos-delay="100">
         <img src="images/only-169-euro.jpg" class="rounded-xl shadow-md mb-3" alt="Affordable Exit Kit" />
-        <p class="text-sm text-gray-600">Buy your Do-It-Yourself Exit Kit today — just €169</p>
+        <p class="text-sm text-gray-600">Buy your Do-It-Yourself Exit Kit today — just $229 | £169 | €199</p>
       </div>
   
       <!-- Image 3: Relief / Happy Client -->
@@ -857,22 +870,23 @@
   
   <div class="text-center space-y-4">
     <a href="/checkout.html"
-       class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+       class="relative inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
       Buy your Do-It-Yourself Kit today for only $229 | £169 | €199
+      <!-- Guarantee Badge up in the top-right corner -->
+      <span class="absolute -top-4 right-1 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded z-10">
+        100% Refund Guarantee
+      </span>
     </a>
+  
     <!-- ☆ Payment Security Badge -->
     <p class="mt-2 text-sm text-gray-600 flex items-center justify-center space-x-2">
-      <img src="/images/visa-mastercard-badge.png" alt="Visa & Mastercard" class="h-5" />
+      <img src="images/visa-mastercard-badge.png" alt="Visa & Mastercard" class="h-5" />
       <span>Paid via Visa/Mastercard — 3D Secure protected</span>
     </p>
   
     <a href="/full-service.html"
-       class="relative inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
+       class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition duration-300">
       Let ExitMyTimeshares.com do all the work
-      <!-- Guarantee Ribbon -->
-      <span class="absolute -top-2 -right-4 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded transform rotate-12">
-        100% Refund Guarantee
-      </span>
     </a>
   </div>
 
@@ -945,7 +959,7 @@
       const input = document.getElementById("resort").value.trim().toLowerCase();
       const resultEl = document.getElementById("resort-result");
       const button = document.getElementById("kit-button");
-  
+
       const match = eligibleResorts.find(r => r.toLowerCase() === input);
       
       if (match) {
@@ -961,27 +975,53 @@
       }
     });
 </script>
-  
-</script>
 
-  <!-- Help Chat Prompt -->
-  <div class="fixed bottom-4 right-4 bg-blue-600 text-white rounded-full p-4 shadow-lg flex items-center space-x-2">
-    <img src="/images/whatsapp-business.jpg" alt="WhatsApp" class="h-6" />
-    <a href="https://wa.me/447578600296" class="font-semibold">Chat with us</a>
-  </div>
+<!-- Help Chat Prompt -->
+<div class="fixed bottom-4 right-4 bg-blue-600 text-white rounded-full p-4 shadow-lg flex items-center space-x-2">
+  <img src="images/whatsapp-business.jpg" alt="WhatsApp" class="h-6" />
+  <a href="https://wa.me/34624979564" class="font-semibold">Chat with us</a>
+</div>
 
-  <!-- Sticky Footer CTA -->
-  <div class="sticky-footer fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-3 flex justify-center gap-4">
-    <a href="/checkout.html"
-       class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg shadow">
-      Buy the Do It Yourself Kit £169 | €189 | $209
-    </a>
-    <a href="/checkout.html"
-       class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg shadow">
-      Choose the "Full-Service" Option
-    </a>
+<!-- Sticky Footer CTA -->
+<div class="sticky-footer fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-3 flex justify-center gap-4">
+  <a href="/checkout.html"
+     class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg shadow">
+    Buy the Do It Yourself Kit £169 | €199 | $229
+  </a>
+  <a href="/full-service.html"
+     class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg shadow">
+    Choose the "Full-Service" Option
+  </a>
+</div>
+
+<!-- Language Dropdown -->
+<div x-data="{ open: false }" class="relative inline-block text-left mt-2">
+  <button @click="open = !open"
+    class="inline-flex items-center justify-center rounded border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none">
+    🌐 Language
+    <svg class="ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8l5 5 5-5" />
+    </svg>
+  </button>
+
+  <div x-show="open" @click.outside="open = false"
+    class="absolute right-0 mt-2 w-48 rounded-md shadow bg-white text-sm text-gray-700 z-50">
+    <a href="#" @click.prevent="setLanguage('en|en')" class="block px-4 py-2 hover:bg-gray-100">🇬🇧 English</a>
+    <a href="#" @click.prevent="setLanguage('en|fr')" class="block px-4 py-2 hover:bg-gray-100">🇫🇷 Français</a>
+    <a href="#" @click.prevent="setLanguage('en|es')" class="block px-4 py-2 hover:bg-gray-100">🇪🇸 Español</a>
+    <a href="#" @click.prevent="setLanguage('en|de')" class="block px-4 py-2 hover:bg-gray-100">🇩🇪 Deutsch</a>
+    <a href="#" @click.prevent="setLanguage('en|it')" class="block px-4 py-2 hover:bg-gray-100">🇮🇹 Italiano</a>
+    <a href="#" @click.prevent="setLanguage('en|nl')" class="block px-4 py-2 hover:bg-gray-100">🇳🇱 Nederlands</a>
+    <a href="#" @click.prevent="setLanguage('en|sv')" class="block px-4 py-2 hover:bg-gray-100">🇸🇪 Svenska</a>
+    <a href="#" @click.prevent="setLanguage('en|el')" class="block px-4 py-2 hover:bg-gray-100">🇬🇷 Ελληνικά</a>    
   </div>
+</div>
+
+  <!-- AOS JS & init -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 500, once: true });
+  </script>
 
 </body>
 </html>
-
