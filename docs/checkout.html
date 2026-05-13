@@ -1,397 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="images/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Access Your Do-It-Yourself Kit | ExitMyTimeshares.com – Quaerens Ltd</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      /* Base page styles */
-      body {
-        font-family: 'Inter', sans-serif;
-        background: #f3f4f6;
-        padding: 1rem;
-        margin: 0;
-        color: #1f2937;
-      }
-      .form-wrapper {
-        max-width: 700px;
-        margin: 1.5rem auto;
-        background: #fff;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
-      /* Logo + title row */
-      .form-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.5rem;
-      }
-      .form-header img {
-        height: 50px;
-        margin-right: 1rem;
-      }
-      .form-header h1 {
-        font-size: 1.75rem;
-        margin: 0;
-        font-weight: 700;
-        color: #1e40af;
-      }
-      .form-header p {
-        font-size: 1rem;
-        color: #4b5563;
-        margin: 0.5rem 0 0 0;
-      }
-      label {
-        display: block;
-        margin: 1rem 0 0.5rem;
-        font-weight: 600;
-      }
-      input,
-      select,
-      textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #d1d5db;
-        border-radius: 4px;
-        font-size: 1rem;
-      }
-      button {
-        margin-top: 1.5rem;
-        width: 100%;
-        background: #2563eb;
-        color: white;
-        padding: 0.75rem;
-        font-weight: bold;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-      button:hover {
-        background: #1d4ed8;
-      }
-      .upload-area {
-        border: 2px dashed #9ca3af;
-        padding: 1rem;
-        text-align: center;
-        border-radius: 6px;
-        margin-top: 1rem;
-        background: #f9fafb;
-        cursor: pointer;
-      }
-      .upload-area.dragover {
-        background: #e0f2fe;
-        border-color: #3b82f6;
-      }
-      .message {
-        margin-top: 1rem;
-        text-align: center;
-        font-weight: 500;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.4s ease;
-      }
-      .message.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | DIY Timeshare Exit Kit | ExitMyTimeshares</title>
+  <meta name="description" content="Submit your details and continue to secure payment for the ExitMyTimeshares DIY timeshare exit document kit." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://www.exitmytimeshares.com/checkout.html" />
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',sans-serif;background:#f9fafb;margin:0;color:#111827;top:0!important; }
+    .goog-te-banner-frame.skiptranslate,.goog-logo-link,.goog-te-gadget,body>.skiptranslate{display:none!important;}
+    .section-wrap{max-width:1180px;margin:0 auto;padding:0 1rem;}
+    .hero-section{position:relative;background-image:url('images/hero-exit.jpg');background-size:cover;background-position:center;min-height:560px;display:flex;align-items:center;color:white;overflow:hidden;}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,19,39,.92) 0%,rgba(15,23,42,.78) 52%,rgba(15,23,42,.35) 100%);z-index:1;}
+    .hero-content{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:3rem 1rem;}
+    .hero-inner{max-width:760px;}
+    .hero-content h1{font-size:clamp(2.35rem,4.8vw,4.75rem);line-height:1.05;font-weight:800;margin-bottom:1rem;color:white;letter-spacing:-.03em;}
+    .hero-content p{font-size:clamp(1.05rem,2vw,1.35rem);color:#e5e7eb;max-width:710px;margin:0 0 1.5rem 0;line-height:1.6;}
+    .hero-checklist{display:grid;gap:.65rem;margin:1.35rem 0 1.6rem;color:#f8fafc;font-size:1rem;}
+    .hero-checklist span{display:flex;align-items:flex-start;gap:.55rem;}
+    .info-box{background:white;padding:1.75rem 1.5rem;margin:1.5rem auto;border-radius:18px;max-width:1100px;box-shadow:0 8px 24px rgba(15,23,42,.06);font-size:1.05rem;line-height:1.7;border:1px solid #e5e7eb;}
+    .soft-blue{background:linear-gradient(180deg,#eff6ff 0%,#f8fbff 100%);border:1px solid #bfdbfe;}
+    .soft-green{background:linear-gradient(180deg,#ecfdf5 0%,#f7fffb 100%);border:1px solid #a7f3d0;}
+    .trust-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;}
+    .trust-pill{background:white;border:1px solid #dbeafe;border-radius:16px;padding:1rem;text-align:center;box-shadow:0 6px 18px rgba(37,99,235,.06);}
+    .feature-card{background:white;border:1px solid #e5e7eb;border-radius:16px;padding:1.25rem;box-shadow:0 6px 18px rgba(15,23,42,.05);}
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;}
+    .step-badge{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9999px;background:#dbeafe;color:#1d4ed8;font-weight:800;margin-bottom:.75rem;}
+    label{display:block;font-weight:700;color:#0f172a;margin-bottom:.45rem;}
+    input,select,textarea{width:100%;border:1px solid #cbd5e1;border-radius:14px;padding:.9rem 1rem;font:inherit;background:white;}
+    textarea{resize:vertical;}
+    .upload-area{border:2px dashed #93c5fd;background:#eff6ff;border-radius:18px;padding:1.25rem;text-align:center;font-weight:800;color:#1d4ed8;cursor:pointer;transition:.2s ease;}
+    .upload-area.dragover{background:#dbeafe;border-color:#2563eb;}
+    .message{display:none;margin-top:1rem;padding:1rem;border-radius:14px;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;font-weight:800;}
+    .message.show{display:block;}
+    .price-card{position:sticky;top:110px;}
+    footer a{color:#2563eb;text-decoration:none;margin:0 .5rem;}
+    footer a:hover{text-decoration:underline;}
+    @media(max-width:768px){.hero-section{min-height:680px}.hero-overlay{background:linear-gradient(180deg,rgba(7,19,39,.88) 0%,rgba(15,23,42,.84) 100%)}.hero-content h1{letter-spacing:0}.price-card{position:static}}
+  </style>
+</head>
 
-      /* Hide Google Translate bar & injected spacing */
-      .skiptranslate,
-      .goog-te-banner-frame,
-      .goog-te-banner-frame.skiptranslate,
-      .goog-te-gadget,
-      .goog-te-gadget-icon,
-      .goog-logo-link,
-      #goog-gt-tt,
-      .goog-te-balloon-frame {
-        display: none !important;
-      }
-      html,
-      body {
-        margin: 0 !important;
-        padding: 0 !important;
-        top: 0 !important;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Invisible Translate target -->
-    <div id="google_translate_element" style="display: none;"></div>
-    <script>
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: 'en',
-            includedLanguages: 'en,es,fr,de,nl,it',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-          },
-          'google_translate_element'
-        );
-      }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script>
-      function setLanguage(lang) {
-        document.cookie = 'googtrans=/en/' + lang + ';path=/';
-        location.reload();
-      }
-    </script>
+<body>
+  <div id="google_translate_element" style="display:none;"></div>
 
-    <div class="form-wrapper">
-      <div class="form-header">
-        <!-- Logo in top-left of the box -->
-        <img src="images/quaerens-logo.png" alt="Quaerens Logo" />
-        <div>
-          <h1>Purchase Your DIY Timeshare Exit Kit</h1>
-          <p>
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <a href="/" aria-label="ExitMyTimeshares Home">
+        <img src="images/exitmytimeshares-logo.png" alt="ExitMyTimeshares Logo" class="h-14 md:h-20 w-auto" />
+      </a>
+      <nav class="flex items-center gap-3">
+        <a href="index.html" class="px-4 py-2 rounded-full bg-blue-50 text-blue-700 font-bold hover:bg-blue-100">Home</a>
+        <a href="#checkout-form" class="hidden md:inline-block px-5 py-2.5 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-700">Continue</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-inner">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium mb-6">
+          <span>&#128274;</span>
+          <span>Secure DIY kit checkout</span>
         </div>
+        <h1>Get Your DIY Timeshare Exit Kit</h1>
+        <p>Submit your details, upload any useful documents, then continue to the secure Revolut payment page to complete your order.</p>
+        <div class="hero-checklist">
+          <span>&#9989; <strong>Exit letter templates</strong> for formal cancellation and provider response</span>
+          <span>&#9989; <strong>Refund request wording</strong> for payment, fee and sales-process concerns</span>
+          <span>&#9989; <strong>Evidence checklist</strong> so your paperwork is organised from the start</span>
+          <span>&#9989; <strong>Secure payment handoff</strong> to Revolut after your details are saved</span>
+        </div>
+        <a href="#checkout-form" class="inline-block px-8 py-4 bg-blue-600 text-white font-extrabold rounded-full shadow-lg hover:bg-blue-700 transition">Start Checkout</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap -mt-10 relative z-10">
+    <div class="info-box soft-blue">
+      <div class="trust-strip">
+        <div class="trust-pill"><div class="text-2xl mb-2">&#128196;</div><p class="font-semibold text-blue-900 mb-1">Document kit</p><p class="text-sm text-gray-600">Templates and guidance for your timeshare exit paperwork.</p></div>
+        <div class="trust-pill"><div class="text-2xl mb-2">&#128176;</div><p class="font-semibold text-blue-900 mb-1">Clear pricing</p><p class="text-sm text-gray-600">One-off DIY kit price shown before payment.</p></div>
+        <div class="trust-pill"><div class="text-2xl mb-2">&#128274;</div><p class="font-semibold text-blue-900 mb-1">Secure payment</p><p class="text-sm text-gray-600">Payment is completed through Revolut checkout.</p></div>
+        <div class="trust-pill"><div class="text-2xl mb-2">&#128221;</div><p class="font-semibold text-blue-900 mb-1">Practical next step</p><p class="text-sm text-gray-600">A structured starting point for owners who want to act.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <main id="checkout-form" class="section-wrap py-6">
+    <div class="grid lg:grid-cols-[1fr_360px] gap-6 items-start">
+      <div class="info-box">
+        <p class="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-2">Your details</p>
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Tell us where to prepare the kit</h2>
+        <p class="text-gray-700 mb-6">We use these details to record your purchase request and organise the information connected to your DIY exit kit.</p>
+
+        <form id="claimForm" class="space-y-5">
+          <div>
+            <label for="title">Title</label>
+            <select id="title" required>
+              <option value="">Select...</option>
+              <option>Mr</option>
+              <option>Mrs</option>
+              <option>Miss</option>
+              <option>Ms</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required />
+          </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label for="email">Email Address</label>
+              <input type="email" id="email" required />
+            </div>
+            <div>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" required />
+            </div>
+          </div>
+          <div>
+            <label for="type">Resort Name</label>
+            <select id="type" required>
+              <option value="">Select...</option>
+              <option>Anfi Del Mar</option>
+              <option>Club La Costa (CLC)</option>
+              <option>Los Amigos Beach Club</option>
+              <option>Royal Oasis Club at Pueblo Quinta</option>
+              <option>Sahara Sunset Club</option>
+              <option>Santa Barbara Golf & Ocean Club</option>
+              <option>Sunset Bay Club</option>
+              <option>Sunset Harbour Club</option>
+              <option>Sunset View Club</option>
+              <option>Royal Tenerife Country Club</option>
+              <option>Marriott Playa Andaluza</option>
+              <option>Marriott Marbella Beach Resort</option>
+              <option>Club Son Antem (Marriott)</option>
+              <option>Club Cala Blanca (CLC)</option>
+              <option>Club del Carmen (CLC)</option>
+              <option>Jardines del Sol (CLC)</option>
+              <option>Village d'Ile-de-France (Marriott)</option>
+              <option>Le Club Mougins (Diamond)</option>
+              <option>Royal Regency Paris Vincennes (Diamond)</option>
+              <option>Borgo alle Vigne (Hilton)</option>
+              <option>Palazzo Catalani (Diamond)</option>
+              <option>Vilar do Golf (Diamond)</option>
+              <option>Alpine Club (Diamond)</option>
+              <option>Craigendarroch (Hilton)</option>
+              <option>Cromer Country Club (Diamond)</option>
+              <option>Pine Lake Resort (Diamond)</option>
+              <option>The Kenmore Club (Diamond)</option>
+              <option>Thurnham Hall (Diamond)</option>
+              <option>Woodford Bridge Country Club (Diamond)</option>
+              <option>Wychnor Park Country Club (Diamond)</option>
+              <option>Cibola Vista Resort & Spa (Bluegreen)</option>
+              <option>Bell Rock Inn (Diamond)</option>
+              <option>Kohls Ranch Lodge (Diamond)</option>
+              <option>Los Abrigados Resort & Spa (Diamond)</option>
+              <option>PVC at The Roundhouse (Diamond)</option>
+              <option>Streamside at Vail (Bluegreen)</option>
+              <option>The Historic Crags Lodge (Diamond)</option>
+              <option>Lake Cumberland Resort (Bluegreen)</option>
+              <option>Scenic Hills RV Resort (Bluegreen)</option>
+              <option>Paradise Point (Bluegreen)</option>
+              <option>Wilderness Club at Big Cedar (Bluegreen)</option>
+              <option>Villas de Santa Fe (Diamond)</option>
+              <option>Beachwoods Resort (Diamond)</option>
+              <option>Sunrise Ridge Resort (Diamond)</option>
+              <option>Laurel Crest (Bluegreen)</option>
+              <option>Mountain Loft (Bluegreen)</option>
+              <option>Shenandoah Crossing (Bluegreen)</option>
+              <option>Patrick Henry Square (Bluegreen)</option>
+              <option>Parkside Williamsburg Resort (Bluegreen)</option>
+              <option>Elian Hotel & Spa (Bluegreen)</option>
+              <option>Other Resort (please specify below)</option>
+            </select>
+          </div>
+          <div>
+            <label for="details">Additional information: contract number, purchase year, weeks, points, fractional ownership or key concerns</label>
+            <textarea id="details" rows="5" required></textarea>
+          </div>
+          <div>
+            <label for="fileUpload">Upload any relevant documentation (optional)</label>
+            <div class="upload-area" id="uploadArea">Drag and drop or click to upload</div>
+            <input type="file" id="fileUpload" hidden />
+          </div>
+          <div class="bg-green-50 border border-green-200 rounded-2xl p-4 text-green-900 font-semibold">
+            Your information is submitted over HTTPS and the secure payment is completed directly through Revolut.
+          </div>
+          <button type="submit" class="w-full bg-blue-600 text-white px-6 py-4 rounded-full font-extrabold hover:bg-blue-700 transition">Submit and Continue to Secure Payment</button>
+          <div class="message" id="message"></div>
+        </form>
       </div>
 
-      <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-        <h2 style="margin-top: 0; font-size: 1.25rem; color: #1d4ed8;">✅ Safe, Transparent & Fully Protected</h2>
-      
-        <p style="margin: 0.5rem 0;">
-          At ExitMyTimeshares.com, we believe in honest, risk-free service — no hidden fees, no pressure, and always your choice.
-        </p>
-      
-        <h3 style="margin: 1rem 0 0.25rem; font-size: 1.1rem; color: #1e3a8a;">🔐 Pay Securely – You’re Protected</h3>
-        <p style="margin: 0.25rem 0;">
-          We only accept secure <strong>credit card payments</strong>, which means you’re protected under <strong>consumer protection laws in the US, UK, and EU</strong>. If a product or service isn’t delivered as promised, you have the right to dispute the charge through your card provider.
-        </p>
-      
-        <h3 style="margin: 1rem 0 0.25rem; font-size: 1.1rem; color: #1e3a8a;">🤝 No Hidden Fees – Ever</h3>
-        <p style="margin: 0.25rem 0;">
-          The price you see is the only fee you’ll pay. No surprise charges, no subscriptions, no hidden commissions.
-        </p>
-      
-        <h3 style="margin: 1rem 0 0.25rem; font-size: 1.1rem; color: #1e3a8a;">💬 What If It Doesn’t Work?</h3>
-        <p style="margin: 0.25rem 0;">
-          Timeshare exits typically take <strong>3 to 6 weeks</strong>, depending on your resort and contract. If your case turns out to be unsuitable for this service, we’ll let you know right away — and you’ll never be left in the dark or out of options.
-        </p>
-      
-        <p style="margin: 1rem 0 0; font-style: italic; color: #374151;">
-          You remain protected by your credit card provider and your legal rights at all times. For extra peace of mind, we’ve included a ready-made <strong>Section 75 refund request letter template</strong> that you can send to your credit card provider if we fail to deliver the service or offer a suitable alternative.
-        </p>
-      </div>         
-
-      <p style="margin-bottom: 1.5rem;">
-        ✅ <strong>Simply enter your details in the form, and we’ll assemble your personalized exit kit.</strong>
-      </p>
-      
-      <p style="margin-bottom: 2rem;">
-        After completing secure payment, you’ll receive everything you need to start your timeshare cancellation process with confidence.
-      </p>
-
-      <form id="claimForm">
-        <label for="title">Title</label>
-        <select id="title" required>
-          <option value="">Select...</option>
-          <option>Mr</option>
-          <option>Mrs</option>
-          <option>Miss</option>
-          <option>Ms</option>
-          <option>Other</option>
-        </select>
-
-        <label for="name">Full Name</label>
-        <input type="text" id="name" required />
-
-        <label for="email">Email Address</label>
-        <input type="email" id="email" required />
-
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" required />
-
-        <label for="type">Resort Name</label>
-        <select id="type" required>
-          <option value="">Select...</option>
-          <option>Anfi Del Mar</option>
-          <option>Club La Costa (CLC)</option>
-          <option>Los Amigos Beach Club</option>
-          <option>Royal Oasis Club at Pueblo Quinta</option>
-          <option>Sahara Sunset Club</option>
-          <option>Santa Barbara Golf & Ocean Club</option>
-          <option>Sunset Bay Club</option>
-          <option>Sunset Harbour Club</option>
-          <option>Sunset View Club</option>
-          <option>Royal Tenerife Country Club</option>
-          <option>Marriott Playa Andaluza</option>
-          <option>Marriott Marbella Beach Resort</option>
-          <option>Club Son Antem (Marriott)</option>
-          <option>Club Cala Blanca (CLC)</option>
-          <option>Club del Carmen (CLC)</option>
-          <option>Jardines del Sol (CLC)</option>
-          <option>Village d’Île-de-France (Marriott)</option>
-          <option>Le Club Mougins (Diamond)</option>
-          <option>Royal Regency Paris Vincennes (Diamond)</option>
-          <option>Borgo alle Vigne (Hilton)</option>
-          <option>Palazzo Catalani (Diamond)</option>
-          <option>Vilar do Golf (Diamond)</option>
-          <option>Alpine Club (Diamond)</option>
-          <option>Craigendarroch (Hilton)</option>
-          <option>Cromer Country Club (Diamond)</option>
-          <option>Pine Lake Resort (Diamond)</option>
-          <option>The Kenmore Club (Diamond)</option>
-          <option>Thurnham Hall (Diamond)</option>
-          <option>Woodford Bridge Country Club (Diamond)</option>
-          <option>Wychnor Park Country Club (Diamond)</option>
-          <option>Cibola Vista Resort & Spa (Bluegreen)</option>
-          <option>Bell Rock Inn (Diamond)</option>
-          <option>Kohls Ranch Lodge (Diamond)</option>
-          <option>Los Abrigados Resort & Spa (Diamond)</option>
-          <option>PVC at The Roundhouse (Diamond)</option>
-          <option>Streamside at Vail (Bluegreen)</option>
-          <option>The Historic Crags Lodge (Diamond)</option>
-          <option>Lake Cumberland Resort (Bluegreen)</option>
-          <option>Scenic Hills RV Resort (Bluegreen)</option>
-          <option>Paradise Point (Bluegreen)</option>
-          <option>Wilderness Club at Big Cedar (Bluegreen)</option>
-          <option>Villas de Santa Fe (Diamond)</option>
-          <option>Beachwoods Resort (Diamond)</option>
-          <option>Sunrise Ridge Resort (Diamond)</option>
-          <option>Laurel Crest (Bluegreen)</option>
-          <option>Mountain Loft (Bluegreen)</option>
-          <option>Shenandoah Crossing (Bluegreen)</option>
-          <option>Patrick Henry Square (Bluegreen)</option>
-          <option>Parkside Williamsburg Resort (Bluegreen)</option>
-          <option>Elian Hotel & Spa (Bluegreen)</option>
-          <option>Other Resort (please specify below)</option>
-        </select>
-
-        <label for="details">
-          Any additional info: contract #, purchase year, weeks/points/fractional, etc.
-        </label>
-        <textarea id="details" rows="5" required></textarea>
-
-        <label for="fileUpload">
-          To ensure your DIY kit is as accurate and effective as possible, please upload any relevant documentation—your contract, title deed, or other supporting materials (PDF, image, etc.). (Optional; not required.)
-        </label>
-        <div class="upload-area" id="uploadArea">
-          Drag & Drop or Click to Upload
+      <aside class="price-card feature-card">
+        <p class="text-sm font-bold uppercase tracking-wide text-blue-700 mb-2">Order summary</p>
+        <h2 class="text-2xl font-extrabold text-gray-900 mb-4">DIY Timeshare Exit Kit</h2>
+        <div class="text-3xl font-extrabold text-blue-800 mb-3">US$1,215 / &pound;895 / &euro;1,035</div>
+        <p class="text-gray-700 mb-5">The core price is &pound;895. US dollar and euro figures are shown as approximate international equivalents.</p>
+        <ul class="space-y-3 text-gray-700">
+          <li>&#10004; Timeshare exit letter templates</li>
+          <li>&#10004; Refund request wording</li>
+          <li>&#10004; Evidence checklist</li>
+          <li>&#10004; Follow-up guidance</li>
+          <li>&#10004; Secure Revolut payment page</li>
+        </ul>
+        <div class="mt-6 border-t border-gray-200 pt-5 text-sm text-gray-600">
+          <p><strong>Need help?</strong></p>
+          <p>Email <a href="mailto:info@quaerens.co.uk" class="text-blue-700 font-semibold">info@quaerens.co.uk</a></p>
+          <p>Telephone: +44 (0)20 8050 0725</p>
         </div>
-        <input type="file" id="fileUpload" hidden />
-
-        <div style="background: #ecfdf5; border: 1px solid #34d399; padding: 1rem; border-radius: 8px; margin-top: 1rem; display: flex; align-items: center; gap: 0.75rem;">
-          <span style="font-size: 1.5rem;">🔒</span>
-          <p style="margin: 0; font-weight: 600; color: #065f46;">
-            Your information is 100% protected by SSL encryption. We use a secure HTTPS connection for all data submissions.
-          </p>
-        </div>
-
-        <button type="submit">Submit and go to checkout</button>
-        <div class="message" id="message"></div>
-      </form>
+      </aside>
     </div>
+  </main>
 
-    <!-- Firebase + form submission logic -->
-    <script type="module">
-      import { initializeApp } from
-        "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import {
-        getStorage,
-        ref,
-        uploadBytes,
-        getDownloadURL
-      } from
-        "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
-      import {
-        getFirestore,
-        collection,
-        addDoc
-      } from
-        "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  <footer style="text-align:center;font-size:.85rem;color:#6b7280;padding:2rem 1rem;max-width:900px;margin:0 auto;">
+    <strong>ExitMyTimeshares.com by Quaerens Ltd</strong><br />
+    Email: <a href="mailto:info@quaerens.co.uk">info@quaerens.co.uk</a> | Telephone: +44 (0)20 8050 0725<br />
+    Company No.: 16176152 &middot; Registered in England &amp; Wales<br />
+    Address: 71-75 Shelton Street, Covent Garden, London WC2H 9JQ<br /><br />
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms of Use</a> |
+    <a href="gdpr.html">GDPR</a> |
+    <a href="contact.html">Contact Us</a>
+  </footer>
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyCOo_Sa242sUuGyZD8jO8kk12V1aBX7wMA",
-        authDomain: "quaerensclaims.firebaseapp.com",
-        projectId: "quaerensclaims",
-        storageBucket: "quaerensclaims.appspot.com",
-        messagingSenderId: "57715464932",
-        appId: "1:57715464932:web:a69a4949f36c2ad214eaf1"
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,fr,de,nl,it',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function setLanguage(lang) {
+      var newLang = '/auto/' + lang;
+      document.cookie = 'googtrans=' + newLang + '; path=/';
+      document.cookie = 'googtrans=' + newLang + '; domain=' + window.location.hostname + '; path=/';
+      location.reload();
+    }
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCOo_Sa242sUuGyZD8jO8kk12V1aBX7wMA",
+      authDomain: "quaerensclaims.firebaseapp.com",
+      projectId: "quaerensclaims",
+      storageBucket: "quaerensclaims.appspot.com",
+      messagingSenderId: "57715464932",
+      appId: "1:57715464932:web:a69a4949f36c2ad214eaf1"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("claimForm");
+    const message = document.getElementById("message");
+    const uploadArea = document.getElementById("uploadArea");
+    const fileInput = document.getElementById("fileUpload");
+    let uploadedFile = null;
+
+    uploadArea.addEventListener("click", () => fileInput.click());
+    uploadArea.addEventListener("dragover", e => {
+      e.preventDefault();
+      uploadArea.classList.add("dragover");
+    });
+    uploadArea.addEventListener("dragleave", () => {
+      uploadArea.classList.remove("dragover");
+    });
+    uploadArea.addEventListener("drop", e => {
+      e.preventDefault();
+      uploadArea.classList.remove("dragover");
+      fileInput.files = e.dataTransfer.files;
+      uploadedFile = fileInput.files[0];
+      if (uploadedFile) uploadArea.textContent = uploadedFile.name;
+    });
+    fileInput.addEventListener("change", () => {
+      uploadedFile = fileInput.files[0];
+      if (uploadedFile) uploadArea.textContent = uploadedFile.name;
+    });
+
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      message.textContent = "Submitting...";
+      message.classList.add("show");
+
+      const data = {
+        title: document.getElementById("title").value,
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        type: document.getElementById("type").value,
+        details: document.getElementById("details").value,
+        fileUrl: ""
       };
-      const app = initializeApp(firebaseConfig);
-      const storage = getStorage(app);
-      const db = getFirestore(app);
 
-      const form = document.getElementById("claimForm");
-      const message = document.getElementById("message");
-      const uploadArea = document.getElementById("uploadArea");
-      const fileInput = document.getElementById("fileUpload");
-      let uploadedFile = null;
-
-      uploadArea.addEventListener("click", () => fileInput.click());
-      uploadArea.addEventListener("dragover", e => {
-        e.preventDefault();
-        uploadArea.classList.add("dragover");
-      });
-      uploadArea.addEventListener("dragleave", () => {
-        uploadArea.classList.remove("dragover");
-      });
-      uploadArea.addEventListener("drop", e => {
-        e.preventDefault();
-        uploadArea.classList.remove("dragover");
-        fileInput.files = e.dataTransfer.files;
-        uploadedFile = fileInput.files[0];
-        uploadArea.textContent = uploadedFile.name;
-      });
-      fileInput.addEventListener("change", () => {
-        uploadedFile = fileInput.files[0];
-        uploadArea.textContent = uploadedFile.name;
-      });
-
-      form.addEventListener("submit", async e => {
-        e.preventDefault();
-        message.textContent = "Submitting…";
-        message.classList.remove("show");
-
-        const data = {
-          title: document.getElementById("title").value,
-          name: document.getElementById("name").value,
-          email: document.getElementById("email").value,
-          phone: document.getElementById("phone").value,
-          type: document.getElementById("type").value,
-          details: document.getElementById("details").value,
-          fileUrl: ""
-        };
-
-        try {
-          if (uploadedFile) {
-            const storageRef = ref(
-              storage,
-              `claims/${Date.now()}_${uploadedFile.name}`
-            );
-            const snap = await uploadBytes(storageRef, uploadedFile);
-            data.fileUrl = await getDownloadURL(snap.ref);
-          }
-
-          await addDoc(collection(db, "claims"), {
-            ...data,
-            createdAt: new Date()
-          });
-
-          // redirect to branded payment handoff page
-          window.location.href = "payment.html";
-        } catch (err) {
-          console.error(err);
-          message.textContent =
-            "⚠️ Something went wrong. Please try again later.";
-          message.classList.add("show");
+      try {
+        if (uploadedFile) {
+          const storageRef = ref(storage, `claims/${Date.now()}_${uploadedFile.name}`);
+          const snap = await uploadBytes(storageRef, uploadedFile);
+          data.fileUrl = await getDownloadURL(snap.ref);
         }
-      });
-    </script>
-        <!-- Footer -->
-<footer style="text-align: center; font-size: 0.85rem; color: #6b7280; padding: 2rem 1rem; max-width: 800px; margin: 0 auto;">
-  © 2025 Exitmytimeshares.com by Quaerens Ltd. All rights reserved.<br />
-  <a href="privacy.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a> |
-  <a href="terms.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Terms of Use</a> |
-  <a href="gdpr.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">GDPR</a> |
-  <a href="contact.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Contact Us</a>
-</footer>
-  </body>
+
+        await addDoc(collection(db, "claims"), {
+          ...data,
+          createdAt: new Date()
+        });
+
+        window.location.href = "payment.html";
+      } catch (err) {
+        console.error(err);
+        message.textContent = "Something went wrong. Please try again later.";
+      }
+    });
+  </script>
+</body>
 </html>

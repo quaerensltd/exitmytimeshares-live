@@ -1,366 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="images/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Use Our Full Service | ExitMyTimeshares.com – Quaerens Ltd</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      /* Base page styles */
-      body {
-        font-family: 'Inter', sans-serif;
-        background: #f3f4f6;
-        padding: 1rem;
-        margin: 0;
-        color: #1f2937;
-      }
-      .form-wrapper {
-        max-width: 700px;
-        margin: 1.5rem auto;
-        background: #fff;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
-      /* Logo + title row */
-      .form-header {
-      display: flex;
-      align-items: flex-start;    /* was center */
-      margin-bottom: 1.5rem;
-      }
-      .form-header img {
-        height: 50px;
-        margin-right: 1rem;
-      }
-      .form-header h1 {
-        font-size: 1.75rem;
-        margin: 0;
-        font-weight: 700;
-        color: #1e40af;
-      }
-      .form-header p {
-        font-size: 1rem;
-        color: #4b5563;
-        margin: 0.5rem 0 0 0;
-      }
-      label {
-        display: block;
-        margin: 1rem 0 0.5rem;
-        font-weight: 600;
-      }
-      input,
-      select,
-      textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #d1d5db;
-        border-radius: 4px;
-        font-size: 1rem;
-      }
-      button {
-        margin-top: 1.5rem;
-        width: 100%;
-        background: #2563eb;
-        color: white;
-        padding: 0.75rem;
-        font-weight: bold;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-      button:hover {
-        background: #1d4ed8;
-      }
-      .upload-area {
-        border: 2px dashed #9ca3af;
-        padding: 1rem;
-        text-align: center;
-        border-radius: 6px;
-        margin-top: 1rem;
-        background: #f9fafb;
-        cursor: pointer;
-      }
-      .upload-area.dragover {
-        background: #e0f2fe;
-        border-color: #3b82f6;
-      }
-      .message {
-        margin-top: 1rem;
-        text-align: center;
-        font-weight: 500;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.4s ease;
-      }
-      .message.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full-Service Timeshare Exit Support | ExitMyTimeshares</title>
+  <meta name="description" content="Prefer not to handle your timeshare exit alone? ExitMyTimeshares offers full-service timeshare exit support with document handling, follow-up and practical assistance." />
+  <meta name="keywords" content="full service timeshare exit, timeshare exit support, cancel timeshare help, timeshare exit assistance, ExitMyTimeshares, Quaerens" />
+  <meta name="author" content="Quaerens Ltd." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
 
-      /* Hide Google Translate bar & injected spacing */
-      .skiptranslate,
-      .goog-te-banner-frame,
-      .goog-te-banner-frame.skiptranslate,
-      .goog-te-gadget,
-      .goog-te-gadget-icon,
-      .goog-logo-link,
-      #goog-gt-tt,
-      .goog-te-balloon-frame {
-        display: none !important;
-      }
-      html,
-      body {
-        margin: 0 !important;
-        padding: 0 !important;
-        top: 0 !important;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Invisible Translate target -->
-    <div id="google_translate_element" style="display: none;"></div>
-    <script>
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: 'en',
-            includedLanguages: 'en,es,fr,de,nl,it',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-          },
-          'google_translate_element'
-        );
-      }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script>
-      function setLanguage(lang) {
-        document.cookie = 'googtrans=/en/' + lang + ';path=/';
-        location.reload();
-      }
-    </script>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Full-Service Timeshare Exit Support | ExitMyTimeshares" />
+  <meta property="og:description" content="Submit your timeshare details for full-service support if you prefer the paperwork and follow-up to be handled for you." />
+  <meta property="og:image" content="https://www.exitmytimeshares.com/images/exitmytimeshares-logo.png" />
+  <meta property="og:url" content="https://www.exitmytimeshares.com/full-service.html" />
 
-    <div class="form-wrapper">
-      <div class="form-header">
-        <!-- Logo in top-left of the box -->
-        <img src="images/quaerens-logo.png" alt="Quaerens Logo" />
-        <div>
-          <h1>Your Resort Isn’t on Our DIY List? We’ve Got You Covered!</h1>
-          <p>
+  <link rel="canonical" href="https://www.exitmytimeshares.com/full-service.html" />
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background:#f9fafb; margin:0; color:#111827; top:0!important; }
+    .goog-te-banner-frame.skiptranslate,.goog-logo-link,.goog-te-gadget,body>.skiptranslate{display:none!important;}
+    .section-wrap{max-width:1180px;margin:0 auto;padding:0 1rem;}
+    .hero-section{position:relative;background-image:url('images/hero-exit2.jpg');background-size:cover;background-position:center;min-height:650px;display:flex;align-items:center;color:white;overflow:hidden;}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,19,39,.92) 0%,rgba(15,23,42,.78) 52%,rgba(15,23,42,.35) 100%);z-index:1;}
+    .hero-content{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding:3rem 1rem;}
+    .hero-inner{max-width:760px;}
+    .hero-content h1{font-size:clamp(2.35rem,4.8vw,4.75rem);line-height:1.05;font-weight:800;margin-bottom:1rem;color:white;letter-spacing:-.03em;}
+    .hero-content p{font-size:clamp(1.05rem,2vw,1.35rem);color:#e5e7eb;max-width:710px;margin:0 0 1.5rem 0;line-height:1.6;}
+    .hero-checklist{display:grid;gap:.65rem;margin:1.35rem 0 1.6rem;color:#f8fafc;font-size:1rem;}
+    .hero-checklist span{display:flex;align-items:flex-start;gap:.55rem;}
+    .quick-panel{background:rgba(255,255,255,.96);color:#111827;border-radius:22px;padding:1.35rem;box-shadow:0 18px 44px rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.55);margin-top:1.5rem;max-width:680px;}
+    .quick-panel ul{margin:.75rem 0 0;padding:0;list-style:none;display:grid;gap:.55rem;color:#374151;}
+    .info-box{background:white;padding:1.75rem 1.5rem;margin:1.5rem auto;border-radius:18px;max-width:1100px;box-shadow:0 8px 24px rgba(15,23,42,.06);font-size:1.05rem;line-height:1.7;border:1px solid #e5e7eb;}
+    .soft-blue{background:linear-gradient(180deg,#eff6ff 0%,#f8fbff 100%);border:1px solid #bfdbfe;}
+    .soft-green{background:linear-gradient(180deg,#ecfdf5 0%,#f7fffb 100%);border:1px solid #a7f3d0;}
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
+    .feature-card{background:white;border:1px solid #e5e7eb;border-radius:16px;padding:1.25rem;box-shadow:0 6px 18px rgba(15,23,42,.05);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;}
+    .feature-card:hover{transform:translateY(-4px);border-color:#60a5fa;box-shadow:0 12px 28px rgba(37,99,235,.12);}
+    .image-card img{width:100%;display:block;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);aspect-ratio:16/10;object-fit:cover;}
+    .trust-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;}
+    .trust-pill{background:white;border:1px solid #dbeafe;border-radius:16px;padding:1rem;text-align:center;box-shadow:0 6px 18px rgba(37,99,235,.06);}
+    .cta-button{display:inline-block;padding:.95rem 1.45rem;border-radius:9999px;font-weight:800;text-decoration:none;transition:all .25s ease;}
+    .cta-primary{background:#2563eb;color:white;box-shadow:0 10px 24px rgba(37,99,235,.25);}
+    .cta-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
+    .cta-secondary{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.35);}
+    .cta-secondary:hover{background:rgba(255,255,255,.2);transform:translateY(-2px);}
+    .step-badge{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9999px;background:#dbeafe;color:#1d4ed8;font-weight:800;margin-bottom:.75rem;}
+    label{display:block;font-weight:700;color:#0f172a;margin-bottom:.45rem;}
+    input,select,textarea{width:100%;border:1px solid #cbd5e1;border-radius:14px;padding:.9rem 1rem;font:inherit;background:white;}
+    textarea{resize:vertical;}
+    .upload-area{border:2px dashed #93c5fd;background:#eff6ff;border-radius:18px;padding:1.25rem;text-align:center;font-weight:800;color:#1d4ed8;cursor:pointer;transition:.2s ease;}
+    .upload-area.dragover{background:#dbeafe;border-color:#2563eb;}
+    .message{display:none;margin-top:1rem;padding:1rem;border-radius:14px;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;font-weight:800;}
+    .message.show{display:block;}
+    footer a{color:#2563eb;text-decoration:none;margin:0 .5rem;}
+    footer a:hover{text-decoration:underline;}
+    @media(max-width:768px){.hero-section{min-height:760px}.hero-overlay{background:linear-gradient(180deg,rgba(7,19,39,.88) 0%,rgba(15,23,42,.84) 100%)}.hero-content h1{letter-spacing:0}}
+  </style>
+</head>
+
+<body>
+  <div id="google_translate_element" style="display:none;"></div>
+
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <a href="/" aria-label="ExitMyTimeshares Home">
+        <img src="images/exitmytimeshares-logo.png" alt="ExitMyTimeshares Logo" class="h-14 md:h-20 w-auto" />
+      </a>
+      <nav class="flex items-center gap-3">
+        <a href="index.html" class="px-4 py-2 rounded-full bg-blue-50 text-blue-700 font-bold hover:bg-blue-100">Home</a>
+        <a href="#full-service-form" class="hidden md:inline-block px-5 py-2.5 rounded-full bg-blue-600 text-white font-bold hover:bg-blue-700">Submit Details</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-inner">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm font-medium mb-6">
+          <span>&#128188;</span>
+          <span>Full-service timeshare exit support</span>
+        </div>
+
+        <h1>Prefer Us to Handle the Timeshare Exit for You?</h1>
+        <p>If you do not want to prepare the paperwork yourself, submit your details and our team can review the situation, organise the documents and explain the most practical route forward.</p>
+
+        <div class="hero-checklist">
+          <span>&#9989; <strong>Resort and contract review</strong> so the issue is understood before action is taken</span>
+          <span>&#9989; <strong>Document preparation</strong> for cancellation, refund review and follow-up correspondence</span>
+          <span>&#9989; <strong>Support with responses</strong> if the resort delays, rejects or avoids the issue</span>
+          <span>&#9989; <strong>No-obligation starting point</strong> before you decide whether to proceed</span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 mt-8">
+          <a href="#full-service-form" class="cta-button cta-primary">Submit Your Information</a>
+          <a href="checkout.html" class="cta-button cta-secondary">Use the DIY Kit Instead</a>
+        </div>
+
+        <div class="quick-panel">
+          <p class="font-extrabold text-lg" style="color:#0f172a!important;">Full-service summary</p>
+          <ul>
+            <li>&#10004; Free initial information submission</li>
+            <li>&#10004; We review the resort, timeline and documents available</li>
+            <li>&#10004; We confirm the best available route before any next step</li>
+            <li>&#10004; Useful if your resort is not covered by the DIY kit or the case is more complex</li>
+          </ul>
         </div>
       </div>
-
-      <div style="background: #ecfdf5; border: 1px solid #6ee7b7; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-        <h2 style="margin-top: 0; font-size: 1.25rem; color: #065f46;">✅ Safe, No-Obligation & Risk-Free Full Service</h2>
-      
-        <p style="margin: 0.5rem 0;">
-          Providing your information is 100% <strong>free and without any obligation</strong>. Our team will review your details and explore the <strong>easiest, most cost-effective way</strong> to help you exit your timeshare contract.
-        </p>
-      
-        <h3 style="margin: 1rem 0 0.25rem; font-size: 1.1rem; color: #064e3b;">🔍 We’ll Review & Advise You First</h3>
-        <p style="margin: 0.25rem 0;">
-          Once we’ve identified a suitable exit service, we’ll share the details with you again, <strong>completely obligation-free</strong>.
-        </p>
-      
-        <h3 style="margin: 1rem 0 0.25rem; font-size: 1.1rem; color: #064e3b;">💼 If a Partner Is Needed</h3>
-        <p style="margin: 0.25rem 0;">
-          If your case requires one of our specialised legal or administrative partners, we will provide a <strong>clear quote up front</strong>. You won’t need to pay anything until the service has been completed.
-        </p>
-      
-        <h3 style="margin: 1rem 0 0.25rem; font-size: 1.1rem; color: #064e3b;">🛡️ No Win, No Fee Guarantee</h3>
-        <p style="margin: 0.25rem 0;">
-          All our full-service options are offered on a <strong>No Win, No Fee basis</strong>. If we don’t succeed in helping you exit your contract, you don’t pay a thing.
-        </p>
-      
-        <p style="margin: 1rem 0 0; font-style: italic; color: #374151;">
-          When you’re happy with the proposed solution and quote, we’ll send you a service agreement. <strong>You remain in full control</strong> — with zero risk.
-        </p>
-      </div>      
-
-      <p style="margin-bottom: 1.5rem;">
-        If your resort isn’t listed in our DIY Exit Kit, don’t worry — we offer full-service solutions too. Thanks to our global network of trusted partners, we help clients exit timeshare contracts at resorts worldwide.
-      </p>
-      
-      <p style="margin-bottom: 1.5rem;">
-        ✅ <strong>Just fill in the short form below, and one of our team members will get back to you with the best option for your situation.</strong>
-      </p>
-      
-      <p style="margin-bottom: 2rem; font-weight: 600;">
-        All our services are on a <strong>No Win No Fee</strong> basis!
-      </p>
-
-      <h3 style="margin-top: 2rem; color: #1f2937;">🧭 What Happens Next?</h3>
-      <ol style="margin: 0 0 2rem 1rem; color: #374151; line-height: 1.7;">
-        <li><strong>Step 1:</strong> Submit your details — no obligation.</li>
-        <li><strong>Step 2:</strong> We assess your case and explore exit options.</li>
-        <li><strong>Step 3:</strong> If needed, we bring in a trusted specialist and send you a quote.</li>
-        <li><strong>Step 4:</strong> Once you approve the quote, we send you a No Win, No Fee agreement.</li>
-        <li><strong>Step 5:</strong> We process your case and update you until resolution.</li>
-      </ol>
-
-      <form id="claimForm">
-        <label for="title">Title</label>
-        <select id="title" required>
-          <option value="">Select...</option>
-          <option>Mr</option>
-          <option>Mrs</option>
-          <option>Miss</option>
-          <option>Ms</option>
-          <option>Other</option>
-        </select>
-
-        <label for="name">Full Name</label>
-        <input type="text" id="name" required />
-
-        <label for="email">Email Address</label>
-        <input type="email" id="email" required />
-
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" required />
-
-        <label for="resortName">Resort Name</label>
-        <input type="text" id="resortName" name="resortName" placeholder="Enter your resort name..." required />
-
-        <label for="details">
-          Any additional info: contract #, purchase year, weeks/points/fractional, etc.
-        </label>
-        <textarea id="details" rows="5" required></textarea>
-
-        <label for="fileUpload">
-          Attach your contract copy (PDF, image, etc.)
-        </label>
-        <div class="upload-area" id="uploadArea">
-          Drag & Drop or Click to Upload
-        </div>
-        <input type="file" id="fileUpload" hidden />
-
-        <div style="background: #ecfdf5; border: 1px solid #34d399; padding: 1rem; border-radius: 8px; margin-top: 1rem; display: flex; align-items: center; gap: 0.75rem;">
-            <span style="font-size: 1.5rem;">🔒</span>
-            <p style="margin: 0; font-weight: 600; color: #065f46;">
-              Your information is 100% protected by SSL encryption. We use a secure HTTPS connection for all data submissions.
-            </p>
-          </div>
-
-        <button type="submit">Click To Submit Your Information</button>
-        <div class="message" id="message"></div>
-      </form>
     </div>
+  </section>
 
-    <!-- Firebase + form submission logic -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import {
-        getStorage, ref, uploadBytes, getDownloadURL
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
-      import {
-        getFirestore, collection, addDoc
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+  <section class="section-wrap -mt-10 relative z-10">
+    <div class="info-box soft-blue">
+      <div class="trust-strip">
+        <div class="trust-pill"><div class="text-2xl mb-2">&#128203;</div><p class="font-semibold text-blue-900 mb-1">Document review</p><p class="text-sm text-gray-600">We look at the contract, resort and supporting information.</p></div>
+        <div class="trust-pill"><div class="text-2xl mb-2">&#9997;</div><p class="font-semibold text-blue-900 mb-1">Prepared wording</p><p class="text-sm text-gray-600">Formal correspondence is prepared around your situation.</p></div>
+        <div class="trust-pill"><div class="text-2xl mb-2">&#128222;</div><p class="font-semibold text-blue-900 mb-1">Follow-up support</p><p class="text-sm text-gray-600">Responses and delays can be handled in a structured way.</p></div>
+        <div class="trust-pill"><div class="text-2xl mb-2">&#128274;</div><p class="font-semibold text-blue-900 mb-1">Clear process</p><p class="text-sm text-gray-600">You know what is being done and what the next step is.</p></div>
+      </div>
+    </div>
+  </section>
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyCOo_Sa242sUuGyZD8jO8kk12V1aBX7wMA",
-        authDomain: "quaerensclaims.firebaseapp.com",
-        projectId: "quaerensclaims",
-        storageBucket: "quaerensclaims.appspot.com",
-        messagingSenderId: "57715464932",
-        appId: "1:57715464932:web:a69a4949f36c2ad214eaf1"
-      };
-      const app = initializeApp(firebaseConfig);
-      const storage = getStorage(app);
-      const db = getFirestore(app);
+  <section class="section-wrap py-4">
+    <div class="info-box">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-3">When full service helps</p>
+          <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Some timeshare exits need more than a template</h2>
+          <p class="text-gray-700 mb-4">If the resort is not on your DIY list, the agreement is complicated, the provider is pushing back, or you simply prefer not to handle the paperwork yourself, a full-service review can be the better starting point.</p>
+          <p class="text-gray-700">Submit the details below and we will review the information before explaining what route may be realistic.</p>
+        </div>
+        <div class="feature-card">
+          <p class="font-semibold text-gray-900 mb-2">This may suit you if:</p>
+          <ul class="space-y-2 text-gray-700">
+            <li>&bull; You want help preparing and managing the paperwork</li>
+            <li>&bull; Your resort is unusual or not covered by the DIY kit</li>
+            <li>&bull; The company is ignoring, rejecting or delaying responses</li>
+            <li>&bull; You have sales documents, contracts or letters that need reviewing</li>
+            <li>&bull; You want a clearer plan before deciding what to do next</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      const form = document.getElementById("claimForm");
-      const message = document.getElementById("message");
-      const uploadArea = document.getElementById("uploadArea");
-      const fileInput = document.getElementById("fileUpload");
-      let uploadedFile = null;
+  <section class="section-wrap py-2">
+    <div class="card-grid">
+      <div class="image-card">
+        <img src="images/cancelts2.png" alt="Timeshare document support">
+        <div class="feature-card -mt-4 relative mx-3">
+          <h3 class="text-xl font-bold text-blue-900 mb-2">We Review the Situation</h3>
+          <p class="text-gray-700">Your resort name, contract details and history help us understand what kind of exit support may be appropriate.</p>
+        </div>
+      </div>
+      <div class="image-card">
+        <img src="images/timeshareexit2.png" alt="Timeshare exit preparation">
+        <div class="feature-card -mt-4 relative mx-3">
+          <h3 class="text-xl font-bold text-blue-900 mb-2">We Prepare the Route</h3>
+          <p class="text-gray-700">The next step may involve formal letters, evidence organisation, provider follow-up or a more tailored support route.</p>
+        </div>
+      </div>
+      <div class="image-card">
+        <img src="images/terminate2.png" alt="Timeshare termination support">
+        <div class="feature-card -mt-4 relative mx-3">
+          <h3 class="text-xl font-bold text-blue-900 mb-2">You Stay Informed</h3>
+          <p class="text-gray-700">The aim is to keep the process clear, practical and documented from the start.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      uploadArea.addEventListener("click", () => fileInput.click());
-      uploadArea.addEventListener("dragover", e => {
-        e.preventDefault();
-        uploadArea.classList.add("dragover");
-      });
-      uploadArea.addEventListener("dragleave", () => {
-        uploadArea.classList.remove("dragover");
-      });
-      uploadArea.addEventListener("drop", e => {
-        e.preventDefault();
-        uploadArea.classList.remove("dragover");
-        fileInput.files = e.dataTransfer.files;
-        uploadedFile = fileInput.files[0];
-        uploadArea.textContent = uploadedFile.name;
-      });
-      fileInput.addEventListener("change", () => {
-        uploadedFile = fileInput.files[0];
-        uploadArea.textContent = uploadedFile.name;
-      });
+  <section class="section-wrap py-6">
+    <div class="info-box soft-blue">
+      <p class="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-3">Simple process</p>
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-6">A simple 4-step full-service review</h2>
+      <div class="card-grid">
+        <div class="feature-card"><div class="step-badge">1</div><h3 class="text-xl font-bold mb-2">Submit your details</h3><p class="text-gray-700">Tell us who you are, the resort name and what has happened so far.</p></div>
+        <div class="feature-card"><div class="step-badge">2</div><h3 class="text-xl font-bold mb-2">Upload documents</h3><p class="text-gray-700">Attach your contract or correspondence if you have it available.</p></div>
+        <div class="feature-card"><div class="step-badge">3</div><h3 class="text-xl font-bold mb-2">We review the route</h3><p class="text-gray-700">We check what support looks realistic and what information may still be needed.</p></div>
+        <div class="feature-card"><div class="step-badge">4</div><h3 class="text-xl font-bold mb-2">Decide next step</h3><p class="text-gray-700">You receive a clear route forward before deciding whether to proceed.</p></div>
+      </div>
+    </div>
+  </section>
 
-      form.addEventListener("submit", async e => {
-        e.preventDefault();
-        message.textContent = "Submitting…";
-        message.classList.remove("show");
+  <section id="full-service-form" class="section-wrap py-6">
+    <div class="info-box">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-6">
+          <p class="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-2">Full-service request</p>
+          <h2 class="text-3xl font-extrabold text-gray-900">Submit Your Timeshare Details</h2>
+          <p class="text-gray-700 mt-3">Send the information below so the team can review your situation and explain the next step.</p>
+        </div>
 
-        const data = {
-          title: document.getElementById("title").value,
-          name: document.getElementById("name").value,
-          email: document.getElementById("email").value,
-          phone: document.getElementById("phone").value,
-          resort: document.getElementById("resortName").value,
-          details: document.getElementById("details").value,
-          fileUrl: ""
-        };
+        <form id="claimForm" class="space-y-5">
+          <div>
+            <label for="title">Title</label>
+            <select id="title" required>
+              <option value="">Select...</option>
+              <option>Mr</option>
+              <option>Mrs</option>
+              <option>Miss</option>
+              <option>Ms</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required />
+          </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label for="email">Email Address</label>
+              <input type="email" id="email" required />
+            </div>
+            <div>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" required />
+            </div>
+          </div>
+          <div>
+            <label for="resortName">Resort Name</label>
+            <input type="text" id="resortName" name="resortName" placeholder="Enter your resort name..." required />
+          </div>
+          <div>
+            <label for="details">Any additional info: contract number, purchase year, weeks, points, fractional ownership or key concerns</label>
+            <textarea id="details" rows="5" required></textarea>
+          </div>
+          <div>
+            <label for="fileUpload">Attach your contract copy (PDF, image, etc.)</label>
+            <div class="upload-area" id="uploadArea">Drag and drop or click to upload</div>
+            <input type="file" id="fileUpload" hidden />
+          </div>
+          <div class="bg-green-50 border border-green-200 rounded-2xl p-4 text-green-900 font-semibold">
+            Your information is protected by secure HTTPS submission and is used only to review your timeshare exit enquiry.
+          </div>
+          <button type="submit" class="w-full bg-blue-600 text-white px-6 py-4 rounded-full font-extrabold hover:bg-blue-700 transition">Click To Submit Your Information</button>
+          <div class="message" id="message"></div>
+        </form>
+      </div>
+    </div>
+  </section>
 
-        try {
-          if (uploadedFile) {
-            const storageRef = ref(
-              storage,
-              `fullService/${Date.now()}_${uploadedFile.name}`
-            );
-            const snap = await uploadBytes(storageRef, uploadedFile);
-            data.fileUrl = await getDownloadURL(snap.ref);
-          }
-
-          // store in Firestore
-          await addDoc(collection(db, "claims"), {
-  name: data.name,
-  email: data.email,
-  phone: data.phone,
-  type: "Full Service Exit",
-  details: `Resort: ${data.resort}\n\n${data.details}`,
-  fileUrl: data.fileUrl,
-  status: "pending",
-  createdAt: new Date()
-});
-
-
-          // show thank-you message instead of redirect
-          message.textContent = "✅ Thank you! Your request has been submitted.";
-          message.classList.add("show");
-
-          form.reset();
-          uploadArea.textContent = "Drag & Drop or Click to Upload";
-          uploadedFile = null;
-
-          // if you ever want to redirect to payment, uncomment:
-          // window.location.href = 'https://checkout.revolut.com/pay/…';
-
-        } catch (err) {
-          console.error(err);
-          message.textContent = "⚠️ Something went wrong. Please try again later.";
-          message.classList.add("show");
-        }
-      });
-    </script>
-
-    <!-- Footer -->
-<footer style="text-align: center; font-size: 0.85rem; color: #6b7280; padding: 2rem 1rem; max-width: 800px; margin: 0 auto;">
-    © 2025 Exitmytimeshares.com by Quaerens Ltd. All rights reserved.<br />
-    <a href="privacy.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a> |
-    <a href="terms.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Terms of Use</a> |
-    <a href="gdpr.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">GDPR</a> |
-    <a href="contact.html" style="color: #2563eb; text-decoration: none; margin: 0 0.5rem;">Contact Us</a>
+  <footer style="text-align:center;font-size:.85rem;color:#6b7280;padding:2rem 1rem;max-width:900px;margin:0 auto;">
+    <strong>ExitMyTimeshares.com by Quaerens Ltd</strong><br />
+    Email: <a href="mailto:info@quaerens.co.uk">info@quaerens.co.uk</a> | Telephone: +44 (0)20 8050 0725<br />
+    Company No.: 16176152 &middot; Registered in England &amp; Wales<br />
+    Address: 71-75 Shelton Street, Covent Garden, London WC2H 9JQ<br /><br />
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms of Use</a> |
+    <a href="gdpr.html">GDPR</a> |
+    <a href="contact.html">Contact Us</a>
   </footer>
-  </body>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,fr,de,nl,it',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function setLanguage(lang) {
+      var newLang = '/auto/' + lang;
+      document.cookie = 'googtrans=' + newLang + '; path=/';
+      document.cookie = 'googtrans=' + newLang + '; domain=' + window.location.hostname + '; path=/';
+      location.reload();
+    }
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCOo_Sa242sUuGyZD8jO8kk12V1aBX7wMA",
+      authDomain: "quaerensclaims.firebaseapp.com",
+      projectId: "quaerensclaims",
+      storageBucket: "quaerensclaims.appspot.com",
+      messagingSenderId: "57715464932",
+      appId: "1:57715464932:web:a69a4949f36c2ad214eaf1"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("claimForm");
+    const message = document.getElementById("message");
+    const uploadArea = document.getElementById("uploadArea");
+    const fileInput = document.getElementById("fileUpload");
+    let uploadedFile = null;
+
+    uploadArea.addEventListener("click", () => fileInput.click());
+    uploadArea.addEventListener("dragover", e => {
+      e.preventDefault();
+      uploadArea.classList.add("dragover");
+    });
+    uploadArea.addEventListener("dragleave", () => {
+      uploadArea.classList.remove("dragover");
+    });
+    uploadArea.addEventListener("drop", e => {
+      e.preventDefault();
+      uploadArea.classList.remove("dragover");
+      fileInput.files = e.dataTransfer.files;
+      uploadedFile = fileInput.files[0];
+      if (uploadedFile) uploadArea.textContent = uploadedFile.name;
+    });
+    fileInput.addEventListener("change", () => {
+      uploadedFile = fileInput.files[0];
+      if (uploadedFile) uploadArea.textContent = uploadedFile.name;
+    });
+
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      message.textContent = "Submitting...";
+      message.classList.add("show");
+
+      const data = {
+        title: document.getElementById("title").value,
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        resort: document.getElementById("resortName").value,
+        details: document.getElementById("details").value,
+        fileUrl: ""
+      };
+
+      try {
+        if (uploadedFile) {
+          const storageRef = ref(storage, `fullService/${Date.now()}_${uploadedFile.name}`);
+          const snap = await uploadBytes(storageRef, uploadedFile);
+          data.fileUrl = await getDownloadURL(snap.ref);
+        }
+
+        await addDoc(collection(db, "claims"), {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          type: "Full Service Exit",
+          details: `Resort: ${data.resort}\n\n${data.details}`,
+          fileUrl: data.fileUrl,
+          status: "pending",
+          createdAt: new Date()
+        });
+
+        message.textContent = "Thank you. Your full-service request has been submitted.";
+        form.reset();
+        uploadArea.textContent = "Drag and drop or click to upload";
+        uploadedFile = null;
+      } catch (err) {
+        console.error(err);
+        message.textContent = "Something went wrong. Please try again later.";
+      }
+    });
+  </script>
+</body>
 </html>
