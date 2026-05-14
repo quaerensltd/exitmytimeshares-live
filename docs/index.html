@@ -29,21 +29,81 @@
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://www.exitmytimeshares.com/sitemap.xml" />
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "ExitMyTimeshares DIY Timeshare Exit Kit",
-    "description": "DIY document pack for timeshare exit letters, refund requests and practical follow-up.",
-    "image": "https://www.exitmytimeshares.com/images/exitmytimeshares-logo.png",
-    "brand": { "@type": "Organization", "name": "Quaerens Ltd" },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "GBP",
-      "price": "895",
-      "url": "https://www.exitmytimeshares.com/checkout.html",
-      "availability": "https://schema.org/InStock"
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "ExitMyTimeshares DIY Timeshare Exit Kit",
+  "description": "Digital DIY document pack for timeshare exit letters, refund requests and practical follow-up support.",
+  "image": "https://www.exitmytimeshares.com/images/exitmytimeshares-logo.png",
+  "brand": {
+    "@type": "Brand",
+    "name": "ExitMyTimeshares"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "GBP",
+    "price": "895",
+    "url": "https://www.exitmytimeshares.com/checkout.html",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "Quaerens Ltd",
+      "url": "https://www.exitmytimeshares.com/"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "GBP"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": [
+          "GB",
+          "US",
+          "ES",
+          "FR",
+          "DE",
+          "NL",
+          "IE"
+        ]
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 0,
+          "unitCode": "DAY"
+        }
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": [
+        "GB",
+        "US",
+        "ES",
+        "FR",
+        "DE",
+        "NL",
+        "IE"
+      ],
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 14,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn"
     }
   }
+}
   </script>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

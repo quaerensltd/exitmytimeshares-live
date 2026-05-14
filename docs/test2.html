@@ -50,21 +50,81 @@
 
   <!-- JSON-LD Product schema -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Product",
-    "name":"Do-It-Yourself Timeshare Exit Kit",
-    "image":"https://www.exitmytimeshares.com/images/kit-preview.jpg",
-    "description":"Lawyer-vetted cancellation letters & guide for €169, 3–6 week process, money-back guarantee.",
-    "brand":{"@type":"Organization","name":"Quaerens Ltd"},
-    "offers":{
-      "@type":"Offer",
-      "url":"https://www.exitmytimeshares.com/checkout.html",
-      "priceCurrency":"EUR",
-      "price":"169.00",
-      "availability":"https://schema.org/InStock"
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "ExitMyTimeshares DIY Timeshare Exit Kit",
+  "description": "Digital DIY document pack for timeshare exit letters, refund requests and practical follow-up support.",
+  "image": "https://www.exitmytimeshares.com/images/exitmytimeshares-logo.png",
+  "brand": {
+    "@type": "Brand",
+    "name": "ExitMyTimeshares"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "GBP",
+    "price": "895",
+    "url": "https://www.exitmytimeshares.com/checkout.html",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "Quaerens Ltd",
+      "url": "https://www.exitmytimeshares.com/"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "GBP"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": [
+          "GB",
+          "US",
+          "ES",
+          "FR",
+          "DE",
+          "NL",
+          "IE"
+        ]
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 0,
+          "unitCode": "DAY"
+        }
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": [
+        "GB",
+        "US",
+        "ES",
+        "FR",
+        "DE",
+        "NL",
+        "IE"
+      ],
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 14,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn"
     }
   }
+}
   </script>
 
   <!-- 1) Google Fonts -->
